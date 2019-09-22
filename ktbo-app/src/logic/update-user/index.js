@@ -1,4 +1,4 @@
-import validate from '../../utils/validate'
+const { validate } = require('ktbo-utils')
 const REACT_APP_API_URL = process.env.REACT_APP_API_URL
 
 export default function (oldPassword, password) {
