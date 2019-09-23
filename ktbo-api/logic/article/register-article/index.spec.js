@@ -37,14 +37,14 @@ describe('logic - register article', () => {
     })
 
     it('should succeed on correct data', async () => {
+
         const result = await registerArticle(id, ref, title, description, img, quantity, category, price)
-        
         articleId = result
-        expect(articleId).to.exist
         
         const article = await Article.findOne({ ref })
             
         expect(article).to.exist
+        expect(article.id).to.equal(number)
         expect(article.ref).to.equal(ref)
         expect(article.title).to.equal(title)
         expect(article.description).to.equal(description)
@@ -52,7 +52,6 @@ describe('logic - register article', () => {
         expect(article.quantity).to.equal(quantity)
         expect(article.category).to.equal(category)
         expect(article.price).to.equal(price)
-        expect(id).to.exist
     })
 
     it('should fail if the article already exists', async () => {
@@ -64,10 +63,7 @@ describe('logic - register article', () => {
         }
     })
 
-    /* Following 3 tests 
-    for every parameter passed to logic */
-
-     it('should fail on undefined ref', () => //no es async
+     it('should fail on undefined ref', () =>
         expect(() => 
                registerArticle(id, undefined, title, description, img, quantity, category)
     ).to.throw(`ref with value undefined is not a number`)
@@ -97,8 +93,5 @@ describe('logic - register article', () => {
         }
     })
 
-
-
     after(() => database.disconnect())
 })
-

@@ -37,4 +37,8 @@ module.exports = {
         if (typeof target === 'string' && !target.trim()) throw new Error(`${name} is empty or blank`)
         if (typeof target !== 'boolean') throw TypeError(`${name} with value ${target} is not a boolean`)
     },
+
+    object(target, name) {
+        if (typeof target !== 'object') throw TypeError(`${name} with value ${target} is not a object`)
+    }
 }

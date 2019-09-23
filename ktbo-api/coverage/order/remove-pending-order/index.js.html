@@ -96,11 +96,9 @@
 <a name='L48'></a><a href='#L48'>48</a>
 <a name='L49'></a><a href='#L49'>49</a>
 <a name='L50'></a><a href='#L50'>50</a>
-<a name='L51'></a><a href='#L51'>51</a>
-<a name='L52'></a><a href='#L52'>52</a>
-<a name='L53'></a><a href='#L53'>53</a>
-<a name='L54'></a><a href='#L54'>54</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L51'></a><a href='#L51'>51</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -118,7 +116,11 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
@@ -128,13 +130,6 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
@@ -143,7 +138,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -156,11 +150,12 @@
 const { validate } = require('ktbo-utils')
 &nbsp;
 /**
+ *  Delete a pending order.
+ *  Function reserved for administrators.
  * 
- * @param {*} userId 
- * @param {*} orderId 
+ * @param {String} userId - Identifier of the admin.
+ * @param {String} orderId - Identifier of the order to delete.
  * 
- * @returns {Promise}
  */
 &nbsp;
 module.exports = function(userId, orderId) {
@@ -171,37 +166,33 @@ module.exports = function(userId, orderId) {
     return (async () =&gt; {
 &nbsp;
         const user = await User.findById(userId)
-&nbsp;
         <span class="missing-if-branch" title="if path not taken" >I</span>if (!user) <span class="cstat-no" title="statement not covered" >throw Error(`User with id ${userId} does not exist`)</span>
         
         <span class="missing-if-branch" title="else path not taken" >E</span>if(user.role === 'admin'){
             
             const orders = await Order.findOne({ state: 'pending', owner: userId, _id: orderId })
-    
             <span class="missing-if-branch" title="if path not taken" >I</span>if(!orders) <span class="cstat-no" title="statement not covered" >throw new Error(`Order with id ${orderId} not exist`)</span>
 &nbsp;
-                <span class="missing-if-branch" title="else path not taken" >E</span>if(userId === orders.owner.toString()){
+            <span class="missing-if-branch" title="else path not taken" >E</span>if(userId === orders.owner.toString()){
 &nbsp;
-                    orders.items.forEach(async element =&gt; {
+            orders.items.forEach(async element =&gt; {
                         
-                        quantity = element.quantity
+                quantity = element.quantity
         
-                        const article = await Article.findById(element.article)
+                const article = await Article.findById(element.article)
+                <span class="missing-if-branch" title="if path not taken" >I</span>if(!article) <span class="cstat-no" title="statement not covered" >throw new Error(`Article with id ${element.article} not exist`)</span>
 &nbsp;
-                        <span class="missing-if-branch" title="if path not taken" >I</span>if(!article) <span class="cstat-no" title="statement not covered" >throw new Error(`Article with id ${element.article} not exist`)</span>
-        
-                        article.quantity += quantity
-                     
-                        await article.save()  
-                    })     
+                article.quantity += quantity
+                
+                await article.save()  
+            })     
 &nbsp;
-                    const res = await Order.deleteOne({ _id: orderId })
+            const res = await Order.deleteOne({ _id: orderId })
+            <span class="missing-if-branch" title="if path not taken" >I</span>if(res.deletedCount === 0) <span class="cstat-no" title="statement not covered" >throw Error('Error')    </span>
 &nbsp;
-                    <span class="missing-if-branch" title="if path not taken" >I</span>if(res.deletedCount === 0) <span class="cstat-no" title="statement not covered" >throw Error('Error')    </span>
-&nbsp;
-                } else {
-<span class="cstat-no" title="statement not covered" >                    throw new Error(`User with id ${userId} is not an admin`)</span>
-                }
+            } else {
+<span class="cstat-no" title="statement not covered" >                throw new Error(`User with id ${userId} is not an admin`)</span>
+            }
             
         }
     })()
@@ -211,7 +202,7 @@ module.exports = function(userId, orderId) {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Thu Sep 19 2019 11:42:34 GMT+0200 (GMT+02:00)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Mon Sep 23 2019 22:13:19 GMT+0200 (GMT+02:00)
 </div>
 </div>
 <script src="../../prettify.js"></script>

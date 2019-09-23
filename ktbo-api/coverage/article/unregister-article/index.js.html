@@ -20,14 +20,14 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">80% </span>
+        <span class="strong">84.62% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>12/15</span>
+        <span class='fraction'>11/13</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">50% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>3/6</span>
+        <span class='fraction'>2/4</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -35,9 +35,9 @@
         <span class='fraction'>2/2</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">92.31% </span>
+        <span class="strong">91.67% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>12/13</span>
+        <span class='fraction'>11/12</span>
       </div>
     </div>
     <p class="quiet">
@@ -76,7 +76,11 @@
 <a name='L28'></a><a href='#L28'>28</a>
 <a name='L29'></a><a href='#L29'>29</a>
 <a name='L30'></a><a href='#L30'>30</a>
-<a name='L31'></a><a href='#L31'>31</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L31'></a><a href='#L31'>31</a>
+<a name='L32'></a><a href='#L32'>32</a>
+<a name='L33'></a><a href='#L33'>33</a>
+<a name='L34'></a><a href='#L34'>34</a>
+<a name='L35'></a><a href='#L35'>35</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -86,7 +90,11 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -94,11 +102,10 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -106,17 +113,22 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const { models: { User, Article } } = require('ktbo-data')
 const { validate } = require('ktbo-utils')
+&nbsp;
 /**
- * Unregisters a user.
+ *  Unregister an Article.
+ *  Function reserved for an admins.
+ *
+ * @param {String} articleId - Identifier of the article.
+ * @param {String} userId - Identifier of the admin.
+ * @param {String} password - Admin's password.
  * 
- * @param {string} id
- * @param {string} password
- * 
- * @returns {Promise}
  */
+&nbsp;
 module.exports = function (articleId, userId, password) {
+&nbsp;
     validate.string(articleId, 'articleId')
     validate.string(userId, 'userId')
     validate.string(password, 'password')
@@ -124,17 +136,17 @@ module.exports = function (articleId, userId, password) {
     return (async () =&gt; {
 &nbsp;
         const user = await User.findOne({ _id: userId })
-&nbsp;
         <span class="missing-if-branch" title="if path not taken" >I</span>if(!user) <span class="cstat-no" title="statement not covered" >throw new Error(`There is not a user with id ${userId}`)</span>
 &nbsp;
         <span class="missing-if-branch" title="else path not taken" >E</span>if(user.role === 'admin'){
-            <span class="missing-if-branch" title="if path not taken" >I</span>if(user.password !== password) <span class="cstat-no" title="statement not covered" >throw new Error(`Wrong password`)</span>
-&nbsp;
+            //TODO bcrypt match
+            //if(user.password !== password) throw new Error(`Wrong password`)
             await Article.deleteOne({ _id: articleId})
 &nbsp;
         } else {
 <span class="cstat-no" title="statement not covered" >            throw new Error(`User with id ${userId} is not an admin`)</span>
         }
+&nbsp;
     })()
 }</pre></td></tr>
 </table></pre>
@@ -142,7 +154,7 @@ module.exports = function (articleId, userId, password) {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Thu Sep 19 2019 11:42:34 GMT+0200 (GMT+02:00)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Mon Sep 23 2019 22:13:19 GMT+0200 (GMT+02:00)
 </div>
 </div>
 <script src="../../prettify.js"></script>

@@ -32,23 +32,25 @@ describe('logic - update user', () => {
         const hash = await bcrypt.hash(password1, 10)
 
         await User.deleteMany()
-            const user = await User.create({ company, country, email, password: hash, role })
-            id = user.id
+        const user = await User.create({ company, country, email, password: hash, role })
+        id = user.id
     })
 
     it('should succeed on correct data', async () => {
         
         const result = await updateUser(id, body)
-                expect(result).not.to.exist
 
-                const user = await User.findById(id)
-            
-                expect(user).to.exist
-                expect(user.company).to.equal(body.company)
-                expect(user.country).to.equal(body.country)
-                expect(user.email).to.equal(body.email)
-                expect(user.password).to.equal(body.password)
-                expect(user.extra).not.to.exist
+        expect(result).not.to.exist
+
+        const user = await User.findById(id)
+    
+        expect(user).to.exist
+        expect(user.company).to.equal(body.company)
+        expect(user.country).to.equal(body.country)
+        expect(user.email).to.equal(body.email)
+        expect(user.password).to.equal(body.password)
+        expect(user.extra).not.to.exist
+
     })
 
     it('should fail on non-existing user', async () => {
@@ -75,6 +77,19 @@ describe('logic - update user', () => {
 
     it('should fail when userId is a boolean', () =>
         expect(() => updateUser(true, body)).to.throw(Error,`true is not a string`))
+
+    it('should fail on empty data', () =>
+        expect(() => updateUser(id)).to.throw(Error,'data with value undefined is not a object'))
+
+    it('should fail when data is a number', () =>
+        expect(() => updateUser(id, 1)).to.throw(Error,`data with value 1 is not a object`))
+
+    it('should fail when data is a string', () =>
+        expect(() => updateUser(id, 'hola')).to.throw(Error,`data with value hola is not a object`))
+
+
+    it('should fail when data is a boolean', () =>
+        expect(() => updateUser(id, true)).to.throw(Error,`data with value true is not a object`))
 
     after(() => database.disconnect())
 })

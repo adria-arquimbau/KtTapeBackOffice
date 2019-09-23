@@ -90,14 +90,7 @@
 <a name='L42'></a><a href='#L42'>42</a>
 <a name='L43'></a><a href='#L43'>43</a>
 <a name='L44'></a><a href='#L44'>44</a>
-<a name='L45'></a><a href='#L45'>45</a>
-<a name='L46'></a><a href='#L46'>46</a>
-<a name='L47'></a><a href='#L47'>47</a>
-<a name='L48'></a><a href='#L48'>48</a>
-<a name='L49'></a><a href='#L49'>49</a>
-<a name='L50'></a><a href='#L50'>50</a>
-<a name='L51'></a><a href='#L51'>51</a>
-<a name='L52'></a><a href='#L52'>52</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L45'></a><a href='#L45'>45</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -111,30 +104,27 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">16x</span>
 <span class="cline-any cline-yes">16x</span>
 <span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
@@ -142,70 +132,59 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const { models: { Article, User, Order, Item } } = require('ktbo-data')
 const { validate } = require('ktbo-utils')
 &nbsp;
+&nbsp;
 /**
- * 
- * @param {*} ref 
- * @param {*} title 
- * @param {*} description 
- * @param {*} img 
- * @param {*} quantity 
- * @param {*} category 
+ *  This function adds an item with a quantity to the user's cart
+ *
+ * @param {String} userId - Identifier of the user.
+ * @param {String} articleId - Identifier of article to add.
+ * @param {Quantity} quantity - Quantity of the 'articleId' to add.
  * 
  * @returns {Promise}
  */
 &nbsp;
 module.exports = function(userId, articleId, quantity) {
+&nbsp;
     quantity = Number(quantity)
     validate.string(userId, 'userId')
     validate.string(articleId, 'articleId')
     validate.number(quantity, 'quantity')
     
     return (async () =&gt; {
-        const user = await User.findById(userId)
 &nbsp;
-        <span class="missing-if-branch" title="if path not taken" >I</span>if (!user) <span class="cstat-no" title="statement not covered" >throw Error(`User with id ${userId} does not exist`)</span>
+        const res = await User.findById(userId)
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (!res) <span class="cstat-no" title="statement not covered" >throw Error(`User with id ${userId} does not exist`)</span>
 &nbsp;
         const article = await Article.findById(articleId)
-        
         if(article.quantity &lt; quantity) throw Error('Stock greater than quantity required')
 &nbsp;
-        let item = user.cart.find(<span class="fstat-no" title="function not covered" >it</span>em =&gt; <span class="cstat-no" title="statement not covered" >item.article.toString() === articleId)</span>
+        let item = res.cart.find(<span class="fstat-no" title="function not covered" >it</span>em =&gt; <span class="cstat-no" title="statement not covered" >item.article.toString() === articleId)</span>
+        item ? <span class="branch-0 cbranch-no" title="branch not covered" >item.quantity += quantity </span>: res.cart.push(new Item({article: articleId, quantity}))
 &nbsp;
-        item ? <span class="branch-0 cbranch-no" title="branch not covered" >item.quantity += quantity </span>: user.cart.push(new Item({article: articleId, quantity}))
+        await res.save()
 &nbsp;
-        await user.save()
-&nbsp;
-        const user1 = await User.findById(userId)
-&nbsp;
-        let item1 = user1.cart.find(item =&gt; item.article.toString() === articleId)
+        const user = await User.findById(userId)
+        let item1 = user.cart.find(item =&gt; item.article.toString() === articleId)
 &nbsp;
         <span class="missing-if-branch" title="if path not taken" >I</span>if(item1.quantity&lt;0) <span class="cstat-no" title="statement not covered" >item1.quantity=0</span>
 &nbsp;
-        await user1.save()
+        await user.save()
 &nbsp;
-        return user1.cart
+        return user.cart
+&nbsp;
     })()
-}
-&nbsp;
-&nbsp;
-&nbsp;
-&nbsp;
-&nbsp;</pre></td></tr>
+}</pre></td></tr>
 </table></pre>
 <div class='push'></div><!-- for sticky footer -->
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Thu Sep 19 2019 11:42:34 GMT+0200 (GMT+02:00)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Mon Sep 23 2019 22:13:19 GMT+0200 (GMT+02:00)
 </div>
 </div>
 <script src="../../prettify.js"></script>

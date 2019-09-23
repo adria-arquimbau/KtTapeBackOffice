@@ -24,28 +24,30 @@ Demo user:
 ---
 Admin can:
 
-0.5 (Actual Version)
+0.5 (Actual version)
 + Check the all orders
 + Check pending orders and be able to mark them as made or pending
 + Remove pending orders
 + Update your user profile
 
-1.0 
-+ Update orders
+0.6 (Developing)
 + Add new client account
-+ Update client account
 + Remove client account
+
+(next versions)
++ Update orders
++ Update client account
 + Have access to documentation of interest of the brand.
 + Update new documentation
 
 Users can:
 
-0.5 (Actual Version)
+0.5 (Actual version)
 + Place online orders for each product with real stock.
 + Check your current order 
 + Update your user profile.
 
-1.0
+(next versions)
 + Have access to documentation of interest of the brand.
 + Check history orders and place order with a old model.
 

@@ -3,7 +3,7 @@ require('dotenv').config()
 const { expect } = require('chai')
 const retrieveAllArticles = require('.')
 const { database, models: { Article } } = require('ktbo-data')
-const { random: { number, boolean, value } } = require('ktbo-utils')
+const { random: { value } } = require('ktbo-utils')
 const { random } = Math
 
 const { env: { DB_URL_TEST }} = process
@@ -32,15 +32,16 @@ describe('logic - retrieve all articles', () => {
 
         await Article.deleteMany()
 
-        const article1 = await Article.create({ ref: ref1, title: title1, description: description1, img: img1, quantity: quantity1, category: category1, price: price1 })
-        articleId1 = article1.id
-
-        const article2 = await Article.create({ ref: ref2, title: title2, description: description2, img: img2, quantity: quantity2, category: category2, price: price2 })
-        articleId2 = article2.id  
     })
     
     it('should succeed on correct data', async () => {
-debugger
+
+        const article1 = await Article.create({ ref: ref1, title: title1, description: description1, img: img1, quantity: quantity1, category: category1, price: price1 })
+        articleId1 = article1.id
+    
+        const article2 = await Article.create({ ref: ref2, title: title2, description: description2, img: img2, quantity: quantity2, category: category2, price: price2 })
+        articleId2 = article2.id  
+
         const articles = await retrieveAllArticles()
             
             //USER 1
@@ -67,8 +68,14 @@ debugger
             
         })
 
-       
+        it('should fail if there aren\'t articles', async () => {
 
+            const articles = await retrieveAllArticles()
+            debugger
+            expect(articles).to.exist
+            expect(articles.length).to.equal(0)
+
+        })
 
         after(() => database.disconnect())
 })

@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">96.88% </span>
+        <span class="strong">85.71% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>62/64</span>
+        <span class='fraction'>54/63</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -35,9 +35,9 @@
         <span class='fraction'>11/11</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">96.77% </span>
+        <span class="strong">85.25% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>60/62</span>
+        <span class='fraction'>52/61</span>
       </div>
     </div>
     <p class="quiet">
@@ -142,15 +142,7 @@
 <a name='L94'></a><a href='#L94'>94</a>
 <a name='L95'></a><a href='#L95'>95</a>
 <a name='L96'></a><a href='#L96'>96</a>
-<a name='L97'></a><a href='#L97'>97</a>
-<a name='L98'></a><a href='#L98'>98</a>
-<a name='L99'></a><a href='#L99'>99</a>
-<a name='L100'></a><a href='#L100'>100</a>
-<a name='L101'></a><a href='#L101'>101</a>
-<a name='L102'></a><a href='#L102'>102</a>
-<a name='L103'></a><a href='#L103'>103</a>
-<a name='L104'></a><a href='#L104'>104</a>
-<a name='L105'></a><a href='#L105'>105</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L97'></a><a href='#L97'>97</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -189,7 +181,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -198,13 +189,13 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
@@ -213,9 +204,6 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -249,11 +237,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">require('dotenv').config()
 &nbsp;
 const { expect } = require('chai')
@@ -293,22 +277,21 @@ describe('logic - register article', () =&gt; {
     })
 &nbsp;
     it('should succeed on correct data', async () =&gt; {
+&nbsp;
         const result = await registerArticle(id, ref, title, description, img, quantity, category, price)
-        
         articleId = result
-        expect(articleId).to.exist
         
         const article = await Article.findOne({ ref })
             
         expect(article).to.exist
-        expect(article.ref).to.equal(ref)
-        expect(article.title).to.equal(title)
-        expect(article.description).to.equal(description)
-        expect(article.img).to.equal(img)
-        expect(article.quantity).to.equal(quantity)
-        expect(article.category).to.equal(category)
-        expect(article.price).to.equal(price)
-        expect(id).to.exist
+        expect(article.id).to.equal(number)
+<span class="cstat-no" title="statement not covered" >        expect(article.ref).to.equal(ref)</span>
+<span class="cstat-no" title="statement not covered" >        expect(article.title).to.equal(title)</span>
+<span class="cstat-no" title="statement not covered" >        expect(article.description).to.equal(description)</span>
+<span class="cstat-no" title="statement not covered" >        expect(article.img).to.equal(img)</span>
+<span class="cstat-no" title="statement not covered" >        expect(article.quantity).to.equal(quantity)</span>
+<span class="cstat-no" title="statement not covered" >        expect(article.category).to.equal(category)</span>
+<span class="cstat-no" title="statement not covered" >        expect(article.price).to.equal(price)</span>
     })
 &nbsp;
     it('should fail if the article already exists', async () =&gt; {
@@ -320,10 +303,7 @@ describe('logic - register article', () =&gt; {
         }
     })
 &nbsp;
-    /* Following 3 tests 
-    for every parameter passed to logic */
-&nbsp;
-     it('should fail on undefined ref', () =&gt; //no es async
+     it('should fail on undefined ref', () =&gt;
         expect(() =&gt; 
                registerArticle(id, undefined, title, description, img, quantity, category)
     ).to.throw(`ref with value undefined is not a number`)
@@ -353,18 +333,14 @@ describe('logic - register article', () =&gt; {
         }
     })
 &nbsp;
-&nbsp;
-&nbsp;
     after(() =&gt; database.disconnect())
-})
-&nbsp;
-&nbsp;</pre></td></tr>
+})</pre></td></tr>
 </table></pre>
 <div class='push'></div><!-- for sticky footer -->
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Thu Sep 19 2019 11:42:34 GMT+0200 (GMT+02:00)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Mon Sep 23 2019 22:13:19 GMT+0200 (GMT+02:00)
 </div>
 </div>
 <script src="../../prettify.js"></script>
