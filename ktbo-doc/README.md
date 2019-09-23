@@ -9,7 +9,7 @@ A project by:
 
 ## **Introduction**
 ---
-KtTape Back Office is a multiple page with React to facilitate online ordering of branded products between national suppliers and the continental supplier.
+KtTape Back Office is a multiple page with React.js to facilitate online ordering of branded products between national suppliers and the continental supplier.
 
 With this application we want to improve and facilitate the realization of online orders, with an automated stock update system.
 
