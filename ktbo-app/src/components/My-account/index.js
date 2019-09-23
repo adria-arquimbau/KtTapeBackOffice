@@ -23,9 +23,9 @@ function MyAccount({history}) {
 
   async function handleUpdate(oldP, newP) {
     try {
-        const { message } = await logic.updateUser(oldP, newP)
-        const messageOk = message     
-        setMessage(messageOk)
+      const { message } = await logic.updateUser(oldP, newP)
+      const messageOk = message     
+      setMessage(messageOk)
     } catch ({message}) {
       setMessage(message)  
     }
