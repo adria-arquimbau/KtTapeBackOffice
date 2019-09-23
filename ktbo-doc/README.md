@@ -16,8 +16,8 @@ With this application we want to improve and facilitate the realization of onlin
 Demo: https://kttape-back-office.surge.sh
 
 Demo user:
-email: admin@admin.com
-password: admin
++ email: admin@admin.com
++ password: admin
 
 ## **Functional Description**
 ---
