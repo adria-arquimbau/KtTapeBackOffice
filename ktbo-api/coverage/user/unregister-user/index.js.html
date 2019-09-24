@@ -20,14 +20,14 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">93.75% </span>
+        <span class="strong">87.5% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>15/16</span>
+        <span class='fraction'>21/24</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">83.33% </span>
+        <span class="strong">75% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>5/6</span>
+        <span class='fraction'>9/12</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -35,9 +35,9 @@
         <span class='fraction'>2/2</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">100% </span>
+        <span class="strong">94.74% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>13/13</span>
+        <span class='fraction'>18/19</span>
       </div>
     </div>
     <p class="quiet">
@@ -75,7 +75,21 @@
 <a name='L27'></a><a href='#L27'>27</a>
 <a name='L28'></a><a href='#L28'>28</a>
 <a name='L29'></a><a href='#L29'>29</a>
-<a name='L30'></a><a href='#L30'>30</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L30'></a><a href='#L30'>30</a>
+<a name='L31'></a><a href='#L31'>31</a>
+<a name='L32'></a><a href='#L32'>32</a>
+<a name='L33'></a><a href='#L33'>33</a>
+<a name='L34'></a><a href='#L34'>34</a>
+<a name='L35'></a><a href='#L35'>35</a>
+<a name='L36'></a><a href='#L36'>36</a>
+<a name='L37'></a><a href='#L37'>37</a>
+<a name='L38'></a><a href='#L38'>38</a>
+<a name='L39'></a><a href='#L39'>39</a>
+<a name='L40'></a><a href='#L40'>40</a>
+<a name='L41'></a><a href='#L41'>41</a>
+<a name='L42'></a><a href='#L42'>42</a>
+<a name='L43'></a><a href='#L43'>43</a>
+<a name='L44'></a><a href='#L44'>44</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -87,9 +101,19 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">16x</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3x</span>
@@ -102,6 +126,10 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const { models: { User } } = require('ktbo-data')
@@ -110,28 +138,42 @@ const bcrypt = require('bcryptjs')
 &nbsp;
 /**
  * Unregisters a user.
+ * Function only for admins.
  * 
- * @param {string} id - Identifier of the user.
- * @param {string} password
+ * @param {string} userId - Identifier of the user you want to remove.
+ * @param {string} adminId - Identifier of the admin.
+ * @param {string} password - Password of the admin.
  * 
  */
 &nbsp;
-module.exports = function (id, password) {
+module.exports = function (userId, adminId, password) {
 &nbsp;
-    validate.string(id, 'id')
+    validate.string(userId, 'userId')
+    validate.string(adminId, 'adminId')
     validate.string(password, 'password')
 &nbsp;
     return (async () =&gt; {
 &nbsp;
-        const res = await User.findById({ _id: id})
-        if(!res) throw Error (`User with id ${id} doesn\'t exist`)
+        const res = await User.findById({ _id: adminId})
+        if(!res) throw Error (`Admin with id ${adminId} doesn\'t exist`)
 &nbsp;
-        const match = await bcrypt.compare(password, res.password)
-        if (!match) throw new Error('wrong credentials')
+        <span class="missing-if-branch" title="else path not taken" >E</span>if(res.role === 'admin'){
 &nbsp;
-        const result = await User.deleteOne({ _id: id, password: res.password })
-        <span class="missing-if-branch" title="if path not taken" >I</span>if (!result.deletedCount) <span class="cstat-no" title="statement not covered" >throw new Error(`wrong credentials`)</span>
-        
+            <span class="missing-if-branch" title="if path not taken" >I</span>if(userId === adminId)<span class="cstat-no" title="statement not covered" >throw Error(`You can\'t delete your profile`)</span>
+&nbsp;
+            const match = await bcrypt.compare(password, res.password)
+            if (!match) throw new Error('wrong credentials')
+    
+            const user = await User.findById({ _id: userId })
+            if(!user) throw Error (`User with id ${userId} doesn\'t exist`)
+&nbsp;
+            const deletedUser = await User.deleteOne({ _id: userId })
+            <span class="missing-if-branch" title="if path not taken" >I</span>if (!deletedUser.deletedCount) <span class="cstat-no" title="statement not covered" >throw new Error(`wrong credentials`)</span>
+&nbsp;
+        } else {
+<span class="cstat-no" title="statement not covered" >            throw new Error(`User with id ${adminId} is not an admin`)</span>
+        }
+&nbsp;
     })()
 }</pre></td></tr>
 </table></pre>
@@ -139,7 +181,7 @@ module.exports = function (id, password) {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Mon Sep 23 2019 22:13:19 GMT+0200 (GMT+02:00)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Tue Sep 24 2019 23:52:31 GMT+0200 (GMT+02:00)
 </div>
 </div>
 <script src="../../prettify.js"></script>

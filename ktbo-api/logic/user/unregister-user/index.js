@@ -25,6 +25,8 @@ module.exports = function (userId, adminId, password) {
 
         if(res.role === 'admin'){
 
+            if(userId === adminId)throw Error(`You can\'t delete your profile`)
+
             const match = await bcrypt.compare(password, res.password)
             if (!match) throw new Error('wrong credentials')
     

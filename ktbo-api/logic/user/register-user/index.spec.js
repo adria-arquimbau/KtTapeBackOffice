@@ -29,7 +29,7 @@ describe('logic - register user', () => {
         countryNew = `country-${random()}`
         emailNew = `email-${random()}@domain.com`
         passwordNew = `password-${random()}`
-        roleNew = value('admin', 'regular')
+        roleNew = value('regular')
 
 
         await User.deleteMany()
@@ -58,6 +58,16 @@ describe('logic - register user', () => {
 
                 expect(match).to.be.true
             
+    })
+
+    it('should fail on admin role', async () => {
+        try {
+            let roleAdmin = 'admin'
+           await registerUser(userAdminId, companyNew, countryNew, emailNew, passwordNew, roleAdmin)
+        } catch (error) {
+            expect(error).to.exist
+            expect(error.message).to.equal(`You're creating an admin, not available now`)
+        }
     })
 
     it('should fail on duplicate email', async () => {
