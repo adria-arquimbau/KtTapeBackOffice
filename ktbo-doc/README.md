@@ -34,6 +34,7 @@ Admin can:
 + Add new client account
 + Remove client account
 
+
 (next versions)
 + Update orders
 + Update client account

@@ -34,6 +34,7 @@ module.exports = function (id, company, country, email, password, role) {
         const hash = await bcrypt.hash(password, 10)
 
             if(res.role === 'admin'){
+                
                 if(role === 'admin')throw Error(`You\'re creating an admin, not available now`)
                 
                 const result = await User.findOne({ email })

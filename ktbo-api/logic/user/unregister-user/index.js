@@ -4,27 +4,39 @@ const bcrypt = require('bcryptjs')
 
 /**
  * Unregisters a user.
+ * Function only for admins.
  * 
- * @param {string} id - Identifier of the user.
- * @param {string} password
+ * @param {string} userId - Identifier of the user you want to remove.
+ * @param {string} adminId - Identifier of the admin.
+ * @param {string} password - Password of the admin.
  * 
  */
 
-module.exports = function (id, password) {
+module.exports = function (userId, adminId, password) {
 
-    validate.string(id, 'id')
+    validate.string(userId, 'userId')
+    validate.string(adminId, 'adminId')
     validate.string(password, 'password')
 
     return (async () => {
 
-        const res = await User.findById({ _id: id})
-        if(!res) throw Error (`User with id ${id} doesn\'t exist`)
+        const res = await User.findById({ _id: adminId})
+        if(!res) throw Error (`Admin with id ${adminId} doesn\'t exist`)
 
-        const match = await bcrypt.compare(password, res.password)
-        if (!match) throw new Error('wrong credentials')
+        if(res.role === 'admin'){
 
-        const result = await User.deleteOne({ _id: id, password: res.password })
-        if (!result.deletedCount) throw new Error(`wrong credentials`)
-        
+            const match = await bcrypt.compare(password, res.password)
+            if (!match) throw new Error('wrong credentials')
+    
+            const user = await User.findById({ _id: userId })
+            if(!user) throw Error (`User with id ${userId} doesn\'t exist`)
+
+            const deletedUser = await User.deleteOne({ _id: userId })
+            if (!deletedUser.deletedCount) throw new Error(`wrong credentials`)
+
+        } else {
+            throw new Error(`User with id ${adminId} is not an admin`)
+        }
+
     })()
 }

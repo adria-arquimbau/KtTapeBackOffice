@@ -38,7 +38,7 @@ function AdminPanel({history}) {
         setOrders()
         setRetrieveUsers()
         const orders = await logic.retrieveAllOrders()
-          setAllOrders(orders)
+        setAllOrders(orders)
       } catch ({message}) {
         setError(message)
       }
@@ -84,7 +84,7 @@ function AdminPanel({history}) {
         <ul>          
           {orders && <ResultOrders orders={orders}   retrievePendingOrders={handlePendingOrders}/>}
           {allOrders  && <ResultAllAdminOrders orders={allOrders} />}
-          {retrieveUsers && <ResultAllUsers users={retrieveUsers} />}
+          {retrieveUsers && <ResultAllUsers users={retrieveUsers} retrieveAllUsers={hanldeRetrieveAllUsers} />}
         </ul>
       </section>
       {message && <Modal  message={message} showModal={handleModal}/>}
