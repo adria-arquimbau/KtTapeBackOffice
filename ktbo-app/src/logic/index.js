@@ -16,6 +16,7 @@ import changeStateOrder from './change-state-order'
 import removePendingOrder from './remove-pending-order'
 import retrieveAllOrders from './retrieve-all-orders'
 import registerUser from './register-user'
+import retrieveAllUsers from './retrieve-all-users'
 
 export default {
     set userCredentials({id,token}){
@@ -42,5 +43,6 @@ export default {
     changeStateOrder,
     removePendingOrder,
     retrieveAllOrders,
-    registerUser
+    registerUser,
+    retrieveAllUsers
 }

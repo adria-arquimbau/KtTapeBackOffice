@@ -13,6 +13,7 @@ import CurrentOrder from '../Current-order'
 import MyAccount from '../My-account'
 import Results from '../Results'
 import AdminPanel from '../Admin-panel'
+import NewUser from '../Admin-panel/New-user'
 //import PatchNotes from './Patch-notes'
 
 function Home({history}) {
@@ -58,7 +59,8 @@ function Home({history}) {
             <Route path="/home/my-orders" render={() => !logic.isUserLogged() ? history.push('/') : <MyOrders /> } />
             <Route path="/home/current-order" render={() => !logic.isUserLogged() ? history.push('/') : <CurrentOrder /> } />
             <Route path="/home/my-account" render={() => !logic.isUserLogged() ? history.push('/') : <MyAccount /> } />
-            <Route path="/home/admin-panel" render={() => !logic.isUserAdmin() ? history.push('/') : <AdminPanel /> } />
+            <Route exact path="/home/admin-panel" render={() => !logic.isUserAdmin() ? history.push('/') : <AdminPanel /> } />
+            <Route path="/home/admin-panel/new-user" render={() => !logic.isUserLogged() ? history.push('/') : <NewUser /> } />
             <Route path="/home/search" render={() => !logic.isUserLogged() ? history.push('/') : articles && <section><Results searchResult={articles}/></section> } />
       </main>
     </>

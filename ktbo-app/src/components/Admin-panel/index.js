@@ -3,24 +3,27 @@ import React, { useState } from 'react'
 import { withRouter } from 'react-router-dom'
 import logic from '../../logic'
 import ResultOrders from './Result-orders'
-import ResultAllADminOrders from './Result-all-admin-orders'
+import ResultAllAdminOrders from './Result-all-admin-orders'
+import ResultAllUsers from './ResultAllUsers'
 import './index.sass'
 import Modal from '../Modal'
 
-function AdminPanel() {
+function AdminPanel({history}) {
 
   const [error, setError] = useState()
-  const [message, setMessage] = useState(null)
+  const [message, setMessage] = useState()
   const [orders, setOrders] = useState()
   const [allOrders, setAllOrders] = useState()
+  const [retrieveUsers, setRetrieveUsers] = useState()
 
   async function handlePendingOrders() {
 
     (async () => {
 
       try {
-        const {orders} = await logic.retrievePendingOrders()
         setAllOrders()
+        setRetrieveUsers()
+        const {orders} = await logic.retrievePendingOrders()
         setOrders(orders)
       } catch ({message}) {
         setError(message)
@@ -32,8 +35,9 @@ function AdminPanel() {
 
     (async () => {
       try {
+        setOrders()
+        setRetrieveUsers()
         const orders = await logic.retrieveAllOrders()
-          setOrders()
           setAllOrders(orders)
       } catch ({message}) {
         setError(message)
@@ -41,29 +45,22 @@ function AdminPanel() {
     })()
   }
 
-  function handleSubmitNewUser(event) {
-    
-    event.preventDefault()
-    let { target: { company: { value: company }, country: { value: country }, email: { value: email }, password: { value: password}, role: { value: role} }} = event
-    
-    handleRegisterNewClient(company, country, email, password, role)
-    event.target.company.value = ''
-    event.target.country.value = ''
-    event.target.email.value = ''
-    event.target.password.value = ''
-    event.target.role.value = ''
+  function handleRegisterNewUser () {
+    history.push('/home/admin-panel/new-user')
   }
 
-  async function handleRegisterNewClient(company, country, email, password, role) {
-    
-    try{ 
-      
-      const { message } = await logic.registerUser(company, country, email, password, role)
-      const messageOk = message     
-      setMessage(messageOk)
-    } catch ({ message }) {
-      setMessage(message)
-    }
+  function hanldeRetrieveAllUsers () {
+
+    (async () => {
+      try {
+        setAllOrders()
+        setOrders()
+        const users = await logic.retrieveAllUsers()
+        setRetrieveUsers(users)
+      } catch ({message}) {
+        setError(message)
+      }
+    })()
   }
 
   function handleModal() {
@@ -79,23 +76,15 @@ function AdminPanel() {
         <div className="adminPanel__buttons">
           <button onClick={handlePendingOrders}>Retrieve all PENDING orders</button>
           <button onClick={handleAllOrders}>Retrieve all ORDERS</button>
-          <form onSubmit={handleSubmitNewUser}>
-            <input placeholder="Company" type="text" name="company" defaultValue="" ></input>
-            <input placeholder="Country" type="text" name="country" defaultValue="" ></input>
-            <input placeholder="e-mail" type="text" name="email" defaultValue="" ></input>
-            <input placeholder="password" type="text" name="password" defaultValue="" ></input>
-            <select name="role">
-              <option value="regular">Regular User</option> 
-              <option value="admin">Admin</option> 
-            </select>
-            <button>Register a new client</button>
-          </form>
+          <button onClick={handleRegisterNewUser}>Register new User</button>
+          <button onClick={hanldeRetrieveAllUsers}>Retrieve all users</button>
         </div>
       </section>
       <section>
         <ul>          
           {orders && <ResultOrders orders={orders}   retrievePendingOrders={handlePendingOrders}/>}
-          {allOrders  && <ResultAllADminOrders orders={allOrders} />}
+          {allOrders  && <ResultAllAdminOrders orders={allOrders} />}
+          {retrieveUsers && <ResultAllUsers users={retrieveUsers} />}
         </ul>
       </section>
       {message && <Modal  message={message} showModal={handleModal}/>}
