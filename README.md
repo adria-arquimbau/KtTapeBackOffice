@@ -5,7 +5,7 @@ A project by:
 ---
 
 
-![](https://kttape.es/wp-content/uploads/2019/02/Logo-sense-fons-dreta-blanc.png)
+![](https://secureservercdn.net/166.62.110.213/rvu.6e5.myftpupload.com/wp-content/uploads/2019/04/YLRgRXaI.png?time=1566341479)
 
 ## **Introduction**
 ---
