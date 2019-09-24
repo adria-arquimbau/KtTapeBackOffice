@@ -23,6 +23,7 @@ module.exports = function(userId) {
             
             const orders = await Order.find({ state: 'pending' }, { __v: 0 }).sort({ _id: -1 }).populate("owner items.article").lean()
             if(!orders) throw new Error(`Order with id ${orderId} not exist`)
+            if(orders.length === 0)throw Error(`There aren\'t any pending orders`)
              
             orders.forEach(order => {
                 order.id = order._id.toString()

@@ -9,7 +9,7 @@ import Modal from '../Modal'
 
 function AdminPanel() {
 
-  //const [error, setError] = useState()
+  const [error, setError] = useState()
   const [message, setMessage] = useState(null)
   const [orders, setOrders] = useState()
   const [allOrders, setAllOrders] = useState()
@@ -22,10 +22,9 @@ function AdminPanel() {
         const {orders} = await logic.retrievePendingOrders()
         setAllOrders()
         setOrders(orders)
-      } catch (error) {
-        //setError(error)
+      } catch ({message}) {
+        setError(message)
       }
-
     })()
   }
 
@@ -36,8 +35,8 @@ function AdminPanel() {
         const orders = await logic.retrieveAllOrders()
           setOrders()
           setAllOrders(orders)
-      } catch (error) {
-        //setError(error)
+      } catch ({message}) {
+        setError(message)
       }
     })()
   }
@@ -69,6 +68,7 @@ function AdminPanel() {
 
   function handleModal() {
     setMessage(null) 
+    setError(null)
   }
     
   return <>
@@ -99,6 +99,7 @@ function AdminPanel() {
         </ul>
       </section>
       {message && <Modal  message={message} showModal={handleModal}/>}
+      {error && <Modal  message={error} showModal={handleModal}/>}
     </section>
 
   </>

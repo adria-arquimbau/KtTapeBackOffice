@@ -15,6 +15,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "phoenix": "rm -Rf node_modules && rm package-lock.json && npm install --prefer-online",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",

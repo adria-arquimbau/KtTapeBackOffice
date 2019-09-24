@@ -22,6 +22,7 @@ module.exports = function(userId) {
         if(user.role === 'admin'){
             
             const orders = await Order.find({ __v: 0 }).sort({ _id: -1 }).populate("owner items.article ").lean()
+            if(orders.length === 0)throw Error(`There aren\'t any orders`)
             //TODO si esta vacio peta el populate, llamar find sin populate i si tiene owner hacer find con populate
             orders.forEach(order => {
                 order.id = order._id.toString()
