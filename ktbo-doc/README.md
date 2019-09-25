@@ -33,9 +33,10 @@ Admin can:
 0.6 (Developing)
 + Add new client account
 + Remove client account
-+ Update orders
++ Automatic email to admin and user after Place Order
 
 (next versions)
++ Update orders
 + Update client account
 + Have access to documentation of interest of the brand.
 + Update new documentation
