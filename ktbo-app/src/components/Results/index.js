@@ -1,5 +1,5 @@
 import React from 'react'
-import CartButton from '../Cart-button'
+import CartButton from '../CartButton'
 import logic from '../../logic'
 
 function Results({ searchResult }) {

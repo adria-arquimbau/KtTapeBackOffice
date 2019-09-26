@@ -33,7 +33,7 @@ Admin can:
 0.6 (Developing)
 + Add new client account
 + Remove client account
-
++ Automatic email to admin and user after Place Order
 
 (next versions)
 + Update orders

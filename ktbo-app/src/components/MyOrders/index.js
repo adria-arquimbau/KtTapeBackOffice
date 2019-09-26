@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react'
 import { withRouter } from 'react-router-dom'
 import logic from '../../logic'
 
-import ResultOrders from '../../components/My-orders/Result-orders'
+import ResultOrders from '../../components/MyOrders/Result-orders'
 
 function MyOrders() {
 

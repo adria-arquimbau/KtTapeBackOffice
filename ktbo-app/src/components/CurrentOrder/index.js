@@ -2,22 +2,29 @@
 import React, { useEffect, useState } from 'react'
 import logic from '../../logic'
 import ResultsCart from './ResultsCart'
+import { withRouter } from 'react-router-dom'
 
-function CurrentOrder() {
+function CurrentOrder({history}) {
 
   //const [error, setError] = useState(null)
   const [items, setItems] = useState(null)
+  const [cartNumber, setCartNumber] = useState()
  
   useEffect(() => {
     handleCart()
-  },[])
+  },[cartNumber])
 
   async function handleCart() {
-    
     try {
       (async () => {
-        const { cart } = await logic.retrieveUser()
+        const response = await logic.retrieveUser()
+        if(response.cart.length > 0){
+          setCartNumber(response.cart)
+        } else {
+          history.push('/home')
+        }
         try{
+          const { cart } = response
           if(cart) {
             let items = await Promise.all(cart.map(item => logic.retrieveArticle(item.article)))
             items = items.map( (item,index) => {
@@ -29,7 +36,6 @@ function CurrentOrder() {
           //TODO
         }
       })()
- 
     } catch (error) {
       //TODO SetError(error)
     }
@@ -43,4 +49,4 @@ function CurrentOrder() {
     </>
 }
 
-export default CurrentOrder
+export default withRouter(CurrentOrder)

@@ -8,13 +8,13 @@ import logic from '../../logic'
 import Navigation from '../Navigation'
 import Documents from '../Documents'
 import Categories from '../Categories'
-import MyOrders from '../My-orders'
-import CurrentOrder from '../Current-order'
-import MyAccount from '../My-account'
+import MyOrders from '../MyOrders'
+import CurrentOrder from '../CurrentOrder'
+import MyAccount from '../MyAccount'
 import Results from '../Results'
-import AdminPanel from '../Admin-panel'
-import NewUser from '../Admin-panel/New-user'
-//import PatchNotes from './Patch-notes'
+import AdminPanel from '../AdminPanel'
+import NewUser from '../AdminPanel/New-user'
+import ChangeLog from './ChangeLog'
 
 function Home({history}) {
 
@@ -53,7 +53,7 @@ function Home({history}) {
       }
         
       <main> 
-            {/* <Route path="/home" render={() => !logic.isUserLogged() ? history.push('/') : <PatchNotes /> } /> */}
+            <Route exact path="/home" render={() => !logic.isUserLogged() ? history.push('/') : <ChangeLog /> } /> 
             <Route path="/home/documents" render={() => !logic.isUserLogged() ? history.push('/') : <Documents /> } />
             <Route path="/home/categories" render={() => !logic.isUserLogged() ? history.push('/') : <Categories /> } />
             <Route path="/home/my-orders" render={() => !logic.isUserLogged() ? history.push('/') : <MyOrders /> } />
