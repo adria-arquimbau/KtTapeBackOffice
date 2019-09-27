@@ -2,9 +2,9 @@
 import React, { useState } from 'react'
 import { withRouter } from 'react-router-dom'
 import logic from '../../logic'
-import ResultOrders from './Result-orders'
-import ResultAllAdminOrders from './Result-all-admin-orders'
-import ResultAllUsers from './ResultAllUsers'
+import AllPendingOrders from './AllPendingOrders'
+import AllOrders from './AllOrders'
+import AllUsers from './AllUsers'
 import './index.sass'
 import Modal from '../Modal'
 
@@ -82,9 +82,9 @@ function AdminPanel({history}) {
       </section>
       <section>
         <ul>          
-          {orders && <ResultOrders orders={orders}   retrievePendingOrders={handlePendingOrders}/>}
-          {allOrders  && <ResultAllAdminOrders orders={allOrders} />}
-          {retrieveUsers && <ResultAllUsers users={retrieveUsers} retrieveAllUsers={hanldeRetrieveAllUsers} />}
+          {orders && <AllPendingOrders orders={orders}   retrievePendingOrders={handlePendingOrders}/>}
+          {allOrders  && <AllOrders orders={allOrders} />}
+          {retrieveUsers && <AllUsers users={retrieveUsers} retrieveAllUsers={hanldeRetrieveAllUsers} />}
         </ul>
       </section>
       {message && <Modal  message={message} showModal={handleModal}/>}

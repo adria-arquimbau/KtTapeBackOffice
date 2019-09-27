@@ -4,7 +4,7 @@ import React from 'react'
 function ChangeLog() {
     
   return <>
-    <section>
+    <section className="change-log">
       <h1>Change Log</h1>
     </section>
   </>

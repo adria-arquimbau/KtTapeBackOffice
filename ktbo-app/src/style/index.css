@@ -239,6 +239,13 @@ input {
   color: white;
 }
 
+.change-log {
+  background-image: url("athlete-home.jpg");
+  background-size: cover;
+  height: 92.7vh;
+  background-position: center;
+}
+
 .cartButton__feedback {
   font-size: 10px;
 }
