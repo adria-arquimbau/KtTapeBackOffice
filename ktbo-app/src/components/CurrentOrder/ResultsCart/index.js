@@ -10,8 +10,7 @@ function ResultsCart({ history, cart , retrieverCart}) {
     const [error, setError] = useState(null)
 
     let totalPrice = 0
-    //const [ article , setArticle] = useState(undefined) 
-
+    
     async function handleSubmit(articleId, quantity) {
         try {
             await logic.addToCart(articleId, quantity)

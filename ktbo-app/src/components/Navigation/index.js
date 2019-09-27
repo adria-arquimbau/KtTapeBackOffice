@@ -14,7 +14,7 @@ function Navigation({ history, onSearch }) {
     useEffect(() => {
         handleAdmin()
         handleNumberOrders()
-    },[cartNumber])
+    },[cartNumber, user])
     
     function handleHome() {
         history.push('/home')
@@ -60,9 +60,11 @@ function Navigation({ history, onSearch }) {
 
     async function handleNumberOrders() {
         try{
-            const response = await logic.retrieveUser()
-            if(response.cart){
-                setCartNumber(response.cart)
+            const {cart} = await logic.retrieveUser()
+            if(cart){
+                setCartNumber(cart)
+            } else {
+                setCartNumber()
             }
         } catch(error) {
             //TODO
