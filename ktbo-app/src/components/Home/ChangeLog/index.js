@@ -22,7 +22,7 @@ function ChangeLog() {
               <ul>
                 <li>Added new component "RetrieveAllUsers"</li>
                 <li>Added button Delete User</li>
-                <li>Changed logic of Unregister User and Register User API - Testing doing!</li>
+                <li>Changed logic of Unregister User and Register User API</li>
               </ul>
             </ul>
             <ul>
