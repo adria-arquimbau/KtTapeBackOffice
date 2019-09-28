@@ -20,7 +20,7 @@ function ChangeLog() {
                 <li>Api logic create new user aded throw error / not available for now creating a new admin account</li>
               </ul>
               <ul>
-                <h4>Added new component "RetrieveAllUsers"</h4>
+                <li>Added new component "RetrieveAllUsers"</li>
                 <li>Added button Delete User</li>
                 <li>Changed logic of Unregister User and Register User API - Testing doing!</li>
               </ul>
