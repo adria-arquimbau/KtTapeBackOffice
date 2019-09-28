@@ -239,6 +239,49 @@ input {
   color: white;
 }
 
+.change-log {
+  background-image: url("athlete-home.jpg");
+  background-size: cover;
+  height: 92.7vh;
+  background-position: center;
+  text-align: center;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.change-log__title {
+  margin: 1rem;
+  color: white;
+}
+.change-log__all-logs {
+  padding: 1rem;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.7);
+  color: #333333;
+}
+.change-log__version {
+  text-align: left;
+  margin-left: 1rem;
+}
+.change-log__version--title {
+  margin: 0 0 1rem 0;
+  color: #333333;
+  font-size: 22px;
+  text-align: center;
+}
+.change-log__version--h3 {
+  margin: 1rem 0 0.3rem 0;
+  color: #333333;
+  font-size: 18px;
+}
+.change-log ul {
+  list-style: circle;
+}
+
 .cartButton__feedback {
   font-size: 10px;
 }
@@ -713,7 +756,7 @@ input {
   height: 10%;
   border: 0;
   border-radius: 2px;
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.9);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -956,6 +999,71 @@ input {
 /* Show the dropdown menu on hover */
 .dropdownCat:hover .dropdown-contentCat {
   display: block;
+}
+
+button {
+  background: #f57b1f;
+  border-color: rgba(51, 51, 51, 0.6);
+  border-radius: 2px;
+  padding: 7px;
+  margin: 5px;
+  border: 0;
+}
+
+button:hover {
+  background-color: rgba(245, 123, 31, 0.5);
+  color: white;
+}
+
+input {
+  padding: 7px;
+  border-radius: 2px;
+  border-width: 1px;
+}
+
+.new-user {
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+.new-user__title {
+  margin: 1rem;
+  color: #333333;
+}
+.new-user__register {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.new-user__form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.new-user__form input, .new-user__form button, .new-user__form select {
+  margin: 0.5rem;
+}
+.new-user__form input {
+  margin-top: 1rem;
+  border: 0;
+  background-color: rgba(51, 51, 51, 0.1);
+}
+.new-user__result {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #333333;
+  margin: 1rem;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+.new-user__result ul {
+  margin: 0.5rem;
+}
+.new-user__result ul li {
+  margin: 0.5rem;
 }
 
 button {

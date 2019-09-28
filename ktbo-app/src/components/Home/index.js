@@ -8,12 +8,13 @@ import logic from '../../logic'
 import Navigation from '../Navigation'
 import Documents from '../Documents'
 import Categories from '../Categories'
-import MyOrders from '../My-orders'
-import CurrentOrder from '../Current-order'
-import MyAccount from '../My-account'
+import MyOrders from '../MyOrders'
+import CurrentOrder from '../CurrentOrder'
+import MyAccount from '../MyAccount'
 import Results from '../Results'
-import AdminPanel from '../Admin-panel'
-//import PatchNotes from './Patch-notes'
+import AdminPanel from '../AdminPanel'
+import NewUser from '../AdminPanel/NewUser'
+import ChangeLog from './ChangeLog'
 
 function Home({history}) {
 
@@ -52,13 +53,14 @@ function Home({history}) {
       }
         
       <main> 
-            {/* <Route path="/home" render={() => !logic.isUserLogged() ? history.push('/') : <PatchNotes /> } /> */}
+            <Route exact path="/home" render={() => !logic.isUserLogged() ? history.push('/') : <ChangeLog /> } /> 
             <Route path="/home/documents" render={() => !logic.isUserLogged() ? history.push('/') : <Documents /> } />
             <Route path="/home/categories" render={() => !logic.isUserLogged() ? history.push('/') : <Categories /> } />
             <Route path="/home/my-orders" render={() => !logic.isUserLogged() ? history.push('/') : <MyOrders /> } />
             <Route path="/home/current-order" render={() => !logic.isUserLogged() ? history.push('/') : <CurrentOrder /> } />
             <Route path="/home/my-account" render={() => !logic.isUserLogged() ? history.push('/') : <MyAccount /> } />
-            <Route path="/home/admin-panel" render={() => !logic.isUserAdmin() ? history.push('/') : <AdminPanel /> } />
+            <Route exact path="/home/admin-panel" render={() => !logic.isUserAdmin() ? history.push('/') : <AdminPanel /> } />
+            <Route path="/home/admin-panel/new-user" render={() => !logic.isUserLogged() ? history.push('/') : <NewUser /> } />
             <Route path="/home/search" render={() => !logic.isUserLogged() ? history.push('/') : articles && <section><Results searchResult={articles}/></section> } />
       </main>
     </>

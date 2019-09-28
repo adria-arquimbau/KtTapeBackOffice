@@ -44,7 +44,7 @@ describe('logic - register article', () => {
         const article = await Article.findOne({ ref })
             
         expect(article).to.exist
-        expect(article.id).to.equal(number)
+        expect(article.id).to.exist
         expect(article.ref).to.equal(ref)
         expect(article.title).to.equal(title)
         expect(article.description).to.equal(description)

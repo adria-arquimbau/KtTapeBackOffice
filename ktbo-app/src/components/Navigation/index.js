@@ -9,10 +9,12 @@ function Navigation({ history, onSearch }) {
 
     const [admin, setAdmin] = useState()
     const {user} = useContext(Context)
+    const [cartNumber, setCartNumber] = useState()
 
     useEffect(() => {
         handleAdmin()
-    },[])
+        handleNumberOrders()
+    },[cartNumber, user])
     
     function handleHome() {
         history.push('/home')
@@ -54,7 +56,20 @@ function Navigation({ history, onSearch }) {
         } catch (error) {
             //TODO
         }
-      }
+    }
+
+    async function handleNumberOrders() {
+        try{
+            const {cart} = await logic.retrieveUser()
+            if(cart){
+                setCartNumber(cart)
+            } else {
+                setCartNumber()
+            }
+        } catch(error) {
+            //TODO
+        }
+    }
 
     return <>
  
@@ -69,8 +84,6 @@ function Navigation({ history, onSearch }) {
                     handleCategories() }}>Categories</a></li>
                 <li className="navigation__li"><a className="navigation__li--anchor" href="#" onClick={event => { event.preventDefault() 
                     handleMyOrders() }}>My Orders</a></li>
-                <li className="navigation__li"><a className="navigation__li--anchor" href="#" onClick={event => { event.preventDefault() 
-                    handleCurrentOrder() }}>Current Order</a></li>
                 {user &&<div className="dropdown">
                     <button className="dropbtn" >Hello, {user.company}<i className="fa fa-caret-down"></i></button>
                     <div className="dropdown-content">
@@ -81,6 +94,8 @@ function Navigation({ history, onSearch }) {
                         <a className="navigation__li--anchor" href="" onClick={handleLogout}>Logout</a>
                     </div>
                 </div>}
+                {cartNumber && cartNumber.length > 0 && <li className="navigation__li"><a className="navigation__li--anchor" href="#" onClick={event => { event.preventDefault() 
+                    handleCurrentOrder() }}>Your Order {cartNumber.length}</a></li>}
             </ul>  
         </section>
     </>
