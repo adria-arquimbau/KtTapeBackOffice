@@ -13,7 +13,7 @@ import CurrentOrder from '../CurrentOrder'
 import MyAccount from '../MyAccount'
 import Results from '../Results'
 import AdminPanel from '../AdminPanel'
-import NewUser from '../AdminPanel/New-user'
+import NewUser from '../AdminPanel/NewUser'
 import ChangeLog from './ChangeLog'
 
 function Home({history}) {

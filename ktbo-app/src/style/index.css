@@ -244,6 +244,40 @@ input {
   background-size: cover;
   height: 92.7vh;
   background-position: center;
+  text-align: center;
+  padding: 1rem;
+}
+.change-log__title {
+  margin: 1rem;
+  color: white;
+}
+.change-log__all-logs {
+  margin: 0 30rem 1rem 30rem;
+  padding: 1rem;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.7);
+  width: auto;
+  color: #333333;
+}
+.change-log__version {
+  text-align: left;
+}
+.change-log__version--title {
+  margin: 0 0 1rem 0;
+  color: #333333;
+  font-size: 22px;
+  text-align: center;
+}
+.change-log__version--h3 {
+  margin: 1rem 0 0.3rem 0;
+  color: #333333;
+  font-size: 18px;
+}
+.change-log ul {
+  list-style: circle;
 }
 
 .cartButton__feedback {
