@@ -40,6 +40,15 @@ function ChangeLog() {
             </ul>
           </section>
         </section>
+        <section className="change-log__version">
+          <h2 className="change-log__version--title">0.6.1 - 30/09/2019</h2>
+          <section>
+            <ul>
+              <h3 className="change-log__version--h3">App</h3>
+              <li>Fixed User Cart account bug</li>
+            </ul>
+          </section>
+        </section>
       </section>
     </section>
   </>
