@@ -79,7 +79,7 @@ module.exports = function (userId) {
             await Promise.all(stockArticles.map(article => article.save()))
             const order = await Order.create({ date, owner: userId, items: user.cart })
 
-            user.cart = undefined
+            user.cart = []
             await user.save()
 
             return order
