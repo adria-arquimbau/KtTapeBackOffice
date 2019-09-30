@@ -24,18 +24,16 @@ Demo user:
 ---
 Admin can:
 
-0.5 (Actual version)
+0.6 (Actual Version)
 + Check the all orders
 + Check pending orders and be able to mark them as made or pending
 + Remove pending orders
 + Update your user profile
-
-0.6 (Developing)
 + Add new client account
 + Remove client account
-+ Automatic email to admin and user after Place Order
 
 (next versions)
++ Automatic email to admin and user after Place Order
 + Update orders
 + Update client account
 + Have access to documentation of interest of the brand.
@@ -43,7 +41,7 @@ Admin can:
 
 Users can:
 
-0.5 (Actual version)
+0.6 (Actual version)
 + Place online orders for each product with real stock.
 + Check your current order 
 + Update your user profile.
