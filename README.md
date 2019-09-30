@@ -22,7 +22,7 @@ https://github.com/Arkimbauer/kttape/tree/develop/ktbo-doc
 ---
 
 Demo: 
-+ https://kttape-back-office.surge.sh
++ https://ktbo.surge.sh
 
 Demo user:
 + email: admin@admin.com

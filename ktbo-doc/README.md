@@ -14,7 +14,7 @@ KtTape Back Office is a multiple page with React.js to facilitate online orderin
 With this application we want to improve and facilitate the realization of online orders, with an automated stock update system.
 
 Demo: 
-+ https://kttape-back-office.surge.sh
++ https://ktbo.surge.sh
 
 Demo user:
 + email: admin@admin.com
