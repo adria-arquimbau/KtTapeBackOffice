@@ -42,11 +42,12 @@ module.exports = function (id, company, country, email, password, role) {
 
                 const user = await User.create({ company, country, email, password: hash, role })
                 user._id = user.id
+                user.cart = []
                 return user
 
             } else {
                 throw new Error(`User with id ${id} is not an admin`)
             }
-        
+
     })()
 }
