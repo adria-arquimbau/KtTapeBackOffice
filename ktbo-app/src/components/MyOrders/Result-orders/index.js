@@ -18,10 +18,10 @@ function ResultOrders({ element }) {
                    <ul className="abc">{items.map(element => {
                        
                        const { article , quantity} = element
-                       const {title, ref, price,id} = article
+                       const {title, ref, price, id} = article
                        let totalArticle = price * quantity
                        totalPriceOrder += totalArticle
-                       return<ul className="myOrders__order--items" key={id}>
+                       return<ul className="myOrders__order--items" key={title}>
                                 <li>Ref: {ref}</li>
                                 <li>{title}</li>
                                 <li>{quantity} units</li>

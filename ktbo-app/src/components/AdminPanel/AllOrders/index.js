@@ -13,10 +13,10 @@ function ResultOrders({ orders }) {
                 let totalPrice = 0
 
                 return <section className="myOrdersAdmin__order" >
-                    <ul className="myOrders__orderCont--items">{items.map(item =>{
+                    <ul key={items.id} className="myOrders__orderCont--items">{items.map(item =>{
                         const totalItem = item.article.price * item.quantity
                         totalPrice += totalItem
-                        return <ul className="myOrders__order--items">
+                        return <ul key={item.article.title} className="myOrders__order--items">
                             <li>Ref: {item.article.ref}</li>
                             <li>{item.article.title}</li>
                             <li>{item.quantity} units</li>

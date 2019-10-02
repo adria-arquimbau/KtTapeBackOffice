@@ -1,4 +1,4 @@
-import React, {useState, useContext} from 'react'
+import React, {useState} from 'react'
 import logic from '../../../logic'
 import CartArticle from './CartArticle'
 import { withRouter } from 'react-router-dom'
