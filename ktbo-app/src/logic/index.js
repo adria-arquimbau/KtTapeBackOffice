@@ -18,6 +18,7 @@ import retrieveAllOrders from './retrieve-all-orders'
 import registerUser from './register-user'
 import retrieveAllUsers from './retrieve-all-users'
 import unregisterUser from './unregister-user'
+import wakeUp from './wake-up'
 
 export default {
     set userCredentials({id,token}){
@@ -46,5 +47,6 @@ export default {
     retrieveAllOrders,
     registerUser,
     retrieveAllUsers,
-    unregisterUser
+    unregisterUser,
+    wakeUp
 }

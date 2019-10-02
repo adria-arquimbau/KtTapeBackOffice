@@ -16,10 +16,12 @@ function App({ history }) {
 
   useEffect(async () => {
 
-    try {
-      await logic.searchArticles()
-    }catch(error) {
-      //TODO
+    if(!logic.isUserLogged()){
+      try {
+        await logic.wakeUp()
+      } catch (error) {
+        //TODO
+      }
     }
 
     if(logic.isUserLogged()){

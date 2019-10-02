@@ -33,6 +33,9 @@ const tokenMiddleware = require('../helpers/token-middleware')
     const addToCart = require('./cart/add-to-cart')
     const removeArticle = require('./cart/remove-article')
 
+    ////   WAKE UP   ////
+    const wakeUpApi = require('./wake-up-api')
+
     const router = Router()
     const jsonBodyParser = bodyParser.json()
 
@@ -66,5 +69,8 @@ const tokenMiddleware = require('../helpers/token-middleware')
     ////   CART    //// 2
     router.post('/user/cart', [tokenMiddleware, jsonBodyParser], addToCart)
     router.patch('/user/cart', [tokenMiddleware, jsonBodyParser], removeArticle)
+
+    ////   WAKE UP   //// 1
+    router.get('/wake-up-api', jsonBodyParser, wakeUpApi)
 
 module.exports = router

@@ -27,5 +27,8 @@ module.exports = {
 
     ////   CART   ////
     addToCart: require('./cart/add-to-cart'),
-    removeArticle: require('./cart/remove-article')
+    removeArticle: require('./cart/remove-article'),
+
+    ////   WAKE UP   ////
+    wakeUpApi: require('./wake-up-api')
 }
