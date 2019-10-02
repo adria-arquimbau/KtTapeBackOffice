@@ -9,11 +9,11 @@ function CurrentOrder({history}) {
 
   //const [error, setError] = useState(null)
   const [items, setItems] = useState(null)
-  const {user} = useContext(Context)
+  const {user, goHome} = useContext(Context)
  
   useEffect(() => {
     handleCart()
-  },[user, items])
+  },[user, items, goHome])
 
   async function handleCart() {
     try {
@@ -26,7 +26,7 @@ function CurrentOrder({history}) {
             return { item, quantity: cart[index].quantity}
           })
           setItems(items)
-          } if(cart.length === 0) history.push('/home')
+          } /* if(cart.length === 0) history.push('/home') */
         }catch(error){
           //TODO
         }

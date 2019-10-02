@@ -6,18 +6,23 @@ import { withRouter, Route } from 'react-router-dom'
 import Context from './Context'
 import logic from '../logic'
 import '../style/index.css'
-
 import Landing from './Landing'
 import Home from './Home'
 
 function App({ history }) {
 
   const [user, setUser] = useState()
+  const [goHome, setGoHome] = useState()
 
   useEffect(async () => {
 
-    if(logic.isUserLogged()){
+    try {
+      await logic.searchArticles()
+    }catch(error) {
+      //TODO
+    }
 
+    if(logic.isUserLogged()){
       try {
         const user = await logic.retrieveUser()
         setUser(user)
@@ -30,14 +35,12 @@ function App({ history }) {
 
   return <>
 
-        <Context.Provider value={{ user, setUser }} >
-          <div className="App">
-          
-          <Route exact path="/" render={() => logic.isUserLogged() ? history.push('/home') : <Landing /> }  />
-          {user && <Route path="/home" render={() => logic.isUserLogged() ? <Home /> :  history.push('/')  } /> }   
-
-        </div>
-      </Context.Provider>
-    </>
+    <Context.Provider value={{ user, setUser, goHome, setGoHome }} >
+      <div className="App">
+      <Route exact path="/" render={() => logic.isUserLogged() ? history.push('/home') : <Landing /> }  />
+      {user && <Route path="/home" render={() => logic.isUserLogged() ? <Home /> :  history.push('/')  } /> }   
+      </div>
+    </Context.Provider>
+  </>
 }
 export default withRouter(App)
