@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useContext} from 'react'
 import logic from '../../../logic'
 import CartArticle from './CartArticle'
 import { withRouter } from 'react-router-dom'
@@ -36,8 +36,8 @@ function ResultsCart({ history, cart , retrieverCart}) {
             setError(message)
         }
     }
-
-    function handleModal() {
+    
+    function handleModal() { 
        setMessage(null) 
        history.push('/home/my-orders')
     }

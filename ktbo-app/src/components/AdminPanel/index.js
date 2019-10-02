@@ -17,23 +17,19 @@ function AdminPanel({history}) {
   const [retrieveUsers, setRetrieveUsers] = useState()
 
   async function handlePendingOrders() {
-
-    (async () => {
-
+    
       try {
         setAllOrders()
         setRetrieveUsers()
         const {orders} = await logic.retrievePendingOrders()
         setOrders(orders)
       } catch ({message}) {
+        setOrders()
         setError(message)
       }
-    })()
   }
 
   async function handleAllOrders() {
-
-    (async () => {
       try {
         setOrders()
         setRetrieveUsers()
@@ -42,16 +38,13 @@ function AdminPanel({history}) {
       } catch ({message}) {
         setError(message)
       }
-    })()
   }
 
   function handleRegisterNewUser () {
     history.push('/home/admin-panel/new-user')
   }
 
-  function hanldeRetrieveAllUsers () {
-
-    (async () => {
+  async function handleRetrieveAllUsers () {
       try {
         setAllOrders()
         setOrders()
@@ -60,7 +53,6 @@ function AdminPanel({history}) {
       } catch ({message}) {
         setError(message)
       }
-    })()
   }
 
   function handleModal() {
@@ -77,14 +69,14 @@ function AdminPanel({history}) {
           <button onClick={handlePendingOrders}>Retrieve all PENDING orders</button>
           <button onClick={handleAllOrders}>Retrieve all ORDERS</button>
           <button onClick={handleRegisterNewUser}>Register new User</button>
-          <button onClick={hanldeRetrieveAllUsers}>Retrieve all users</button>
+          <button onClick={handleRetrieveAllUsers}>Retrieve all users</button>
         </div>
       </section>
       <section>
         <ul>          
           {orders && <AllPendingOrders orders={orders}   retrievePendingOrders={handlePendingOrders}/>}
           {allOrders  && <AllOrders orders={allOrders} />}
-          {retrieveUsers && <AllUsers users={retrieveUsers} retrieveAllUsers={hanldeRetrieveAllUsers} />}
+          {retrieveUsers && <AllUsers users={retrieveUsers} retrieveAllUsers={handleRetrieveAllUsers} />}
         </ul>
       </section>
       {message && <Modal  message={message} showModal={handleModal}/>}
