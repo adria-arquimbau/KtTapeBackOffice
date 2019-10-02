@@ -52,7 +52,7 @@ function Home({history}) {
         </div>
       }
         
-      <main> 
+      <main className="home"> 
             <Route exact path="/home" render={() => !logic.isUserLogged() ? history.push('/') : <ChangeLog /> } /> 
             <Route path="/home/documents" render={() => !logic.isUserLogged() ? history.push('/') : <Documents /> } />
             <Route path="/home/categories" render={() => !logic.isUserLogged() ? history.push('/') : <Categories /> } />
