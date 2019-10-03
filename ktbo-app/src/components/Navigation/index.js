@@ -101,7 +101,7 @@ function Navigation({ history, onSearch }) {
                 <div className="dropdown">
                     <button className="dropbtn" >Categories<i className="fa fa-caret-down"></i></button>
                     <div className="dropdown-content">
-                        <ul>Pro
+                        <ul>
                                     <li><a href="#" onClick={event => { event.preventDefault() 
                             const category = "KTTape Pro Precut"
                             onCategory(category) }}>Pro Precut</a></li>
@@ -118,7 +118,7 @@ function Navigation({ history, onSearch }) {
                             const category = "KTTape Pro Jumbo Uncut" 
                             onCategory(category) }}>Pro Jumbo Uncut</a></li>
                         </ul>
-                        <ul>Original
+                        <ul>
                                     <li><a href="#" onClick={event => { event.preventDefault()  
                         const category = "KTTape Original Precut"  
                             onCategory(category) }}>Original Precut</a></li>
@@ -135,14 +135,13 @@ function Navigation({ history, onSearch }) {
                         const category = "KTTape Original Jumbo Edema" 
                         onCategory(category) }}>Original Jumbo Edema</a></li>
                         </ul>
-                        <ul>Other Products
+                        <ul> 
                                     <li><a className="categoriesCont__otherProducts" href="#" onClick={event => { event.preventDefault() 
                         const category = "Other Products" 
                         onCategory(category) }}>Other Products</a></li>
                         </ul>
                     </div>
                 </div>
-
                 <li className="navigation__li"><a className="navigation__li--anchor" href="#" onClick={event => { event.preventDefault() 
                     handleMyOrders() }}>My Orders</a></li>
                 {user &&<div className="dropdown">
