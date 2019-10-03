@@ -4,12 +4,12 @@ import Search from '../Search'
 import { withRouter } from 'react-router-dom'
 import logic from '../../logic'
 import Context from '../Context'
-import ResultsCategories from '../Results/ResultsCategories'
 
 function Navigation({ history, onSearch }) {
 
     const {user} = useContext(Context)
     const {cat, setCat} = useContext(Context)
+    const {setArticles} = useContext(Context)
 
     const [admin, setAdmin] = useState()
     const [cartNumber, setCartNumber] = useState()
@@ -76,10 +76,11 @@ function Navigation({ history, onSearch }) {
 
     async function onCategory(category){
         try {
+            setArticles()
             setCat()
             const response = await logic.retrieveCategory(category)
             setCat(response)
-            history.push('home/categories')
+            history.push(`home/search/${category}`)
         } catch (error) {
             setCat(error)
         }
@@ -94,9 +95,6 @@ function Navigation({ history, onSearch }) {
                 {/* <li className="navigation__li"><a href="#" onClick={event => { event.preventDefault() 
                     handleDocuments() }}>Documents</a></li> */}
                 <li className="navigation__li"><Search onSearch={onSearch} /></li>
-
-            {/*     <li className="navigation__li"><a className="navigation__li--anchor" href="#" onClick={event => { event.preventDefault() 
-                    handleCategories() }}>Categories</a></li> */}
 
                 <div className="dropdown">
                     <button className="dropbtn" >Categories<i className="fa fa-caret-down"></i></button>
@@ -141,7 +139,8 @@ function Navigation({ history, onSearch }) {
                         onCategory(category) }}>Other Products</a></li>
                         </ul>
                     </div>
-                </div>
+                </div>   
+                              
                 <li className="navigation__li"><a className="navigation__li--anchor" href="#" onClick={event => { event.preventDefault() 
                     handleMyOrders() }}>My Orders</a></li>
                 {user &&<div className="dropdown">
@@ -158,7 +157,6 @@ function Navigation({ history, onSearch }) {
                     handleCurrentOrder() }}>Your Order {cartNumber.length}</a></li>}
             </ul>  
         </section>
-        {cat && <ResultsCategories searchResult={cat} />}
     </>
 }
 
