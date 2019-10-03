@@ -10,9 +10,11 @@ function CurrentOrder({history}) {
   //const [error, setError] = useState(null)
   const [items, setItems] = useState(null)
   const {user, goHome} = useContext(Context)
+  const {cat, setCat} = useContext(Context)
  
   useEffect(() => {
     handleCart()
+    setCat()
   },[user, items, goHome])
 
   async function handleCart() {

@@ -1,6 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-
-import React, { useState } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import { withRouter, Route } from 'react-router-dom'
 //import queryString from 'query-string'
 import logic from '../../logic'
@@ -15,10 +14,16 @@ import Results from '../Results'
 import AdminPanel from '../AdminPanel'
 import NewUser from '../AdminPanel/NewUser'
 import ChangeLog from './ChangeLog'
+import Context from '../Context'
 
 function Home({history}) {
 
-  const [articles, setArticles] = useState()
+  const {cat, setCat} = useContext(Context)
+  const {articles, setArticles} = useContext(Context)
+
+  useEffect(() => {
+    setCat()
+  },[])
   
   async function handleSearch(query) {
     

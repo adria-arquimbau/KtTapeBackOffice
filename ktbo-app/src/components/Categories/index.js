@@ -1,12 +1,17 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { useState } from 'react'
+import React, { useState, useContext, useEffect} from 'react'
 import { withRouter } from 'react-router-dom'
 import Results from '../Results'
 import logic from '../../logic'
+import Context from '../Context'
 
 function Categories({history}) {
 
-    const [cat, setCat] = useState(null)
+    const {cat, setCat} = useContext(Context)
+
+    useEffect(() => {
+        setCat()
+    },[])
     
     async function onCategory(category){
         try {

@@ -1,13 +1,20 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { useState } from 'react'
+import React, {useState, useEffect, useContext} from 'react'
 import { withRouter } from 'react-router-dom'
 import logic from '../../logic'
 import Modal from '../Modal'
+import Context from '../Context'
 
 
 function MyAccount({history}) {
 
+  const {cat, setCat} = useContext(Context)
+
   const [message, setMessage] = useState(null)
+
+  useEffect(() => {
+    setCat()
+  },[])
 
   function handleSubmit(event) {
     event.preventDefault()

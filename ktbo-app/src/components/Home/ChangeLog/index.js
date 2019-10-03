@@ -1,7 +1,14 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React from 'react'
+import React, {useEffect, useContext} from 'react'
+import Context from '../../Context'
 
 function ChangeLog() {
+
+  const {cat, setCat} = useContext(Context)
+
+  useEffect(() => {
+    setCat()
+  },[])
     
   return <>
     <section className="change-log">
