@@ -15,6 +15,18 @@ function ChangeLog() {
       <h1 className="change-log__title">Change Log</h1>
       <section className="change-log__all-logs">
       <section className="change-log__version">
+          <h2 className="change-log__version--title">0.7.1 - 5/10/2019</h2>
+          <section>
+            <ul>
+              <li>Reset value to search input after submit</li>
+              <li>Results input to add quantity without borders</li>
+              <li>Moved CategoriesNav to left, and augmented font size</li>
+              <li>Fixed bug url at categories</li>
+            </ul>
+          </section>
+        </section>
+
+      <section className="change-log__version">
           <h2 className="change-log__version--title">0.7.0 - 4/10/2019</h2>
           <section>
             <ul>
@@ -26,6 +38,7 @@ function ChangeLog() {
             </ul>
           </section>
         </section>
+
         <section className="change-log__version">
           <h2 className="change-log__version--title">0.6.1 - 30/09/2019</h2>
           <section>
@@ -40,6 +53,7 @@ function ChangeLog() {
             </ul>
           </section>
         </section>
+
         <section className="change-log__version">
           <h2 className="change-log__version--title">0.6.0 - 28/09/2019</h2>
           <section>
