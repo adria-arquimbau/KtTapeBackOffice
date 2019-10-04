@@ -26,7 +26,6 @@ function Home({history}) {
   },[])
   
   async function handleSearch(query) {
-    
     if(query.length > 0){
       const articleList = await logic.searchArticles(query)
       setArticles(articleList)
@@ -65,7 +64,8 @@ function Home({history}) {
             <Route path="/home/my-account" render={() => !logic.isUserLogged() ? history.push('/') : <MyAccount /> } />
             <Route exact path="/home/admin-panel" render={() => !logic.isUserAdmin() ? history.push('/') : <AdminPanel /> } />
             <Route path="/home/admin-panel/new-user" render={() => !logic.isUserLogged() ? history.push('/') : <NewUser /> } />
-            <Route path="/home/search" render={() => !logic.isUserLogged() ? history.push('/') : articles &&  <section><Results searchResult={articles} /></section> || cat && <section><ResultsCategories searchResult={cat} /></section>  } />
+            <Route path="/home/category" render={() => !logic.isUserLogged() ? history.push('/') : cat && <section><ResultsCategories searchResult={cat} /></section>} />
+            <Route path="/home/search" render={() => !logic.isUserLogged() ? history.push('/') : articles &&  <section><Results searchResult={articles} /></section>} />
       </main>
     </>
 }

@@ -80,7 +80,7 @@ function Navigation({ history, onSearch }) {
             setCat()
             const response = await logic.retrieveCategory(category)
             setCat(response)
-            history.push(`home/search/${category}`)
+            history.push(`/home/category/${category}`)
         } catch (error) {
             setCat(error)
         }
