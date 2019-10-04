@@ -8,7 +8,6 @@ function CartButton({ articleId, stock }) {
     const [quantity, setQuantity] = useState("")
 
     function handleSubmit(event) {    
-        debugger
         event.preventDefault()
         const { target: { quantity: { value: quantity } } } = event
         handleAddToCart(articleId, quantity)
