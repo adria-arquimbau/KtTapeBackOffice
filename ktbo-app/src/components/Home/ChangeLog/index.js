@@ -14,6 +14,18 @@ function ChangeLog() {
     <section className="change-log">
       <h1 className="change-log__title">Change Log</h1>
       <section className="change-log__all-logs">
+      <section className="change-log__version">
+          <h2 className="change-log__version--title">0.7.0 - 4/10/2019</h2>
+          <section>
+            <ul>
+              <li>In articles menu's / current cart, remove the number into the input after correct submit</li>
+              <li>Hamburger menu to categories</li>
+              <li>Fix bug to select category, strange rerender..., and going since Home to Cat rendering old categories component</li>
+              <li>Results articles and categories fixed for max 4 flex columns</li>
+              <li>Retrieve all users inputs without border</li>
+            </ul>
+          </section>
+        </section>
         <section className="change-log__version">
           <h2 className="change-log__version--title">0.6.1 - 30/09/2019</h2>
           <section>
