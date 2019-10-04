@@ -148,8 +148,9 @@ input {
   padding: 0.5rem;
 }
 .dropdown-content ul li {
-  font-size: 10px;
+  font-size: 14px;
   padding: 0.5rem 0 0.5rem 0;
+  margin: 0;
 }
 
 button {
@@ -615,6 +616,11 @@ input {
   text-align: left;
   justify-content: center;
 }
+.searchResult input {
+  margin-top: 1rem;
+  border: 0;
+  background-color: rgba(51, 51, 51, 0.1);
+}
 .searchResult li {
   list-style: none;
 }
@@ -811,6 +817,11 @@ input {
 }
 .adminMain h1 {
   color: #333333;
+}
+.adminMain input {
+  margin-top: 1rem;
+  border: 0;
+  background-color: rgba(51, 51, 51, 0.1);
 }
 
 .adminPanel {

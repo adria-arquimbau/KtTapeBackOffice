@@ -80,7 +80,7 @@ function Navigation({ history, onSearch }) {
             setCat()
             const response = await logic.retrieveCategory(category)
             setCat(response)
-            history.push(`home/search/${category}`)
+            history.push(`/home/category/${category}`)
         } catch (error) {
             setCat(error)
         }
@@ -94,8 +94,6 @@ function Navigation({ history, onSearch }) {
                     handleHome() }}>Home</a></li>
                 {/* <li className="navigation__li"><a href="#" onClick={event => { event.preventDefault() 
                     handleDocuments() }}>Documents</a></li> */}
-                <li className="navigation__li"><Search onSearch={onSearch} /></li>
-
                 <div className="dropdown">
                     <button className="dropbtn" >Categories<i className="fa fa-caret-down"></i></button>
                     <div className="dropdown-content">
@@ -140,6 +138,8 @@ function Navigation({ history, onSearch }) {
                         </ul>
                     </div>
                 </div>   
+                <li className="navigation__li"><Search onSearch={onSearch} /></li>
+
                               
                 <li className="navigation__li"><a className="navigation__li--anchor" href="#" onClick={event => { event.preventDefault() 
                     handleMyOrders() }}>My Orders</a></li>
