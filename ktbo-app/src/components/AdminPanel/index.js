@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { useState } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import { withRouter } from 'react-router-dom'
 import logic from '../../logic'
 import AllPendingOrders from './AllPendingOrders'
@@ -7,14 +7,21 @@ import AllOrders from './AllOrders'
 import AllUsers from './AllUsers'
 import './index.sass'
 import Modal from '../Modal'
+import Context from '../Context'
 
 function AdminPanel({history}) {
+
+  const {cat, setCat} = useContext(Context)
 
   const [error, setError] = useState()
   const [message, setMessage] = useState()
   const [orders, setOrders] = useState()
   const [allOrders, setAllOrders] = useState()
   const [retrieveUsers, setRetrieveUsers] = useState()
+
+  useEffect(() => {
+    setCat()
+  },[])
 
   async function handlePendingOrders() {
     

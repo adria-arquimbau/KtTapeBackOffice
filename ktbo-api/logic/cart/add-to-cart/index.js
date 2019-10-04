@@ -1,6 +1,5 @@
-const { models: { Article, User, Order, Item } } = require('ktbo-data')
+const { models: { Article, User, Item } } = require('ktbo-data')
 const { validate } = require('ktbo-utils')
-
 
 /**
  *  This function adds an item with a quantity to the user's cart

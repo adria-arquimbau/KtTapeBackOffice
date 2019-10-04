@@ -1,17 +1,17 @@
-import React, {useEffect, useContext} from 'react'
-import CartButton from '../CartButton'
-import logic from '../../logic'
-import Context from '../Context'
+import React, { useContext, useEffect } from 'react'
+import CartButton from '../../CartButton'
+import logic from '../../../logic'
+import Context from '../../Context'
 
-function Results({ searchResult }) {
+function ResultsCategories({ searchResult }) {
 
-    const {cat, setCat} = useContext(Context)
+    const {setArticles} = useContext(Context)
 
     const{ message, articles, error } = searchResult
 
     useEffect(() => {
-        setCat()
-    },[])
+        setArticles()
+      },[])
 
     return <>
         <section className="searchResultMainContenedor">
@@ -35,4 +35,4 @@ function Results({ searchResult }) {
     </>
 }
 
-export default Results
+export default ResultsCategories

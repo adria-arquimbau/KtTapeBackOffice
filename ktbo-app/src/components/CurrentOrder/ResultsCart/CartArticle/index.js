@@ -1,13 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 function CartArticle({ element, onSubmit, onRemove }) {
+
+    const [quantity, setQuantity] = useState("")
+
     const { item : { article: { ref, id, title, quantity: stockQuantity, price }} , quantity : articleQuantity } = element
     let result = price * articleQuantity
 
     function handleArticle(event){
         event.preventDefault()
-        const { target: { number: { value: quantity }, articleId: { value: articleId }  } } = event
+        let { target: { number: { value: quantity }, articleId: { value: articleId }  } } = event
         onSubmit(articleId, quantity)
+        setQuantity("")
     }
            
     return <>
@@ -22,7 +26,7 @@ function CartArticle({ element, onSubmit, onRemove }) {
             <li className="currentOrder__article--param">Total: {result.toFixed(2)} €</li>
             <li className="currentOrder__article--param">
                 <form onSubmit={handleArticle}>
-                    <input type="number" name="number" placeholder="add/remove"></input>
+                    <input type="number" name="number" placeholder="add/remove" value={quantity} onChange={event => setQuantity(event.target.value) }></input>
                     <input type="text" hidden name="articleId" defaultValue={id}></input>
                     <button>Submit</button>
                 </form>
