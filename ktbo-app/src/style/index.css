@@ -347,7 +347,7 @@ input {
   align-items: center;
 }
 .login__form--button {
-  width: 3rem;
+  width: 5rem;
   background-color: #f57b1f;
   border: 0;
 }

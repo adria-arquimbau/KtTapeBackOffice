@@ -34,7 +34,7 @@ function CartArticle({ element, onSubmit, onRemove }) {
             <li>
                 <form onSubmit={onRemove}>
                     <input type="text" hidden name="articleId" defaultValue={id}></input>
-                    <button>Remove to cart</button>
+                    <button>Remove</button>
                 </form>
             </li>
         </ul>     
