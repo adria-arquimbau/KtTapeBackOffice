@@ -602,13 +602,18 @@ input {
   border-width: 1px;
 }
 
+.searchResultMainContenedor {
+  display: flex;
+  justify-content: center;
+}
+
 .searchResult {
   display: flex;
   flex-wrap: wrap;
-  width: 75vw;
+  width: 70vw;
   padding-bottom: 4rem;
   text-align: left;
-  justify-content: left;
+  justify-content: center;
 }
 .searchResult li {
   list-style: none;
