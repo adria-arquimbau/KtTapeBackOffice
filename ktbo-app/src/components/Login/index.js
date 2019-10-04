@@ -48,7 +48,7 @@ function Login({ history }) {
                 <form className="login__form" onSubmit={handleSubmit}>
                     <input className="login__form--email" placeholder="e-mail" type="email" name="email" />
                     <input className="login__form--password" placeholder="password" type="password" name="password" />
-                    <button className="login__form--button">Submit</button>
+                    <button className="login__form--button">Log in</button>
                 </form>
                 {message && <Modal message={message} showModal={handleModal}/>}
             </section>

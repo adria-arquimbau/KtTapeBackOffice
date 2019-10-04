@@ -26,7 +26,7 @@ function CartButton({ articleId, stock }) {
 
     return <>
         <form onSubmit={handleSubmit}>
-            <button className="cartButton">Add to cart</button>
+            <button className="cartButton">Add</button>
             <input className="cartButton__input" type="number" name="quantity" placeholder="quantity" value={quantity} onChange={event => setQuantity(event.target.value) } />
         </form>
 
