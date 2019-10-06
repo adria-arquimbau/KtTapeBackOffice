@@ -20,17 +20,11 @@ function Navigation({ history, onSearch }) {
     },[cartNumber, user, cat])
     
     function handleHome() { history.push('/home') }
-    
     function handleMyOrders() { history.push('/home/my-orders') }
-    
     function handleCurrentOrder() { history.push('/home/current-order') }
-    
     function handleMyAccount() { history.push('/home/my-account') }
-    
     function handleAdminPanel() { history.push('/home/admin-panel') }
-
     /* function handleDocuments() { history.push('/home/documents') } */
-
     function handleLogout (){
         delete sessionStorage.id
         delete sessionStorage.token
@@ -64,13 +58,12 @@ function Navigation({ history, onSearch }) {
             setCat()
             const response = await logic.retrieveCategory(category)
             setCat(response)
-
             let catUrl
 
             (function makeItBetterUrl() {
                 catUrl = category.split(' ').join('-')
                 catUrl = catUrl.split('KTTape').join('')
-                catUrl = catUrl.substr(1)
+                if(catUrl[0] === '-') catUrl = catUrl.substr(1)
             })()
 
             history.push(`/home/category/${catUrl}`)
