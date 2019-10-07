@@ -23,7 +23,6 @@ function Home({history}) {
   const {articles, setArticles} = useContext(Context)
 
   useEffect(() => {
-    setCat()
     handleCart()
   },[items])
   

@@ -16,7 +16,7 @@ function Results({ searchResult }) {
     },[items])
 
     async function handleDeleteOnCart(event) {
-        debugger
+        
         event.preventDefault()
         let { target: { articleId: { value: articleId }  } } = event
         try {
