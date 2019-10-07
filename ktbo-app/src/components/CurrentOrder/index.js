@@ -8,9 +8,9 @@ import Context from '../Context'
 function CurrentOrder({history}) {
 
   //const [error, setError] = useState(null)
-  const [items, setItems] = useState(null)
+  const [items, setItems] = useState()
   const {user, goHome} = useContext(Context)
-  const {cat, setCat} = useContext(Context)
+  const {setCat} = useContext(Context)
  
   useEffect(() => {
     handleCart()

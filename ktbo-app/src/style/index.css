@@ -671,6 +671,15 @@ input {
 .searchResult__article--param {
   color: #333333;
 }
+.searchResult__on-cart {
+  margin-top: 0.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.searchResult__on-cart--text {
+  color: #f57b1f;
+}
 
 button {
   background: #f57b1f;

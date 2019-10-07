@@ -19,34 +19,12 @@ function Navigation({ history, onSearch }) {
         handleNumberOrders()
     },[cartNumber, user, cat])
     
-    function handleHome() {
-        history.push('/home')
-    }
-    
-    /* function handleDocuments() {
-        history.push('/home/documents')
-    } */
-
-    function handleCategories() {
-        history.push('/home/categories')
-    }
-
-    function handleMyOrders() {
-        history.push('/home/my-orders')
-    }
-
-    function handleCurrentOrder() {
-        history.push('/home/current-order')
-    }
-
-    function handleMyAccount() {
-        history.push('/home/my-account')
-    }
-
-    function handleAdminPanel() {
-        history.push('/home/admin-panel')
-    }
-
+    function handleHome() { history.push('/home') }
+    function handleMyOrders() { history.push('/home/my-orders') }
+    function handleCurrentOrder() { history.push('/home/current-order') }
+    function handleMyAccount() { history.push('/home/my-account') }
+    function handleAdminPanel() { history.push('/home/admin-panel') }
+    /* function handleDocuments() { history.push('/home/documents') } */
     function handleLogout (){
         delete sessionStorage.id
         delete sessionStorage.token
@@ -80,7 +58,15 @@ function Navigation({ history, onSearch }) {
             setCat()
             const response = await logic.retrieveCategory(category)
             setCat(response)
-            history.push(`/home/category/${category}`)
+            let catUrl
+
+            (function makeItBetterUrl() {
+                catUrl = category.split(' ').join('-')
+                catUrl = catUrl.split('KTTape').join('')
+                if(catUrl[0] === '-') catUrl = catUrl.substr(1)
+            })()
+
+            history.push(`/home/category/${catUrl}`)
         } catch (error) {
             setCat(error)
         }

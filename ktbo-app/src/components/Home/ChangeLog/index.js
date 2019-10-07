@@ -14,6 +14,21 @@ function ChangeLog() {
     <section className="change-log">
       <h1 className="change-log__title">Change Log</h1>
       <section className="change-log__all-logs">
+
+      <section className="change-log__version">
+          <h2 className="change-log__version--title">0.7.2 - 7/10/2019</h2>
+          <section>
+            <ul>
+              <li>Customized and improve the categories url, without %20 and "KTTAPE"</li>
+              <li>Category without articles should be throw a error, and are a status 200 error. Change to error and ifnorm with Feedback o Modal</li>
+              <li>Mark with some mode each article if this article is  in the cart</li>
+              <li>Delete button of search results delete the all quantity of the cart of this article</li>
+              <li>Added delete button for each article on Search results and search results categories if this article is on cart</li>
+            </ul>
+          </section>
+        </section>
+
+
       <section className="change-log__version">
           <h2 className="change-log__version--title">0.7.1 - 5/10/2019</h2>
           <section>
