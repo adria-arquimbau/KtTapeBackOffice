@@ -2,6 +2,7 @@ import React, {useEffect, useContext} from 'react'
 import CartButton from '../CartButton'
 import logic from '../../logic'
 import Context from '../Context'
+import Feedback from '../Feedback'
 
 function Results({ searchResult }) {
 
@@ -13,6 +14,17 @@ function Results({ searchResult }) {
     useEffect(() => {
         setCat()
     },[items])
+
+    async function handleDeleteOnCart(event) {
+        debugger
+        event.preventDefault()
+        let { target: { articleId: { value: articleId }  } } = event
+        try {
+            await logic.removeToCart(articleId)
+        } catch (error) {
+            
+        }
+    }
 
     return <>
         <section className="searchResultMainContenedor">
@@ -30,7 +42,7 @@ function Results({ searchResult }) {
                         <li className="searchResult__article--param">Price: {price} €</li>
                         <li className="searchResult__article--param">Stock: {quantity} uds</li>
                         {!items.some(element => element.item.article.id === id) && logic.isUserLogged() && <CartButton articleId={id} stock={quantity}/>}
-                        {items.some(element => element.item.article.id === id) && <p>abc</p>/*  <Feedback message={'On cart'}/> */}
+                        {items.some(element => element.item.article.id === id) && <section className="searchResult__on-cart"><p className="searchResult__text">On cart</p><form onSubmit={handleDeleteOnCart}><button className="searchResult__button">Delete on Cart<input type="text" hidden name="articleId" defaultValue={id}></input></button></form></section>}
                     </ul>
                 })}
             </section>

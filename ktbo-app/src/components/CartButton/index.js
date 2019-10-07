@@ -17,8 +17,7 @@ function CartButton({ articleId, stock }) {
     async function handleAddToCart(articleId, quantity) {
         try {
             quantity = Number(quantity)
-            const {message} = await logic.addToCart(articleId, quantity)
-            setMessage(message)
+            await logic.addToCart(articleId, quantity)
         } catch ({message}) {
             setMessage(message)
         }

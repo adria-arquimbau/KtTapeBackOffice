@@ -25,7 +25,7 @@ function Home({history}) {
   useEffect(() => {
     setCat()
     handleCart()
-  },[])
+  },[items])
   
   async function handleSearch(query) {
     if(query.length > 0){
