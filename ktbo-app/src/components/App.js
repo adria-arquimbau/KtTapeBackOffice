@@ -15,7 +15,8 @@ function App({ history }) {
   const [goHome, setGoHome] = useState()
   const [cat, setCat] = useState()
   const [articles, setArticles] = useState()
-
+  const [items, setItems] = useState()
+  
   useEffect(async () => {
 
     if(!logic.isUserLogged()){
@@ -39,7 +40,7 @@ function App({ history }) {
 
   return <>
 
-    <Context.Provider value={{ user, setUser, goHome, setGoHome, cat, setCat, articles, setArticles }} >
+    <Context.Provider value={{ user, setUser, goHome, setGoHome, cat, setCat, articles, setArticles, items, setItems }} >
       <div className="App">
       <Route exact path="/" render={() => logic.isUserLogged() ? history.push('/home') : <Landing /> }  />
       {user && <Route path="/home" render={() => logic.isUserLogged() ? <Home /> :  history.push('/')  } /> }   

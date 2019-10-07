@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { useEffect, useState, useContext } from 'react'
+import React, { useEffect, useContext } from 'react'
 import logic from '../../logic'
 import ResultsCart from './ResultsCart'
 import { withRouter } from 'react-router-dom'
@@ -8,9 +8,9 @@ import Context from '../Context'
 function CurrentOrder({history}) {
 
   //const [error, setError] = useState(null)
-  const [items, setItems] = useState(null)
+  const {items, setItems} = useContext(Context)
   const {user, goHome} = useContext(Context)
-  const {cat, setCat} = useContext(Context)
+  const {setCat} = useContext(Context)
  
   useEffect(() => {
     handleCart()
