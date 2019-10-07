@@ -42,7 +42,7 @@ function Results({ searchResult }) {
                         <li className="searchResult__article--param">Price: {price} €</li>
                         <li className="searchResult__article--param">Stock: {quantity} uds</li>
                         {!items.some(element => element.item.article.id === id) && logic.isUserLogged() && <CartButton articleId={id} stock={quantity}/>}
-                        {items.some(element => element.item.article.id === id) && <section className="searchResult__on-cart"><p className="searchResult__text">On cart</p><form onSubmit={handleDeleteOnCart}><button className="searchResult__button">Delete on Cart<input type="text" hidden name="articleId" defaultValue={id}></input></button></form></section>}
+                        {items.some(element => element.item.article.id === id) && <section className="searchResult__on-cart"><h3 className="searchResult__on-cart--text">On cart </h3><form onSubmit={handleDeleteOnCart}><button className="searchResult__on-cart--button">Remove from cart<input type="text" hidden name="articleId" defaultValue={id}></input></button></form></section>}
                     </ul>
                 })}
             </section>

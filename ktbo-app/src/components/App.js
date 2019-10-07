@@ -16,7 +16,7 @@ function App({ history }) {
   const [cat, setCat] = useState()
   const [articles, setArticles] = useState()
   const [items, setItems] = useState()
-  
+
   useEffect(async () => {
 
     if(!logic.isUserLogged()){

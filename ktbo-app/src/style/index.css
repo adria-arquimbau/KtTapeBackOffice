@@ -677,14 +677,8 @@ input {
   align-items: center;
   justify-content: space-around;
 }
-.searchResult__on-cart__on-cart--text {
-  padding-left: 1rem;
-  text-align: center;
-  color: #333333;
-}
-.searchResult__on-cart__on-cart--button {
-  height: 15px;
-  text-align: center;
+.searchResult__on-cart--text {
+  color: #f57b1f;
 }
 
 button {

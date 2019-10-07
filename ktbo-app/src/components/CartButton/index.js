@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import logic from '../../logic'
 import Feedback from '../Feedback'
+import Context from '../Context'
 
-function CartButton({ articleId, stock }) {
+function CartButton({ articleId }) {
 
     const [message, setMessage] = useState()
     const [quantity, setQuantity] = useState("")
