@@ -22,20 +22,6 @@ function Results({ searchResult }) {
                 {articles && articles.map(item => {
                     const {ref, title, description, img, price, quantity, id} = item
 
-/*                     console.log(items)
-
-                    function isOnCart(){
-                        if(items){
-                            items.map(eachArticle => {
-                                if(eachArticle.item.article.id === id) {
-                                    return true
-                                } else {
-                                    return false
-                                }
-                            })
-                        }
-                    } */
-
                     return <ul key={id} className="searchResult__article" >
                         <li className="searchResult__article--param">Ref: {ref}</li>
                         <li className="searchResult__article--param">{title}</li>
@@ -43,7 +29,8 @@ function Results({ searchResult }) {
                         <li className="searchResult__article--param"><img alt="" src={img}/></li>
                         <li className="searchResult__article--param">Price: {price} €</li>
                         <li className="searchResult__article--param">Stock: {quantity} uds</li>
-                        {/* !isOnCart() &&  */logic.isUserLogged() && <CartButton articleId={id} stock={quantity}/>}
+                        {!items.some(element => element.item.article.id === id) && logic.isUserLogged() && <CartButton articleId={id} stock={quantity}/>}
+                        {items.some(element => element.item.article.id === id) && <p>abc</p>/*  <Feedback message={'On cart'}/> */}
                     </ul>
                 })}
             </section>
