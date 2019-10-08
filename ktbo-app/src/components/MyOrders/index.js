@@ -8,13 +8,27 @@ import ResultOrders from '../../components/MyOrders/Result-orders'
 
 function MyOrders() {
 
-  const {setCat} = useContext(Context)
-  const {orders} = useContext(Context)
+  const {cat, setCat} = useContext(Context)
 
   //const [error, setError] = useState(null)
+  const [orders, setOrders] = useState(null)
 
   useEffect(() => {
     setCat()
+  },[])
+
+  async function handleOrders() {
+    try {
+      const { orders } = await logic.retrieveAllUserOrders()  
+      setOrders(orders)  
+    } catch (error) {
+      //setError(error)
+      //TODO MODAL
+    }
+  }
+
+  useEffect(() => {
+    handleOrders()
   },[])
 
   return <>
