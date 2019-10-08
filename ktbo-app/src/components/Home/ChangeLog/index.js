@@ -16,6 +16,20 @@ function ChangeLog() {
       <section className="change-log__all-logs">
 
       <section className="change-log__version">
+          <h2 className="change-log__version--title">0.7.3 - 8/10/2019</h2>
+          <section>
+            <ul>
+              <li>If some article have empty stock should be throw an error if you want to send to cart</li>
+              <li>If stock article is empty, don't show Add Button</li>
+              <li>If Place Order have some article with quantity 0, automaticatly send error</li>
+              <li>If my Orders is empty, should be throw a error with modal and redirectioned to home.</li>
+              <li>Fix Bug to render categories</li>
+              <li>Add modal for search products errors to add to cart</li>
+            </ul>
+          </section>
+        </section>
+
+      <section className="change-log__version">
           <h2 className="change-log__version--title">0.7.2 - 7/10/2019</h2>
           <section>
             <ul>
@@ -27,7 +41,6 @@ function ChangeLog() {
             </ul>
           </section>
         </section>
-
 
       <section className="change-log__version">
           <h2 className="change-log__version--title">0.7.1 - 5/10/2019</h2>
