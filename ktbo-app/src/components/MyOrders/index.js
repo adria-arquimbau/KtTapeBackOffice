@@ -3,33 +3,35 @@ import React, {useState, useEffect, useContext} from 'react'
 import { withRouter } from 'react-router-dom'
 import logic from '../../logic'
 import Context from '../Context'
+import Modal from '../Modal'
 
 import ResultOrders from '../../components/MyOrders/Result-orders'
 
-function MyOrders() {
+function MyOrders({history}) {
 
-  const {cat, setCat} = useContext(Context)
+  const {setCat} = useContext(Context)
 
-  //const [error, setError] = useState(null)
+  const [message, setMessage] = useState(null)
   const [orders, setOrders] = useState(null)
 
   useEffect(() => {
     setCat()
+    handleOrders()
   },[])
 
   async function handleOrders() {
     try {
       const { orders } = await logic.retrieveAllUserOrders()  
       setOrders(orders)  
-    } catch (error) {
-      //setError(error)
-      //TODO MODAL
+    } catch ({message}) {
+      setMessage(message)
     }
   }
 
-  useEffect(() => {
-    handleOrders()
-  },[])
+  function handleModal() {
+    setMessage(null) 
+    history.push('/home')
+  }
 
   return <>
     <main className="myOrdersMain">
@@ -39,6 +41,7 @@ function MyOrders() {
           return <ResultOrders key={element.id} element={element} />
         })}
       </section>
+      {message && <Modal  message={message} showModal={handleModal}/>}
     </main>
   </>
 }
