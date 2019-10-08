@@ -26,6 +26,7 @@ function ChangeLog() {
               <li>Fix Bug to render categories</li>
               <li>Add modal for search products errors to add to cart</li>
               <li>If article quantity sended to cart is 0, automaticly change to 1</li>
+              <li>Changed input search style</li>
             </ul>
           </section>
         </section>
