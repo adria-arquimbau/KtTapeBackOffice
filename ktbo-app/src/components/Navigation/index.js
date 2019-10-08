@@ -54,18 +54,14 @@ function Navigation({ history, onSearch }) {
 
     async function onCategory(category){
         try {
-            setArticles()
-            setCat()
             const response = await logic.retrieveCategory(category)
             setCat(response)
             let catUrl
-
             (function makeItBetterUrl() {
                 catUrl = category.split(' ').join('-')
                 catUrl = catUrl.split('KTTape').join('')
                 if(catUrl[0] === '-') catUrl = catUrl.substr(1)
             })()
-
             history.push(`/home/category/${catUrl}`)
         } catch (error) {
             setCat(error)

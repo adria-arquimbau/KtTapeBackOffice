@@ -1,13 +1,14 @@
-import React, {useEffect, useContext} from 'react'
+import React, {useEffect, useContext, useState} from 'react'
 import CartButton from '../CartButton'
 import logic from '../../logic'
 import Context from '../Context'
-import Feedback from '../Feedback'
+import Modal from '../Modal'
 
 function Results({ searchResult }) {
 
     const {setCat} = useContext(Context)
     const {items} = useContext(Context)
+    const [apiMessage, setApiMessage] = useState()
 
     const{ message, articles, error } = searchResult
 
@@ -26,6 +27,19 @@ function Results({ searchResult }) {
         }
     }
 
+    async function handleAddToCart(articleId, quantity) {
+        try {
+            quantity = Number(quantity)
+            await logic.addToCart(articleId, quantity)
+        } catch ({message}) {
+            setApiMessage(message)
+        }
+    }
+
+    function handleModal() {
+        setApiMessage(null) 
+    }
+
     return <>
         <section className="searchResultMainContenedor">
             <section className="searchResult">
@@ -41,11 +55,13 @@ function Results({ searchResult }) {
                         <li className="searchResult__article--param"><img alt="" src={img}/></li>
                         <li className="searchResult__article--param">Price: {price} €</li>
                         <li className="searchResult__article--param">Stock: {quantity} uds</li>
-                        {!items.some(element => element.item.article.id === id) && logic.isUserLogged() && <CartButton articleId={id} stock={quantity}/>}
-                        {items.some(element => element.item.article.id === id) && <section className="searchResult__on-cart"><h3 className="searchResult__on-cart--text">On cart </h3><form onSubmit={handleDeleteOnCart}><button className="searchResult__on-cart--button">Remove from cart<input type="text" hidden name="articleId" defaultValue={id}></input></button></form></section>}
+                        {quantity === 0 && <section className="searchResult__out-of-stock"><h3 className="searchResult__on-cart--text">Out of stock</h3></section>}
+                        {!items.some(element => element.item.article.id === id) && logic.isUserLogged() && quantity > 0 && <CartButton handleAddToCart={handleAddToCart} articleId={id} stock={quantity}/>}
+                        {items.some(element => element.item.article.id === id) && <section className="searchResult__on-cart"><h3 className="searchResult__on-cart--text">On cart</h3><form onSubmit={handleDeleteOnCart}><button className="searchResult__on-cart--button">Remove from cart<input type="text" hidden name="articleId" defaultValue={id}></input></button></form></section>}
                     </ul>
                 })}
             </section>
+            {apiMessage && <Modal message={apiMessage} showModal={handleModal}/>}
         </section>
     </>
 }

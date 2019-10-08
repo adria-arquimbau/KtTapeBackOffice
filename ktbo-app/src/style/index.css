@@ -647,7 +647,7 @@ input {
 .searchResult__article:before {
   content: "";
   position: absolute;
-  z-index: -1;
+  z-index: 1;
   left: 51%;
   right: 51%;
   top: 0;
@@ -666,7 +666,7 @@ input {
 }
 .searchResult__article:hover {
   position: relative;
-  z-index: 3;
+  z-index: 1;
 }
 .searchResult__article--param {
   color: #333333;
@@ -676,6 +676,12 @@ input {
   display: flex;
   align-items: center;
   justify-content: space-around;
+}
+.searchResult__out-of-stock {
+  margin-top: 1.36rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .searchResult__on-cart--text {
   color: #f57b1f;

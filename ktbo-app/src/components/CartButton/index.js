@@ -1,11 +1,7 @@
-import React, { useState, useContext } from 'react'
-import logic from '../../logic'
-import Feedback from '../Feedback'
-import Context from '../Context'
+import React, { useState } from 'react'
 
-function CartButton({ articleId }) {
+function CartButton({ articleId, handleAddToCart }) {
 
-    const [message, setMessage] = useState()
     const [quantity, setQuantity] = useState("")
 
     function handleSubmit(event) {    
@@ -15,15 +11,6 @@ function CartButton({ articleId }) {
         setQuantity("")
     }
 
-    async function handleAddToCart(articleId, quantity) {
-        try {
-            quantity = Number(quantity)
-            await logic.addToCart(articleId, quantity)
-        } catch ({message}) {
-            setMessage(message)
-        }
-    }
-
     return <>
         <form onSubmit={handleSubmit}>
             <button className="cartButton">Add</button>
@@ -31,7 +18,6 @@ function CartButton({ articleId }) {
         </form>
 
         <section className="cartButton__feedback">
-            {message && <Feedback message={message} />}
         </section>
 
     </>
