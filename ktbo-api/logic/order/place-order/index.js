@@ -1,6 +1,6 @@
 const { models: { Article,User,Order } } = require('ktbo-data')
 const { validate } = require('ktbo-utils')
-const nodemailer = require('nodemailer')
+// const nodemailer = require('nodemailer')
 
 /**
  * Function that creates a new order based on the user's cart. 
@@ -17,11 +17,14 @@ module.exports = function (userId) {
 
     return (async () => {
 
+        let quantityZeroError
+
         const user = await User.findById(userId)
         if (!user) throw Error(`User with id ${userId} does not exist`)
 
         const cart = user.cart
         if (cart.length === 0) throw new Error(`Your cart is empty`)
+        if(cart.some(element => element.quantity === 0)) throw new Error(`All quantities must be greater than 0`)
 
         let date = new Date()
         date = date.toString()

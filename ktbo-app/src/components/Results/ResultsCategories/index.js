@@ -40,7 +40,8 @@ function ResultsCategories({ searchResult }) {
                         <li className="searchResult__article--param"><img alt="" src={img}/></li>
                         <li className="searchResult__article--param">Price: {price} €</li>
                         <li className="searchResult__article--param">Stock: {quantity} uds</li>
-                        {!items.some(element => element.item.article.id === id) && logic.isUserLogged() && <CartButton articleId={id} stock={quantity}/>}
+                        {quantity === 0 && <section className="searchResult__out-of-stock"><h3 className="searchResult__on-cart--text">Out of stock</h3></section>}
+                        {!items.some(element => element.item.article.id === id) && logic.isUserLogged() && quantity > 0 && <CartButton articleId={id} stock={quantity}/>}
                         {items.some(element => element.item.article.id === id) && <section className="searchResult__on-cart"><h3 className="searchResult__on-cart--text">On cart </h3><form onSubmit={handleDeleteOnCart}><button className="searchResult__on-cart--button">Remove from cart<input type="text" hidden name="articleId" defaultValue={id}></input></button></form></section>}
                     </ul>
                 })}

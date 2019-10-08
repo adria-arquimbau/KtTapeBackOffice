@@ -10,6 +10,7 @@ function Navigation({ history, onSearch }) {
     const {user} = useContext(Context)
     const {cat, setCat} = useContext(Context)
     const {setArticles} = useContext(Context)
+    const {orders} = useContext(Context)
 
     const [admin, setAdmin] = useState()
     const [cartNumber, setCartNumber] = useState()
@@ -17,7 +18,7 @@ function Navigation({ history, onSearch }) {
     useEffect(() => {
         handleAdmin()
         handleNumberOrders()
-    },[cartNumber, user, cat])
+    },[cartNumber, user, cat, orders])
     
     function handleHome() { history.push('/home') }
     function handleMyOrders() { history.push('/home/my-orders') }
@@ -127,8 +128,8 @@ function Navigation({ history, onSearch }) {
                 <li className="navigation__li"><Search onSearch={onSearch} /></li>
 
                               
-                <li className="navigation__li"><a className="navigation__li--anchor" href="#" onClick={event => { event.preventDefault() 
-                    handleMyOrders() }}>My Orders</a></li>
+                {orders && <li className="navigation__li"><a className="navigation__li--anchor" href="#" onClick={event => { event.preventDefault() 
+                    handleMyOrders() }}>My Orders</a></li>}
                 {user &&<div className="dropdown">
                     <button className="dropbtn" >Hello, {user.company}<i className="fa fa-caret-down"></i></button>
                     <div className="dropdown-content">

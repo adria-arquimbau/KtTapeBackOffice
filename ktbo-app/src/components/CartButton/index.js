@@ -1,7 +1,6 @@
-import React, { useState, useContext } from 'react'
+import React, { useState } from 'react'
 import logic from '../../logic'
-import Feedback from '../Feedback'
-import Context from '../Context'
+import Modal from '../Modal'
 
 function CartButton({ articleId }) {
 
@@ -31,7 +30,7 @@ function CartButton({ articleId }) {
         </form>
 
         <section className="cartButton__feedback">
-            {message && <Feedback message={message} />}
+            {message && <Modal message={message} />}
         </section>
 
     </>

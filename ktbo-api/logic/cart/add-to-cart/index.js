@@ -25,6 +25,7 @@ module.exports = function(userId, articleId, quantity) {
 
         const article = await Article.findById(articleId)
         if(article.quantity < quantity) throw Error('Stock greater than quantity required')
+        if(article.quantity === 0 && quantity === 0) throw Error('Stock greater than quantity required')
 
         let item = res.cart.find(item => item.article.toString() === articleId)
         item ? item.quantity += quantity : res.cart.push(new Item({article: articleId, quantity}))

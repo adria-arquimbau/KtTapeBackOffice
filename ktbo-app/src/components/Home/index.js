@@ -21,10 +21,22 @@ function Home({history}) {
   const {cat, setCat} = useContext(Context)
   const {items, setItems} = useContext(Context)
   const {articles, setArticles} = useContext(Context)
+  const {orders, setOrders} = useContext(Context)
 
   useEffect(() => {
     handleCart()
-  },[items])
+    handleOrders()
+  },[items, orders])
+
+  async function handleOrders() {
+    try {
+      const { orders } = await logic.retrieveAllUserOrders()  
+      setOrders(orders)  
+    } catch (error) {
+      //setError(error)
+      //TODO MODAL
+    }
+  }
   
   async function handleSearch(query) {
     if(query.length > 0){
