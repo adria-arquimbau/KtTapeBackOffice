@@ -28,14 +28,14 @@ input {
   align-content: center;
 }
 .navigation__search--input {
-  background-color: rgba(245, 123, 31, 0.5);
+  background-color: rgba(255, 255, 255, 0.5);
   border: 0;
   text-align: right;
   font-size: 0.9rem;
   width: 6rem;
   color: #333333;
   height: 10px;
-  margin-top: 0.55rem;
+  margin-top: 0.5rem;
 }
 .navigation__search--button {
   border: 0;
@@ -647,7 +647,7 @@ input {
 .searchResult__article:before {
   content: "";
   position: absolute;
-  z-index: 1;
+  z-index: -1;
   left: 51%;
   right: 51%;
   top: 0;
@@ -666,7 +666,7 @@ input {
 }
 .searchResult__article:hover {
   position: relative;
-  z-index: 1;
+  z-index: 3;
 }
 .searchResult__article--param {
   color: #333333;

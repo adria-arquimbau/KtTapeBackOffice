@@ -14,7 +14,7 @@ function Search({ onSearch }) {
 
     return <form onSubmit={handleSearch}>
         <input className="navigation__search--input" placeholder="Search article" type="text" name="query" value={searchValue} onChange={event => setSearchValue(event.target.value) } />
-        <button className="navigation__search--button">Search product</button>
+        <button className="navigation__search--button">Search</button>
     </form>
 }
 
