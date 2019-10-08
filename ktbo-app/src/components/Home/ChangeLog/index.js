@@ -25,6 +25,7 @@ function ChangeLog() {
               <li>If my Orders is empty, should be throw a error with modal and redirectioned to home.</li>
               <li>Fix Bug to render categories</li>
               <li>Add modal for search products errors to add to cart</li>
+              <li>If article quantity sended to cart is 0, automaticly change to 1</li>
             </ul>
           </section>
         </section>
