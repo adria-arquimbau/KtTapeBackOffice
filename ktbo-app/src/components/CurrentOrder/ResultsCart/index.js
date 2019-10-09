@@ -15,8 +15,8 @@ function ResultsCart({ history, cart , retrieverCart}) {
         try {
             await logic.addToCart(articleId, quantity)
             retrieverCart()
-        } catch (error) {
-            //TODO
+        } catch ({message}) {
+            setError(message)
         }
     }
 

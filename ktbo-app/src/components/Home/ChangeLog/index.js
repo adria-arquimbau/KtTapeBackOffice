@@ -16,6 +16,16 @@ function ChangeLog() {
       <section className="change-log__all-logs">
 
       <section className="change-log__version">
+          <h2 className="change-log__version--title">0.10.1 - 9/10/2019</h2>
+          <section>
+            <ul>
+              <li>Fixed Bug to render categories</li>
+              <li>Fixed bug of the modal on search results, in which when jumping it was seen by collision with the z-index of hover:before article</li>
+            </ul>
+          </section>
+        </section>
+
+      <section className="change-log__version">
           <h2 className="change-log__version--title">0.10.0 - 8/10/2019</h2>
           <section>
             <ul>
@@ -23,10 +33,11 @@ function ChangeLog() {
               <li>If stock article is empty, don't show Add Button</li>
               <li>If Place Order have some article with quantity 0, automaticatly send error</li>
               <li>If my Orders is empty, should be throw a error with modal and redirectioned to home.</li>
-              <li>Fix Bug to render categories</li>
               <li>Add modal for search products errors to add to cart</li>
               <li>If article quantity sended to cart is 0, automaticly change to 1</li>
               <li>Changed input search style</li>
+              <li>Changed system to add quantity on current order, now the submit change the old quantity for the new quantity</li>
+              <li>Added setError with Modal on submit a quantity greater than stock number on current cart</li>
             </ul>
           </section>
         </section>

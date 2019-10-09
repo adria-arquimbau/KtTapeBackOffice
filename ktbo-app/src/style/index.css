@@ -402,16 +402,18 @@ input {
   color: #333333;
 }
 .currentOrder__article {
-  grid-template-columns: 100px 250px 100px 150px 200px 150px 190px 103px;
+  grid-template-columns: 100px 250px 100px 165px 125px 170px 150px 103px;
   grid-row-gap: 1px;
-  grid-column-gap: 9px;
+  grid-column-gap: 0;
   display: grid;
   justify-content: center;
 }
 .currentOrder__article input {
-  width: 100px;
+  width: 73px;
 }
 .currentOrder__article--param {
+  display: grid;
+  align-content: center;
   margin-right: 0.5rem;
   color: #333333;
 }
@@ -773,7 +775,7 @@ input {
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 1;
+  z-index: 3;
   display: flex;
   flex-direction: column;
   justify-content: center;
