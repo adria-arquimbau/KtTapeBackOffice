@@ -26,7 +26,7 @@ module.exports = function(userId) {
             delete order._id      
         })
         
-        if(orders.length === 0) throw new Error(`This user with id ${userId} doesn\'t have any orders`)
+        if(orders.length === 0) throw new Error(`You don\'t have any orders`)
         
         owner = orders[0].owner
         if(owner.toString() === userId)  {

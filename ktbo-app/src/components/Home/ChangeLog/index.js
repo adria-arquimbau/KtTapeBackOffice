@@ -4,7 +4,7 @@ import Context from '../../Context'
 
 function ChangeLog() {
 
-  const {cat, setCat} = useContext(Context)
+  const {setCat} = useContext(Context)
 
   useEffect(() => {
     setCat()
@@ -16,7 +16,7 @@ function ChangeLog() {
       <section className="change-log__all-logs">
 
       <section className="change-log__version">
-          <h2 className="change-log__version--title">0.7.3 - 8/10/2019</h2>
+          <h2 className="change-log__version--title">0.10.0 - 8/10/2019</h2>
           <section>
             <ul>
               <li>If some article have empty stock should be throw an error if you want to send to cart</li>
@@ -32,7 +32,7 @@ function ChangeLog() {
         </section>
 
       <section className="change-log__version">
-          <h2 className="change-log__version--title">0.7.2 - 7/10/2019</h2>
+          <h2 className="change-log__version--title">0.9.0 - 7/10/2019</h2>
           <section>
             <ul>
               <li>Customized and improve the categories url, without %20 and "KTTAPE"</li>
@@ -44,8 +44,8 @@ function ChangeLog() {
           </section>
         </section>
 
-      <section className="change-log__version">
-          <h2 className="change-log__version--title">0.7.1 - 5/10/2019</h2>
+        <section className="change-log__version">
+          <h2 className="change-log__version--title">0.8.0 - 5/10/2019</h2>
           <section>
             <ul>
               <li>Reset value to search input after submit</li>
