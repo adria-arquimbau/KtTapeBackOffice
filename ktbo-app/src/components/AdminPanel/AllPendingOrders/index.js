@@ -21,12 +21,12 @@ function ResultOrders({ orders, retrievePendingOrders }) {
 
         {message && <Feedback message={message} showFeedback={handleFeedback}/>}
 
-        <section className="myOrders">
+        <section className="admin-panel-content">
             {orders && orders.map(order =>{
                 const {state, date, owner, items, id} = order
                 let totalPrice = 0
 
-                return <section key={id} className="myOrdersAdmin__order">
+                return <section key={id} className="admin-panel-content__order">
                 
                     <section  className="myOrders__orderCont--items">{items.map(item =>{
                         const totalItem = item.article.price * item.quantity
@@ -40,7 +40,7 @@ function ResultOrders({ orders, retrievePendingOrders }) {
                             </ul>
                     })}</section>
 
-                    <ul className="myOrdersAdmin__order--data">
+                    <ul className="admin-panel-content__order--data">
                         <li className="statusAdminOrder"><p>State:</p> <p className={`status__${state}`}>{state.toUpperCase()}</p></li>
                         <li>Date: <Moment format="YYYY-MM-DD HH:mm">{date}</Moment></li>
                         <li>Company: {owner.company}</li>
@@ -48,7 +48,7 @@ function ResultOrders({ orders, retrievePendingOrders }) {
                         <li>E-mail: {owner.email}</li>
                         <li>Total price: {totalPrice.toFixed(2)}€</li>
 
-                        <div className="myOrdersAdmin__order--buttons">
+                        <div className="admin-panel-content__order--buttons">
                             <form onSubmit={async event => {event.preventDefault()
                                 try {
                                     const {message} = await logic.changeStateOrder(id)

@@ -824,32 +824,53 @@ input {
   border-width: 1px;
 }
 
-.adminMain {
+.admin-main {
+  display: flex;
   text-align: center;
   width: 100vw;
 }
-.adminMain h1 {
+.admin-main h1 {
   color: #333333;
 }
-.adminMain input {
+.admin-main input {
   margin-top: 1rem;
   border: 0;
   background-color: rgba(51, 51, 51, 0.1);
 }
-
-.adminPanel {
-  margin: 1rem;
+.admin-main__admin-panel {
+  padding: 1rem 2rem 0rem 2rem;
+  margin: 0;
   flex-direction: column;
+  background-color: #333333;
+  height: 100vh;
 }
-.adminPanel__buttons {
-  margin-top: 1rem;
+.admin-main__admin-panel h1 {
+  color: white;
+}
+.admin-main__admin-panel--buttons {
+  display: flex;
   flex-direction: column;
+  margin: 0;
+  width: 100%;
+  margin-top: 2rem;
 }
-.adminPanel__buttons button {
-  border: 0;
+.admin-main__admin-panel--buttons button {
+  margin-left: 0;
+  margin-right: 0;
+  border-radius: 0;
+  background-color: #333333;
+  color: #f57b1f;
+  border-top: 1px solid #f57b1f;
 }
 
-.myOrdersAdmin__order {
+.admin-panel-content {
+  width: 90vw;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+}
+.admin-panel-content__order {
+  flex-direction: column;
   margin-top: 3rem;
   grid-template-columns: 800px 300px;
   grid-row-gap: 1px;
@@ -862,7 +883,7 @@ input {
   position: relative;
   overflow: hidden;
 }
-.myOrdersAdmin__order:before {
+.admin-panel-content__order:before {
   content: "";
   position: absolute;
   z-index: -1;
@@ -878,32 +899,32 @@ input {
   -webkit-transition-timing-function: ease-out;
   transition-timing-function: ease-out;
 }
-.myOrdersAdmin__order:hover:before, .myOrdersAdmin__order:focus:before, .myOrdersAdmin__order:active:before {
+.admin-panel-content__order:hover:before, .admin-panel-content__order:focus:before, .admin-panel-content__order:active:before {
   left: 0;
   right: 0;
 }
-.myOrdersAdmin__order:hover {
+.admin-panel-content__order:hover {
   position: relative;
   z-index: 3;
 }
-.myOrdersAdmin__order--data {
+.admin-panel-content__order--data {
   margin: 0.5rem;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   text-align: left;
 }
-.myOrdersAdmin__order--data li {
+.admin-panel-content__order--data li {
   margin-top: 0.4rem;
 }
-.myOrdersAdmin__order--buttons {
+.admin-panel-content__order--buttons {
   display: flex;
 }
-.myOrdersAdmin__order:hover .status__pending {
+.admin-panel-content__order:hover .status__pending {
   color: orange;
   margin-left: 0.5rem;
 }
-.myOrdersAdmin__order:hover .status__closed {
+.admin-panel-content__order:hover .status__closed {
   color: red;
   margin-left: 0.5rem;
 }
@@ -940,36 +961,32 @@ input {
   border-width: 1px;
 }
 
-.new-user {
+.admin-panel-content {
   flex-direction: column;
   justify-content: center;
   text-align: center;
 }
-.new-user__title {
-  margin: 1rem;
-  color: #333333;
-}
-.new-user__register {
+.admin-panel-content__register {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-.new-user__form {
+.admin-panel-content__form {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-.new-user__form input, .new-user__form button, .new-user__form select {
+.admin-panel-content__form input, .admin-panel-content__form button, .admin-panel-content__form select {
   margin: 0.5rem;
 }
-.new-user__form input {
+.admin-panel-content__form input {
   margin-top: 1rem;
   border: 0;
   background-color: rgba(51, 51, 51, 0.1);
 }
-.new-user__result {
+.admin-panel-content__result {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -978,10 +995,10 @@ input {
   margin: 1rem;
   background-color: rgba(255, 255, 255, 0.5);
 }
-.new-user__result ul {
+.admin-panel-content__result ul {
   margin: 0.5rem;
 }
-.new-user__result ul li {
+.admin-panel-content__result ul li {
   margin: 0.5rem;
 }
 

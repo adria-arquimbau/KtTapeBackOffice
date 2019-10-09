@@ -6,13 +6,13 @@ import Moment from 'react-moment'
 function ResultOrders({ orders }) {
 
     return <>
-        <section className="myOrders">
+        <section className="admin-panel-content">
 
             {orders && orders.map(order =>{                
                 const {state, date, owner, items} = order
                 let totalPrice = 0
 
-                return <section className="myOrdersAdmin__order" >
+                return <section className="admin-panel-content__order" >
                     <ul key={items.id} className="myOrders__orderCont--items">{items.map(item =>{
                         const totalItem = item.article.price * item.quantity
                         totalPrice += totalItem
@@ -24,7 +24,7 @@ function ResultOrders({ orders }) {
                             <li>Total: {totalItem.toFixed(2)} €</li>
                             </ul>
                     })}</ul>
-                    <ul className="myOrdersAdmin__order--data">
+                    <ul className="admin-panel-content__order--data">
                         <li className="statusAdminOrder"><p>State:</p> <p className={`status__${state}`}>{state.toUpperCase()}</p></li>
                         <li>Date: <Moment format="YYYY-MM-DD HH:mm">{date}</Moment></li>
                         <li>Company: {owner.company}</li>

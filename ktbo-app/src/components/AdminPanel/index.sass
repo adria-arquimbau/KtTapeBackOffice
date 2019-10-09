@@ -38,9 +38,14 @@
             color: $primary-color
             border-top: 1px solid $primary-color
 
-.myOrdersAdmin
+.admin-panel-content
+    width: 90vw
+    display: flex
+    text-align: center
+    justify-content: center
 
     &__order
+        flex-direction: column
         margin-top: 3rem
         grid-template-columns: 800px 300px
         grid-row-gap: 1px
@@ -101,7 +106,43 @@
 
             &__closed
                 color: rgba(red, 1)
-                margin-left: 0.5rem            
+                margin-left: 0.5rem       
+
+    &__register
+        display: flex
+        flex-direction: column
+        justify-content: center
+        align-items: center
+    
+    &__form
+        display: flex
+        flex-direction: column
+        justify-content: center
+        align-items: center
+
+        input, button, select
+            margin: 0.5rem
+
+        input
+            margin-top: 1rem
+            border: 0
+            background-color: rgba($secondary-color, 0.1)
+
+
+    &__result
+        display: flex
+        flex-direction: column
+        justify-content: center
+        align-items: center
+        color: $secondary-color
+        margin: 1rem
+        background-color: rgba(255,255,255,0.5)
+
+        ul
+            margin: 0.5rem
+
+            li
+                margin: 0.5rem     
 
 .statusAdminOrder
     display: flex

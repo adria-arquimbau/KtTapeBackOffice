@@ -41,10 +41,8 @@ function NewUser() {
     }
 
     return <>
-        <section className="new-user">
-                <h1 className="new-user__title">Register a new client</h1>
-            <section className="new-user__register">
-                <form className="new-user__form" onSubmit={handleSubmitNewUser}>  
+        <section className="admin-panel-content">
+                <form className="admin-panel-content__form" onSubmit={handleSubmitNewUser}>  
                         <input placeholder="Company" type="text" name="company" value={_company} onChange={event => setCompany(event.target.value) }/>
                         <input placeholder="Country" type="text" name="country" value={_country} onChange={event => setCountry(event.target.value) } />
                         <input placeholder="e-mail" type="text" name="email" value={_email} onChange={event => setEmail(event.target.value) } />
@@ -57,7 +55,7 @@ function NewUser() {
                 </form>
 
             </section>
-            <section className="new-user__result">
+            <section className="admin-panel-content__result">
                 {newUser && <ul>
                     <h2>New User</h2>
                     <li>Company: {newUser.company}</li>
@@ -68,7 +66,6 @@ function NewUser() {
             </section>
             {message && <Modal  message={message} showModal={handleModal}/>}
             {error && <Modal  message={error} showModal={handleModal}/>}
-        </section>
     </>
 }
 

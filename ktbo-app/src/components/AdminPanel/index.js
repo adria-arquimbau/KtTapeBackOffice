@@ -83,21 +83,17 @@ function AdminPanel({history}) {
         <div className="admin-main__admin-panel--buttons">
           <button onClick={handlePendingOrders}>Pending orders</button>
           <button onClick={handleAllOrders}>All orders</button>
-          <button onClick={handleRegisterNewUser}>Register new User</button>
+          <button onClick={handleRegisterNewUser}>New User</button>
           <button onClick={handleRetrieveAllUsers}>Retrieve all users</button>
         </div>
-      </section>
-      <section className="admin-main__admin-panel--content">
-        <ul>          
-          {orders && <AllPendingOrders orders={orders}   retrievePendingOrders={handlePendingOrders}/>}
-          {allOrders  && <AllOrders orders={allOrders} />}
-          {retrieveUsers && <AllUsers users={retrieveUsers} retrieveAllUsers={handleRetrieveAllUsers} />}
-          {newUser && <NewUser />}
-        </ul>
-      </section>
-      {message && <Modal  message={message} showModal={handleModal}/>}
-      {error && <Modal  message={error} showModal={handleModal}/>}
+      </section>       
+      {orders && <AllPendingOrders orders={orders}   retrievePendingOrders={handlePendingOrders}/>}
+      {allOrders  && <AllOrders orders={allOrders} />}
+      {retrieveUsers && <AllUsers users={retrieveUsers} retrieveAllUsers={handleRetrieveAllUsers} />}
+      {newUser && <NewUser />}
     </section>
+    {message && <Modal  message={message} showModal={handleModal}/>}
+    {error && <Modal  message={error} showModal={handleModal}/>}
 
   </>
 }
