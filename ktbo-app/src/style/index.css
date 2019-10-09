@@ -183,37 +183,58 @@ input {
   z-index: 10;
 }
 
-.superior {
-  background-color: #333333;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+@media screen and (min-width: 400px) {
+  .superior {
+    background-color: #333333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .superior__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 65%;
+  }
+  .superior__conditions {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-left: 10rem;
+  }
+  .superior__conditions--privacy, .superior__conditions--terms {
+    color: white;
+    text-decoration: none;
+    font-size: 0.8rem;
+  }
+  .superior__conditions--privacy:hover, .superior__conditions--terms:hover {
+    color: #f57b1f;
+  }
+  .superior__image {
+    max-width: 100px;
+    margin: 0.5rem 0 0.5rem 0;
+  }
 }
-.superior__container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 65%;
+@media screen and (min-width: 0px) and (max-width: 400px) {
+  .superior {
+    background-color: #333333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .superior__container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .superior__conditions--privacy, .superior__conditions--terms {
+    display: none;
+  }
+  .superior__image {
+    max-width: 100px;
+    margin: 0.5rem 0;
+  }
 }
-.superior__conditions {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  margin-left: 10rem;
-}
-.superior__conditions--privacy, .superior__conditions--terms {
-  color: white;
-  text-decoration: none;
-  font-size: 0.8rem;
-}
-.superior__conditions--privacy:hover, .superior__conditions--terms:hover {
-  color: #f57b1f;
-}
-.superior__image {
-  max-width: 100px;
-  margin: 0.5rem 0 0.5rem 0;
-}
-
 .footer {
   flex-direction: column;
   justify-content: center;
@@ -273,11 +294,10 @@ input {
 }
 .change-log__version {
   margin-top: 1rem;
-  padding: 1rem 1rem 1rem 1.5rem;
+  padding: 1rem 1.5rem 1rem 1.5rem;
   border-radius: 5px;
   background-color: rgba(245, 123, 31, 0.5);
   text-align: left;
-  margin-left: 1rem;
 }
 .change-log__version--title {
   margin: 0 0 1rem 0;
