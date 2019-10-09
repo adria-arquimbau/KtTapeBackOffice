@@ -346,6 +346,9 @@ input {
   justify-content: center;
   align-items: center;
 }
+.login__form input::placeholder {
+  color: white;
+}
 .login__form--button {
   width: 5rem;
   background-color: #f57b1f;
@@ -570,10 +573,9 @@ input {
 }
 
 .feedback {
-  border: 1px solid;
   text-align: center;
-  border-color: #f57b1f;
   padding: 0.3rem;
+  color: #333333;
 }
 .feedback--error {
   color: red;
@@ -744,6 +746,7 @@ input {
   background-color: rgba(51, 51, 51, 0.1);
 }
 .myAccount__update-user--form button {
+  margin: 0;
   margin-top: 1rem;
 }
 
@@ -824,105 +827,53 @@ input {
   border-width: 1px;
 }
 
-.adminMain {
+.admin-main {
   display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  width: 100vw;
 }
-.adminMain h1 {
+.admin-main__admin-panel {
+  min-width: 7.3125rem;
+  padding: 1rem 2rem 0rem 2rem;
+  margin: 0;
+  flex-direction: column;
+  background-color: #333333;
+  min-height: 100vh;
+  height: auto;
+}
+.admin-main__admin-panel h1 {
+  color: white;
+}
+.admin-main__admin-panel--buttons {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  margin-top: 2rem;
+}
+.admin-main__admin-panel--buttons button {
+  margin-left: 0;
+  margin-right: 0;
+  border-radius: 0;
+  background-color: #333333;
+  color: #f57b1f;
+  border-top: 1px solid #f57b1f;
+  text-align: left;
+}
+.admin-main__content {
   color: #333333;
-}
-.adminMain input {
-  margin-top: 1rem;
-  border: 0;
-  background-color: rgba(51, 51, 51, 0.1);
-}
-
-.adminPanel {
+  width: 100vw;
+  display: flex;
   margin: 1rem;
-  display: flex;
   justify-content: center;
-  flex-direction: column;
-}
-.adminPanel__buttons {
-  margin-top: 1rem;
-  display: flex;
-}
-.adminPanel__buttons button {
-  border: 0;
-}
-
-.myOrdersAdmin__order {
-  margin-top: 3rem;
-  grid-template-columns: 800px 300px;
-  grid-row-gap: 1px;
-  grid-column-gap: 9px;
-  display: grid;
-  text-align: left;
-  -webkit-transform: perspective(1px) translateZ(0);
-  transform: perspective(1px) translateZ(0);
-  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
-  position: relative;
-  overflow: hidden;
-}
-.myOrdersAdmin__order:before {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  left: 51%;
-  right: 51%;
-  top: 0;
-  background: #f57b1f;
-  height: 4px;
-  -webkit-transition-property: left, right;
-  transition-property: left, right;
-  -webkit-transition-duration: 0.3s;
-  transition-duration: 0.3s;
-  -webkit-transition-timing-function: ease-out;
-  transition-timing-function: ease-out;
-}
-.myOrdersAdmin__order:hover:before, .myOrdersAdmin__order:focus:before, .myOrdersAdmin__order:active:before {
-  left: 0;
-  right: 0;
-}
-.myOrdersAdmin__order:hover {
-  position: relative;
-  z-index: 3;
-}
-.myOrdersAdmin__order--data {
-  margin: 0.5rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  text-align: left;
-}
-.myOrdersAdmin__order--data li {
-  margin-top: 0.4rem;
-}
-.myOrdersAdmin__order--buttons {
-  display: flex;
-}
-.myOrdersAdmin__order:hover .status__pending {
-  color: orange;
-  margin-left: 0.5rem;
-}
-.myOrdersAdmin__order:hover .status__closed {
-  color: red;
-  margin-left: 0.5rem;
 }
 
 .statusAdminOrder {
   display: flex;
 }
 .statusAdminOrder__pending {
-  color: #333333;
+  color: yellow;
   margin-left: 0.5rem;
 }
 .statusAdminOrder__closed {
-  color: #333333;
+  color: red;
   margin-left: 0.5rem;
 }
 
@@ -946,49 +897,156 @@ input {
   border-width: 1px;
 }
 
-.new-user {
+.admin-new-user {
   flex-direction: column;
-  justify-content: center;
-  text-align: center;
 }
-.new-user__title {
-  margin: 1rem;
-  color: #333333;
-}
-.new-user__register {
+.admin-new-user__form {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
 }
-.new-user__form {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-.new-user__form input, .new-user__form button, .new-user__form select {
-  margin: 0.5rem;
-}
-.new-user__form input {
-  margin-top: 1rem;
+.admin-new-user__form input {
+  margin-top: 0.5rem;
   border: 0;
   background-color: rgba(51, 51, 51, 0.1);
-}
-.new-user__result {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   color: #333333;
+}
+.admin-new-user__form input::placeholder {
+  color: #333333;
+}
+.admin-new-user__form select {
+  margin-top: 0.5rem;
+}
+.admin-new-user__form button {
+  margin: 0;
+  margin-top: 0.5rem;
+}
+
+button {
+  background: #f57b1f;
+  border-color: rgba(51, 51, 51, 0.6);
+  border-radius: 2px;
+  padding: 7px;
+  margin: 5px;
+  border: 0;
+}
+
+button:hover {
+  background-color: rgba(245, 123, 31, 0.5);
+  color: white;
+}
+
+input {
+  padding: 7px;
+  border-radius: 2px;
+  border-width: 1px;
+}
+
+.admin-retrieve-all-orders {
+  flex-direction: column;
+}
+.admin-retrieve-all-orders__each-order {
+  border-top: 1px solid #f57b1f;
+  display: flex;
+  margin-top: 1rem;
+}
+.admin-retrieve-all-orders__each-order--company {
+  padding: 0.5rem;
+}
+.admin-retrieve-all-orders__each-order--company li {
+  margin-bottom: 0.2rem;
+}
+.admin-retrieve-all-orders__each-order--articles {
+  padding: 1rem;
   margin: 1rem;
-  background-color: rgba(255, 255, 255, 0.5);
 }
-.new-user__result ul {
-  margin: 0.5rem;
+.admin-retrieve-all-orders__each-order--article {
+  display: grid;
+  grid-template-columns: minmax(auto, 120px) minmax(auto, 270px) minmax(auto, 110px) minmax(auto, 120px) minmax(auto, 150px);
+  grid-auto-flow: dense;
+  padding: 0.5rem;
 }
-.new-user__result ul li {
-  margin: 0.5rem;
+.admin-retrieve-all-orders__each-order--article li {
+  margin-right: 0.2rem;
+}
+
+button {
+  background: #f57b1f;
+  border-color: rgba(51, 51, 51, 0.6);
+  border-radius: 2px;
+  padding: 7px;
+  margin: 5px;
+  border: 0;
+}
+
+button:hover {
+  background-color: rgba(245, 123, 31, 0.5);
+  color: white;
+}
+
+input {
+  padding: 7px;
+  border-radius: 2px;
+  border-width: 1px;
+}
+
+.admin-retrieve-pending-orders {
+  flex-direction: column;
+}
+.admin-retrieve-pending-orders__each-order {
+  border-top: 1px solid #f57b1f;
+  display: flex;
+  margin-top: 1rem;
+}
+.admin-retrieve-pending-orders__each-order--buttons button {
+  margin: 0;
+  width: 100%;
+  margin-top: 0.5rem;
+}
+.admin-retrieve-pending-orders__each-order--company {
+  padding: 0.5rem;
+}
+.admin-retrieve-pending-orders__each-order--company li {
+  margin-bottom: 0.2rem;
+}
+.admin-retrieve-pending-orders__each-order--articles {
+  padding: 1rem;
+  margin: 1rem;
+}
+.admin-retrieve-pending-orders__each-order--article {
+  display: grid;
+  grid-template-columns: minmax(auto, 120px) minmax(auto, 270px) minmax(auto, 110px) minmax(auto, 120px) minmax(auto, 150px);
+  grid-auto-flow: dense;
+  padding: 0.5rem;
+}
+.admin-retrieve-pending-orders__each-order--article li {
+  margin-right: 0.2rem;
+}
+
+button {
+  background: #f57b1f;
+  border-color: rgba(51, 51, 51, 0.6);
+  border-radius: 2px;
+  padding: 7px;
+  margin: 5px;
+  border: 0;
+}
+
+button:hover {
+  background-color: rgba(245, 123, 31, 0.5);
+  color: white;
+}
+
+input {
+  padding: 7px;
+  border-radius: 2px;
+  border-width: 1px;
+}
+
+.admin-retrieve-users__each-user {
+  margin-top: 1rem;
+}
+.admin-retrieve-users__each-user li {
+  margin-top: 0.5rem;
 }
 
 button {

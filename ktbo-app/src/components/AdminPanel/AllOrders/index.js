@@ -5,26 +5,29 @@ import Moment from 'react-moment'
 
 function ResultOrders({ orders }) {
 
-    return <>
-        <section className="myOrders">
+    return <section className="admin-retrieve-all-orders">
 
             {orders && orders.map(order =>{                
                 const {state, date, owner, items} = order
                 let totalPrice = 0
 
-                return <section className="myOrdersAdmin__order" >
-                    <ul key={items.id} className="myOrders__orderCont--items">{items.map(item =>{
-                        const totalItem = item.article.price * item.quantity
-                        totalPrice += totalItem
-                        return <ul key={item.article.title} className="myOrders__order--items">
-                            <li>Ref: {item.article.ref}</li>
-                            <li>{item.article.title}</li>
-                            <li>{item.quantity} units</li>
-                            <li>{item.article.price} €</li>
-                            <li>Total: {totalItem.toFixed(2)} €</li>
-                            </ul>
-                    })}</ul>
-                    <ul className="myOrdersAdmin__order--data">
+                return <section className="admin-retrieve-all-orders__each-order" >
+
+                    <section className="admin-retrieve-all-orders__each-order-articles">
+                        {items.map(item =>{
+                            const totalItem = item.article.price * item.quantity
+                            totalPrice += totalItem
+                            return <ul className="admin-retrieve-all-orders__each-order--article" key={item.article.title}>
+                                <li>Ref: {item.article.ref}</li>
+                                <li>{item.article.title}</li>
+                                <li>{item.quantity} units</li>
+                                <li>{item.article.price} €</li>
+                                <li>Total: {totalItem.toFixed(2)} €</li>
+                                </ul>
+                        })}
+                    </section>
+
+                    <ul className="admin-retrieve-all-orders__each-order--company">
                         <li className="statusAdminOrder"><p>State:</p> <p className={`status__${state}`}>{state.toUpperCase()}</p></li>
                         <li>Date: <Moment format="YYYY-MM-DD HH:mm">{date}</Moment></li>
                         <li>Company: {owner.company}</li>
@@ -35,7 +38,6 @@ function ResultOrders({ orders }) {
                 </section>
             })}
         </section>
-    </>
 }
 
 export default withRouter(ResultOrders)

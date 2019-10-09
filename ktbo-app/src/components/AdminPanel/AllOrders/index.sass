@@ -1,0 +1,28 @@
+@import ../../../style/config.sass
+
+.admin-retrieve-all-orders
+    flex-direction: column
+
+    &__each-order
+        border-top: 1px solid $primary-color
+        display: flex
+        margin-top: 1rem
+            
+    &__each-order--company
+        padding: 0.5rem
+
+        li
+            margin-bottom: 0.2rem
+
+    &__each-order--articles
+        padding: 1rem
+        margin: 1rem
+
+    &__each-order--article
+        display: grid
+        grid-template-columns:  minmax(auto, 120px) minmax(auto, 270px) minmax(auto, 110px) minmax(auto, 120px) minmax(auto, 150px)
+        grid-auto-flow: dense
+        padding: 0.5rem
+
+        li
+            margin-right: 0.2rem

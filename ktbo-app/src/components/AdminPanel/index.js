@@ -5,8 +5,10 @@ import logic from '../../logic'
 import AllPendingOrders from './AllPendingOrders'
 import AllOrders from './AllOrders'
 import AllUsers from './AllUsers'
+import NewUser from './NewUser'
 import './index.sass'
 import Modal from '../Modal'
+import Feedback from '../Feedback'
 import Context from '../Context'
 
 function AdminPanel({history}) {
@@ -18,6 +20,7 @@ function AdminPanel({history}) {
   const [orders, setOrders] = useState()
   const [allOrders, setAllOrders] = useState()
   const [retrieveUsers, setRetrieveUsers] = useState()
+  const [newUser, setNewUser] = useState()
 
   useEffect(() => {
     setCat()
@@ -26,8 +29,10 @@ function AdminPanel({history}) {
   async function handlePendingOrders() {
     
       try {
+        setError()
         setAllOrders()
         setRetrieveUsers()
+        setNewUser()
         const {orders} = await logic.retrievePendingOrders()
         setOrders(orders)
       } catch ({message}) {
@@ -38,8 +43,10 @@ function AdminPanel({history}) {
 
   async function handleAllOrders() {
       try {
+        setError()
         setOrders()
         setRetrieveUsers()
+        setNewUser()
         const orders = await logic.retrieveAllOrders()
         setAllOrders(orders)
       } catch ({message}) {
@@ -48,13 +55,19 @@ function AdminPanel({history}) {
   }
 
   function handleRegisterNewUser () {
-    history.push('/home/admin-panel/new-user')
+    setError()
+    setOrders()
+    setRetrieveUsers()
+    setAllOrders()
+    setNewUser("new-user")
   }
 
   async function handleRetrieveAllUsers () {
       try {
+        setError()
         setAllOrders()
         setOrders()
+        setNewUser()
         const users = await logic.retrieveAllUsers()
         setRetrieveUsers(users)
       } catch ({message}) {
@@ -69,26 +82,25 @@ function AdminPanel({history}) {
     
   return <>
 
-    <section className="adminMain">
-      <section className="adminPanel">
+    <section className="admin-main">
+      <section className="admin-main__admin-panel">
         <h1>ADMIN PANEL</h1>
-        <div className="adminPanel__buttons">
-          <button onClick={handlePendingOrders}>Retrieve all PENDING orders</button>
-          <button onClick={handleAllOrders}>Retrieve all ORDERS</button>
-          <button onClick={handleRegisterNewUser}>Register new User</button>
+        <div className="admin-main__admin-panel--buttons">
+          <button onClick={handlePendingOrders}>Pending orders</button>
+          <button onClick={handleAllOrders}>All orders</button>
+          <button onClick={handleRegisterNewUser}>New User</button>
           <button onClick={handleRetrieveAllUsers}>Retrieve all users</button>
         </div>
       </section>
-      <section>
-        <ul>          
-          {orders && <AllPendingOrders orders={orders}   retrievePendingOrders={handlePendingOrders}/>}
-          {allOrders  && <AllOrders orders={allOrders} />}
-          {retrieveUsers && <AllUsers users={retrieveUsers} retrieveAllUsers={handleRetrieveAllUsers} />}
-        </ul>
-      </section>
-      {message && <Modal  message={message} showModal={handleModal}/>}
-      {error && <Modal  message={error} showModal={handleModal}/>}
+      <section className="admin-main__content">
+        {error && <Feedback  message={error} />}
+        {orders && <AllPendingOrders orders={orders}   retrievePendingOrders={handlePendingOrders}/>}
+        {allOrders  && <AllOrders orders={allOrders} />}
+        {retrieveUsers && <AllUsers users={retrieveUsers} retrieveAllUsers={handleRetrieveAllUsers} />}
+        {newUser && <NewUser />}
+      </section> 
     </section>
+    {message && <Modal  message={message} showModal={handleModal}/>}
 
   </>
 }

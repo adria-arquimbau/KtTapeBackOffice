@@ -1,46 +1,24 @@
 @import ../../../style/config.sass
 
-.new-user
+.admin-new-user
     flex-direction: column
-    justify-content: center
-    text-align: center
 
-    &__title
-        margin: 1rem
-        color: $secondary-color
-
-    &__register
-        display: flex
-        flex-direction: column
-        justify-content: center
-        align-items: center
-    
     &__form
         display: flex
         flex-direction: column
-        justify-content: center
-        align-items: center
-
-        input, button, select
-            margin: 0.5rem
 
         input
-            margin-top: 1rem
+            margin-top: 0.5rem
             border: 0
             background-color: rgba($secondary-color, 0.1)
+            color: $secondary-color
+        
+        input::placeholder
+            color: $secondary-color
 
+        select
+            margin-top: 0.5rem
 
-    &__result
-        display: flex
-        flex-direction: column
-        justify-content: center
-        align-items: center
-        color: $secondary-color
-        margin: 1rem
-        background-color: rgba(255,255,255,0.5)
-
-        ul
-            margin: 0.5rem
-
-            li
-                margin: 0.5rem
+        button
+            margin: 0
+            margin-top: 0.5rem
