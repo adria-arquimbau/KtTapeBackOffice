@@ -1,10 +1,9 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, {useState} from 'react'
-import { withRouter } from 'react-router-dom'
 import Modal from '../../Modal'
 import logic from '../../../logic'
 
-function NewUser({history}) {
+function NewUser() {
 
     const [error, setError] = useState()
     const [message, setMessage] = useState()
@@ -41,10 +40,6 @@ function NewUser({history}) {
         setError(null)
     }
 
-    function handleGoBack() {
-        history.push('/home/admin-panel')
-    }
-
     return <>
         <section className="new-user">
                 <h1 className="new-user__title">Register a new client</h1>
@@ -60,7 +55,7 @@ function NewUser({history}) {
                     </select>
                     <button>Register a new client</button>
                 </form>
-                <button onClick={handleGoBack} >Go Back</button>
+
             </section>
             <section className="new-user__result">
                 {newUser && <ul>
@@ -77,4 +72,4 @@ function NewUser({history}) {
     </>
 }
 
-export default withRouter(NewUser)
+export default NewUser

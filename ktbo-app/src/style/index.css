@@ -825,10 +825,6 @@ input {
 }
 
 .adminMain {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
   text-align: center;
   width: 100vw;
 }
@@ -843,13 +839,11 @@ input {
 
 .adminPanel {
   margin: 1rem;
-  display: flex;
-  justify-content: center;
   flex-direction: column;
 }
 .adminPanel__buttons {
   margin-top: 1rem;
-  display: flex;
+  flex-direction: column;
 }
 .adminPanel__buttons button {
   border: 0;
