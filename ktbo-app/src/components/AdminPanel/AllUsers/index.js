@@ -39,27 +39,27 @@ function RetrieveAllUsers({ users, retrieveAllUsers }) {
         setError(null)
     }
     
-    return <>
+    return <section className="admin-retrieve-users">
 
-        <section className="admin-panel-content">
             {users && users.user.map(user => {
-                const {company, country, email, role, id} = user
-                return <ul key={id}>
+                const {company, country, email, role, id, cart} = user
+                return <ul className="admin-retrieve-users__each-user" key={id}>
                         <li>Company: {company}</li>
                         <li>Country: {country}</li>
                         <li>Email: {email}</li>
                         <li>Role: {role}</li>
+                        <li>On cart articles: {cart.length}</li>
                         <form onSubmit={hanldeSubmit}>
                             <input placeholder="Your Password" type="password" name="password"/>
                             <input hidden type="text" name="id" value={id} />
                             <button>Delete User</button>
                         </form>
-                </ul>
+                    </ul>
             })}
-        </section>
+       
         {message && <Modal  message={message} showModal={handleModal}/>}
         {error && <Modal  message={error} showModal={handleModal}/>}
-    </>
+    </section>
 }
 
 export default withRouter(RetrieveAllUsers)

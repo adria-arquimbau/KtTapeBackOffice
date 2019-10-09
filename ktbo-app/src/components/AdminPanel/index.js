@@ -8,6 +8,7 @@ import AllUsers from './AllUsers'
 import NewUser from './NewUser'
 import './index.sass'
 import Modal from '../Modal'
+import Feedback from '../Feedback'
 import Context from '../Context'
 
 function AdminPanel({history}) {
@@ -28,6 +29,7 @@ function AdminPanel({history}) {
   async function handlePendingOrders() {
     
       try {
+        setError()
         setAllOrders()
         setRetrieveUsers()
         setNewUser()
@@ -41,6 +43,7 @@ function AdminPanel({history}) {
 
   async function handleAllOrders() {
       try {
+        setError()
         setOrders()
         setRetrieveUsers()
         setNewUser()
@@ -52,6 +55,7 @@ function AdminPanel({history}) {
   }
 
   function handleRegisterNewUser () {
+    setError()
     setOrders()
     setRetrieveUsers()
     setAllOrders()
@@ -60,6 +64,7 @@ function AdminPanel({history}) {
 
   async function handleRetrieveAllUsers () {
       try {
+        setError()
         setAllOrders()
         setOrders()
         setNewUser()
@@ -86,14 +91,16 @@ function AdminPanel({history}) {
           <button onClick={handleRegisterNewUser}>New User</button>
           <button onClick={handleRetrieveAllUsers}>Retrieve all users</button>
         </div>
-      </section>       
-      {orders && <AllPendingOrders orders={orders}   retrievePendingOrders={handlePendingOrders}/>}
-      {allOrders  && <AllOrders orders={allOrders} />}
-      {retrieveUsers && <AllUsers users={retrieveUsers} retrieveAllUsers={handleRetrieveAllUsers} />}
-      {newUser && <NewUser />}
+      </section>
+      <section className="admin-main__content">
+        {error && <Feedback  message={error} />}
+        {orders && <AllPendingOrders orders={orders}   retrievePendingOrders={handlePendingOrders}/>}
+        {allOrders  && <AllOrders orders={allOrders} />}
+        {retrieveUsers && <AllUsers users={retrieveUsers} retrieveAllUsers={handleRetrieveAllUsers} />}
+        {newUser && <NewUser />}
+      </section> 
     </section>
     {message && <Modal  message={message} showModal={handleModal}/>}
-    {error && <Modal  message={error} showModal={handleModal}/>}
 
   </>
 }

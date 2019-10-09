@@ -40,9 +40,9 @@ function NewUser() {
         setError(null)
     }
 
-    return <>
-        <section className="admin-panel-content">
-                <form className="admin-panel-content__form" onSubmit={handleSubmitNewUser}>  
+    return <section className="admin-new-user">
+
+                <form className="admin-new-user__form" onSubmit={handleSubmitNewUser}>  
                         <input placeholder="Company" type="text" name="company" value={_company} onChange={event => setCompany(event.target.value) }/>
                         <input placeholder="Country" type="text" name="country" value={_country} onChange={event => setCountry(event.target.value) } />
                         <input placeholder="e-mail" type="text" name="email" value={_email} onChange={event => setEmail(event.target.value) } />
@@ -54,8 +54,7 @@ function NewUser() {
                     <button>Register a new client</button>
                 </form>
 
-            </section>
-            <section className="admin-panel-content__result">
+            <section >
                 {newUser && <ul>
                     <h2>New User</h2>
                     <li>Company: {newUser.company}</li>
@@ -66,7 +65,7 @@ function NewUser() {
             </section>
             {message && <Modal  message={message} showModal={handleModal}/>}
             {error && <Modal  message={error} showModal={handleModal}/>}
-    </>
+        </section>
 }
 
 export default NewUser

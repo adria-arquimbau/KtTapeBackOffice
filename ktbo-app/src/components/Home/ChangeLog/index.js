@@ -16,6 +16,18 @@ function ChangeLog() {
       <section className="change-log__all-logs">
 
       <section className="change-log__version">
+          <h2 className="change-log__version--title">0.11.0 - 9/10/2019</h2>
+          <section>
+            <ul>
+              <li>New design of Admin Panel</li>
+              <li>Delete individual url for register user and brought to the admin panel</li>
+              <li>Add information of actual cart of each user on Admin Panel Retrieve All Users</li>
+              <li>Create one sass file for each admin panel function with his correctly BEM</li>
+            </ul>
+          </section>
+        </section>
+
+      <section className="change-log__version">
           <h2 className="change-log__version--title">0.10.1 - 9/10/2019</h2>
           <section>
             <ul>
