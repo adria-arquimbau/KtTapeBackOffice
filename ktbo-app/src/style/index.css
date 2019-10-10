@@ -147,6 +147,9 @@ input {
   display: block;
 }
 
+.dropdown-content__text {
+  font-size: 14px;
+}
 .dropdown-content ul {
   padding: 0.5rem;
 }

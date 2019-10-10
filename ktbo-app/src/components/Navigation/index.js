@@ -80,41 +80,41 @@ function Navigation({ history, onSearch }) {
                     <button className="dropbtn" >Categories<i className="fa fa-caret-down"></i></button>
                     <div className="dropdown-content">
                         <ul>
-                                    <li><a href="#" onClick={event => { event.preventDefault() 
+                                    <li><a className="dropdown-content__text" href="#" onClick={event => { event.preventDefault() 
                             const category = "KTTape Pro Precut"
                             onCategory(category) }}>Pro Precut</a></li>
-                                    <li><a href="#" onClick={event => { event.preventDefault() 
+                                    <li><a className="dropdown-content__text" href="#" onClick={event => { event.preventDefault() 
                             const category = "KTTape Pro Uncut" 
                             onCategory(category) }}>Pro Uncut</a></li>
-                                    <li><a href="#" onClick={event => { event.preventDefault() 
+                                    <li><a className="dropdown-content__text" href="#" onClick={event => { event.preventDefault() 
                             const category = "KTTape Pro Limited Edition" 
                             onCategory(category) }}>Pro Limited Edition</a></li>
-                                    <li><a href="#" onClick={event => { event.preventDefault() 
+                                    <li><a className="dropdown-content__text" href="#" onClick={event => { event.preventDefault() 
                             const category = "KTTape Pro Jumbo Precut" 
                             onCategory(category) }}>Pro Jumbo Precut</a></li>
-                            <li><a href="#" onClick={event => { event.preventDefault() 
+                            <li><a className="dropdown-content__text" href="#" onClick={event => { event.preventDefault() 
                             const category = "KTTape Pro Jumbo Uncut" 
                             onCategory(category) }}>Pro Jumbo Uncut</a></li>
                         </ul>
                         <ul>
-                                    <li><a href="#" onClick={event => { event.preventDefault()  
+                                    <li><a className="dropdown-content__text" href="#" onClick={event => { event.preventDefault()  
                         const category = "KTTape Original Precut"  
                             onCategory(category) }}>Original Precut</a></li>
-                                    <li><a href="#" onClick={event => { event.preventDefault() 
+                                    <li><a className="dropdown-content__text" href="#" onClick={event => { event.preventDefault() 
                         const category = "KTTape Original Uncut" 
                             onCategory(category) }}>Original Uncut</a></li>
-                                    <li><a href="#" onClick={event => { event.preventDefault() 
+                                    <li><a className="dropdown-content__text" href="#" onClick={event => { event.preventDefault() 
                         const category = "KTTape Original Jumbo Precut" 
                             onCategory(category) }}>Original Jumbo Precut</a></li>
-                                    <li><a href="#" onClick={event => { event.preventDefault() 
+                                    <li><a className="dropdown-content__text" href="#" onClick={event => { event.preventDefault() 
                         const category = "KTTape Original Jumbo Uncut" 
                             onCategory(category) }}>Original Jumbo Uncut</a></li>
-                            <li><a href="#" onClick={event => { event.preventDefault() 
+                            <li><a className="dropdown-content__text" href="#" onClick={event => { event.preventDefault() 
                         const category = "KTTape Original Jumbo Edema" 
                         onCategory(category) }}>Original Jumbo Edema</a></li>
                         </ul>
                         <ul> 
-                                    <li><a className="categoriesCont__otherProducts" href="#" onClick={event => { event.preventDefault() 
+                                    <li><a className="dropdown-content__text" className="categoriesCont__otherProducts" href="#" onClick={event => { event.preventDefault() 
                         const category = "Other Products" 
                         onCategory(category) }}>Other Products</a></li>
                         </ul>
@@ -128,11 +128,11 @@ function Navigation({ history, onSearch }) {
                 {user &&<div className="dropdown">
                     <button className="dropbtn" >Hello, {user.company}<i className="fa fa-caret-down"></i></button>
                     <div className="dropdown-content">
-                        <a className="navigation__li--anchor" href="#" onClick={event => { event.preventDefault() 
+                        <a className="dropdown-content__text navigation__li--anchor" href="#" onClick={event => { event.preventDefault() 
                                 handleMyAccount() }}>My Account</a>
-                        {admin && <a className="navigation__li--anchor" href="#" onClick={event => { event.preventDefault() 
+                        {admin && <a className="dropdown-content__text navigation__li--anchor" href="#" onClick={event => { event.preventDefault() 
                                 handleAdminPanel() }}>Admin Panel</a>}
-                        <a className="navigation__li--anchor" href="" onClick={handleLogout}>Logout</a>
+                        <a className="dropdown-content__text navigation__li--anchor" href="" onClick={handleLogout}>Logout</a>
                     </div>
                 </div>}
                 {cartNumber && cartNumber.length > 0 && <li className="navigation__li"><a className="navigation__li--anchor" href="#" onClick={event => { event.preventDefault() 
