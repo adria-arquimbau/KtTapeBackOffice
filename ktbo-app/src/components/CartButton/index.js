@@ -11,16 +11,10 @@ function CartButton({ articleId, handleAddToCart }) {
         setQuantity("")
     }
 
-    return <>
-        <form onSubmit={handleSubmit}>
-            <button className="cartButton">Add</button>
-            <input className="cartButton__input" type="number" name="quantity" placeholder="quantity" value={quantity} onChange={event => setQuantity(event.target.value) } />
+    return <form className="cartbutton-form" onSubmit={handleSubmit}>
+            <input className="cartbutton-form__input" type="number" name="quantity" placeholder="1" value={quantity} onChange={event => setQuantity(event.target.value) } />
+            <button className="cartbutton-form__button">Add</button>
         </form>
-
-        <section className="cartButton__feedback">
-        </section>
-
-    </>
 }
 
 export default CartButton

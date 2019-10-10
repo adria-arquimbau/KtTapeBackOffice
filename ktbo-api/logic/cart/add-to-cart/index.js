@@ -20,7 +20,7 @@ module.exports = function(userId, articleId, quantity) {
     
     return (async () => {
 
-        if(quantity === 0) quantity = 1
+        if(quantity <= 0) quantity = 1
 
         const res = await User.findById(userId)
         if (!res) throw Error(`User with id ${userId} does not exist`)

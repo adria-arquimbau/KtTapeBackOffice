@@ -7,13 +7,11 @@
 .searchResult
     display: flex
     flex-wrap: wrap
-    width: 70vw
+    width: 85vw
     padding-bottom: 4rem
-    text-align: left
     justify-content: center
 
     input
-        margin-top: 1rem
         border: 0
         background-color: rgba($secondary-color, 0.1)
 
@@ -25,22 +23,25 @@
 
     h4
         width: 100vw
-        margin-top: 3rem
+        margin: 2rem 0
         text-align: center
         color: $secondary-color
 
     &__article
+        display: flex
+        flex-direction: column
+        justify-content: space-between
+        align-items: center
         margin: 20px
         padding: 5px   
-        display: inline-block
-        vertical-align: middle
         -webkit-transform: perspective(1px) translateZ(0)
         transform: perspective(1px) translateZ(0)
         box-shadow: 0 0 1px rgba(0, 0, 0, 0)
-        position: relative
         overflow: hidden
+        height: 350px
+        width: 240px
 
-    &__article:before 
+    &__article::before 
         content: ""
         position: absolute
         z-index: -1
@@ -65,19 +66,69 @@
         z-index: 3
             
     &__article--param
+        padding-top: 0.3rem
+        display: flex
+        justify-content: center
         color: $secondary-color
+
+    &__out-of-stock
+        display: flex
+        align-items: center
+        justify-content: center
+        margin-top: 0.60rem
+
+        h3
+            padding: 7px
+            margin: 5px
+            color: $primary-color
 
     &__on-cart
         margin-top: 0.60rem
         display: flex
-        align-items: center
-        justify-content: space-around
-
-    &__out-of-stock
-        margin-top: 1.36rem
-        display: flex
-        align-items: center
         justify-content: center
+        height: 37px
 
     &__on-cart--text
         color: $primary-color
+        margin: 5px
+        padding: 7px
+        align-items: center
+        margin-right: 0.25rem
+        text-align: center
+        font-size: 16px
+
+    &__on-cart--button
+        cursor: pointer
+        margin: 5px
+        padding: 7px
+        align-items: center
+        margin-left: 0.25rem
+        width: 6.392rem
+        background-color: $secondary-color
+        color: $primary-color
+
+    &__on-cart--button:hover
+        background-color: rgba($secondary-color, 0.5)
+
+.cartbutton-form
+    margin-top: 0.60rem
+    display: flex
+    justify-content: center
+    height: 37px
+
+    &__input
+        margin: 5px
+        padding: 7px
+        width: 3.3125rem
+        align-items: center
+        margin-right: 0.25rem
+        text-align: center
+        font-size: 16px
+               
+    &__button
+        cursor: pointer
+        margin: 5px
+        padding: 7px
+        align-items: center
+        margin-left: 0.25rem
+        width: 6.392rem
