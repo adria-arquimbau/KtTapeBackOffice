@@ -932,6 +932,9 @@ input {
   border-top: 1px solid #f57b1f;
   text-align: left;
 }
+.admin-main__admin-panel--buttons button:hover {
+  cursor: pointer;
+}
 .admin-main__content {
   color: #333333;
   width: 100vw;
@@ -976,6 +979,7 @@ input {
   flex-direction: column;
 }
 .admin-new-user__form {
+  margin-top: 1rem;
   display: flex;
   flex-direction: column;
 }
@@ -994,6 +998,16 @@ input {
 .admin-new-user__form button {
   margin: 0;
   margin-top: 0.5rem;
+}
+.admin-new-user__user {
+  margin-top: 1rem;
+}
+.admin-new-user__user ul {
+  border-top: 1px solid #f57b1f;
+}
+.admin-new-user__user h2 {
+  margin: 1rem 0;
+  text-align: center;
 }
 
 button {
@@ -1018,6 +1032,9 @@ input {
 
 .admin-retrieve-all-orders {
   flex-direction: column;
+}
+.admin-retrieve-all-orders h1 {
+  text-align: center;
 }
 .admin-retrieve-all-orders__each-order {
   border-top: 1px solid #f57b1f;
@@ -1067,6 +1084,9 @@ input {
 .admin-retrieve-pending-orders {
   flex-direction: column;
 }
+.admin-retrieve-pending-orders h1 {
+  text-align: center;
+}
 .admin-retrieve-pending-orders__each-order {
   border-top: 1px solid #f57b1f;
   display: flex;
@@ -1076,6 +1096,14 @@ input {
   margin: 0;
   width: 100%;
   margin-top: 0.5rem;
+}
+.admin-retrieve-pending-orders__each-order--button-remove button {
+  background-color: #333333;
+  color: #f57b1f;
+}
+.admin-retrieve-pending-orders__each-order--button-remove button:hover {
+  background-color: rgba(51, 51, 51, 0.5);
+  color: white;
 }
 .admin-retrieve-pending-orders__each-order--company {
   padding: 0.5rem;
@@ -1117,8 +1145,21 @@ input {
   border-width: 1px;
 }
 
+.admin-retrieve-users h1 {
+  text-align: center;
+}
 .admin-retrieve-users__each-user {
   margin-top: 1rem;
+  border-top: 1px solid #f57b1f;
+}
+.admin-retrieve-users__each-user input {
+  margin-top: 0.5rem;
+  border: 0;
+  background-color: rgba(51, 51, 51, 0.1);
+  color: #333333;
+}
+.admin-retrieve-users__each-user input::placeholder {
+  color: #333333;
 }
 .admin-retrieve-users__each-user li {
   margin-top: 0.5rem;

@@ -2,8 +2,21 @@
 
 .admin-retrieve-users
 
+    h1
+        text-align: center
+
     &__each-user
         margin-top: 1rem
+        border-top: 1px solid $primary-color
+
+        input
+            margin-top: 0.5rem
+            border: 0
+            background-color: rgba($secondary-color, 0.1)
+            color: $secondary-color
+        
+        input::placeholder
+            color: $secondary-color
 
         li
             margin-top: 0.5rem

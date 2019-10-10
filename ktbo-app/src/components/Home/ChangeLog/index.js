@@ -16,6 +16,18 @@ function ChangeLog() {
       <section className="change-log__all-logs">
 
       <section className="change-log__version">
+          <h2 className="change-log__version--title">0.12.0 - 10/10/2019</h2>
+          <section>
+            <ul>
+              <li>Changed Placeholder of input to add quantity to cart for "1"</li>
+              <li>Added conditional to API if quantioty to add to cart is less than 0 change quantity to 1</li>
+              <li>Improved and customized buttons, inputs and text to add and remove on cart article</li>
+              <li>Customized styles of each function of Admin Panel</li>
+            </ul>
+          </section>
+        </section>
+
+      <section className="change-log__version">
           <h2 className="change-log__version--title">0.11.0 - 9/10/2019</h2>
           <section>
             <ul>
