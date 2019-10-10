@@ -24,7 +24,7 @@ Demo user:
 ---
 Admin can:
 
-0.7.3 (Actual Version)
+0.12.0 (Actual Version)
 + Check the all orders
 + Check pending orders and be able to mark them as made or pending
 + Remove pending orders
@@ -41,7 +41,7 @@ Admin can:
 
 Users can:
 
-0.7.3 (Actual version)
+0.12.0(Actual version)
 + Place online orders for each product with real stock.
 + Check your current order 
 + Update your user profile.
