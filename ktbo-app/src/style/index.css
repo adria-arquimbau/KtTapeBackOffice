@@ -27,6 +27,9 @@ input {
   justify-content: center;
   align-content: center;
 }
+.navigation button {
+  cursor: pointer;
+}
 .navigation__search--input {
   background-color: rgba(255, 255, 255, 0.5);
   border: 0;
@@ -635,13 +638,11 @@ input {
 .searchResult {
   display: flex;
   flex-wrap: wrap;
-  width: 70vw;
+  width: 85vw;
   padding-bottom: 4rem;
-  text-align: left;
   justify-content: center;
 }
 .searchResult input {
-  margin-top: 1rem;
   border: 0;
   background-color: rgba(51, 51, 51, 0.1);
 }
@@ -653,22 +654,25 @@ input {
 }
 .searchResult h4 {
   width: 100vw;
-  margin-top: 3rem;
+  margin: 2rem 0;
   text-align: center;
   color: #333333;
 }
 .searchResult__article {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
   margin: 20px;
   padding: 5px;
-  display: inline-block;
-  vertical-align: middle;
   -webkit-transform: perspective(1px) translateZ(0);
   transform: perspective(1px) translateZ(0);
   box-shadow: 0 0 1px rgba(0, 0, 0, 0);
-  position: relative;
   overflow: hidden;
+  height: 350px;
+  width: 240px;
 }
-.searchResult__article:before {
+.searchResult__article::before {
   content: "";
   position: absolute;
   z-index: -1;
@@ -693,22 +697,73 @@ input {
   z-index: 3;
 }
 .searchResult__article--param {
+  padding-top: 0.3rem;
+  display: flex;
+  justify-content: center;
   color: #333333;
+}
+.searchResult__out-of-stock {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0.6rem;
+}
+.searchResult__out-of-stock h3 {
+  padding: 7px;
+  margin: 5px;
+  color: #f57b1f;
 }
 .searchResult__on-cart {
   margin-top: 0.6rem;
   display: flex;
-  align-items: center;
-  justify-content: space-around;
-}
-.searchResult__out-of-stock {
-  margin-top: 1.36rem;
-  display: flex;
-  align-items: center;
   justify-content: center;
+  height: 37px;
 }
 .searchResult__on-cart--text {
   color: #f57b1f;
+  margin: 5px;
+  padding: 7px;
+  align-items: center;
+  margin-right: 0.25rem;
+  text-align: center;
+  font-size: 16px;
+}
+.searchResult__on-cart--button {
+  cursor: pointer;
+  margin: 5px;
+  padding: 7px;
+  align-items: center;
+  margin-left: 0.25rem;
+  width: 6.392rem;
+  background-color: #333333;
+  color: #f57b1f;
+}
+.searchResult__on-cart--button:hover {
+  background-color: rgba(51, 51, 51, 0.5);
+}
+
+.cartbutton-form {
+  margin-top: 0.6rem;
+  display: flex;
+  justify-content: center;
+  height: 37px;
+}
+.cartbutton-form__input {
+  margin: 5px;
+  padding: 7px;
+  width: 3.3125rem;
+  align-items: center;
+  margin-right: 0.25rem;
+  text-align: center;
+  font-size: 16px;
+}
+.cartbutton-form__button {
+  cursor: pointer;
+  margin: 5px;
+  padding: 7px;
+  align-items: center;
+  margin-left: 0.25rem;
+  width: 6.392rem;
 }
 
 button {
@@ -877,6 +932,9 @@ input {
   border-top: 1px solid #f57b1f;
   text-align: left;
 }
+.admin-main__admin-panel--buttons button:hover {
+  cursor: pointer;
+}
 .admin-main__content {
   color: #333333;
   width: 100vw;
@@ -921,6 +979,7 @@ input {
   flex-direction: column;
 }
 .admin-new-user__form {
+  margin-top: 1rem;
   display: flex;
   flex-direction: column;
 }
@@ -939,6 +998,16 @@ input {
 .admin-new-user__form button {
   margin: 0;
   margin-top: 0.5rem;
+}
+.admin-new-user__user {
+  margin-top: 1rem;
+}
+.admin-new-user__user ul {
+  border-top: 1px solid #f57b1f;
+}
+.admin-new-user__user h2 {
+  margin: 1rem 0;
+  text-align: center;
 }
 
 button {
@@ -963,6 +1032,9 @@ input {
 
 .admin-retrieve-all-orders {
   flex-direction: column;
+}
+.admin-retrieve-all-orders h1 {
+  text-align: center;
 }
 .admin-retrieve-all-orders__each-order {
   border-top: 1px solid #f57b1f;
@@ -1012,6 +1084,9 @@ input {
 .admin-retrieve-pending-orders {
   flex-direction: column;
 }
+.admin-retrieve-pending-orders h1 {
+  text-align: center;
+}
 .admin-retrieve-pending-orders__each-order {
   border-top: 1px solid #f57b1f;
   display: flex;
@@ -1021,6 +1096,14 @@ input {
   margin: 0;
   width: 100%;
   margin-top: 0.5rem;
+}
+.admin-retrieve-pending-orders__each-order--button-remove button {
+  background-color: #333333;
+  color: #f57b1f;
+}
+.admin-retrieve-pending-orders__each-order--button-remove button:hover {
+  background-color: rgba(51, 51, 51, 0.5);
+  color: white;
 }
 .admin-retrieve-pending-orders__each-order--company {
   padding: 0.5rem;
@@ -1062,8 +1145,21 @@ input {
   border-width: 1px;
 }
 
+.admin-retrieve-users h1 {
+  text-align: center;
+}
 .admin-retrieve-users__each-user {
   margin-top: 1rem;
+  border-top: 1px solid #f57b1f;
+}
+.admin-retrieve-users__each-user input {
+  margin-top: 0.5rem;
+  border: 0;
+  background-color: rgba(51, 51, 51, 0.1);
+  color: #333333;
+}
+.admin-retrieve-users__each-user input::placeholder {
+  color: #333333;
 }
 .admin-retrieve-users__each-user li {
   margin-top: 0.5rem;

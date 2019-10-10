@@ -41,21 +41,23 @@ function RetrieveAllUsers({ users, retrieveAllUsers }) {
     
     return <section className="admin-retrieve-users">
 
-            {users && users.user.map(user => {
-                const {company, country, email, role, id, cart} = user
-                return <ul className="admin-retrieve-users__each-user" key={id}>
-                        <li>Company: {company}</li>
-                        <li>Country: {country}</li>
-                        <li>Email: {email}</li>
-                        <li>Role: {role}</li>
-                        <li>On cart articles: {cart.length}</li>
-                        <form onSubmit={hanldeSubmit}>
-                            <input placeholder="Your Password" type="password" name="password"/>
-                            <input hidden type="text" name="id" value={id} />
-                            <button>Delete User</button>
-                        </form>
-                    </ul>
-            })}
+        <h1>All users</h1>
+
+        {users && users.user.map(user => {
+            const {company, country, email, role, id, cart} = user
+            return <ul className="admin-retrieve-users__each-user" key={id}>
+                    <li>Company: {company}</li>
+                    <li>Country: {country}</li>
+                    <li>Email: {email}</li>
+                    <li>Role: {role}</li>
+                    <li>On cart articles: {cart.length}</li>
+                    <form onSubmit={hanldeSubmit}>
+                        <input placeholder="Your Password" type="password" name="password"/>
+                        <input hidden type="text" name="id" value={id} />
+                        <button>Delete User</button>
+                    </form>
+                </ul>
+        })}
        
         {message && <Modal  message={message} showModal={handleModal}/>}
         {error && <Modal  message={error} showModal={handleModal}/>}

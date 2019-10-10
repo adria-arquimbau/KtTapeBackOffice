@@ -3,6 +3,9 @@
 .admin-retrieve-pending-orders
     flex-direction: column
 
+    h1
+        text-align: center
+
     &__each-order
         border-top: 1px solid $primary-color
         display: flex
@@ -14,8 +17,19 @@
             margin: 0
             width: 100%
             margin-top: 0.5rem
-            
+    
+    &__each-order--button-remove
 
+        button
+            background-color: $secondary-color
+            color: $primary-color
+        
+        button:hover
+            background-color: rgba($secondary-color, 0.5)
+            color: white
+    
+    &__each-order--button-change
+            
     &__each-order--company
         padding: 0.5rem
 
