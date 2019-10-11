@@ -18,7 +18,7 @@ import ResultsCategories from '../Results/ResultsCategories'
 
 function Home({history}) {
 
-  const {cat, setCat} = useContext(Context)
+  const {cat} = useContext(Context)
   const {items, setItems} = useContext(Context)
   const {articles, setArticles} = useContext(Context)
 
@@ -40,20 +40,21 @@ function Home({history}) {
 
   async function handleCart() {
     try {
-      (async () => {
-        const { cart } = await logic.retrieveUser()
-        try{
-          if(cart) {
-            let items = await Promise.all(cart.map(item => logic.retrieveArticle(item.article)))
-            items = items.map( (item,index) => {
-            return { item, quantity: cart[index].quantity}
-          })
-          setItems(items)
-          } /* if(cart.length === 0) history.push('/home') */
-        }catch(error){
-          //TODO
-        }
-      })()
+
+      const { cart } = await logic.retrieveUser()
+
+      try{
+        if(cart) {
+          let items = await Promise.all(cart.map(item => logic.retrieveArticle(item.article)))
+          items = items.map( (item,index) => {
+          return { item, quantity: cart[index].quantity}
+        })
+        setItems(items)
+        } /* if(cart.length === 0) history.push('/home') */
+      }catch(error){
+        //TODO
+      }
+      
     } catch (error) {
       //TODO SetError(error)
     }
