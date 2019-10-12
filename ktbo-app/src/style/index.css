@@ -722,27 +722,28 @@ input {
 .searchResult__on-cart {
   margin-top: 0.6rem;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  align-items: center;
   height: 37px;
 }
 .searchResult__on-cart--text {
   color: #f57b1f;
   margin: 5px;
   padding: 7px;
-  align-items: center;
   margin-right: 0.25rem;
   text-align: center;
   font-size: 16px;
+  max-width: 4rem;
 }
 .searchResult__on-cart--button {
   cursor: pointer;
   margin: 5px;
   padding: 7px;
-  align-items: center;
   margin-left: 0.25rem;
   width: 8rem;
   background-color: #333333;
   color: #f57b1f;
+  height: 30px;
 }
 .searchResult__on-cart--button:hover {
   background-color: rgba(51, 51, 51, 0.5);
@@ -751,14 +752,14 @@ input {
 .cartbutton-form {
   margin-top: 0.6rem;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  align-items: center;
   height: 37px;
 }
 .cartbutton-form__input {
   margin: 5px;
   padding: 7px;
-  width: 3.3125rem;
-  align-items: center;
+  width: 4rem;
   margin-right: 0.25rem;
   text-align: center;
   font-size: 16px;
@@ -767,9 +768,9 @@ input {
   cursor: pointer;
   margin: 5px;
   padding: 7px;
-  align-items: center;
   margin-left: 0.25rem;
   width: 8rem;
+  height: 30px;
 }
 
 button {
