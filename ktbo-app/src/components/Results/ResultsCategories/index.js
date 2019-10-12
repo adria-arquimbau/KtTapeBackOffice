@@ -57,7 +57,13 @@ function ResultsCategories({ searchResult }) {
                         <li className="searchResult__article--param">Stock: {quantity} uds</li>
                         {quantity === 0 && <section className="searchResult__out-of-stock"><h3 className="searchResult__on-cart--text">Out of stock</h3></section>}
                         {!items.some(element => element.item.article.id === id) && logic.isUserLogged() && quantity > 0 && <CartButton handleAddToCart={handleAddToCart} articleId={id} stock={quantity}/>}
-                        {items.some(element => element.item.article.id === id) && <section className="searchResult__on-cart"><h3 className="searchResult__on-cart--text">On cart </h3><form onSubmit={handleDeleteOnCart}><button className="searchResult__on-cart--button">Remove from cart<input type="text" hidden name="articleId" defaultValue={id}></input></button></form></section>}
+                        {items.map(element => {
+
+                            return element.item.article.id === id && <section className="searchResult__on-cart">
+                                <h3 className="searchResult__on-cart--text">On cart {element.quantity}</h3>
+                                <form onSubmit={handleDeleteOnCart}><button className="searchResult__on-cart--button">Remove from cart<input type="text" hidden name="articleId" defaultValue={id}></input></button>
+                                </form>
+                            </section>})}                    
                     </ul>
                 })}
             </section>
