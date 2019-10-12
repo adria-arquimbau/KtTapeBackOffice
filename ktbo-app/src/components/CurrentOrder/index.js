@@ -19,20 +19,16 @@ function CurrentOrder({history}) {
 
   async function handleCart() {
     try {
-      (async () => {
-        const { cart } = await logic.retrieveUser()
-        try{
-          if(cart) {
-            let items = await Promise.all(cart.map(item => logic.retrieveArticle(item.article)))
-            items = items.map( (item,index) => {
-            return { item, quantity: cart[index].quantity}
-          })
-          setItems(items)
-          } /* if(cart.length === 0) history.push('/home') */
-        }catch(error){
-          //TODO
-        }
-      })()
+   
+      const { cart } = await logic.retrieveUser()
+        if(cart) {
+          let res = await Promise.all(cart.map(item => logic.retrieveArticle(item.article)))
+          res = res.map( (item,index) => {
+          return { item, quantity: cart[index].quantity}
+        })
+        setItems(res)
+        } /* if(cart.length === 0) history.push('/home') */
+   
     } catch (error) {
       //TODO SetError(error)
     }

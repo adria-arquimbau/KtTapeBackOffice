@@ -17,7 +17,7 @@ function Navigation({ history, onSearch }) {
     useEffect(() => {
         handleAdmin()
         handleNumberOrders()
-    },[cartNumber, user, cat])
+    },[cartNumber , user, cat])
     
     function handleHome() { history.push('/home') }
     function handleMyOrders() { history.push('/home/my-orders') }

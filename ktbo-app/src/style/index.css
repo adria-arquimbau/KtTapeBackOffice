@@ -733,7 +733,7 @@ input {
   margin-right: 0.25rem;
   text-align: center;
   font-size: 16px;
-  max-width: 3.5015625rem;
+  max-width: 4rem;
 }
 .searchResult__on-cart--button {
   cursor: pointer;
@@ -759,7 +759,7 @@ input {
 .cartbutton-form__input {
   margin: 5px;
   padding: 7px;
-  width: 3.3125rem;
+  width: 4rem;
   margin-right: 0.25rem;
   text-align: center;
   font-size: 16px;
