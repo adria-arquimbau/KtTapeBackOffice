@@ -23,6 +23,7 @@ function ChangeLog() {
               <li>Added conditional to API if quantioty to add to cart is less than 0 change quantity to 1</li>
               <li>Improved and customized buttons, inputs and text to add and remove on cart article</li>
               <li>Customized styles of each function of Admin Panel</li>
+              <li>Added number of quantity to cart in each article button of search</li>
             </ul>
           </section>
         </section>
