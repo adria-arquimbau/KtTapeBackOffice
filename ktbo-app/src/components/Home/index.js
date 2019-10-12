@@ -42,8 +42,6 @@ function Home({history}) {
     try {
 
       const { cart } = await logic.retrieveUser()
-
-      try{
         if(cart) {
           let items = await Promise.all(cart.map(item => logic.retrieveArticle(item.article)))
           items = items.map( (item,index) => {
@@ -51,9 +49,6 @@ function Home({history}) {
         })
         setItems(items)
         } /* if(cart.length === 0) history.push('/home') */
-      }catch(error){
-        //TODO
-      }
       
     } catch (error) {
       //TODO SetError(error)
