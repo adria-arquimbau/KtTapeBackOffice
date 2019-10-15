@@ -12,6 +12,7 @@ import Home from './Home'
 function App({ history }) {
 
   const [user, setUser] = useState()
+  const [interruptorItems, setInterruptorItems] = useState()
   const [goHome, setGoHome] = useState()
   const [cat, setCat] = useState()
   const [articles, setArticles] = useState()
@@ -40,7 +41,7 @@ function App({ history }) {
 
   return <>
 
-    <Context.Provider value={{ user, setUser, goHome, setGoHome, cat, setCat, articles, setArticles, items, setItems }} >
+    <Context.Provider value={{ user, setUser, goHome, setGoHome, cat, setCat, articles, setArticles, items, setItems, interruptorItems, setInterruptorItems }} >
       <div className="App">
       <Route exact path="/" render={() => logic.isUserLogged() ? history.push('/home') : <Landing /> }  />
       {user && <Route path="/home" render={() => logic.isUserLogged() ? <Home /> :  history.push('/')  } /> }   

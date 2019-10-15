@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { useState, useContext, useEffect } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { withRouter, Route } from 'react-router-dom'
 //import queryString from 'query-string'
 import logic from '../../logic'
@@ -19,12 +19,13 @@ import ResultsCategories from '../Results/ResultsCategories'
 function Home({history}) {
 
   const {cat} = useContext(Context)
-  const {items, setItems} = useContext(Context)
+  const {setItems} = useContext(Context)
+  const {interruptorItems} = useContext(Context)
   const {articles, setArticles} = useContext(Context)
 
   useEffect(() => {
     handleCart()
-  },[items])
+  },[interruptorItems])
   
   async function handleSearch(query) {
     if(query.length > 0){
@@ -48,7 +49,7 @@ function Home({history}) {
           return { item, quantity: cart[index].quantity}
         })
         setItems(items)
-        } /* if(cart.length === 0) history.push('/home') */
+        }
       
     } catch (error) {
       //TODO SetError(error)
