@@ -4,10 +4,10 @@ function CartButton({ articleId, handleAddToCart }) {
 
     const [quantity, setQuantity] = useState("")
 
-    function handleSubmit(event) {    
+    async function handleSubmit(event) {    
         event.preventDefault()
         const { target: { quantity: { value: quantity } } } = event
-        handleAddToCart(articleId, quantity)
+        await handleAddToCart(articleId, quantity)
         setQuantity("")
     }
 

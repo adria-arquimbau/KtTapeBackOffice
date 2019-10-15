@@ -36,19 +36,6 @@ function Navigation({ history, onSearch }) {
         }
     }
 
-    /* async function handleNumberOrders() {
-        try{
-            const {cart} = await logic.retrieveUser()
-            if(cart){
-                setCartNumber(cart)
-            } else {
-                setCartNumber()
-            }
-        } catch(error) {
-            //TODO
-        }
-    } */
-
     async function onCategory(category){
         try {
             const response = await logic.retrieveCategory(category)

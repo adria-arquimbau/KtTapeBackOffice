@@ -34,6 +34,16 @@ function RetrieveAllUsers({ users, retrieveAllUsers }) {
           })()
     }
 
+    async function handleRemoveCart(event) {
+        event.preventDefault()
+        let { target: { id: { value: userId } }} = event
+        try {
+            const { message } = await logic.removeAllCart(userId)
+        } catch (error) {
+            
+        }
+    }
+
     function handleModal() {
         setMessage(null) 
         setError(null)
@@ -50,12 +60,18 @@ function RetrieveAllUsers({ users, retrieveAllUsers }) {
                     <li>Country: {country}</li>
                     <li>Email: {email}</li>
                     <li>Role: {role}</li>
-                    <li>On cart articles: {cart.length}</li>
+                    <li>
+                        <form onSubmit={handleRemoveCart}>On cart articles: {cart.length}
+                            <button>-</button>
+                            <input type="text" hidden name="userId" defaultValue={id}></input>
+                        </form>
+                    </li>
                     <form onSubmit={hanldeSubmit}>
                         <input placeholder="Your Password" type="password" name="password"/>
                         <input hidden type="text" name="id" value={id} />
                         <button>Delete User</button>
                     </form>
+                    
                 </ul>
         })}
        
