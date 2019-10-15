@@ -20,7 +20,7 @@ module.exports = function(userId, clientId) {
         if (!user) throw Error(`User with id ${userId} does not exist`)
 
         if (user.role === 'admin'){
-            if (user.cart.length === 0) throw Error(`User with id ${userId} does not have any article in his cart`)
+            if (user.cart.length === 0) throw Error(`This user does not have any article in his cart`)
 
             user.cart = []
             

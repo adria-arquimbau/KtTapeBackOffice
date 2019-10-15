@@ -1,13 +1,16 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, {useState, useEffect} from 'react'
+import React, {useState, useContext, useEffect} from 'react'
 import { withRouter } from 'react-router-dom'
 import logic from '../../../logic'
+import Context from '../../Context'
 import Modal from '../../Modal'
 
 function RetrieveAllUsers({ users, retrieveAllUsers }) {
 
     const [error, setError] = useState()
     const [message, setMessage] = useState()  
+    const {interruptorItems, setInterruptorItems} = useContext(Context)
+
 
     useEffect(() => {
         retrieveAllUsers()
@@ -16,33 +19,32 @@ function RetrieveAllUsers({ users, retrieveAllUsers }) {
     function hanldeSubmit(event) {
         event.preventDefault()
         let { target: { password: { value: password }, id: { value: userToDelete } }} = event
-        
         handleRemoveUser(userToDelete, password)
     }
 
-    function handleRemoveUser(userToDelete, password) {
-
-        (async () => {
-
-            try {
-                const {message} = await logic.unregisterUser(userToDelete, password)
-                setMessage(message)
-            } catch ({message}) {
-                setError(message)
-            }
-
-          })()
+    async function handleRemoveUser(userToDelete, password) {
+        try {
+            const {message} = await logic.unregisterUser(userToDelete, password)
+            setMessage(message)
+        } catch ({message}) {
+            setError(message)
+        }
     }
 
-    async function handleRemoveCart(event) {
-        debugger
+    function handleRemoveCart(event) {
         event.preventDefault()
         let { target: { clientId: { value: clientId } }} = event
+        handleRemoveAllCart(clientId)
+    }
+
+    async function handleRemoveAllCart(clientId){
         try {
+            debugger
             const { message } = await logic.removeAllCart(clientId)
-            setMessage(message) 
-        } catch (error) {
-            
+            setMessage(message)
+            setInterruptorItems(!interruptorItems)
+        } catch ({message}) {
+            setMessage(message)
         }
     }
 
@@ -64,7 +66,7 @@ function RetrieveAllUsers({ users, retrieveAllUsers }) {
                     <li>Role: {role}</li>
                     <li>
                         <form onSubmit={handleRemoveCart}>On cart articles: {cart.length}
-                            <button>-</button>
+                        {cart.length > 0 &&<button>-</button>}
                             <input type="text" hidden name="clientId" defaultValue={id}></input>
                         </form>
                     </li>

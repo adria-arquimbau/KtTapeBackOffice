@@ -21,7 +21,7 @@ function Navigation({ history, onSearch }) {
     function handleCurrentOrder() { history.push('/home/current-order') }
     function handleMyAccount() { history.push('/home/my-account') }
     function handleAdminPanel() { history.push('/home/admin-panel') }
-    /* function handleDocuments() { history.push('/home/documents') } */
+    /* function handleDocumenyarn ts() { history.push('/home/documents') } */
     function handleLogout (){
         delete sessionStorage.id
         delete sessionStorage.token
