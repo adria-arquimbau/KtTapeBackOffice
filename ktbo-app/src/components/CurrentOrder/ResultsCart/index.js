@@ -1,4 +1,4 @@
-import React, {useState, useContext} from 'react'
+import React, {useState, useContext, useEffect} from 'react'
 import logic from '../../../logic'
 import CartArticle from './CartArticle'
 import { withRouter } from 'react-router-dom'
@@ -12,7 +12,15 @@ function ResultsCart({ history }) {
     const {items} = useContext(Context)
     const {interruptorItems, setInterruptorItems} = useContext(Context)
 
+    useEffect(() => {
+        emptyCart()
+    },[items])
+
     let totalPrice = 0
+
+    function emptyCart() {
+        if(items.length === 0) history.push('/home/my-orders')
+    }
     
     async function handleSubmit(articleId, quantity) {
         try {
