@@ -1,20 +1,23 @@
-import React, {useState} from 'react'
+import React, {useState, useContext} from 'react'
 import logic from '../../../logic'
 import CartArticle from './CartArticle'
 import { withRouter } from 'react-router-dom'
 import Modal from '../../Modal'
+import Context from '../../Context'
 
-function ResultsCart({ history, cart , retrieverCart}) {
+function ResultsCart({ history }) {
 
     const [message, setMessage] = useState(null)
     const [error, setError] = useState(null)
+    const {items} = useContext(Context)
+    const {interruptorItems, setInterruptorItems} = useContext(Context)
 
     let totalPrice = 0
     
     async function handleSubmit(articleId, quantity) {
         try {
             await logic.addToCart(articleId, quantity)
-            retrieverCart()
+            setInterruptorItems(!interruptorItems)
         } catch ({message}) {
             setError(message)
         }
@@ -23,8 +26,12 @@ function ResultsCart({ history, cart , retrieverCart}) {
     async function handleRemove(event) {
         event.preventDefault()
         const { target: { articleId: { value: articleId }  } } = event
-        await logic.removeToCart(articleId)
-        retrieverCart()
+        try {
+            await logic.removeToCart(articleId)
+            setInterruptorItems(!interruptorItems)
+        } catch (error) {
+            
+        }
     }
 
     async function handlePlaceOrder() {
@@ -32,6 +39,7 @@ function ResultsCart({ history, cart , retrieverCart}) {
             const { message } = await logic.placeOrder()
             const messageOk = message
             setMessage(messageOk)
+            setInterruptorItems(!interruptorItems)
         } catch ({message}) {
             setError(message)
         }
@@ -49,7 +57,7 @@ function ResultsCart({ history, cart , retrieverCart}) {
     return <>
 
         <section className="currentOrder__articles">
-            {cart.map(element => {
+            {items.map(element => {
                 const { item : { article: { price, id }} , quantity : articleQuantity } = element
                 totalPrice += price * articleQuantity
                 return <CartArticle key={id} element={element} onSubmit={handleSubmit} onRemove={handleRemove}/>

@@ -16,6 +16,15 @@ function ChangeLog() {
       <section className="change-log__all-logs">
 
       <section className="change-log__version">
+          <h2 className="change-log__version--title">0.12.1 - 15/10/2019</h2>
+          <section>
+            <ul>
+              <li>Fixed Bug of infinite useEffect requests of user to API</li>
+            </ul>
+          </section>
+        </section>
+
+      <section className="change-log__version">
           <h2 className="change-log__version--title">0.12.0 - 10/10/2019</h2>
           <section>
             <ul>

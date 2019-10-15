@@ -8,16 +8,13 @@ import Context from '../Context'
 function Navigation({ history, onSearch }) {
 
     const {user} = useContext(Context)
+    const {items} = useContext(Context)
     const {cat, setCat} = useContext(Context)
-    const {setArticles} = useContext(Context)
-
     const [admin, setAdmin] = useState()
-    const [cartNumber, setCartNumber] = useState()
 
     useEffect(() => {
         handleAdmin()
-        handleNumberOrders()
-    },[cartNumber , user, cat])
+    },[cat])
     
     function handleHome() { history.push('/home') }
     function handleMyOrders() { history.push('/home/my-orders') }
@@ -39,7 +36,7 @@ function Navigation({ history, onSearch }) {
         }
     }
 
-    async function handleNumberOrders() {
+    /* async function handleNumberOrders() {
         try{
             const {cart} = await logic.retrieveUser()
             if(cart){
@@ -50,7 +47,7 @@ function Navigation({ history, onSearch }) {
         } catch(error) {
             //TODO
         }
-    }
+    } */
 
     async function onCategory(category){
         try {
@@ -135,8 +132,8 @@ function Navigation({ history, onSearch }) {
                         <a className="dropdown-content__text navigation__li--anchor" href="" onClick={handleLogout}>Logout</a>
                     </div>
                 </div>}
-                {cartNumber && cartNumber.length > 0 && <li className="navigation__li"><a className="navigation__li--anchor" href="#" onClick={event => { event.preventDefault() 
-                    handleCurrentOrder() }}>Your Order {cartNumber.length}</a></li>}
+                {items && items.length > 0 && <li className="navigation__li"><a className="navigation__li--anchor" href="#" onClick={event => { event.preventDefault() 
+                    handleCurrentOrder() }}>Your Order {items.length}</a></li>}
             </ul>  
         </section>
     </>

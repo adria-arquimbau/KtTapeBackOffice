@@ -9,12 +9,13 @@ function ResultsCategories({ searchResult }) {
     const {setArticles} = useContext(Context)
     const {items} = useContext(Context)
     const [apiMessage, setApiMessage] = useState()
+    const {interruptorItems, setInterruptorItems} = useContext(Context)
 
     const{ message, articles, error } = searchResult
 
     useEffect(() => {
         setArticles()
-      },[])
+      },[items])
 
     async function handleDeleteOnCart(event) {
         
@@ -22,6 +23,7 @@ function ResultsCategories({ searchResult }) {
         let { target: { articleId: { value: articleId }  } } = event
         try {
             await logic.removeToCart(articleId)
+            setInterruptorItems(!interruptorItems)
         } catch (error) {
             
         }
@@ -31,6 +33,7 @@ function ResultsCategories({ searchResult }) {
         try {
             quantity = Number(quantity)
             await logic.addToCart(articleId, quantity)
+            setInterruptorItems(!interruptorItems)
         } catch ({message}) {
             setApiMessage(message)
         }
