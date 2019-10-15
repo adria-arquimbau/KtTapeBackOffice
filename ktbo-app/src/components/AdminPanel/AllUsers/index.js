@@ -35,10 +35,12 @@ function RetrieveAllUsers({ users, retrieveAllUsers }) {
     }
 
     async function handleRemoveCart(event) {
+        debugger
         event.preventDefault()
-        let { target: { id: { value: userId } }} = event
+        let { target: { clientId: { value: clientId } }} = event
         try {
-            const { message } = await logic.removeAllCart(userId)
+            const { message } = await logic.removeAllCart(clientId)
+            setMessage(message) 
         } catch (error) {
             
         }
@@ -63,7 +65,7 @@ function RetrieveAllUsers({ users, retrieveAllUsers }) {
                     <li>
                         <form onSubmit={handleRemoveCart}>On cart articles: {cart.length}
                             <button>-</button>
-                            <input type="text" hidden name="userId" defaultValue={id}></input>
+                            <input type="text" hidden name="clientId" defaultValue={id}></input>
                         </form>
                     </li>
                     <form onSubmit={hanldeSubmit}>
