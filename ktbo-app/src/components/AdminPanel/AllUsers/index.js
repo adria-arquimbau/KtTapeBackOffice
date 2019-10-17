@@ -16,26 +16,19 @@ function RetrieveAllUsers({ users, retrieveAllUsers }) {
     function hanldeSubmit(event) {
         event.preventDefault()
         let { target: { password: { value: password }, id: { value: userToDelete } }} = event
-        
         handleRemoveUser(userToDelete, password)
     }
 
-    function handleRemoveUser(userToDelete, password) {
-
-        (async () => {
-
+    async function handleRemoveUser(userToDelete, password) {
             try {
                 const {message} = await logic.unregisterUser(userToDelete, password)
                 setMessage(message)
             } catch ({message}) {
                 setError(message)
             }
-
-          })()
     }
 
     async function handleRemoveCart(event) {
-        debugger
         event.preventDefault()
         let { target: { clientId: { value: clientId } }} = event
         try {
@@ -52,9 +45,7 @@ function RetrieveAllUsers({ users, retrieveAllUsers }) {
     }
     
     return <section className="admin-retrieve-users">
-
         <h1>All users</h1>
-
         {users && users.user.map(user => {
             const {company, country, email, role, id, cart} = user
             return <ul className="admin-retrieve-users__each-user" key={id}>
@@ -73,10 +64,8 @@ function RetrieveAllUsers({ users, retrieveAllUsers }) {
                         <input hidden type="text" name="id" value={id} />
                         <button>Delete User</button>
                     </form>
-                    
                 </ul>
         })}
-       
         {message && <Modal  message={message} showModal={handleModal}/>}
         {error && <Modal  message={error} showModal={handleModal}/>}
     </section>
