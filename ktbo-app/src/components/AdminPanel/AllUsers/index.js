@@ -11,7 +11,6 @@ function RetrieveAllUsers({ users, retrieveAllUsers }) {
     const [message, setMessage] = useState()  
     const {interruptorItems, setInterruptorItems} = useContext(Context)
 
-
     useEffect(() => {
         retrieveAllUsers()
     },[message])
@@ -23,16 +22,15 @@ function RetrieveAllUsers({ users, retrieveAllUsers }) {
     }
 
     async function handleRemoveUser(userToDelete, password) {
-            try {
-                const {message} = await logic.unregisterUser(userToDelete, password)
-                setMessage(message)
-            } catch ({message}) {
-                setError(message)
-            }
+        try {
+            const {message} = await logic.unregisterUser(userToDelete, password)
+            setMessage(message)
+        } catch ({message}) {
+            setError(message)
+        }
     }
 
     async function handleRemoveCart(event) {
-
         event.preventDefault()
         let { target: { clientId: { value: clientId } }} = event
         handleRemoveAllCart(clientId)
@@ -40,7 +38,6 @@ function RetrieveAllUsers({ users, retrieveAllUsers }) {
 
     async function handleRemoveAllCart(clientId){
         try {
-            debugger
             const { message } = await logic.removeAllCart(clientId)
             setMessage(message)
             setInterruptorItems(!interruptorItems)
@@ -59,22 +56,22 @@ function RetrieveAllUsers({ users, retrieveAllUsers }) {
         {users && users.user.map(user => {
             const {company, country, email, role, id, cart} = user
             return <ul className="admin-retrieve-users__each-user" key={id}>
-                    <li>Company: {company}</li>
-                    <li>Country: {country}</li>
-                    <li>Email: {email}</li>
-                    <li>Role: {role}</li>
-                    <li>
-                        <form onSubmit={handleRemoveCart}>On cart articles: {cart.length}
-                        {cart.length > 0 &&<button>-</button>}
-                            <input type="text" hidden name="clientId" defaultValue={id}></input>
-                        </form>
-                    </li>
-                    <form onSubmit={hanldeSubmit}>
-                        <input placeholder="Your Password" type="password" name="password"/>
-                        <input hidden type="text" name="id" value={id} />
-                        <button>Delete User</button>
+                <li>Company: {company}</li>
+                <li>Country: {country}</li>
+                <li>Email: {email}</li>
+                <li>Role: {role}</li>
+                <li>
+                    <form onSubmit={handleRemoveCart}>On cart articles: {cart.length}
+                    {cart.length > 0 &&<button>-</button>}
+                        <input type="text" hidden name="clientId" defaultValue={id}></input>
                     </form>
-                </ul>
+                </li>
+                <form onSubmit={hanldeSubmit}>
+                    <input placeholder="Your Password" type="password" name="password"/>
+                    <input hidden type="text" name="id" value={id} />
+                    <button>Delete User</button>
+                </form>
+            </ul>
         })}
         {message && <Modal  message={message} showModal={handleModal}/>}
         {error && <Modal  message={error} showModal={handleModal}/>}

@@ -41,8 +41,7 @@ function Login({ history }) {
         setMessage(null) 
     }
 
-    return <>
-        <main className="login">
+    return <main className="login">
             <section className="login__content">
                 <h2 className="login__title">Login</h2>
                 <form className="login__form" onSubmit={handleSubmit}>
@@ -53,7 +52,6 @@ function Login({ history }) {
                 {message && <Modal message={message} showModal={handleModal}/>}
             </section>
         </main>  
-    </>
 }
 
 export default withRouter(Login)

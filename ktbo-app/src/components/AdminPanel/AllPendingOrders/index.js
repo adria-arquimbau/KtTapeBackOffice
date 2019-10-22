@@ -18,15 +18,12 @@ function ResultOrders({ orders, retrievePendingOrders }) {
     }
     
     return <section className="admin-retrieve-pending-orders">
-
         <h1>Pending orders</h1>
-
         {orders && orders.map(order =>{
             const {state, date, owner, items, id} = order
             let totalPrice = 0
 
             return <section key={id} className="admin-retrieve-pending-orders__each-order">
-
                 <section className="admin-retrieve-pending-orders__each-order-articles">
                     {items.map(item =>{
                         const totalItem = item.article.price * item.quantity
@@ -48,7 +45,6 @@ function ResultOrders({ orders, retrievePendingOrders }) {
                     <li>Country: {owner.country}</li>
                     <li>E-mail: {owner.email}</li>
                     <li>Total price: {totalPrice.toFixed(2)}€</li>
-
                     <section className="admin-retrieve-pending-orders__each-order--buttons">
                         <form className="admin-retrieve-pending-orders__each-order--button-change" onSubmit={async event => {event.preventDefault()
                             try {
@@ -59,7 +55,6 @@ function ResultOrders({ orders, retrievePendingOrders }) {
                             }}}>
                             <button>Change State</button>
                         </form>
-                        
                         <form className="admin-retrieve-pending-orders__each-order--button-remove" onSubmit={async event => { event.preventDefault()
                             try {
                                 const {message} = await logic.removePendingOrder(id)
@@ -70,9 +65,7 @@ function ResultOrders({ orders, retrievePendingOrders }) {
                             <button>Remove Order</button>
                         </form>
                     </section>
-                    
                 </ul>
-
             </section>
         })}
         {message && <Modal message={message} showModal={handleModal}/>}

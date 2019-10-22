@@ -33,17 +33,15 @@ function MyOrders({history}) {
     history.push('/home')
   }
 
-  return <>
-    <main className="myOrdersMain">
-      <section className="myOrders">
-        <h1 className="myOrders__title">My Orders</h1>
-        {orders && orders.map(element => {
-          return <ResultOrders key={element.id} element={element} />
-        })}
-      </section>
-      {message && <Modal  message={message} showModal={handleModal}/>}
-    </main>
-  </>
+  return <main className="myOrdersMain">
+    <section className="myOrders">
+      <h1 className="myOrders__title">My Orders</h1>
+      {orders && orders.map(element => {
+        return <ResultOrders key={element.id} element={element} />
+      })}
+    </section>
+    {message && <Modal  message={message} showModal={handleModal}/>}
+  </main>
 }
 
 export default withRouter(MyOrders)

@@ -12,9 +12,9 @@ function CartButton({ articleId, handleAddToCart }) {
     }
 
     return <form className="cartbutton-form" onSubmit={handleSubmit}>
-            <input className="cartbutton-form__input" type="number" name="quantity" placeholder="1" value={quantity} onChange={event => setQuantity(event.target.value) } />
-            <button className="cartbutton-form__button">Add</button>
-        </form>
+        <input className="cartbutton-form__input" type="number" name="quantity" placeholder="1" value={quantity} onChange={event => setQuantity(event.target.value) } />
+        <button className="cartbutton-form__button">Add</button>
+    </form>
 }
 
 export default CartButton

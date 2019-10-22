@@ -7,24 +7,24 @@ import Login from '../Login'
 
 function Landing() {
 
-    const { credentials, setUser } = useContext(Context)
+  const { credentials, setUser } = useContext(Context)
 
-    useEffect(() => {
-        if (credentials) {
-          const { id, token } = credentials
-          
-          async function retrieve() {
-            try {
-              const { user: userRetrieved } = await logic.retrieveUser(id, token)
-              setUser(userRetrieved)
-            } catch(error) {
-              console.log(error.message)
-            }
-          } 
+  useEffect(() => {
+      if (credentials) {
+        const { id, token } = credentials
+        
+        async function retrieve() {
+          try {
+            const { user: userRetrieved } = await logic.retrieveUser(id, token)
+            setUser(userRetrieved)
+          } catch(error) {
+            console.log(error.message)
+          }
+        } 
 
-          retrieve()
-        }
-    },[])
+        retrieve()
+      }
+  },[])
 
   return  <>
     <section className="superior">
@@ -36,11 +36,9 @@ function Landing() {
         </section>
       </div>
     </section>
-
     <section>
       <Login />
     </section>
-
     <footer className="footer">
       <div className="footer__cont">
         <a className="footer__cont--privacity"  href="https://kttape.es/privacy-policy/" >Privacy Policy</a>            

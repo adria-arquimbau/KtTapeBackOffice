@@ -8,7 +8,7 @@ import Context from '../Context'
 
 function MyAccount({history}) {
 
-  const {cat, setCat} = useContext(Context)
+  const {setCat} = useContext(Context)
 
   const [message, setMessage] = useState(null)
 
@@ -38,20 +38,18 @@ function MyAccount({history}) {
     }
   }
 
-  return <>
-    <section className="myAccount">
-      <h1>My Account</h1>
-      <div className="myAccount__updateUser">
-        <h2>Update Password</h2>
-        <form className="myAccount__update-user--form" onSubmit={handleSubmit}>
-          <input placeholder="Old Password" type="password" name="old" defaultValue="" ></input>
-          <input placeholder="New Password" type="password" name="new" defaultValue="" ></input>
-          <button>Submit</button>
-        </form>
-      </div>
-      {message && <Modal  message={message} showModal={handleModal}/>}
-    </section>
-  </>
+  return <section className="myAccount">
+    <h1>My Account</h1>
+    <div className="myAccount__updateUser">
+      <h2>Update Password</h2>
+      <form className="myAccount__update-user--form" onSubmit={handleSubmit}>
+        <input placeholder="Old Password" type="password" name="old" defaultValue="" ></input>
+        <input placeholder="New Password" type="password" name="new" defaultValue="" ></input>
+        <button>Submit</button>
+      </form>
+    </div>
+    {message && <Modal  message={message} showModal={handleModal}/>}
+  </section>
 }
 
 export default withRouter(MyAccount)
