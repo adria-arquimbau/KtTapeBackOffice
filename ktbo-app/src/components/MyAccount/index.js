@@ -5,7 +5,6 @@ import logic from '../../logic'
 import Modal from '../Modal'
 import Context from '../Context'
 
-
 function MyAccount({history}) {
 
   const {setCat} = useContext(Context)

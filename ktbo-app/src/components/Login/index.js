@@ -10,8 +10,8 @@ import Modal from '../Modal'
 function Login({ history }) {
     
     const [message, setMessage] = useState(null)
+    
     const {setUser} = useContext(Context)
-    //const [error, setError] = useState(null)
 
     function handleSubmit(event) {
         event.preventDefault()
