@@ -9,6 +9,7 @@ function RetrieveAllUsers({ users, retrieveAllUsers }) {
 
     const [error, setError] = useState()
     const [message, setMessage] = useState()  
+    
     const {interruptorItems, setInterruptorItems} = useContext(Context)
 
     useEffect(() => {

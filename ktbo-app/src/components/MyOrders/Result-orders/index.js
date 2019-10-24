@@ -2,8 +2,6 @@
 import React from 'react'
 import Moment from 'react-moment'
 
-
-
 function ResultOrders({ element }) {
 
     const { state, date, items } = element

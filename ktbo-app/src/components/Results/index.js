@@ -9,13 +9,14 @@ function Results({ searchResult }) {
     const {setCat} = useContext(Context)
     const {items} = useContext(Context)
     const {interruptorItems, setInterruptorItems} = useContext(Context)
+    
     const [apiMessage, setApiMessage] = useState()
     
-    const{ message, articles, error } = searchResult
-
     useEffect(() => {
         setCat()
     },[items])
+
+    const{ message, articles, error } = searchResult
 
     async function handleDeleteOnCart(event) { 
         event.preventDefault()

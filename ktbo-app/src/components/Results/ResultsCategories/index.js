@@ -10,12 +10,12 @@ function ResultsCategories({ searchResult }) {
     const {items} = useContext(Context)
     const [apiMessage, setApiMessage] = useState()
     const {interruptorItems, setInterruptorItems} = useContext(Context)
-
-    const{ message, articles, error } = searchResult
-
+    
     useEffect(() => {
         setArticles()
-      },[items])
+    },[items])
+
+    const{ message, articles, error } = searchResult
 
     async function handleDeleteOnCart(event) {
         

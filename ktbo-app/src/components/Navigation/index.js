@@ -106,7 +106,6 @@ function Navigation({ history, onSearch }) {
                 </div>   
                 <li className="navigation__li"><Search onSearch={onSearch} /></li>
 
-                              
                 <li className="navigation__li"><a className="navigation__li--anchor" href="#" onClick={event => { event.preventDefault() 
                     handleMyOrders() }}>My Orders</a></li>
                 {user &&<div className="dropdown">
