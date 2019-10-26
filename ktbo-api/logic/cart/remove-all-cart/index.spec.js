@@ -2,8 +2,8 @@ require('dotenv').config()
 
 const { expect } = require('chai')
 const removeArticle = require('.')
-const { database, models: { Article, User, Item } } = require('ktbo-data')
-const { random: { value } } = require('ktbo-utils')
+const { database, models: { Article, User, Order, Item } } = require('ktbo-data')
+const { random: { number, boolean, value } } = require('ktbo-utils')
 const { random } = Math
 
 const { env: { DB_URL_TEST }} = process
@@ -112,7 +112,7 @@ describe('logic - remove article', () => {
             removeArticle(userId, '' )            
         } catch (error) {
             expect(error).to.exist
-            expect(error.message).to.equal(`articleId is empty or blank`) 
+            expect(error.message).to.equal(`clientId is empty or blank`) 
         }
     })
 
@@ -121,7 +121,7 @@ describe('logic - remove article', () => {
             removeArticle(userId, 123 )            
         } catch (error) {
             expect(error).to.exist
-            expect(error.message).to.equal(`articleId with value 123 is not a string`) 
+            expect(error.message).to.equal(`clientId with value 123 is not a string`) 
         }
     })
 
@@ -130,7 +130,7 @@ describe('logic - remove article', () => {
             removeArticle(userId, {} )            
         } catch (error) {
             expect(error).to.exist
-            expect(error.message).to.equal(`articleId with value [object Object] is not a string`) 
+            expect(error.message).to.equal(`clientId with value [object Object] is not a string`) 
         }
     })
 
@@ -139,7 +139,7 @@ describe('logic - remove article', () => {
             removeArticle(userId, [1,2,3] )            
         } catch (error) {
             expect(error).to.exist
-            expect(error.message).to.equal(`articleId with value 1,2,3 is not a string`) 
+            expect(error.message).to.equal(`clientId with value 1,2,3 is not a string`) 
         }
     })
 
@@ -148,7 +148,7 @@ describe('logic - remove article', () => {
             removeArticle(userId, true )            
         } catch (error) {
             expect(error).to.exist
-            expect(error.message).to.equal(`articleId with value true is not a string`) 
+            expect(error.message).to.equal(`clientId with value true is not a string`) 
         }
     })
 

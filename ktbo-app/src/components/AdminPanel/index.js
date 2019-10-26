@@ -80,29 +80,25 @@ function AdminPanel({history}) {
     setError(null)
   }
     
-  return <>
-
-    <section className="admin-main">
-      <section className="admin-main__admin-panel">
-        <h1>ADMIN PANEL</h1>
-        <div className="admin-main__admin-panel--buttons">
-          <button onClick={handlePendingOrders}>Pending orders</button>
-          <button onClick={handleAllOrders}>All orders</button>
-          <button onClick={handleRegisterNewUser}>New User</button>
-          <button onClick={handleRetrieveAllUsers}>Retrieve all users</button>
-        </div>
-      </section>
-      <section className="admin-main__content">
-        {error && <Feedback  message={error} />}
-        {orders && <AllPendingOrders orders={orders}   retrievePendingOrders={handlePendingOrders}/>}
-        {allOrders  && <AllOrders orders={allOrders} />}
-        {retrieveUsers && <AllUsers users={retrieveUsers} retrieveAllUsers={handleRetrieveAllUsers} />}
-        {newUser && <NewUser />}
-      </section> 
+  return <section className="admin-main">
+    <section className="admin-main__admin-panel">
+      <h1>ADMIN PANEL</h1>
+      <div className="admin-main__admin-panel--buttons">
+        <button onClick={handlePendingOrders}>Pending orders</button>
+        <button onClick={handleAllOrders}>All orders</button>
+        <button onClick={handleRegisterNewUser}>New User</button>
+        <button onClick={handleRetrieveAllUsers}>Retrieve all users</button>
+      </div>
     </section>
+    <section className="admin-main__content">
+      {error && <Feedback  message={error} />}
+      {orders && <AllPendingOrders orders={orders}   retrievePendingOrders={handlePendingOrders}/>}
+      {allOrders  && <AllOrders orders={allOrders} />}
+      {retrieveUsers && <AllUsers users={retrieveUsers} retrieveAllUsers={handleRetrieveAllUsers} />}
+      {newUser && <NewUser />}
+    </section> 
     {message && <Modal  message={message} showModal={handleModal}/>}
-
-  </>
+  </section>
 }
 
 export default withRouter(AdminPanel)

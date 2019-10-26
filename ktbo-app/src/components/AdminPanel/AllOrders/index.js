@@ -6,15 +6,12 @@ import Moment from 'react-moment'
 function ResultOrders({ orders }) {
 
     return <section className="admin-retrieve-all-orders">
-
         <h1>All orders</h1>
-
         {orders && orders.map(order =>{                
             const {state, date, owner, items} = order
             let totalPrice = 0
 
             return <section className="admin-retrieve-all-orders__each-order" >
-
                 <section className="admin-retrieve-all-orders__each-order-articles">
                     {items.map(item =>{
                         const totalItem = item.article.price * item.quantity
@@ -28,7 +25,6 @@ function ResultOrders({ orders }) {
                             </ul>
                     })}
                 </section>
-
                 <ul className="admin-retrieve-all-orders__each-order--company">
                     <li className="statusAdminOrder"><p>State:</p> <p className={`status__${state}`}>{state.toUpperCase()}</p></li>
                     <li>Date: <Moment format="YYYY-MM-DD HH:mm">{date}</Moment></li>

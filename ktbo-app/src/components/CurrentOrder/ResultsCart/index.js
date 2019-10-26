@@ -60,10 +60,9 @@ function ResultsCart({ history }) {
 
     function handleModalError() {
         setError(null) 
-     }
+    }
 
     return <>
-
         <section className="currentOrder__articles">
             {items.map(element => {
                 const { item : { article: { price, id }} , quantity : articleQuantity } = element

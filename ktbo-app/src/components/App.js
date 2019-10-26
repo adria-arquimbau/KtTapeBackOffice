@@ -24,7 +24,6 @@ function App({ history }) {
       try {
         await logic.wakeUp()
       } catch (error) {
-        //TODO
       }
     }
 
@@ -33,14 +32,12 @@ function App({ history }) {
         const user = await logic.retrieveUser()
         setUser(user)
       } catch (error) {
-        //TODO
       }
     }
 
   },[])
 
   return <>
-
     <Context.Provider value={{ user, setUser, goHome, setGoHome, cat, setCat, articles, setArticles, items, setItems, interruptorItems, setInterruptorItems }} >
       <div className="App">
       <Route exact path="/" render={() => logic.isUserLogged() ? history.push('/home') : <Landing /> }  />
@@ -49,4 +46,5 @@ function App({ history }) {
     </Context.Provider>
   </>
 }
+
 export default withRouter(App)

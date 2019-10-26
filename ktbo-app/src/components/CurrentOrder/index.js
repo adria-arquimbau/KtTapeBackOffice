@@ -14,12 +14,12 @@ function CurrentOrder() {
     setCat()
   },[user, items, goHome])
 
-    return <>
-        <section className="currentOrder">
-          {items && <ResultsCart />} 
-          <h4 className="currentOrder__title">Current Order</h4>    
-        </section>
-    </>
+  return <>
+    <section className="currentOrder">
+      {items && <ResultsCart />} 
+      <h4 className="currentOrder__title">Current Order</h4>    
+    </section>
+  </>
 }
 
 export default withRouter(CurrentOrder)

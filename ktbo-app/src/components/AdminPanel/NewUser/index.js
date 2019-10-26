@@ -41,21 +41,18 @@ function NewUser() {
     }
 
     return <section className="admin-new-user">
-
         <h1>Register new user</h1>
-
         <form className="admin-new-user__form" onSubmit={handleSubmitNewUser}>  
-                <input placeholder="Company" type="text" name="company" value={_company} onChange={event => setCompany(event.target.value) }/>
-                <input placeholder="Country" type="text" name="country" value={_country} onChange={event => setCountry(event.target.value) } />
-                <input placeholder="e-mail" type="text" name="email" value={_email} onChange={event => setEmail(event.target.value) } />
-                <input placeholder="password" type="text" name="password" value={_password} onChange={event => setPassword(event.target.value) } />
+            <input placeholder="Company" type="text" name="company" value={_company} onChange={event => setCompany(event.target.value) }/>
+            <input placeholder="Country" type="text" name="country" value={_country} onChange={event => setCountry(event.target.value) } />
+            <input placeholder="e-mail" type="text" name="email" value={_email} onChange={event => setEmail(event.target.value) } />
+            <input placeholder="password" type="text" name="password" value={_password} onChange={event => setPassword(event.target.value) } />
             <select name="role">
                 <option value="regular">Regular User</option> 
                 <option value="admin">Admin</option> 
             </select>
             <button>Register a new client</button>
         </form>
-
         <section className="admin-new-user__user">
             {newUser && <ul>
                 <h2>New User</h2>

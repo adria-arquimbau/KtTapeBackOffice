@@ -19,6 +19,7 @@ import registerUser from './register-user'
 import retrieveAllUsers from './retrieve-all-users'
 import unregisterUser from './unregister-user'
 import wakeUp from './wake-up'
+import removeAllCart from './remove-all-cart'
 
 export default {
     set userCredentials({id,token}){
@@ -48,5 +49,6 @@ export default {
     registerUser,
     retrieveAllUsers,
     unregisterUser,
-    wakeUp
+    wakeUp,
+    removeAllCart
 }

@@ -21,7 +21,7 @@ function Navigation({ history, onSearch }) {
     function handleCurrentOrder() { history.push('/home/current-order') }
     function handleMyAccount() { history.push('/home/my-account') }
     function handleAdminPanel() { history.push('/home/admin-panel') }
-    /* function handleDocuments() { history.push('/home/documents') } */
+    /* function handleDocumenyarn ts() { history.push('/home/documents') } */
     function handleLogout (){
         delete sessionStorage.id
         delete sessionStorage.token
@@ -35,19 +35,6 @@ function Navigation({ history, onSearch }) {
             //TODO
         }
     }
-
-    /* async function handleNumberOrders() {
-        try{
-            const {cart} = await logic.retrieveUser()
-            if(cart){
-                setCartNumber(cart)
-            } else {
-                setCartNumber()
-            }
-        } catch(error) {
-            //TODO
-        }
-    } */
 
     async function onCategory(category){
         try {
@@ -119,7 +106,6 @@ function Navigation({ history, onSearch }) {
                 </div>   
                 <li className="navigation__li"><Search onSearch={onSearch} /></li>
 
-                              
                 <li className="navigation__li"><a className="navigation__li--anchor" href="#" onClick={event => { event.preventDefault() 
                     handleMyOrders() }}>My Orders</a></li>
                 {user &&<div className="dropdown">
