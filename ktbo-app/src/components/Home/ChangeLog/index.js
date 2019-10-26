@@ -15,6 +15,15 @@ function ChangeLog() {
     <section className="change-log__all-logs">
 
     <section className="change-log__version">
+        <h2 className="change-log__version--title">0.13.0 - 26/10/2019</h2>
+        <section>
+          <ul>
+            <li>Added remove all cart on each user of Admin Panel</li>
+          </ul>
+        </section>
+      </section>
+
+    <section className="change-log__version">
         <h2 className="change-log__version--title">0.12.1 - 15/10/2019</h2>
         <section>
           <ul>
