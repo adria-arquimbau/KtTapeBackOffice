@@ -27,7 +27,7 @@ module.exports = function(userId, clientId) {
             await user.save()
 
         } else {
-            throw Error('You need be an admin role to deleta all cart')
+            throw Error('You need be an admin role to delete all cart')
         }
         
     })()
