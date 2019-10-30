@@ -29,10 +29,6 @@ module.exports = function(userId, articleId, quantity) {
         if(article.quantity < quantity) throw Error('Stock greater than quantity required')
         if(article.quantity === 0 && quantity === 0) throw Error('Stock greater than quantity required')
 
-        // Antic metode de sumar-hi al contingut ja existent
-        /* let item = res.cart.find(item => item.article.toString() === articleId)
-        item ? item.quantity += quantity : res.cart.push(new Item({article: articleId, quantity}))*/
-
         let item = res.cart.find(item => item.article.toString() === articleId)
         item ? item.quantity = quantity : res.cart.push(new Item({article: articleId, quantity}))
  
@@ -41,7 +37,7 @@ module.exports = function(userId, articleId, quantity) {
         const user = await User.findById(userId)
         let item1 = user.cart.find(item => item.article.toString() === articleId)
 
-        if(item1.quantity<0) item1.quantity=0
+        if(item1.quantity < 0) item1.quantity=0
 
         await user.save()
 

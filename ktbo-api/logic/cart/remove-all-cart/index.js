@@ -22,16 +22,10 @@ module.exports = function(userId, clientId) {
         const clientUser = await User.findById(clientId)
         if (!clientUser) throw Error(`User with id ${clientUser} does not exist`)
 
-        if (adminUser.role === 'admin'){
-            if (clientUser.cart.length === 0) throw Error(`This user does not have any article in his cart`)
-
+        if (adminUser.role === 'admin' && clientUser.cart.length != 0){
             clientUser.cart = []
-            
-            await clientUser.save()
-
-        } else {
-            throw Error('You need be an admin role to delete all cart')
-        }
-        
+            await clientUser.save() 
+        } 
+        if (adminUser.role === 'regular') throw Error('You need be an admin role to delete all cart')
     })()
 }

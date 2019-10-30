@@ -1,4 +1,4 @@
-const { models: { Article, User, Order, Item } } = require('ktbo-data')
+const { models: { Article, User } } = require('ktbo-data')
 const { validate } = require('ktbo-utils')
 
 /**
@@ -25,12 +25,9 @@ module.exports = function(userId, articleId) {
         const article = await Article.findById(articleId)
         if (!article) throw Error(`Article with id ${articleId} does not exist`)
 
-        let item = user.cart.findIndex(item => {    
-            return item.article.toString() === articleId      
-        })
+        let item = user.cart.findIndex(item => item.article.toString() === articleId)
 
         if (item > -1) await user.cart.splice(item,1)
-        
         if (item <0) throw Error(`User with id ${userId} does not have any article with id ${articleId} in his cart`)
         
         await user.save()
