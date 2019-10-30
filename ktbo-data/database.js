@@ -9,7 +9,6 @@ module.exports = {
 
     disconnect() {
         connection = undefined
-
         return mongoose.disconnect()
     }
 }

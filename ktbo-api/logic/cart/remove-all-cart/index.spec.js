@@ -2,8 +2,8 @@ require('dotenv').config()
 
 const { expect } = require('chai')
 const removeArticle = require('.')
-const { database, models: { Article, User, Order, Item } } = require('ktbo-data')
-const { random: { number, boolean, value } } = require('ktbo-utils')
+const { database, models: { Article, User, Item } } = require('ktbo-data')
+const { random: { value } } = require('ktbo-utils')
 const { random } = Math
 
 const { env: { DB_URL_TEST }} = process
