@@ -1,7 +1,6 @@
 const { models: { Article, User } } = require('ktbo-data')
 const { validate } = require('ktbo-utils')
 
-
 /**
  *  This function creates a new Article.
  *  Function reserved for admins.
@@ -18,18 +17,13 @@ const { validate } = require('ktbo-utils')
  */
 module.exports = function(id, ref, title, description, img, quantity, category, price) {
 
-    validate.number(ref, 'ref')
-    validate.string(title, 'title')
-    validate.string(description, 'description')
-    validate.string(img, 'img')
-    validate.number(quantity, 'quantity')
-    validate.number(price, 'price')
-    validate.string(category, 'category')
-    validate.string(id, 'id')
+    validateAllParameters()
 
     return (async () => {
 
         const res = await User.findOne({ _id: id })
+
+        if(res.role === 'regular') throw new Error(`User with id ${id} is not an admin`)
 
         if(res.role === 'admin'){
             const response = await Article.findOne({ ref })
@@ -50,12 +44,18 @@ module.exports = function(id, ref, title, description, img, quantity, category, 
             if (!_article) throw new Error(`Article with ref ${ref} does not exist`)
             
             return await _article._id.toString()
-
-        } else {
-            throw new Error(`User with id ${id} is not an admin`)
-        }
+        } 
 
     })()
+
+    function validateAllParameters() {
+        validate.number(ref, 'ref')
+        validate.string(title, 'title')
+        validate.string(description, 'description')
+        validate.string(img, 'img')
+        validate.number(quantity, 'quantity')
+        validate.number(price, 'price')
+        validate.string(category, 'category')
+        validate.string(id, 'id')
+    }
 }
-
-

@@ -8,7 +8,7 @@ const { random } = Math
 
 const { env: { DB_URL_TEST }} = process
 
-describe('logic - register article', () => {
+describe.only('logic - register article', () => {
     before(() => database.connect(DB_URL_TEST))
 
     let id, ref, title, description, img, quantity, category, price

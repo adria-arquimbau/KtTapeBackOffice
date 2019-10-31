@@ -26,8 +26,9 @@ module.exports = function (articleId, userId, password) {
             //TODO bcrypt match
             //if(user.password !== password) throw new Error(`Wrong password`)
             await Article.deleteOne({ _id: articleId})
-
-        } else {
+        }
+        
+        if(user.role === 'regular'){
             throw new Error(`User with id ${userId} is not an admin`)
         }
 

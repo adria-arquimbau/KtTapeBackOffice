@@ -20,14 +20,14 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">88% </span>
+        <span class="strong">86.21% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>22/25</span>
+        <span class='fraction'>25/29</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">62.5% </span>
+        <span class="strong">64.29% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>5/8</span>
+        <span class='fraction'>9/14</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">75% </span>
@@ -37,7 +37,7 @@
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>20/20</span>
+        <span class='fraction'>22/22</span>
       </div>
     </div>
     <p class="quiet">
@@ -90,9 +90,10 @@
 <a name='L42'></a><a href='#L42'>42</a>
 <a name='L43'></a><a href='#L43'>43</a>
 <a name='L44'></a><a href='#L44'>44</a>
-<a name='L45'></a><a href='#L45'>45</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L45'></a><a href='#L45'>45</a>
+<a name='L46'></a><a href='#L46'>46</a>
+<a name='L47'></a><a href='#L47'>47</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -114,15 +115,18 @@
 <span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -134,9 +138,8 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const { models: { Article, User, Order, Item } } = require('ktbo-data')
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const { models: { Article, User, Item } } = require('ktbo-data')
 const { validate } = require('ktbo-utils')
-&nbsp;
 &nbsp;
 /**
  *  This function adds an item with a quantity to the user's cart
@@ -157,21 +160,24 @@ module.exports = function(userId, articleId, quantity) {
     
     return (async () =&gt; {
 &nbsp;
+        if(quantity &lt;= 0) quantity = 1
+&nbsp;
         const res = await User.findById(userId)
         <span class="missing-if-branch" title="if path not taken" >I</span>if (!res) <span class="cstat-no" title="statement not covered" >throw Error(`User with id ${userId} does not exist`)</span>
 &nbsp;
         const article = await Article.findById(articleId)
         if(article.quantity &lt; quantity) throw Error('Stock greater than quantity required')
+        <span class="missing-if-branch" title="if path not taken" >I</span>if(article.quantity === 0 &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >quantity === 0)</span> <span class="cstat-no" title="statement not covered" >throw Error('Stock greater than quantity required')</span>
 &nbsp;
         let item = res.cart.find(<span class="fstat-no" title="function not covered" >it</span>em =&gt; <span class="cstat-no" title="statement not covered" >item.article.toString() === articleId)</span>
-        item ? <span class="branch-0 cbranch-no" title="branch not covered" >item.quantity += quantity </span>: res.cart.push(new Item({article: articleId, quantity}))
-&nbsp;
+        item ? <span class="branch-0 cbranch-no" title="branch not covered" >item.quantity = quantity </span>: res.cart.push(new Item({article: articleId, quantity}))
+ 
         await res.save()
 &nbsp;
         const user = await User.findById(userId)
         let item1 = user.cart.find(item =&gt; item.article.toString() === articleId)
 &nbsp;
-        <span class="missing-if-branch" title="if path not taken" >I</span>if(item1.quantity&lt;0) <span class="cstat-no" title="statement not covered" >item1.quantity=0</span>
+        <span class="missing-if-branch" title="if path not taken" >I</span>if(item1.quantity &lt; 0) <span class="cstat-no" title="statement not covered" >item1.quantity=0</span>
 &nbsp;
         await user.save()
 &nbsp;
@@ -184,7 +190,7 @@ module.exports = function(userId, articleId, quantity) {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Tue Sep 24 2019 23:52:31 GMT+0200 (GMT+02:00)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Oct 30 2019 17:42:01 GMT+0100 (GMT+01:00)
 </div>
 </div>
 <script src="../../prettify.js"></script>
