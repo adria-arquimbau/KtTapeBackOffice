@@ -702,11 +702,17 @@ input {
   position: relative;
   z-index: 3;
 }
+.searchResult__article:hover .cartbutton-form {
+  opacity: 1;
+}
 .searchResult__article--param {
   padding-top: 0.3rem;
   display: flex;
   justify-content: center;
   color: #333333;
+}
+.searchResult__article--param-description {
+  display: none;
 }
 .searchResult__out-of-stock {
   display: flex;
@@ -744,12 +750,15 @@ input {
   background-color: #333333;
   color: #f57b1f;
   height: 30px;
+  transition: 0.5s;
 }
 .searchResult__on-cart--button:hover {
   background-color: rgba(51, 51, 51, 0.5);
 }
 
 .cartbutton-form {
+  transition: 0.5s;
+  opacity: 0;
   margin-top: 0.6rem;
   display: flex;
   justify-content: space-between;
@@ -771,6 +780,7 @@ input {
   margin-left: 0.25rem;
   width: 8rem;
   height: 30px;
+  transition: 0.5s;
 }
 
 button {
