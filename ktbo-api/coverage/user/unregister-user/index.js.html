@@ -20,31 +20,31 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">87.5% </span>
+        <span class="strong">16.67% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>21/24</span>
+        <span class='fraction'>4/24</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">75% </span>
+        <span class="strong">0% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>9/12</span>
+        <span class='fraction'>0/12</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">100% </span>
+        <span class="strong">0% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>2/2</span>
+        <span class='fraction'>0/2</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">94.74% </span>
+        <span class="strong">21.05% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>18/19</span>
+        <span class='fraction'>4/19</span>
       </div>
     </div>
     <p class="quiet">
       Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
     </p>
   </div>
-  <div class='status-line high'></div>
+  <div class='status-line low'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -105,27 +105,27 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">16x</span>
-<span class="cline-any cline-yes">12x</span>
-<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -146,29 +146,29 @@ const bcrypt = require('bcryptjs')
  * 
  */
 &nbsp;
-module.exports = function (userId, adminId, password) {
+module.exports = <span class="fstat-no" title="function not covered" >fu</span>nction (userId, adminId, password) {
 &nbsp;
-    validate.string(userId, 'userId')
-    validate.string(adminId, 'adminId')
-    validate.string(password, 'password')
+<span class="cstat-no" title="statement not covered" >    validate.string(userId, 'userId')</span>
+<span class="cstat-no" title="statement not covered" >    validate.string(adminId, 'adminId')</span>
+<span class="cstat-no" title="statement not covered" >    validate.string(password, 'password')</span>
 &nbsp;
-    return (async () =&gt; {
+<span class="cstat-no" title="statement not covered" >    return (<span class="fstat-no" title="function not covered" >as</span>ync () =&gt; {</span>
 &nbsp;
-        const res = await User.findById({ _id: adminId})
-        if(!res) throw Error (`Admin with id ${adminId} doesn\'t exist`)
+        const res = <span class="cstat-no" title="statement not covered" >await User.findById({ _id: adminId})</span>
+<span class="cstat-no" title="statement not covered" >        if(!res) <span class="cstat-no" title="statement not covered" >throw Error (`Admin with id ${adminId} doesn\'t exist`)</span></span>
 &nbsp;
-        <span class="missing-if-branch" title="else path not taken" >E</span>if(res.role === 'admin'){
+<span class="cstat-no" title="statement not covered" >        if(res.role === 'admin'){</span>
 &nbsp;
-            <span class="missing-if-branch" title="if path not taken" >I</span>if(userId === adminId)<span class="cstat-no" title="statement not covered" >throw Error(`You can\'t delete your profile`)</span>
+<span class="cstat-no" title="statement not covered" >            if(userId === adminId)<span class="cstat-no" title="statement not covered" >throw Error(`You can\'t delete your profile`)</span></span>
 &nbsp;
-            const match = await bcrypt.compare(password, res.password)
-            if (!match) throw new Error('wrong credentials')
+            const match = <span class="cstat-no" title="statement not covered" >await bcrypt.compare(password, res.password)</span>
+<span class="cstat-no" title="statement not covered" >            if (!match) <span class="cstat-no" title="statement not covered" >throw new Error('wrong credentials')</span></span>
     
-            const user = await User.findById({ _id: userId })
-            if(!user) throw Error (`User with id ${userId} doesn\'t exist`)
+            const user = <span class="cstat-no" title="statement not covered" >await User.findById({ _id: userId })</span>
+<span class="cstat-no" title="statement not covered" >            if(!user) <span class="cstat-no" title="statement not covered" >throw Error (`User with id ${userId} doesn\'t exist`)</span></span>
 &nbsp;
-            const deletedUser = await User.deleteOne({ _id: userId })
-            <span class="missing-if-branch" title="if path not taken" >I</span>if (!deletedUser.deletedCount) <span class="cstat-no" title="statement not covered" >throw new Error(`wrong credentials`)</span>
+            const deletedUser = <span class="cstat-no" title="statement not covered" >await User.deleteOne({ _id: userId })</span>
+<span class="cstat-no" title="statement not covered" >            if (!deletedUser.deletedCount) <span class="cstat-no" title="statement not covered" >throw new Error(`wrong credentials`)</span></span>
 &nbsp;
         } else {
 <span class="cstat-no" title="statement not covered" >            throw new Error(`User with id ${adminId} is not an admin`)</span>
@@ -181,7 +181,7 @@ module.exports = function (userId, adminId, password) {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Oct 30 2019 17:42:01 GMT+0100 (GMT+01:00)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Tue Nov 05 2019 11:23:33 GMT+0100 (GMT+01:00)
 </div>
 </div>
 <script src="../../prettify.js"></script>

@@ -20,31 +20,31 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">93.75% </span>
+        <span class="strong">18.75% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>15/16</span>
+        <span class='fraction'>3/16</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">50% </span>
+        <span class="strong">0% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>1/2</span>
+        <span class='fraction'>0/2</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">100% </span>
+        <span class="strong">0% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>2/2</span>
+        <span class='fraction'>0/2</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">100% </span>
+        <span class="strong">20% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>15/15</span>
+        <span class='fraction'>3/15</span>
       </div>
     </div>
     <p class="quiet">
       Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
     </p>
   </div>
-  <div class='status-line high'></div>
+  <div class='status-line low'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -89,21 +89,21 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const { models: { User, Article } } = require('ktbo-data')
@@ -117,23 +117,23 @@ const { validate } = require('ktbo-utils')
  * 
  */
 &nbsp;
-module.exports = function (articleId, body) {
+module.exports = <span class="fstat-no" title="function not covered" >fu</span>nction (articleId, body) {
 &nbsp;
-    const { ref, title, description, img, quantity, category, price  } = body
+    const { ref, title, description, img, quantity, category, price  } = <span class="cstat-no" title="statement not covered" >body</span>
 &nbsp;
-    validate.string(articleId, 'articleId')
-    validate.number(ref, 'ref')
-    validate.string(title, 'title')
-    validate.string(description, 'description')
-    validate.string(img, 'img')
-    validate.number(quantity, 'quantity')
-    validate.string(category, 'category')    
-    validate.number(price, 'price')
+<span class="cstat-no" title="statement not covered" >    validate.string(articleId, 'articleId')</span>
+<span class="cstat-no" title="statement not covered" >    validate.number(ref, 'ref')</span>
+<span class="cstat-no" title="statement not covered" >    validate.string(title, 'title')</span>
+<span class="cstat-no" title="statement not covered" >    validate.string(description, 'description')</span>
+<span class="cstat-no" title="statement not covered" >    validate.string(img, 'img')</span>
+<span class="cstat-no" title="statement not covered" >    validate.number(quantity, 'quantity')</span>
+<span class="cstat-no" title="statement not covered" >    validate.string(category, 'category')    </span>
+<span class="cstat-no" title="statement not covered" >    validate.number(price, 'price')</span>
 &nbsp;
-    return (async () =&gt; {
+<span class="cstat-no" title="statement not covered" >    return (<span class="fstat-no" title="function not covered" >as</span>ync () =&gt; {</span>
 &nbsp;
-        const article = await Article.findByIdAndUpdate(articleId, { $set: body })
-        <span class="missing-if-branch" title="if path not taken" >I</span>if (!article) <span class="cstat-no" title="statement not covered" >throw new Error(`article with id ${articleId} does not exist`)</span>
+        const article = <span class="cstat-no" title="statement not covered" >await Article.findByIdAndUpdate(articleId, { $set: body })</span>
+<span class="cstat-no" title="statement not covered" >        if (!article) <span class="cstat-no" title="statement not covered" >throw new Error(`article with id ${articleId} does not exist`)</span></span>
 &nbsp;
     })()
 }</pre></td></tr>
@@ -142,7 +142,7 @@ module.exports = function (articleId, body) {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Oct 30 2019 17:42:01 GMT+0100 (GMT+01:00)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Tue Nov 05 2019 11:23:33 GMT+0100 (GMT+01:00)
 </div>
 </div>
 <script src="../../prettify.js"></script>

@@ -8,7 +8,7 @@ const { random } = Math
 
 const { env: { DB_URL_TEST }} = process
 
-describe('logic - retrieve all user orders', () => {
+describe.only('logic - retrieve all user orders', () => {
     before(() => database.connect(DB_URL_TEST))
 
     let company, country, email, password, role, userId, orderId
@@ -22,7 +22,7 @@ describe('logic - retrieve all user orders', () => {
         email = `email-${random()}@domain.com`
         password = `password-${random()}`
         role = value('admin')
-
+        
         ref1 = Number((random()*1000).toFixed())
         title1 = `title-${random()}`
         description1 = `description-${random()}`
@@ -85,7 +85,6 @@ describe('logic - retrieve all user orders', () => {
 
         expect(orders).to.exist
         expect(orders[0].id).to.equal(orderId) 
-        //expect(orders[0].date).to.equal(date) 
         expect(orders[0].owner.toString()).to.equal(userId) 
     })
 

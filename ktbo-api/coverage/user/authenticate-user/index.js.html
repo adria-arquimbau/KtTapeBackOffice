@@ -20,31 +20,31 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">100% </span>
+        <span class="strong">26.67% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>15/15</span>
+        <span class='fraction'>4/15</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">100% </span>
+        <span class="strong">0% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>4/4</span>
+        <span class='fraction'>0/4</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">100% </span>
+        <span class="strong">0% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>2/2</span>
+        <span class='fraction'>0/2</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">100% </span>
+        <span class="strong">30.77% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>13/13</span>
+        <span class='fraction'>4/13</span>
       </div>
     </div>
     <p class="quiet">
       Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
     </p>
   </div>
-  <div class='status-line high'></div>
+  <div class='status-line low'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -89,18 +89,18 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">13x</span>
-<span class="cline-any cline-yes">8x</span>
-<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const { models: { User } } = require('ktbo-data')
 const { validate } = require('ktbo-utils')
@@ -115,20 +115,20 @@ const bcrypt = require('bcryptjs')
  * @returns {Promise} - Returns a Promise with User Id and User Token
  */
 &nbsp;
-module.exports = function (email, password) {
+module.exports = <span class="fstat-no" title="function not covered" >fu</span>nction (email, password) {
 &nbsp;
-    validate.string(email, 'e-mail')
-    validate.email(email, 'e-mail')
-    validate.string(password, 'password')
+<span class="cstat-no" title="statement not covered" >    validate.string(email, 'e-mail')</span>
+<span class="cstat-no" title="statement not covered" >    validate.email(email, 'e-mail')</span>
+<span class="cstat-no" title="statement not covered" >    validate.string(password, 'password')</span>
 &nbsp;
-    return (async () =&gt; {
+<span class="cstat-no" title="statement not covered" >    return (<span class="fstat-no" title="function not covered" >as</span>ync () =&gt; {</span>
 &nbsp;
-        const user = await User.findOne({ email })
-        if (!user) throw new Error(`user with e-mail ${email} does not exist`)
+        const user = <span class="cstat-no" title="statement not covered" >await User.findOne({ email })</span>
+<span class="cstat-no" title="statement not covered" >        if (!user) <span class="cstat-no" title="statement not covered" >throw new Error(`user with e-mail ${email} does not exist`)</span></span>
 &nbsp;
-        const match = await bcrypt.compare(password, user.password)
-        if (!match) throw new Error('wrong credentials')
-        return user.id
+        const match = <span class="cstat-no" title="statement not covered" >await bcrypt.compare(password, user.password)</span>
+<span class="cstat-no" title="statement not covered" >        if (!match) <span class="cstat-no" title="statement not covered" >throw new Error('wrong credentials')</span></span>
+<span class="cstat-no" title="statement not covered" >        return user.id</span>
     })()
 }</pre></td></tr>
 </table></pre>
@@ -136,7 +136,7 @@ module.exports = function (email, password) {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Oct 30 2019 17:42:01 GMT+0100 (GMT+01:00)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Tue Nov 05 2019 11:23:33 GMT+0100 (GMT+01:00)
 </div>
 </div>
 <script src="../../prettify.js"></script>
