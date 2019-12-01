@@ -182,6 +182,16 @@ input {
   border-width: 1px;
 }
 
+.main {
+  background-image: url("athlete-landing.jpg");
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  height: 94vh;
+  background-position: center;
+}
+
 .header {
   width: 100vw;
 }
@@ -710,6 +720,9 @@ input {
   position: relative;
   z-index: 3;
 }
+.searchResult__article:hover .cartbutton-form {
+  visibility: visible;
+}
 .searchResult__article--param {
   padding-top: 0.3rem;
   display: flex;
@@ -758,11 +771,13 @@ input {
 }
 
 .cartbutton-form {
+  visibility: hidden;
   margin-top: 0.6rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: 37px;
+  -webkit-animation: fadeIn 1s;
 }
 .cartbutton-form__input {
   margin: 5px;
