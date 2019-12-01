@@ -54,8 +54,8 @@ function ResultsCategories({ searchResult }) {
                     return <ul key={id} className="searchResult__article" >
                         <li className="searchResult__article--param">Ref: {ref}</li>
                         <li className="searchResult__article--param">{title}</li>
-                        <li className="searchResult__article--param">{description}</li>
-                        <li className="searchResult__article--param"><img alt="" src={img}/></li>
+                        <li className="searchResult__article--param searchResult__article--param-description">{description}</li>
+                        <li className="searchResult__article--param searchResult__article--param-image"><img alt="" src={img}/></li>
                         <li className="searchResult__article--param">Price: {price} €</li>
                         <li className="searchResult__article--param">Stock: {quantity} uds</li>
                         {quantity === 0 && <section className="searchResult__out-of-stock"><h3>Out of stock</h3></section>}

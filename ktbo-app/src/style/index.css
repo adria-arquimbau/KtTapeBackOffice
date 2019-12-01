@@ -215,6 +215,10 @@ input {
     color: white;
     text-decoration: none;
     font-size: 0.8rem;
+    font-weight: bold;
+  }
+  .superior__conditions--privacy {
+    padding-bottom: 0.3rem;
   }
   .superior__conditions--privacy:hover, .superior__conditions--terms:hover {
     color: #f57b1f;
@@ -267,6 +271,7 @@ input {
 .footer__cont--privacity, .footer__cont--terms {
   margin: 0 1rem 0 1rem;
   font-size: 0.8rem;
+  font-weight: bold;
 }
 .footer__rights {
   margin-top: 0.1rem;
@@ -353,7 +358,8 @@ input {
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  height: 91.5vh;
+  height: 94vh;
+  background-position: center;
 }
 .login__content {
   display: flex;
@@ -376,12 +382,14 @@ input {
   align-items: center;
 }
 .login__form input::placeholder {
-  color: white;
+  color: rgba(255, 255, 255, 0.5);
+  font-weight: bold;
 }
 .login__form--button {
   width: 5rem;
   background-color: #f57b1f;
   border: 0;
+  font-weight: bold;
 }
 .login__form--button:hover {
   background-color: rgba(245, 123, 31, 0.5);
@@ -702,17 +710,11 @@ input {
   position: relative;
   z-index: 3;
 }
-.searchResult__article:hover .cartbutton-form {
-  opacity: 1;
-}
 .searchResult__article--param {
   padding-top: 0.3rem;
   display: flex;
   justify-content: center;
   color: #333333;
-}
-.searchResult__article--param-description {
-  display: none;
 }
 .searchResult__out-of-stock {
   display: flex;
@@ -750,15 +752,12 @@ input {
   background-color: #333333;
   color: #f57b1f;
   height: 30px;
-  transition: 0.5s;
 }
 .searchResult__on-cart--button:hover {
   background-color: rgba(51, 51, 51, 0.5);
 }
 
 .cartbutton-form {
-  transition: 0.5s;
-  opacity: 0;
   margin-top: 0.6rem;
   display: flex;
   justify-content: space-between;
@@ -780,7 +779,6 @@ input {
   margin-left: 0.25rem;
   width: 8rem;
   height: 30px;
-  transition: 0.5s;
 }
 
 button {
