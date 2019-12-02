@@ -11,6 +11,8 @@
     padding-bottom: 4rem
     justify-content: center
 
+
+
     input
         border: 0
         background-color: rgba($secondary-color, 0.1)
@@ -64,6 +66,10 @@
     &__article:hover
         position: relative
         z-index: 3
+
+        .cartbutton-form
+            visibility: visible
+
             
     &__article--param
         padding-top: 0.3rem
@@ -112,12 +118,14 @@
         background-color: rgba($secondary-color, 0.5)
 
 .cartbutton-form
+    visibility: hidden
     margin-top: 0.60rem
     display: flex
     justify-content: space-between
     align-items: center
     height: 37px
-
+    -webkit-animation: fadeIn 1s
+    
     &__input
         margin: 5px
         padding: 7px

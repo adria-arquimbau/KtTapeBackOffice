@@ -6,7 +6,8 @@
     display: flex
     justify-content: center
     align-items: flex-start
-    height: 91.5vh
+    height: 94vh
+    background-position: center
 
     &__content
         display: flex
@@ -29,12 +30,14 @@
         align-items: center
 
         input::placeholder
-            color: white
+            color: rgba(255, 255, 255, 0.5)
+            font-weight: bold
 
     &__form--button
         width: 5rem
         background-color: $primary-color
         border: 0
+        font-weight: bold
 
     &__form--button:hover
         background-color: rgba($primary-color,0.5)
