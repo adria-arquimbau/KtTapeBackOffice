@@ -20,6 +20,7 @@ import retrieveAllUsers from './retrieve-all-users'
 import unregisterUser from './unregister-user'
 import wakeUp from './wake-up'
 import removeAllCart from './remove-all-cart'
+import fromAdminRetrieveAllUserOrders from './from-admin-retrieve-all-user-orders'
 
 export default {
     set userCredentials({id,token}){
@@ -50,5 +51,6 @@ export default {
     retrieveAllUsers,
     unregisterUser,
     wakeUp,
-    removeAllCart
+    removeAllCart,
+    fromAdminRetrieveAllUserOrders
 }

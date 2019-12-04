@@ -2,7 +2,6 @@
 import React, {useState, useContext, useEffect} from 'react'
 import { withRouter } from 'react-router-dom'
 import logic from '../../../logic'
-import Context from '../../Context'
 import Moment from 'react-moment'
 import Modal from '../../Modal'
 
@@ -14,7 +13,6 @@ function RetrieveUserOrders({ users }) {
     const [allOrders, setAllOrders] = useState()
 
     useEffect(() => {
-
     },[])
 
     function hanldeRetrieveAllUserOrders (event) 
@@ -28,7 +26,7 @@ function RetrieveUserOrders({ users }) {
     {
         try {
             setPendingOrders()
-            const {orders} = await logic.retrieveAllUserOrders(id)
+            const {orders} = await logic.fromAdminRetrieveAllUserOrders(id)
             setAllOrders(orders)
         } catch ({message}) {
             setError(message)
@@ -160,26 +158,6 @@ function RetrieveUserOrders({ users }) {
                             <li>Country: {owner.country}</li>
                             <li>E-mail: {owner.email}</li>
                             <li>Total price: {totalPrice.toFixed(2)}€</li>
-                            <section className="admin-retrieve-pending-orders__each-order--buttons">
-                                <form className="admin-retrieve-pending-orders__each-order--button-change" onSubmit={async event => {event.preventDefault()
-                                    try {
-                                        const {message} = await logic.changeStateOrder(id)
-                                        setMessage(message)
-                                    } catch ({message}) {
-                                        setMessage(message)
-                                    }}}>
-                                    <button>Change State</button>
-                                </form>
-                                <form className="admin-retrieve-pending-orders__each-order--button-remove" onSubmit={async event => { event.preventDefault()
-                                    try {
-                                        const {message} = await logic.removePendingOrder(id)
-                                        setMessage(message)                        
-                                    } catch ({message}) {
-                                        setMessage(message)
-                                    }}}>
-                                    <button>Remove Order</button>
-                                </form>
-                            </section>
                         </ul>
                     </section>
                 })}
