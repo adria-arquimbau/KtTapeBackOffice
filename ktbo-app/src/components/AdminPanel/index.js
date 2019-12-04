@@ -6,6 +6,7 @@ import AllPendingOrders from './AllPendingOrders'
 import AllOrders from './AllOrders'
 import AllUsers from './AllUsers'
 import NewUser from './NewUser'
+import UserOrders from './UserOrders'
 import './index.sass'
 import Modal from '../Modal'
 import Feedback from '../Feedback'
@@ -21,6 +22,7 @@ function AdminPanel({history}) {
   const [allOrders, setAllOrders] = useState()
   const [retrieveUsers, setRetrieveUsers] = useState()
   const [newUser, setNewUser] = useState()
+  const [userOrders, setUserOrders] = useState()
 
   useEffect(() => {
     setCat()
@@ -33,6 +35,7 @@ function AdminPanel({history}) {
         setAllOrders()
         setRetrieveUsers()
         setNewUser()
+        setUserOrders()
         const {orders} = await logic.retrievePendingOrders()
         setOrders(orders)
       } catch ({message}) {
@@ -47,6 +50,7 @@ function AdminPanel({history}) {
         setOrders()
         setRetrieveUsers()
         setNewUser()
+        setUserOrders()
         const orders = await logic.retrieveAllOrders()
         setAllOrders(orders)
       } catch ({message}) {
@@ -59,6 +63,7 @@ function AdminPanel({history}) {
     setOrders()
     setRetrieveUsers()
     setAllOrders()
+    setUserOrders()
     setNewUser("new-user")
   }
 
@@ -68,11 +73,26 @@ function AdminPanel({history}) {
         setAllOrders()
         setOrders()
         setNewUser()
+        setUserOrders()
         const users = await logic.retrieveAllUsers()
         setRetrieveUsers(users)
       } catch ({message}) {
         setError(message)
       }
+  }
+
+  async function handleUserOrders () {
+    try {
+      setError()
+      setAllOrders()
+      setOrders()
+      setNewUser()
+      setRetrieveUsers()
+      const users = await logic.retrieveAllUsers()
+      setUserOrders(users)
+    } catch (error) {
+      setError(message)
+    }
   }
 
   function handleModal() {
@@ -88,6 +108,7 @@ function AdminPanel({history}) {
         <button onClick={handleAllOrders}>All orders</button>
         <button onClick={handleRegisterNewUser}>New User</button>
         <button onClick={handleRetrieveAllUsers}>Retrieve all users</button>
+        <button onClick={handleUserOrders}>User Orders</button>
       </div>
     </section>
     <section className="admin-main__content">
@@ -96,6 +117,7 @@ function AdminPanel({history}) {
       {allOrders  && <AllOrders orders={allOrders} />}
       {retrieveUsers && <AllUsers users={retrieveUsers} retrieveAllUsers={handleRetrieveAllUsers} />}
       {newUser && <NewUser />}
+      {userOrders && <UserOrders users={userOrders}/>}
     </section> 
     {message && <Modal  message={message} showModal={handleModal}/>}
   </section>
