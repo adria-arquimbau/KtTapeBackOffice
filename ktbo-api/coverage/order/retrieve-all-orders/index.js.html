@@ -20,31 +20,31 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">78.95% </span>
+        <span class="strong">15.79% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>15/19</span>
+        <span class='fraction'>3/19</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">50% </span>
+        <span class="strong">0% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>4/8</span>
+        <span class='fraction'>0/8</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">100% </span>
+        <span class="strong">0% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>3/3</span>
+        <span class='fraction'>0/3</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">93.75% </span>
+        <span class="strong">18.75% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>15/16</span>
+        <span class='fraction'>3/16</span>
       </div>
     </div>
     <p class="quiet">
       Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
     </p>
   </div>
-  <div class='status-line medium'></div>
+  <div class='status-line low'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -102,26 +102,26 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -142,28 +142,28 @@ const { validate } = require('ktbo-utils')
  * @returns {Promise} - Returns a Promise with all orders.
  */
 &nbsp;
-module.exports = function(userId) {
+module.exports = <span class="fstat-no" title="function not covered" >fu</span>nction(userId) {
 &nbsp;
-    validate.string(userId, 'userId')
+<span class="cstat-no" title="statement not covered" >    validate.string(userId, 'userId')</span>
     
-    return (async () =&gt; {
+<span class="cstat-no" title="statement not covered" >    return (<span class="fstat-no" title="function not covered" >as</span>ync () =&gt; {</span>
 &nbsp;
-        const user = await User.findById(userId)
-        <span class="missing-if-branch" title="if path not taken" >I</span>if (!user) <span class="cstat-no" title="statement not covered" >throw Error(`User with id ${id} does not exist`)</span>
+        const user = <span class="cstat-no" title="statement not covered" >await User.findById(userId)</span>
+<span class="cstat-no" title="statement not covered" >        if (!user) <span class="cstat-no" title="statement not covered" >throw Error(`User with id ${id} does not exist`)</span></span>
 &nbsp;
-        <span class="missing-if-branch" title="else path not taken" >E</span>if(user.role === 'admin'){
+<span class="cstat-no" title="statement not covered" >        if(user.role === 'admin'){</span>
             
-            const orders = await Order.find({ __v: 0 }).sort({ _id: -1 }).populate("owner items.article ").lean()
-            <span class="missing-if-branch" title="if path not taken" >I</span>if(orders.length === 0)<span class="cstat-no" title="statement not covered" >throw Error(`There aren\'t any orders`)</span>
+            const orders = <span class="cstat-no" title="statement not covered" >await Order.find({ __v: 0 }).sort({ _id: -1 }).populate("owner items.article ").lean()</span>
+<span class="cstat-no" title="statement not covered" >            if(orders.length === 0)<span class="cstat-no" title="statement not covered" >throw Error(`There aren\'t any orders`)</span></span>
             //TODO si esta vacio peta el populate, llamar find sin populate i si tiene owner hacer find con populate
-            orders.forEach(order =&gt; {
-                order.id = order._id.toString()
-                delete order._id
+<span class="cstat-no" title="statement not covered" >            orders.forEach(<span class="fstat-no" title="function not covered" >or</span>der =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >                order.id = order._id.toString()</span>
+<span class="cstat-no" title="statement not covered" >                delete order._id</span>
             })
     
-            <span class="missing-if-branch" title="if path not taken" >I</span>if(!orders) <span class="cstat-no" title="statement not covered" >throw new Error(`Order with id ${orderId} not exist`)</span>
+<span class="cstat-no" title="statement not covered" >            if(!orders) <span class="cstat-no" title="statement not covered" >throw new Error(`Order with id ${orderId} not exist`)</span></span>
      
-            return orders
+<span class="cstat-no" title="statement not covered" >            return orders</span>
                    
         } else {
 <span class="cstat-no" title="statement not covered" >            throw new Error(`User with id ${userId} is not an admin`)</span>
@@ -178,7 +178,7 @@ module.exports = function(userId) {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Oct 30 2019 17:42:01 GMT+0100 (GMT+01:00)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Tue Nov 05 2019 11:23:33 GMT+0100 (GMT+01:00)
 </div>
 </div>
 <script src="../../prettify.js"></script>

@@ -20,31 +20,31 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">93.33% </span>
+        <span class="strong">20% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>14/15</span>
+        <span class='fraction'>3/15</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">75% </span>
+        <span class="strong">0% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>3/4</span>
+        <span class='fraction'>0/4</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">100% </span>
+        <span class="strong">0% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>3/3</span>
+        <span class='fraction'>0/3</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">100% </span>
+        <span class="strong">21.43% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>14/14</span>
+        <span class='fraction'>3/14</span>
       </div>
     </div>
     <p class="quiet">
       Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
     </p>
   </div>
-  <div class='status-line high'></div>
+  <div class='status-line low'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -95,26 +95,26 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -129,28 +129,28 @@ const { validate } = require('ktbo-utils')
  * @returns {Promise} - Returns a promise with the all of the users with params without passwords.
  */
 &nbsp;
-module.exports = function (id) {
+module.exports = <span class="fstat-no" title="function not covered" >fu</span>nction (id) {
 &nbsp;
-    validate.string(id, 'id')
+<span class="cstat-no" title="statement not covered" >    validate.string(id, 'id')</span>
 &nbsp;
-    return(async () =&gt; { 
+<span class="cstat-no" title="statement not covered" >    return(<span class="fstat-no" title="function not covered" >as</span>ync () =&gt; { </span>
 &nbsp;
-        const res = await User.findOne({ _id: id })
-        if(res.role === 'admin'){
+        const res = <span class="cstat-no" title="statement not covered" >await User.findOne({ _id: id })</span>
+<span class="cstat-no" title="statement not covered" >        if(res.role === 'admin'){</span>
 &nbsp;
-            const users = await User.find({}, { password: 0 }).sort({_id:1}).lean()
-            <span class="missing-if-branch" title="if path not taken" >I</span>if (!users) <span class="cstat-no" title="statement not covered" >throw new Error(`There isn't some user with id ${id}`)</span>
+            const users = <span class="cstat-no" title="statement not covered" >await User.find({}, { password: 0 }).sort({_id:1}).lean()</span>
+<span class="cstat-no" title="statement not covered" >            if (!users) <span class="cstat-no" title="statement not covered" >throw new Error(`There isn't some user with id ${id}`)</span></span>
     
-            const retrievedUsers = users.map(user =&gt; {
-                user.id = user._id.toString()
-                return user
+            const retrievedUsers = <span class="cstat-no" title="statement not covered" >users.map(<span class="fstat-no" title="function not covered" >us</span>er =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >                user.id = user._id.toString()</span>
+<span class="cstat-no" title="statement not covered" >                return user</span>
 &nbsp;
             })
 &nbsp;
-            return retrievedUsers
+<span class="cstat-no" title="statement not covered" >            return retrievedUsers</span>
 &nbsp;
         } else {
-            throw new Error(`User with id ${id} is not an admin`)
+<span class="cstat-no" title="statement not covered" >            throw new Error(`User with id ${id} is not an admin`)</span>
         }
 &nbsp;
     })()
@@ -160,7 +160,7 @@ module.exports = function (id) {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Oct 30 2019 17:42:01 GMT+0100 (GMT+01:00)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Tue Nov 05 2019 11:23:33 GMT+0100 (GMT+01:00)
 </div>
 </div>
 <script src="../../prettify.js"></script>

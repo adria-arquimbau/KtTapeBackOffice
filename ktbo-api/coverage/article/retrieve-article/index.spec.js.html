@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">97.37% </span>
+        <span class="strong">34.21% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>37/38</span>
+        <span class='fraction'>13/38</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -30,21 +30,21 @@
         <span class='fraction'>0/0</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">85.71% </span>
+        <span class="strong">14.29% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>6/7</span>
+        <span class='fraction'>1/7</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">100% </span>
+        <span class="strong">37.14% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>35/35</span>
+        <span class='fraction'>13/35</span>
       </div>
     </div>
     <p class="quiet">
       Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
     </p>
   </div>
-  <div class='status-line high'></div>
+  <div class='status-line low'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -117,38 +117,38 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
@@ -163,55 +163,55 @@ const { random } = Math
 const { env: { DB_URL_TEST }} = process
 &nbsp;
 describe('logic - retrieve article', () =&gt; {
-    before(() =&gt; database.connect(DB_URL_TEST))
+    before(<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >database.connect(DB_URL_TEST))</span>
     
 &nbsp;
     let ref, title, description, img, quantity, category, articleId, price
 &nbsp;
-    beforeEach(async () =&gt; {
+    beforeEach(<span class="fstat-no" title="function not covered" >as</span>ync () =&gt; {
       
-        ref = Number((random()*1000).toFixed())
-        title = `title-${random()}`
-        description = `description-${random()}`
-        img = `imgUrl-${random()}`
-        quantity = Number((random()*100).toFixed())
-        price = Number((random()*100).toFixed())
-        category = value('KTTape Pro Precut', 'KTTape Pro Uncut', 'KTTape Pro Limited Edition', 'KTTape Pro Jumbo Precut', 'KTTape Pro Jumbo Uncut', 'KTTape Original Precut', 'KTTape Original Uncut', 'KTTape Original Jumbo Precut', 'KTTape Original Jumbo Uncut', 'KTTape Original Jumbo Edema')
+<span class="cstat-no" title="statement not covered" >        ref = Number((random()*1000).toFixed())</span>
+<span class="cstat-no" title="statement not covered" >        title = `title-${random()}`</span>
+<span class="cstat-no" title="statement not covered" >        description = `description-${random()}`</span>
+<span class="cstat-no" title="statement not covered" >        img = `imgUrl-${random()}`</span>
+<span class="cstat-no" title="statement not covered" >        quantity = Number((random()*100).toFixed())</span>
+<span class="cstat-no" title="statement not covered" >        price = Number((random()*100).toFixed())</span>
+<span class="cstat-no" title="statement not covered" >        category = value('KTTape Pro Precut', 'KTTape Pro Uncut', 'KTTape Pro Limited Edition', 'KTTape Pro Jumbo Precut', 'KTTape Pro Jumbo Uncut', 'KTTape Original Precut', 'KTTape Original Uncut', 'KTTape Original Jumbo Precut', 'KTTape Original Jumbo Uncut', 'KTTape Original Jumbo Edema')</span>
 &nbsp;
-        await Article.deleteMany()
+<span class="cstat-no" title="statement not covered" >        await Article.deleteMany()</span>
 &nbsp;
-        const article = await Article.create({ ref, title, description, img, quantity, category, price })
-        articleId = article.id
+        const article = <span class="cstat-no" title="statement not covered" >await Article.create({ ref, title, description, img, quantity, category, price })</span>
+<span class="cstat-no" title="statement not covered" >        articleId = article.id</span>
     })
 &nbsp;
-    it('should succeed on correct data', async () =&gt; {
+    it('should succeed on correct data', <span class="fstat-no" title="function not covered" >as</span>ync () =&gt; {
 &nbsp;
-        const article = await retrieveArticle(articleId)
-                expect(article).to.exist
-                expect(article._id).to.not.exist
-                expect(article.id).to.equal(articleId)
-                expect(article.ref).to.equal(ref)
-                expect(article.title).to.equal(title)
-                expect(article.description).to.equal(description)
-                expect(article.img).to.equal(img)
-                expect(article.quantity).to.equal(quantity)
-                expect(article.category).to.equal(category)
-                expect(article.price).to.equal(price)
+        const article = <span class="cstat-no" title="statement not covered" >await retrieveArticle(articleId)</span>
+<span class="cstat-no" title="statement not covered" >                expect(article).to.exist</span>
+<span class="cstat-no" title="statement not covered" >                expect(article._id).to.not.exist</span>
+<span class="cstat-no" title="statement not covered" >                expect(article.id).to.equal(articleId)</span>
+<span class="cstat-no" title="statement not covered" >                expect(article.ref).to.equal(ref)</span>
+<span class="cstat-no" title="statement not covered" >                expect(article.title).to.equal(title)</span>
+<span class="cstat-no" title="statement not covered" >                expect(article.description).to.equal(description)</span>
+<span class="cstat-no" title="statement not covered" >                expect(article.img).to.equal(img)</span>
+<span class="cstat-no" title="statement not covered" >                expect(article.quantity).to.equal(quantity)</span>
+<span class="cstat-no" title="statement not covered" >                expect(article.category).to.equal(category)</span>
+<span class="cstat-no" title="statement not covered" >                expect(article.price).to.equal(price)</span>
 &nbsp;
     }) 
 &nbsp;
-    it('should fail if the id is not a string', () =&gt; 
-        expect(<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >retrieveArticle(123).to.throw(`article with id 123 is not a string`))</span>
+    it('should fail if the id is not a string', <span class="fstat-no" title="function not covered" >()</span> =&gt; 
+<span class="cstat-no" title="statement not covered" >        expect(<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >retrieveArticle(123).to.throw(`article with id 123 is not a string`))</span></span>
     )
 &nbsp;
-    after(() =&gt; database.disconnect())
+    after(<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >database.disconnect())</span>
 })</pre></td></tr>
 </table></pre>
 <div class='push'></div><!-- for sticky footer -->
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Oct 30 2019 17:42:01 GMT+0100 (GMT+01:00)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Tue Nov 05 2019 11:23:33 GMT+0100 (GMT+01:00)
 </div>
 </div>
 <script src="../../prettify.js"></script>

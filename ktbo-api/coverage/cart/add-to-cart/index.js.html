@@ -20,31 +20,31 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">86.21% </span>
+        <span class="strong">10.34% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>25/29</span>
+        <span class='fraction'>3/29</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">64.29% </span>
+        <span class="strong">0% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>9/14</span>
+        <span class='fraction'>0/14</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">75% </span>
+        <span class="strong">0% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>3/4</span>
+        <span class='fraction'>0/4</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">100% </span>
+        <span class="strong">13.64% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>22/22</span>
+        <span class='fraction'>3/22</span>
       </div>
     </div>
     <p class="quiet">
       Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
     </p>
   </div>
-  <div class='status-line high'></div>
+  <div class='status-line low'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -107,35 +107,35 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">16x</span>
-<span class="cline-any cline-yes">16x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const { models: { Article, User, Item } } = require('ktbo-data')
@@ -151,37 +151,37 @@ const { validate } = require('ktbo-utils')
  * @returns {Promise}
  */
 &nbsp;
-module.exports = function(userId, articleId, quantity) {
+module.exports = <span class="fstat-no" title="function not covered" >fu</span>nction(userId, articleId, quantity) {
 &nbsp;
-    quantity = Number(quantity)
-    validate.string(userId, 'userId')
-    validate.string(articleId, 'articleId')
-    validate.number(quantity, 'quantity')
+<span class="cstat-no" title="statement not covered" >    quantity = Number(quantity)</span>
+<span class="cstat-no" title="statement not covered" >    validate.string(userId, 'userId')</span>
+<span class="cstat-no" title="statement not covered" >    validate.string(articleId, 'articleId')</span>
+<span class="cstat-no" title="statement not covered" >    validate.number(quantity, 'quantity')</span>
     
-    return (async () =&gt; {
+<span class="cstat-no" title="statement not covered" >    return (<span class="fstat-no" title="function not covered" >as</span>ync () =&gt; {</span>
 &nbsp;
-        if(quantity &lt;= 0) quantity = 1
+<span class="cstat-no" title="statement not covered" >        if(quantity &lt;= 0) <span class="cstat-no" title="statement not covered" >quantity = 1</span></span>
 &nbsp;
-        const res = await User.findById(userId)
-        <span class="missing-if-branch" title="if path not taken" >I</span>if (!res) <span class="cstat-no" title="statement not covered" >throw Error(`User with id ${userId} does not exist`)</span>
+        const res = <span class="cstat-no" title="statement not covered" >await User.findById(userId)</span>
+<span class="cstat-no" title="statement not covered" >        if (!res) <span class="cstat-no" title="statement not covered" >throw Error(`User with id ${userId} does not exist`)</span></span>
 &nbsp;
-        const article = await Article.findById(articleId)
-        if(article.quantity &lt; quantity) throw Error('Stock greater than quantity required')
-        <span class="missing-if-branch" title="if path not taken" >I</span>if(article.quantity === 0 &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >quantity === 0)</span> <span class="cstat-no" title="statement not covered" >throw Error('Stock greater than quantity required')</span>
+        const article = <span class="cstat-no" title="statement not covered" >await Article.findById(articleId)</span>
+<span class="cstat-no" title="statement not covered" >        if(article.quantity &lt; quantity) <span class="cstat-no" title="statement not covered" >throw Error('Stock greater than quantity required')</span></span>
+<span class="cstat-no" title="statement not covered" >        if(article.quantity === 0 &amp;&amp; quantity === 0) <span class="cstat-no" title="statement not covered" >throw Error('Stock greater than quantity required')</span></span>
 &nbsp;
-        let item = res.cart.find(<span class="fstat-no" title="function not covered" >it</span>em =&gt; <span class="cstat-no" title="statement not covered" >item.article.toString() === articleId)</span>
-        item ? <span class="branch-0 cbranch-no" title="branch not covered" >item.quantity = quantity </span>: res.cart.push(new Item({article: articleId, quantity}))
+        let item = <span class="cstat-no" title="statement not covered" >res.cart.find(<span class="fstat-no" title="function not covered" >it</span>em =&gt; <span class="cstat-no" title="statement not covered" >item.article.toString() === articleId)</span></span>
+<span class="cstat-no" title="statement not covered" >        item ? item.quantity = quantity : res.cart.push(new Item({article: articleId, quantity}))</span>
  
-        await res.save()
+<span class="cstat-no" title="statement not covered" >        await res.save()</span>
 &nbsp;
-        const user = await User.findById(userId)
-        let item1 = user.cart.find(item =&gt; item.article.toString() === articleId)
+        const user = <span class="cstat-no" title="statement not covered" >await User.findById(userId)</span>
+        let item1 = <span class="cstat-no" title="statement not covered" >user.cart.find(<span class="fstat-no" title="function not covered" >it</span>em =&gt; <span class="cstat-no" title="statement not covered" >item.article.toString() === articleId)</span></span>
 &nbsp;
-        <span class="missing-if-branch" title="if path not taken" >I</span>if(item1.quantity &lt; 0) <span class="cstat-no" title="statement not covered" >item1.quantity=0</span>
+<span class="cstat-no" title="statement not covered" >        if(item1.quantity &lt; 0) <span class="cstat-no" title="statement not covered" >item1.quantity=0</span></span>
 &nbsp;
-        await user.save()
+<span class="cstat-no" title="statement not covered" >        await user.save()</span>
 &nbsp;
-        return user.cart
+<span class="cstat-no" title="statement not covered" >        return user.cart</span>
 &nbsp;
     })()
 }</pre></td></tr>
@@ -190,7 +190,7 @@ module.exports = function(userId, articleId, quantity) {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Oct 30 2019 17:42:01 GMT+0100 (GMT+01:00)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Tue Nov 05 2019 11:23:33 GMT+0100 (GMT+01:00)
 </div>
 </div>
 <script src="../../prettify.js"></script>
