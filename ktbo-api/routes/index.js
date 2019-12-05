@@ -29,6 +29,7 @@ const tokenMiddleware = require('../helpers/token-middleware')
     const changeOrderState = require('./order/change-order-state')
     const removePendingOrder = require('./order/remove-pending-order')
     const fromAdminRetrieveAllUserOrders = require('./order/from-admin-retrieve-all-user-orders')
+    const fromAdminRetrievePendingUserOrders = require('./order/from-admin-retrieve-pending-user-orders')
 
     ////   CART   ////
     const addToCart = require('./cart/add-to-cart')
@@ -58,10 +59,13 @@ const tokenMiddleware = require('../helpers/token-middleware')
     router.patch ('/user/article/:articleId', [tokenMiddleware, jsonBodyParser], updateArticle)
     router.delete ('/user/article/:articleId', [tokenMiddleware, jsonBodyParser], unregisterArticle)
 
-    ////   ORDER   //// 9
+    ////   ORDER   //// 10
     router.post('/user/order', [tokenMiddleware, jsonBodyParser], placeOrder)
     router.get('/user/order/:orderId', [tokenMiddleware, jsonBodyParser], retrieveOrder)
+
     router.get('/user/allUserOrders/:userIdOrders', [tokenMiddleware, jsonBodyParser], fromAdminRetrieveAllUserOrders)
+    router.get('/user/pendingUserOrders/:userIdPendingOrders', [tokenMiddleware, jsonBodyParser], fromAdminRetrievePendingUserOrders)
+
     router.get('/user/orders', [tokenMiddleware, jsonBodyParser], retrieveAllUserOrders)
     router.get('/user/allOrders', [tokenMiddleware, jsonBodyParser], retrieveAllOrders)
     router.get('/user/closedOrders', [tokenMiddleware, jsonBodyParser], retrieveClosedOrders)

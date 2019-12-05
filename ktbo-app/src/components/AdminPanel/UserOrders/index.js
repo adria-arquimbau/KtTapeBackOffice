@@ -44,7 +44,8 @@ function RetrieveUserOrders({ users }) {
     {
         try {
             setAllOrders()
-            const {orders} = await logic.retrievePendingOrders(id)
+            debugger
+            const {orders} = await logic.fromAdminRetrievePendingUserOrders(id)
             setPendingOrders(orders)
         } catch ({message}) {
             setError(message)
