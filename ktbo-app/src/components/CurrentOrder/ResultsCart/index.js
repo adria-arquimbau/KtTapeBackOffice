@@ -45,8 +45,7 @@ function ResultsCart({ history }) {
     async function handlePlaceOrder() {
         try {
             const { message } = await logic.placeOrder()
-            const messageOk = message
-            setMessage(messageOk)
+            setMessage(message)
             setInterruptorItems(!interruptorItems)
         } catch ({message}) {
             setError(message)

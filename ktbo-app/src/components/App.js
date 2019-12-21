@@ -9,6 +9,7 @@ import '../style/index.css'
 import Landing from './Landing'
 import Home from './Home'
 
+
 function App({ history }) {
 
   const [user, setUser] = useState()

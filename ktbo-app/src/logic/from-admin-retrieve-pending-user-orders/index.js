@@ -6,7 +6,7 @@ export default function (userIdPendingOrders) {
         
         const { token } = sessionStorage
 
-        const response = await fetch(`${REACT_APP_API_URL}/user/allUserOrders/${userIdPendingOrders}`, {
+        const response = await fetch(`${REACT_APP_API_URL}/user/pendingUserOrders/${userIdPendingOrders}`, {
             method: 'GET',
             headers: {'authorization': `bearer ${token}` }
         })

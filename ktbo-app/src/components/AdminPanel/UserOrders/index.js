@@ -44,7 +44,6 @@ function RetrieveUserOrders({ users }) {
     {
         try {
             setAllOrders()
-            debugger
             const {orders} = await logic.fromAdminRetrievePendingUserOrders(id)
             setPendingOrders(orders)
         } catch ({message}) {
@@ -56,6 +55,7 @@ function RetrieveUserOrders({ users }) {
     {
         setMessage(null) 
         setError(null)
+        setPendingOrders()
     }
 
     return <section className="admin-retrieve-users">

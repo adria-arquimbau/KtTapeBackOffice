@@ -23,7 +23,7 @@ module.exports = function(userId, userIdPendingOrders) {
         const userAdmin = await User.findById(userIdPendingOrders)
         if (!userAdmin) throw Error(`User with id ${userIdPendingOrders} does not exist`)
 
-        const orders = await Order.find({ owner: userIdPendingOrders }, { __v: 0 }).sort({ _id: -1 }).populate("items.article").lean()
+        const orders = await Order.find({ state: 'pending', owner: userIdPendingOrders }, { __v: 0 }).sort({ _id: -1 }).populate("items.article").lean()
 
         orders.forEach(async order => {
             if(order.owner != userId) throw Error('User id does not match with user/order/id')
@@ -31,7 +31,7 @@ module.exports = function(userId, userIdPendingOrders) {
             delete order._id      
         })
         
-        if(orders.length === 0) throw new Error(`This User don\'t have any orders`)
+        if(orders.length === 0) throw new Error(`This User don\'t have any pending orders`)
         
         owner = orders[0].owner
         if(owner.toString() === userIdPendingOrders)  {
