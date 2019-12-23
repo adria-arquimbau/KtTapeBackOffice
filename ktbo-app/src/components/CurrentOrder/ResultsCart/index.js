@@ -9,6 +9,7 @@ function ResultsCart({ history }) {
 
     const [message, setMessage] = useState(null)
     const [error, setError] = useState(null)
+    const [awaitLoad, setAwaitLoad] = useState(false)
     const {items} = useContext(Context)
     const {interruptorItems, setInterruptorItems} = useContext(Context)
 
@@ -44,9 +45,11 @@ function ResultsCart({ history }) {
 
     async function handlePlaceOrder() {
         try {
+            setAwaitLoad(true)
             const { message } = await logic.placeOrder()
             setMessage(message)
             setInterruptorItems(!interruptorItems)
+            setAwaitLoad(false)
         } catch ({message}) {
             setError(message)
         }
@@ -72,7 +75,7 @@ function ResultsCart({ history }) {
         {message && <Modal message={message} showModal={handleModal}/>}
         {error && <Modal message={error} showModal={handleModalError}/>}
         <div className="currentOrder__placeOrder">
-            <button onClick={handlePlaceOrder} className="currentOrder__button--placeOrder">PLACE ORDER</button>
+            {awaitLoad == false && <button onClick={handlePlaceOrder} className="currentOrder__button--placeOrder">PLACE ORDER</button>}
             <h3 className="currentOrder__totalPrice">TOTAL PRICE: {totalPrice.toFixed(2)} €</h3>     
         </div>
     </>
