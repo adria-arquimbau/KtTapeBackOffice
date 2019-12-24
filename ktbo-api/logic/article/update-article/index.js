@@ -16,7 +16,7 @@ module.exports = function (articleId, body) {
     validate.string(articleId, 'articleId')
     validate.number(ref, 'ref')
     validate.string(title, 'title')
-    validate.string(description, 'description')
+    if(description) validate.string(description, 'description')
     validate.string(img, 'img')
     validate.number(quantity, 'quantity')
     validate.string(category, 'category')    

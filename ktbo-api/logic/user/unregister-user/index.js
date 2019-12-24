@@ -20,14 +20,18 @@ module.exports = function (userId, adminId, password) {
 
     return (async () => {
 
-        const res = await User.findById({ _id: adminId})
-        if(!res) throw Error (`Admin with id ${adminId} doesn\'t exist`)
+        const admin = await User.findById({ _id: adminId})
+        if(!admin) throw Error (`Admin with id ${adminId} doesn\'t exist`)
 
-        if(res.role === 'admin'){
+        const userToDelete = await User.findById({ _id: userId})
+        if(!admin) throw Error (`User to Delete with id ${userId} doesn\'t exist`)
+
+        if(admin.role === 'admin'){
 
             if(userId === adminId)throw Error(`You can\'t delete your profile`)
+            if(userToDelete.role === 'admin') throw Error(`You can\'t delete an admin profile`)
 
-            const match = await bcrypt.compare(password, res.password)
+            const match = await bcrypt.compare(password, admin.password)
             if (!match) throw new Error('wrong credentials')
     
             const user = await User.findById({ _id: userId })
