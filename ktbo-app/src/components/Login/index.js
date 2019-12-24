@@ -10,6 +10,8 @@ import Modal from '../Modal'
 function Login({ history }) {
     
     const [message, setMessage] = useState(null)
+    const [waitLogin, setWaitLogin] = useState(false)
+
     
     const {setUser} = useContext(Context)
 
@@ -21,6 +23,8 @@ function Login({ history }) {
 
     async function handleLogin(email, password) {
         try {
+            setWaitLogin(true)
+            debugger
             const {  id, token } = await logic.authenticateUser(email, password)
             logic.userCredentials = { id, token }
 
@@ -32,13 +36,16 @@ function Login({ history }) {
             }
         
             history.push('/home')
+            setWaitLogin(false)
         } catch({message}) {
             setMessage(message)
         }
+        
     }
 
     function handleModal() {
         setMessage(null) 
+        setWaitLogin(false)
     }
 
     return <main className="login">
@@ -47,7 +54,7 @@ function Login({ history }) {
                 <form className="login__form" onSubmit={handleSubmit}>
                     <input className="login__form--email" placeholder="e-mail" type="email" name="email" />
                     <input className="login__form--password" placeholder="password" type="password" name="password" />
-                    <button className="login__form--button">Log in</button>
+                    {waitLogin == false && <button className="login__form--button">Log in</button>}
                 </form>
                 {message && <Modal message={message} showModal={handleModal}/>}
             </section>
