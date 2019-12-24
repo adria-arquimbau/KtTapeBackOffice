@@ -1,23 +1,57 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React from 'react'
+import React, {useState, useEffect, useContext} from 'react'
 import { withRouter } from 'react-router-dom'
+import logic from '../../../logic'
+import Modal from '../../Modal'
 
 function ArticlesManagement({ allArticles }) {
+
+    const [message, setMessage] = useState(null)
+
+    function handleSubmitUpdateArticle(event) {
+        event.preventDefault()
+        let { target: { id: {value: articleId}, ref: {value: newRef}, title: {value: newTitle}, description: {value: newDescription}, img: {value: newImg}, quantity: {value: newQuantity}, category: {value: newCategory}, price: {value: newPrice} } } = event
+        const body = {
+            ref: Number(newRef),
+            title: newTitle,
+            description: newDescription,
+            img: newImg,
+            quantity: Number(newQuantity),
+            category: newCategory,
+            price: Number(newPrice)
+        }
+        updateArticle(articleId, body)
+    }
+
+    async function updateArticle(articleId, body) {
+        try {
+            debugger
+            const { message } = await logic.updateArticle(articleId, body)    
+            setMessage(message)
+        } catch ({message}) {
+            setMessage(message)
+        }
+    }
+
+    function handleModal() {
+        setMessage(null) 
+      }
 
     return <section className="">
         <h1>All articles</h1>
         {allArticles && allArticles.map(article =>{
-            const {ref, title, description, img, quantity, category, price} = article
+            const {id, ref, title, description, img, quantity, category, price} = article
 
-            return <form>
+            return <form onSubmit={handleSubmitUpdateArticle}>
                 <ul>
-                    <li>Ref:<input placeholder={ref}></input></li>  
-                    <li>Title:<input placeholder={title}></input></li>
-                    <li>Description:<input placeholder={description}></input></li>
-                    <li>Img url:<input placeholder={img}></input></li>
-                    <li>Quantity:<input placeholder={quantity}></input></li>
+                 <input hidden name="id" defaultValue={id}></input>
+                    <li>Ref:<input type="number" placeholder={ref} name="ref" defaultValue={ref}></input></li>  
+                    <li>Title:<input placeholder={title} name="title" defaultValue={title}></input></li>
+                   <li>Description:<input placeholder={description} name="description" defaultValue={description}></input></li>
+                   <li>Img url:<input placeholder={img} name="img" defaultValue={img}></input></li>
+                    <li>Quantity:<input type="number" placeholder={quantity} name="quantity" defaultValue={quantity}></input></li>
                     <li>Category:
-                        <select name="categories">
+                        <select name="category">
                             <option value={category}>Current category: {category}</option> 
                             <option value="KTTape Pro Precut">KTTape Pro Precut</option> 
                             <option value="KTTape Pro Uncut">KTTape Pro Uncut</option> 
@@ -32,12 +66,12 @@ function ArticlesManagement({ allArticles }) {
                             <option value="Other Products">Other Products</option> 
                         </select>
                     </li>
-                    <li>Price:<input placeholder={price}></input></li>  
+                    <li>Price:<input placeholder={price} name="price" defaultValue={price}></input></li>  
                 </ul>
                 <button>Update</button>
             </form>
         })}
-       
+        {message && <Modal  message={message} showModal={handleModal}/>}
     </section>
 }
 

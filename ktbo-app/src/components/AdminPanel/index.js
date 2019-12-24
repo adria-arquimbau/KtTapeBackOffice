@@ -112,7 +112,6 @@ function AdminPanel({history}) {
       setRetrieveUsers()
       setUserOrders()
       const articles = await logic.retrieveAllArticles()
-      debugger
       setArticlesManagement(articles.articles)
     } catch (error) {
       setError(message)

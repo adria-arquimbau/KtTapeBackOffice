@@ -19,6 +19,7 @@ import registerUser from './register-user'
 import retrieveAllUsers from './retrieve-all-users'
 import unregisterUser from './unregister-user'
 import wakeUp from './wake-up'
+import updateArticle from './update-article'
 import removeAllCart from './remove-all-cart'
 import fromAdminRetrieveAllUserOrders from './from-admin-retrieve-all-user-orders'
 import fromAdminRetrievePendingUserOrders from './from-admin-retrieve-pending-user-orders'
@@ -54,5 +55,6 @@ export default {
     wakeUp,
     removeAllCart,
     fromAdminRetrieveAllUserOrders,
-    fromAdminRetrievePendingUserOrders
+    fromAdminRetrievePendingUserOrders,
+    updateArticle
 }
