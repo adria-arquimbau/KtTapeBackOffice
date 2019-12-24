@@ -10,6 +10,7 @@ function MyAccount({history}) {
   const {setCat} = useContext(Context)
 
   const [message, setMessage] = useState(null)
+  const {user} = useContext(Context)
 
   useEffect(() => {
     setCat()
@@ -40,6 +41,10 @@ function MyAccount({history}) {
   return <section className="myAccount">
     <h1>My Account</h1>
     <div className="myAccount__updateUser">
+      <p>Company: {user.company}</p>
+      <p>Country: {user.country}</p>
+      <p>Email: {user.email}</p>
+
       <h2>Update Password</h2>
       <form className="myAccount__update-user--form" onSubmit={handleSubmit}>
         <input placeholder="Old Password" type="password" name="old" defaultValue="" ></input>

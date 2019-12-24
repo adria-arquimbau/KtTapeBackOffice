@@ -16,12 +16,14 @@ function ArticlesManagement({ allArticles, retrieveAllArticles }) {
     function handleSubmitUpdateArticle(event) {
         event.preventDefault()
         let { target: { id: {value: articleId}, ref: {value: newRef}, title: {value: newTitle}, description: {value: newDescription}, img: {value: newImg}, quantity: {value: newQuantity}, category: {value: newCategory}, price: {value: newPrice} } } = event
+        let newQuantityNumber = Number(newQuantity)
+        if(newQuantityNumber < 0) newQuantityNumber = 0
         const body = {
             ref: Number(newRef),
             title: newTitle,
             description: newDescription,
             img: newImg,
-            quantity: Number(newQuantity),
+            quantity: newQuantityNumber,
             category: newCategory,
             price: Number(newPrice)
         }
@@ -75,7 +77,7 @@ function ArticlesManagement({ allArticles, retrieveAllArticles }) {
                     </li>
                     <li>Price:<input placeholder={price} name="price" defaultValue={price}></input></li>  
                 </ul>
-                {awaitResponse == false && <button>Update</button>}
+                {awaitResponse === false && <button>Update</button>}
             </form>
         })}
         {message && <Modal  message={message} showModal={handleModal}/>}
