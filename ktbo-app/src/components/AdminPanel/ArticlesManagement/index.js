@@ -11,7 +11,7 @@ function ArticlesManagement({ allArticles, retrieveAllArticles }) {
 
     useEffect(() => {
         retrieveAllArticles()
-    },[message])
+    },[awaitResponse])
 
     function handleSubmitUpdateArticle(event) {
         event.preventDefault()
@@ -46,7 +46,32 @@ function ArticlesManagement({ allArticles, retrieveAllArticles }) {
         setMessage(null) 
       }
 
-    return <section className="">
+    return <>
+    <section>
+    <h2>Articles Out of stock</h2>
+    {allArticles && allArticles.map(article => {
+        const {id, ref, title, description, img, quantity, category, price} = article
+        if(quantity === 0){
+           return <form onSubmit={handleSubmitUpdateArticle}>
+            <ul>
+                <li>{ref}</li>
+                <li>{title}</li>
+                <input type="number" name="quantity" placeholder="add new stock quantity"></input>
+                <input hidden name="id" defaultValue={id}></input>
+                <input hidden defaultValue={description} name="description" placeholder="add new stock quantity"></input>
+                <input hidden defaultValue={title} name="title" placeholder="add new stock quantity"></input>
+                <input hidden defaultValue={img} name="img" placeholder="add new stock quantity"></input>
+                <input hidden defaultValue={category} name="category" placeholder="add new stock quantity"></input>
+                <input hidden defaultValue={price} name="price" type="number" placeholder="add new stock quantity"></input>
+                <input hidden defaultValue={ref} name="ref" type="number" placeholder="add new stock quantity"></input>
+           </ul>
+           {awaitResponse === false && <button>Update Stock</button>}
+           </form>
+        }
+    
+    })}
+    </section>
+    <section className="">
         <h1>All articles</h1>
         {allArticles && allArticles.map(article =>{
             const {id, ref, title, description, img, quantity, category, price} = article
@@ -80,8 +105,9 @@ function ArticlesManagement({ allArticles, retrieveAllArticles }) {
                 {awaitResponse === false && <button>Update</button>}
             </form>
         })}
-        {message && <Modal  message={message} showModal={handleModal}/>}
     </section>
+        {message && <Modal  message={message} showModal={handleModal}/>}
+        </>
 }
 
 export default withRouter(ArticlesManagement)

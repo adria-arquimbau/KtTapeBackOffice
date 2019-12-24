@@ -25,5 +25,5 @@ Demo:
 + https://ktbo.surge.sh
 
 Demo user:
-+ email: admin@admin.com
-+ password: admin
++ email: testuser@testuser.com
++ password: testuser
