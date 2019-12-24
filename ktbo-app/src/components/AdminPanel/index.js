@@ -142,7 +142,7 @@ function AdminPanel({history}) {
       {retrieveUsers && <AllUsers users={retrieveUsers} retrieveAllUsers={handleRetrieveAllUsers} />}
       {newUser && <NewUser />}
       {userOrders && <UserOrders users={userOrders}/>}
-      {articlesManagement && <ArticlesManagement allArticles={articlesManagement} />}
+      {articlesManagement && <ArticlesManagement allArticles={articlesManagement} retrieveAllArticles={handleArticlesManagement}/>}
     </section> 
     {message && <Modal  message={message} showModal={handleModal}/>}
   </section>

@@ -4,9 +4,14 @@ import { withRouter } from 'react-router-dom'
 import logic from '../../../logic'
 import Modal from '../../Modal'
 
-function ArticlesManagement({ allArticles }) {
+function ArticlesManagement({ allArticles, retrieveAllArticles }) {
 
     const [message, setMessage] = useState(null)
+    const [awaitResponse, setAwaitResponse] = useState(false)
+
+    useEffect(() => {
+        retrieveAllArticles()
+    },[message])
 
     function handleSubmitUpdateArticle(event) {
         event.preventDefault()
@@ -20,16 +25,18 @@ function ArticlesManagement({ allArticles }) {
             category: newCategory,
             price: Number(newPrice)
         }
+        setAwaitResponse(true)
         updateArticle(articleId, body)
     }
 
     async function updateArticle(articleId, body) {
         try {
-            debugger
             const { message } = await logic.updateArticle(articleId, body)    
             setMessage(message)
+            setAwaitResponse(false)
         } catch ({message}) {
             setMessage(message)
+            setAwaitResponse(false)
         }
     }
 
@@ -68,7 +75,7 @@ function ArticlesManagement({ allArticles }) {
                     </li>
                     <li>Price:<input placeholder={price} name="price" defaultValue={price}></input></li>  
                 </ul>
-                <button>Update</button>
+                {awaitResponse == false && <button>Update</button>}
             </form>
         })}
         {message && <Modal  message={message} showModal={handleModal}/>}
