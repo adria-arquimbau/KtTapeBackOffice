@@ -63,6 +63,7 @@ function Home({history}) {
             <section className="superior__conditions">
             <a className="superior__conditions--privacy"  href="https://kttape.es/privacy-policy/" >Privacy Policy</a>            
             <a className="superior__conditions--terms"  href="https://kttape.es/terms-of-use/" >Terms of Use</a>
+            <p className="superior__conditions--terms">v-0.14.0</p>
             </section>
           </div>
         </section>
