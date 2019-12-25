@@ -522,7 +522,7 @@ input {
 }
 .article-management__out-of-stock--title {
   text-align: center;
-  margin: 5px;
+  margin-bottom: 0.6rem;
 }
 .article-management__all-articles {
   align-content: center;
