@@ -49,22 +49,26 @@ function ArticlesManagement({ allArticles, retrieveAllArticles }) {
     return <section className="article-management">
 
         <section className="article-management__out-of-stock">
-            <h2>Articles Out of stock</h2>
+            <h2 className="article-management__out-of-stock--title">Articles Out of stock</h2>
             {allArticles && allArticles.map(article => {
                 const {id, ref, title, description, img, quantity, category, price} = article
                 if(quantity === 0){
                 return <form onSubmit={handleSubmitUpdateArticle}>
                     <ul>
-                        <li>{ref}</li>
-                        <li>{title}</li>
-                        <input type="number" name="quantity" placeholder="add new stock quantity"></input>
-                        <input hidden name="id" defaultValue={id}></input>
-                        <input hidden defaultValue={description} name="description" placeholder="add new stock quantity"></input>
-                        <input hidden defaultValue={title} name="title" placeholder="add new stock quantity"></input>
-                        <input hidden defaultValue={img} name="img" placeholder="add new stock quantity"></input>
-                        <input hidden defaultValue={category} name="category" placeholder="add new stock quantity"></input>
-                        <input hidden defaultValue={price} name="price" type="number" placeholder="add new stock quantity"></input>
-                        <input hidden defaultValue={ref} name="ref" type="number" placeholder="add new stock quantity"></input>
+                        <section>
+                            <li>Ref: {ref}</li>
+                            <li>Title: {title}</li>
+                            <li>Quantity: {quantity}</li>
+                        </section>
+
+                        Update stock quantity: <input type="number" name="quantity" placeholder={quantity}/>
+                        <input hidden name="id" defaultValue={id}/>
+                        <input hidden defaultValue={description} name="description" placeholder="add new stock quantity"/>
+                        <input hidden defaultValue={title} name="title" placeholder="add new stock quantity"/>
+                        <input hidden defaultValue={img} name="img" placeholder="add new stock quantity"/>
+                        <input hidden defaultValue={category} name="category" placeholder="add new stock quantity"/>
+                        <input hidden defaultValue={price} name="price" type="number" placeholder="add new stock quantity"/>
+                        <input hidden defaultValue={ref} name="ref" type="number" placeholder="add new stock quantity"/>
                 </ul>
                 {awaitResponse === false && <button>Update Stock</button>}
                 </form>
@@ -77,32 +81,40 @@ function ArticlesManagement({ allArticles, retrieveAllArticles }) {
             <section className="article-management__all-articles--container">
                 {allArticles && allArticles.map(article =>{
                     const {id, ref, title, description, img, quantity, category, price} = article
+                    let splitedCategory = category.split("KTTape")
 
                     return <form className="article-management__all-articles--article" onSubmit={handleSubmitUpdateArticle}>
                         <ul className="article-management__all-articles--information">
-                        <input hidden name="id" defaultValue={id}></input>
-                            <li>Ref:<input type="number" placeholder={ref} name="ref" defaultValue={ref}></input></li>  
-                            <li>Title:<input placeholder={title} name="title" defaultValue={title}></input></li>
-                        <li>Description:<input placeholder={description} name="description" defaultValue={description}></input></li>
-                        <li>Img url:<input placeholder={img} name="img" defaultValue={img}></input></li>
-                            <li>Quantity:<input type="number" placeholder={quantity} name="quantity" defaultValue={quantity}></input></li>
-                            <li>Category:
+                        <input hidden name="id" defaultValue={id}/>
+                            <li>
+                                <p>Ref: {ref}</p><input className="article-management__all-articles--information-ref" type="number" placeholder={ref} name="ref" defaultValue={ref}/></li>  
+                            <li>
+                                <p>Title: {title}</p><input placeholder={title} name="title" defaultValue={title}/></li>
+                        <li>
+                            <p>Description: {description}</p><input placeholder={description} name="description" defaultValue={description}/></li>
+                        <li>
+                            <p>Img url:</p> <input className="article-management__all-articles--information-url" placeholder={img} name="img" defaultValue={img}/></li>
+                            <li>
+                                <p>Quantity: {quantity}</p><input className="article-management__all-articles--information-quantity" type="number" placeholder={quantity} name="quantity" defaultValue={quantity}/></li>
+                            <li>
+                                <p>Category:</p>
                                 <select name="category">
-                                    <option value={category}>Current category: {category}</option> 
-                                    <option value="KTTape Pro Precut">KTTape Pro Precut</option> 
-                                    <option value="KTTape Pro Uncut">KTTape Pro Uncut</option> 
-                                    <option value="KTTape Pro Limited Edition">KTTape Pro Limited Edition</option>
-                                    <option value="KTTape Pro Jumbo Precut">KTTape Pro Jumbo Precut</option> 
-                                    <option value="KTTape Pro Jumbo Uncut">KTTape Pro Jumbo Uncut</option> 
-                                    <option value="KTTape Original Precut">KTTape Original Precut</option> 
-                                    <option value="KTTape Original Uncut">KTTape Original Uncut</option> 
-                                    <option value="KTTape Original Jumbo Precut">KTTape Original Jumbo Precut</option> 
-                                    <option value="KTTape Original Jumbo Uncut">KTTape Original Jumbo Uncut</option> 
-                                    <option value="KTTape Original Jumbo Edema2">KTTape Original Jumbo Edema</option> 
+                                    <option value={category}>Current category: {splitedCategory[1]}</option> 
+                                    <option value="KTTape Pro Precut">Pro Precut</option> 
+                                    <option value="KTTape Pro Uncut">Pro Uncut</option> 
+                                    <option value="KTTape Pro Limited Edition">Pro Limited Edition</option>
+                                    <option value="KTTape Pro Jumbo Precut">Pro Jumbo Precut</option> 
+                                    <option value="KTTape Pro Jumbo Uncut">Pro Jumbo Uncut</option> 
+                                    <option value="KTTape Original Precut">Original Precut</option> 
+                                    <option value="KTTape Original Uncut">Original Uncut</option> 
+                                    <option value="KTTape Original Jumbo Precut">Original Jumbo Precut</option> 
+                                    <option value="KTTape Original Jumbo Uncut">Original Jumbo Uncut</option> 
+                                    <option value="KTTape Original Jumbo Edema2">Original Jumbo Edema</option> 
                                     <option value="Other Products">Other Products</option> 
                                 </select>
                             </li>
-                            <li>Price:<input placeholder={price} name="price" defaultValue={price}></input></li>  
+                            <li>
+                                <p>Price: {price}</p><input className="article-management__all-articles--information-price" placeholder={price} name="price" defaultValue={price}/></li>  
                         </ul>
                         {awaitResponse === false && <button>Update</button>}
                     </form>

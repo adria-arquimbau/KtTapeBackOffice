@@ -3,40 +3,77 @@
 .article-management
     display: flex
     justify-content: space-between
-    border: 1px solid red
     padding: 5px
     width: 100%
     margin-right: 4px
 
     &__out-of-stock
-        border: 1px solid black
-        margin: 5px
         padding: 5px
+        margin-left: 3rem
+        width: 400px
+
+        input
+            margin-top:1rem 
+            width: 3rem
+
+        section
+            li
+                padding-top:1rem 
+
+        form
+            margin-bottom: 0.5rem
+            padding: 0.5rem
+            width: 15rem
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
+
+    &__out-of-stock--title
+        text-align: center
+        margin: 5px
+
 
     &__all-articles
         align-content: center
-        border: 1px solid black
     
     &__all-articles--title
         text-align: center
         margin: 5px
 
     &__all-articles--article
-        border: 1px solid green
         margin: 5px
-        padding: 5px
-        width: 20rem
+        padding: 1rem
+        width: 22rem
+        width: 250px
+        height: 465px
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
+        text-align: center
 
         li
-            display: flex
-            justify-content: space-between
+            flex-direction: column
             margin-bottom: 5px
+            align-items: center
+
+            p
+                margin: 0.5rem
 
     &__all-articles--container
-        border: 1px solid red
         display: flex
         flex-wrap: wrap
         justify-content: center
         margin: 5px
 
-    &__all-articles--information
+    &__all-articles--information-url
+        width: 14rem
+        
+    &__all-articles--information-price, &__all-articles--information-quantity, &__all-articles--information-ref
+        width: 4rem
+
+
+
+    input
+        border: 0
+        background-color: rgba($secondary-color, 0.1)
+        color: $secondary-color
+        text-align: center
+        
+    input::placeholder
+        color: $secondary-color

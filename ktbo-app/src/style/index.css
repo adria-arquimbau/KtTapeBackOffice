@@ -498,42 +498,78 @@ input {
 .article-management {
   display: flex;
   justify-content: space-between;
-  border: 1px solid red;
   padding: 5px;
   width: 100%;
   margin-right: 4px;
 }
 .article-management__out-of-stock {
-  border: 1px solid black;
-  margin: 5px;
   padding: 5px;
+  margin-left: 3rem;
+  width: 400px;
+}
+.article-management__out-of-stock input {
+  margin-top: 1rem;
+  width: 3rem;
+}
+.article-management__out-of-stock section li {
+  padding-top: 1rem;
+}
+.article-management__out-of-stock form {
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+  width: 15rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.article-management__out-of-stock--title {
+  text-align: center;
+  margin: 5px;
 }
 .article-management__all-articles {
   align-content: center;
-  border: 1px solid black;
 }
 .article-management__all-articles--title {
   text-align: center;
   margin: 5px;
 }
 .article-management__all-articles--article {
-  border: 1px solid green;
   margin: 5px;
-  padding: 5px;
-  width: 20rem;
+  padding: 1rem;
+  width: 22rem;
+  width: 250px;
+  height: 465px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  text-align: center;
 }
 .article-management__all-articles--article li {
-  display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   margin-bottom: 5px;
+  align-items: center;
+}
+.article-management__all-articles--article li p {
+  margin: 0.5rem;
 }
 .article-management__all-articles--container {
-  border: 1px solid red;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   margin: 5px;
 }
+.article-management__all-articles--information-url {
+  width: 14rem;
+}
+.article-management__all-articles--information-price, .article-management__all-articles--information-quantity, .article-management__all-articles--information-ref {
+  width: 4rem;
+}
+.article-management input {
+  border: 0;
+  background-color: rgba(51, 51, 51, 0.1);
+  color: #333333;
+  text-align: center;
+}
+.article-management input::placeholder {
+  color: #333333;
+}
+
 button {
   background: #f57b1f;
   border-color: rgba(51, 51, 51, 0.6);
