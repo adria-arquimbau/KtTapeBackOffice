@@ -495,6 +495,65 @@ input {
   border-width: 1px;
 }
 
+.article-management {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid red;
+  padding: 5px;
+  width: 100%;
+  margin-right: 4px;
+}
+.article-management__out-of-stock {
+  border: 1px solid black;
+  margin: 5px;
+  padding: 5px;
+}
+.article-management__all-articles {
+  align-content: center;
+  border: 1px solid black;
+}
+.article-management__all-articles--title {
+  text-align: center;
+  margin: 5px;
+}
+.article-management__all-articles--article {
+  border: 1px solid green;
+  margin: 5px;
+  padding: 5px;
+  width: 20rem;
+}
+.article-management__all-articles--article li {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+.article-management__all-articles--container {
+  border: 1px solid red;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 5px;
+}
+button {
+  background: #f57b1f;
+  border-color: rgba(51, 51, 51, 0.6);
+  border-radius: 2px;
+  padding: 7px;
+  margin: 5px;
+  border: 0;
+}
+
+button:hover {
+  background-color: rgba(245, 123, 31, 0.5);
+  color: white;
+}
+
+input {
+  padding: 7px;
+  border-radius: 2px;
+  border-width: 1px;
+}
+
 .myOrders {
   display: flex;
   flex-direction: column;

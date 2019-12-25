@@ -1,1 +1,42 @@
 @import ../../../style/config.sass
+
+.article-management
+    display: flex
+    justify-content: space-between
+    border: 1px solid red
+    padding: 5px
+    width: 100%
+    margin-right: 4px
+
+    &__out-of-stock
+        border: 1px solid black
+        margin: 5px
+        padding: 5px
+
+    &__all-articles
+        align-content: center
+        border: 1px solid black
+    
+    &__all-articles--title
+        text-align: center
+        margin: 5px
+
+    &__all-articles--article
+        border: 1px solid green
+        margin: 5px
+        padding: 5px
+        width: 20rem
+
+        li
+            display: flex
+            justify-content: space-between
+            margin-bottom: 5px
+
+    &__all-articles--container
+        border: 1px solid red
+        display: flex
+        flex-wrap: wrap
+        justify-content: center
+        margin: 5px
+
+    &__all-articles--information
