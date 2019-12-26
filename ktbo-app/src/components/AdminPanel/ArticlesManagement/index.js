@@ -8,9 +8,19 @@ function ArticlesManagement({ allArticles, retrieveAllArticles }) {
 
     const [message, setMessage] = useState(null)
     const [awaitResponse, setAwaitResponse] = useState(false)
+    const [title, setTitle] = useState("All articles")
+    const [numberOfArticles, setNumberOfArticles] = useState(allArticles.length)
+    const [numberOutOfStock, setNumberOutOfStock] = useState(0)
 
     useEffect(() => {
         retrieveAllArticles()
+        let outOfStockNumber = 0
+        allArticles.forEach(article => {
+            if (article.quantity === 0) {
+                outOfStockNumber ++
+            }
+        })
+        setNumberOutOfStock(outOfStockNumber)
     },[awaitResponse])
 
     function handleSubmitUpdateArticle(event) {
@@ -42,14 +52,42 @@ function ArticlesManagement({ allArticles, retrieveAllArticles }) {
         }
     }
 
+    function handleSearch (event){
+        event.preventDefault()
+        const {target: {searchArticle: { value: query }}} = event
+        searchArticle(query)
+        event.target.value = ""
+        setTitle(query)
+        if(query.length === 0) setTitle("All articles")
+    }
+
+    async function searchArticle(query) {
+        setAwaitResponse(true)
+        if(query.length > 0){
+          const articleList = await logic.searchArticles(query)
+            retrieveAllArticles(articleList.articles)
+            setNumberOfArticles(articleList.articles.length)
+            setAwaitResponse(false)
+        }else{
+          const articleList = await logic.retrieveAllArticles()
+          retrieveAllArticles(articleList.articles)
+          setAwaitResponse(false)
+        }
+      }   
+
     function handleModal() {
         setMessage(null) 
       }
 
-    return <section className="article-management">
+    return <section>
+            <form className="article-management__search-article" onSubmit={handleSearch}>
+            <input name="searchArticle" placeholder="search article"></input>
+            <button>Search</button>
+        </form>
+    <section className="article-management">
 
-        <section className="article-management__out-of-stock">
-            <h2 className="article-management__out-of-stock--title">Articles Out of stock</h2>
+    <section className="article-management__out-of-stock">
+        <h2 className="article-management__out-of-stock--title">Articles Out of stock {numberOutOfStock}</h2>
             {allArticles && allArticles.map(article => {
                 const {id, ref, title, description, img, quantity, category, price} = article
                 if(quantity === 0){
@@ -77,7 +115,7 @@ function ArticlesManagement({ allArticles, retrieveAllArticles }) {
         </section>
         
         <section className="article-management__all-articles">
-            <h1 className="article-management__all-articles--title">All articles</h1>
+        <h1 className="article-management__all-articles--title">{numberOfArticles} articles from search query "{title}"</h1>
             <section className="article-management__all-articles--container">
                 {allArticles && allArticles.map(article =>{
                     const {id, ref, title, description, img, quantity, category, price} = article
@@ -121,7 +159,9 @@ function ArticlesManagement({ allArticles, retrieveAllArticles }) {
                 })}
             </section>
         </section>
+       
             {message && <Modal  message={message} showModal={handleModal}/>}
+    </section>
     </section>
 }
 

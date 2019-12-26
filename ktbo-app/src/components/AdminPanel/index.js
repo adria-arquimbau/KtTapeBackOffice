@@ -29,7 +29,7 @@ function AdminPanel({history}) {
 
   useEffect(() => {
     setCat()
-  },[])
+  },[articlesManagement])
 
   async function handlePendingOrders() {
     
@@ -103,16 +103,20 @@ function AdminPanel({history}) {
     }
   }
 
-  async function handleArticlesManagement () {
+  async function handleArticlesManagement (articleList) {
     try {
-      setError()
-      setAllOrders()
-      setOrders()
-      setNewUser()
-      setRetrieveUsers()
-      setUserOrders()
-      const articles = await logic.retrieveAllArticles()
-      setArticlesManagement(articles.articles)
+      if (articleList.length == undefined) {
+        setError()
+        setAllOrders()
+        setOrders()
+        setNewUser()
+        setRetrieveUsers()
+        setUserOrders()
+        const articles = await logic.retrieveAllArticles()
+        setArticlesManagement(articles.articles)
+      }else{
+        setArticlesManagement(articleList)
+      }
     } catch (error) {
       setError(message)
     }
