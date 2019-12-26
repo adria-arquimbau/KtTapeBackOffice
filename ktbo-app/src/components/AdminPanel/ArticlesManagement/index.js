@@ -71,6 +71,7 @@ function ArticlesManagement({ allArticles, retrieveAllArticles }) {
         }else{
           const articleList = await logic.retrieveAllArticles()
           retrieveAllArticles(articleList.articles)
+          setNumberOfArticles(articleList.articles.length)
           setAwaitResponse(false)
         }
       }   
