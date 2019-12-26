@@ -27,9 +27,10 @@ function AdminPanel({history}) {
   const [articlesManagement, setArticlesManagement] = useState()
 
 
+
   useEffect(() => {
     setCat()
-  },[articlesManagement])
+  },[])
 
   async function handlePendingOrders() {
     
@@ -103,9 +104,8 @@ function AdminPanel({history}) {
     }
   }
 
-  async function handleArticlesManagement (articleList) {
+  async function handleArticlesManagement(query) {
     try {
-      if (articleList.length == undefined) {
         setError()
         setAllOrders()
         setOrders()
@@ -114,11 +114,22 @@ function AdminPanel({history}) {
         setUserOrders()
         const articles = await logic.retrieveAllArticles()
         setArticlesManagement(articles.articles)
-      }else{
-        setArticlesManagement(articleList)
-      }
-    } catch (error) {
+    } catch ({message}) {
       setError(message)
+    }
+  }
+
+  async function searchArticle(query) {
+    try {
+      if(query.length > 0){
+        const articles = await logic.searchArticles(query)
+         setArticlesManagement(articles.articles)
+        }else{
+          const articles = await logic.retrieveAllArticles()
+          setArticlesManagement(articles.articles)
+        }
+    } catch ({message}) {
+      setMessage(message)
     }
   }
 
@@ -146,7 +157,7 @@ function AdminPanel({history}) {
       {retrieveUsers && <AllUsers users={retrieveUsers} retrieveAllUsers={handleRetrieveAllUsers} />}
       {newUser && <NewUser />}
       {userOrders && <UserOrders users={userOrders}/>}
-      {articlesManagement && <ArticlesManagement allArticles={articlesManagement} retrieveAllArticles={handleArticlesManagement}/>}
+      {articlesManagement && <ArticlesManagement searchArticle={searchArticle} allArticles={articlesManagement} retrieveAllArticles={handleArticlesManagement}/>}
     </section> 
     {message && <Modal  message={message} showModal={handleModal}/>}
   </section>

@@ -4,24 +4,21 @@ import { withRouter } from 'react-router-dom'
 import logic from '../../../logic'
 import Modal from '../../Modal'
 
-function ArticlesManagement({ allArticles, retrieveAllArticles }) {
+function ArticlesManagement({ allArticles, retrieveAllArticles, searchArticle }) {
 
     const [message, setMessage] = useState(null)
     const [awaitResponse, setAwaitResponse] = useState(false)
     const [title, setTitle] = useState("All articles")
     const [numberOfArticles, setNumberOfArticles] = useState(allArticles.length)
-    const [numberOutOfStock, setNumberOutOfStock] = useState(0)
+    const [query, setQuery] = useState()
 
     useEffect(() => {
-        retrieveAllArticles()
-        let outOfStockNumber = 0
-        allArticles.forEach(article => {
-            if (article.quantity === 0) {
-                outOfStockNumber ++
-            }
-        })
-        setNumberOutOfStock(outOfStockNumber)
-    },[awaitResponse])
+        if(query){
+            searchArticle(query)
+        }if(!query){
+            retrieveAllArticles()
+        }
+    },[message])
 
     function handleSubmitUpdateArticle(event) {
         event.preventDefault()
@@ -37,7 +34,6 @@ function ArticlesManagement({ allArticles, retrieveAllArticles }) {
             category: newCategory,
             price: Number(newPrice)
         }
-        setAwaitResponse(true)
         updateArticle(articleId, body)
     }
 
@@ -45,10 +41,8 @@ function ArticlesManagement({ allArticles, retrieveAllArticles }) {
         try {
             const { message } = await logic.updateArticle(articleId, body)    
             setMessage(message)
-            setAwaitResponse(false)
         } catch ({message}) {
             setMessage(message)
-            setAwaitResponse(false)
         }
     }
 
@@ -56,25 +50,10 @@ function ArticlesManagement({ allArticles, retrieveAllArticles }) {
         event.preventDefault()
         const {target: {searchArticle: { value: query }}} = event
         searchArticle(query)
-        event.target.value = ""
+        setQuery(query)
         setTitle(query)
         if(query.length === 0) setTitle("All articles")
     }
-
-    async function searchArticle(query) {
-        setAwaitResponse(true)
-        if(query.length > 0){
-          const articleList = await logic.searchArticles(query)
-            retrieveAllArticles(articleList.articles)
-            setNumberOfArticles(articleList.articles.length)
-            setAwaitResponse(false)
-        }else{
-          const articleList = await logic.retrieveAllArticles()
-          retrieveAllArticles(articleList.articles)
-          setNumberOfArticles(articleList.articles.length)
-          setAwaitResponse(false)
-        }
-      }   
 
     function handleModal() {
         setMessage(null) 
@@ -88,7 +67,7 @@ function ArticlesManagement({ allArticles, retrieveAllArticles }) {
     <section className="article-management">
 
     <section className="article-management__out-of-stock">
-        <h2 className="article-management__out-of-stock--title">Articles Out of stock {numberOutOfStock}</h2>
+        <h2 className="article-management__out-of-stock--title">Articles Out of stock </h2>
             {allArticles && allArticles.map(article => {
                 const {id, ref, title, description, img, quantity, category, price} = article
                 if(quantity === 0){
@@ -116,7 +95,7 @@ function ArticlesManagement({ allArticles, retrieveAllArticles }) {
         </section>
         
         <section className="article-management__all-articles">
-        <h1 className="article-management__all-articles--title">{numberOfArticles} articles from search query "{title}"</h1>
+        <h1 className="article-management__all-articles--title">{allArticles.length} articles from search query "{title}"</h1>
             <section className="article-management__all-articles--container">
                 {allArticles && allArticles.map(article =>{
                     const {id, ref, title, description, img, quantity, category, price} = article
