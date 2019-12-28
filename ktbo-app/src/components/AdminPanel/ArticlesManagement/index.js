@@ -60,10 +60,10 @@ function ArticlesManagement({ allArticles, retrieveAllArticles, searchArticle })
       }
 
     return <section>
-            <form className="article-management__search-article" onSubmit={handleSearch}>
+            {/* <form className="article-management__search-article" onSubmit={handleSearch}>
             <input name="searchArticle" placeholder="search article"></input>
             <button>Search</button>
-        </form>
+        </form> */}
     <section className="article-management">
 
     <section className="article-management__out-of-stock">
