@@ -38,6 +38,7 @@ function Login({ history }) {
             if(email && password)setWaitLogin(!waitLogin)
         } catch({message}) {
             setMessage(message)
+            setWaitLogin(!waitLogin)
         }
         
     }
@@ -54,7 +55,7 @@ function Login({ history }) {
                     <input className="login__form--email" placeholder="e-mail" type="email" name="email" />
                     <input className="login__form--password" placeholder="password" type="password" name="password" />
                     {waitLogin == false && <button className="login__form--button">Log in</button>}
-                    {waitLogin == true && <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>}
+                    {waitLogin == true && <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>}
                 </form>
                 {message && <Modal message={message} showModal={handleModal}/>}
             </section>
