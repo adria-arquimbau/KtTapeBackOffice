@@ -407,8 +407,8 @@ input {
 .lds-roller {
   display: inline-block;
   position: relative;
-  width: 80px;
-  height: 80px;
+  width: 40px;
+  height: 40px;
 }
 
 .lds-roller div {
@@ -423,7 +423,7 @@ input {
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: #fff;
+  background: #f57b1f;
   margin: -4px 0 0 -4px;
 }
 

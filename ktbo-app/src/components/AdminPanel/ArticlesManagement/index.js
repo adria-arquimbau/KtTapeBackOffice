@@ -7,10 +7,9 @@ import Modal from '../../Modal'
 function ArticlesManagement({ allArticles, retrieveAllArticles, searchArticle }) {
 
     const [message, setMessage] = useState(null)
-    const [awaitResponse, setAwaitResponse] = useState(false)
     const [title, setTitle] = useState("All articles")
-    const [numberOfArticles, setNumberOfArticles] = useState(allArticles.length)
     const [query, setQuery] = useState()
+    const [thereIsAtLeastOneWithoutStock, setThereIsAtLeastOneWithoutStock] = useState()
 
     useEffect(() => {
         if(query){
@@ -18,6 +17,7 @@ function ArticlesManagement({ allArticles, retrieveAllArticles, searchArticle })
         }if(!query){
             retrieveAllArticles()
         }
+        checkAndSetThereIsAtLeastOneWithoutStock()
     },[message])
 
     function handleSubmitUpdateArticle(event) {
@@ -37,6 +37,13 @@ function ArticlesManagement({ allArticles, retrieveAllArticles, searchArticle })
         updateArticle(articleId, body)
     }
 
+    function checkAndSetThereIsAtLeastOneWithoutStock(){
+        allArticles.forEach(article => {
+            if(article.quantity === 0)
+                return setThereIsAtLeastOneWithoutStock(true)         
+        })
+    }
+
     async function updateArticle(articleId, body) {
         try {
             const { message } = await logic.updateArticle(articleId, body)    
@@ -44,6 +51,7 @@ function ArticlesManagement({ allArticles, retrieveAllArticles, searchArticle })
         } catch ({message}) {
             setMessage(message)
         }
+        checkAndSetThereIsAtLeastOneWithoutStock()
     }
 
     function handleSearch (event){
@@ -66,7 +74,7 @@ function ArticlesManagement({ allArticles, retrieveAllArticles, searchArticle })
         </form> */}
     <section className="article-management">
 
-    <section className="article-management__out-of-stock">
+    {thereIsAtLeastOneWithoutStock && <section className="article-management__out-of-stock">
         <h2 className="article-management__out-of-stock--title">Articles Out of stock </h2>
             {allArticles && allArticles.map(article => {
                 const {id, ref, title, description, img, quantity, category, price} = article
@@ -88,11 +96,11 @@ function ArticlesManagement({ allArticles, retrieveAllArticles, searchArticle })
                         <input hidden defaultValue={price} name="price" type="number" placeholder="add new stock quantity"/>
                         <input hidden defaultValue={ref} name="ref" type="number" placeholder="add new stock quantity"/>
                 </ul>
-                {awaitResponse === false && <button>Update Stock</button>}
+                <button>Update Stock</button>
                 </form>
                 }
             })}
-        </section>
+        </section>}
         
         <section className="article-management__all-articles">
         <h1 className="article-management__all-articles--title">{allArticles.length} articles from search query "{title}"</h1>
@@ -134,7 +142,7 @@ function ArticlesManagement({ allArticles, retrieveAllArticles, searchArticle })
                             <li>
                                 <p>Price: {price}</p><input className="article-management__all-articles--information-price" placeholder={price} name="price" defaultValue={price}/></li>  
                         </ul>
-                        {awaitResponse === false && <button>Update</button>}
+                        <button>Update</button>
                     </form>
                 })}
             </section>

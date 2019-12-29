@@ -44,6 +44,7 @@ function Login({ history }) {
 
     function handleModal() {
         setMessage(null) 
+        setWaitLogin(!waitLogin)
     }
 
     return <main className="login">
