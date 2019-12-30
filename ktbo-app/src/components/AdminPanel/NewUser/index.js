@@ -19,7 +19,7 @@ function NewUser() {
     function handleSubmitNewUser(event) {
         event.preventDefault()
         let { target: { company: { value: company }, country: { value: country }, email: { value: email }, repeatEmail: { value: repeatEmail }, password: { value: password}, repeatPassword: { value: repeatPassword}, role: { value: role} }} = event
-        if(email === repeatEmail){
+        if(email === repeatEmail && password === repeatPassword){
             handleRegisterNewClient(company, country, email, password, role)
         }
         if(email != repeatEmail){
@@ -58,6 +58,7 @@ function NewUser() {
             <input placeholder="Country" type="text" name="country" value={_country} onChange={event => setCountry(event.target.value) } />
             <input placeholder="E-mail" type="text" name="email" value={_email} onChange={event => setEmail(event.target.value) } />
             <input placeholder="Repeat e-mail" type="text" name="repeatEmail" value={_repeatEmail} onChange={event => setRepeatEmail(event.target.value) } />
+            <p>1 upper case, 1 number, 1 lower case, 1 special character, length 8</p>
             <input placeholder="Password" type="password" name="password" value={_password} onChange={event => setPassword(event.target.value) } />
             <input placeholder="Repeat password" type="password" name="repeatPassword" value={_repeatPassword} onChange={event => setRepeatPassword(event.target.value) } />
             <select name="role">

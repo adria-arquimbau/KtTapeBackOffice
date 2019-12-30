@@ -24,10 +24,13 @@ module.exports = function (id, company, country, email, password, role) {
     validate.string(email, 'e-mail')
     validate.email(email, 'e-mail')
     validate.string(password, 'password')
+    validate.securePassword(password, 'password')
     validate.string(role, 'role')
     validate.string(id, 'id')
 
     return (async () => {
+
+        if(password.length < 6) throw Error("The password must contain more than 5 characters")
 
         const res = await User.findOne({_id: id})
         if (!res) throw new Error(`TODO`)

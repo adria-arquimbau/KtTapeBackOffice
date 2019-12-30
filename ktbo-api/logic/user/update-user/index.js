@@ -17,6 +17,8 @@ module.exports = function (id, data) {
     
     return (async () => {
 
+        if(data.password.length < 6) throw Error("The password must contain more than 5 characters")
+
         if(!data.oldPassword) throw Error(`Old password is required`)
 
         const user = await User.findById( id )

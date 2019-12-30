@@ -1,6 +1,7 @@
 const EMAIL_REGEX = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 const URL_REGEX = /^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/
 const DATE_REGEX = /[0-1]{1}[0-9]{1}[\/][0-9]{2}/
+const PASSWORD_REGEX = /^(?=.*[az])(?=.*[AZ])(?=.*[0-9])(?=.*[!@.#\$%\^&\*])(?=.{6,})/
 
 module.exports = {
     string(target, name, empty = true, values) {
@@ -11,6 +12,10 @@ module.exports = {
 
     email(target, name) {
         if (!EMAIL_REGEX.test(target)) throw new Error(`${name} with value ${target} is not a valid e-mail`)
+    },
+
+    securePassword(target, name) {
+        if (!PASSWORD_REGEX.test(target)) throw new Error(`${name} with this value is not a secure password`)
     },
 
     function(target, name) {
