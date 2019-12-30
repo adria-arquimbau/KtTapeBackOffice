@@ -11,7 +11,7 @@ module.exports = function () {
 
     return(async () => { 
 
-        const articles = await Article.find({},{ __v: 0 }).sort({id:1}).lean() 
+        const articles = await Article.find({},{ __v: 0 }).sort({ref:1}).lean() 
         if (!articles) throw new Error('There are not any article')
 
         articles.forEach(article => {
