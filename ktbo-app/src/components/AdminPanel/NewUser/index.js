@@ -12,13 +12,22 @@ function NewUser() {
     const [_company, setCompany] = useState("")
     const [_country, setCountry] = useState("")
     const [_email, setEmail] = useState("")
+    const [_repeatEmail, setRepeatEmail] = useState("")
     const [_password, setPassword] = useState("")
+    const [_repeatPassword, setRepeatPassword] = useState("")
 
     function handleSubmitNewUser(event) {
         event.preventDefault()
-        let { target: { company: { value: company }, country: { value: country }, email: { value: email }, password: { value: password}, role: { value: role} }} = event
-        
-        handleRegisterNewClient(company, country, email, password, role)
+        let { target: { company: { value: company }, country: { value: country }, email: { value: email }, repeatEmail: { value: repeatEmail }, password: { value: password}, repeatPassword: { value: repeatPassword}, role: { value: role} }} = event
+        if(email === repeatEmail){
+            handleRegisterNewClient(company, country, email, password, role)
+        }
+        if(email != repeatEmail){
+            setMessage("Email and Repeat Email aren\'t equals")
+        }
+        if(password != repeatPassword){
+            setMessage("Password and Repeat Password aren\'t equals")
+        }
     }
     
     async function handleRegisterNewClient(company, country, email, password, role) {
@@ -30,6 +39,8 @@ function NewUser() {
             setCountry("")
             setEmail("")
             setPassword("")
+            setRepeatEmail("")
+            setRepeatPassword("")
         } catch ({ message }) {
             setError(message)
         }
@@ -45,8 +56,10 @@ function NewUser() {
         <form className="admin-new-user__form" onSubmit={handleSubmitNewUser}>  
             <input placeholder="Company" type="text" name="company" value={_company} onChange={event => setCompany(event.target.value) }/>
             <input placeholder="Country" type="text" name="country" value={_country} onChange={event => setCountry(event.target.value) } />
-            <input placeholder="e-mail" type="text" name="email" value={_email} onChange={event => setEmail(event.target.value) } />
-            <input placeholder="password" type="text" name="password" value={_password} onChange={event => setPassword(event.target.value) } />
+            <input placeholder="E-mail" type="text" name="email" value={_email} onChange={event => setEmail(event.target.value) } />
+            <input placeholder="Repeat e-mail" type="text" name="repeatEmail" value={_repeatEmail} onChange={event => setRepeatEmail(event.target.value) } />
+            <input placeholder="Password" type="password" name="password" value={_password} onChange={event => setPassword(event.target.value) } />
+            <input placeholder="Repeat password" type="password" name="repeatPassword" value={_repeatPassword} onChange={event => setRepeatPassword(event.target.value) } />
             <select name="role">
                 <option value="regular">Regular User</option> 
                 <option value="admin">Admin</option> 
