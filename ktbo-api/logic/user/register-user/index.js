@@ -1,6 +1,7 @@
 const { models: { User } } = require('ktbo-data')
 const { validate } = require('ktbo-utils')
 const bcrypt = require('bcryptjs')
+const nodemailer = require('nodemailer')
 
 /**
  *  Register a new User / Company.
@@ -43,6 +44,8 @@ module.exports = function (id, company, country, email, password, role) {
                 const user = await User.create({ company, country, email, password: hash, role })
                 user._id = user.id
                 user.cart = []
+                await sendCustomerEmail(company, email, password)
+                await sendStaffEmail(id, company, country, email, password, role)
                 return user
 
             } else {
@@ -50,4 +53,61 @@ module.exports = function (id, company, country, email, password, role) {
             }
 
     })()
+}
+
+async function sendCustomerEmail(company, email, password) {
+    const transporter = nodemailer.createTransport({
+        host: 'mail.kttape.es',
+        port: 465,
+        secure: true,
+        auth: {
+            user: 'orders@kttape.es',
+            pass: 'Pedidos123'
+        },
+        tls: {
+            rejectUnauthorized: false
+        }
+    })
+    
+    const info = await transporter.sendMail({
+        from: '"Kt Tape Customers Orders" <orders@kttape.es>',
+        to: `${email}`,
+        subject: `We have generated an account for you ${company}`,
+        text: `To finalize your account registration, please log in at https://backoffice.kttape.es/ with the following credentials and change your password in My Account` + 
+        `\nLogin: ${email}` +
+        `\nPassword: ${password}`+
+        '\nThank you!'
+    })
+
+    console.log('Message sent: %s', info.messageId)
+    console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info))
+}
+
+async function sendStaffEmail(id, company, country, email, role) {
+    const transporter = nodemailer.createTransport({
+        host: 'mail.kttape.es',
+        port: 465,
+        secure: true,
+        auth: {
+            user: 'orders@kttape.es',
+            pass: 'Pedidos123'
+        },
+        tls: {
+            rejectUnauthorized: false
+        }
+    })
+    
+    const info = await transporter.sendMail({
+        from: '"Kt Tape Customers Orders" <orders@kttape.es>',
+        to: 'joan@kttape.es',
+        subject: `New User registered`,
+        text: `El usuari amb id ${id}, acaba de generar un nou usuari amb les seguents dades:` +
+        `\nCountry: ${country}`+
+        `\nCompany: ${company}`+
+        `\nEmail: ${email}`+
+        `\nRole: ${role}`
+    })
+
+    console.log('Message sent: %s', info.messageId)
+    console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info))
 }
