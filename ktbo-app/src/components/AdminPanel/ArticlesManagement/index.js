@@ -107,8 +107,20 @@ function ArticlesManagement({ allArticles, retrieveAllArticles, searchArticle })
             <section className="article-management__all-articles--container">
                 {allArticles && allArticles.map(article =>{
                     const {id, ref, title, description, img, quantity, category, price} = article
-                    let splitedCategory = category.split("KTTape")
-
+                    let productToShow
+                    if(category != 'Other Products') {
+                        let splitedCategory = category.split("KTTape")
+                        productToShow = splitedCategory[1]
+                    }if(category === 'Other Products'){
+                        productToShow = 'Other Products'
+                    }if(category === 'KTTape Original Jumbo Precut'){
+                        productToShow = 'Orig. Jumbo Precut'
+                    }if(category === 'KTTape Original Jumbo Edema'){
+                        productToShow = 'Orig. Jumbo Edema'
+                    }if(category === 'KTTape Original Jumbo Uncut'){
+                        productToShow = 'Orig. Jumbo Uncut'
+                    }
+                    
                     return <form className="article-management__all-articles--article" onSubmit={handleSubmitUpdateArticle}>
                         <ul className="article-management__all-articles--information">
                         <input hidden name="id" defaultValue={id}/>
@@ -125,7 +137,7 @@ function ArticlesManagement({ allArticles, retrieveAllArticles, searchArticle })
                             <li>
                                 <p>Category:</p>
                                 <select name="category">
-                                    <option value={category}>Current category: {splitedCategory[1]}</option> 
+                                    <option value={category}>Current category: {productToShow}</option> 
                                     <option value="KTTape Pro Precut">Pro Precut</option> 
                                     <option value="KTTape Pro Uncut">Pro Uncut</option> 
                                     <option value="KTTape Pro Limited Edition">Pro Limited Edition</option>
@@ -135,7 +147,7 @@ function ArticlesManagement({ allArticles, retrieveAllArticles, searchArticle })
                                     <option value="KTTape Original Uncut">Original Uncut</option> 
                                     <option value="KTTape Original Jumbo Precut">Original Jumbo Precut</option> 
                                     <option value="KTTape Original Jumbo Uncut">Original Jumbo Uncut</option> 
-                                    <option value="KTTape Original Jumbo Edema2">Original Jumbo Edema</option> 
+                                    <option value="KTTape Original Jumbo Edema">Original Jumbo Edema</option> 
                                     <option value="Other Products">Other Products</option> 
                                 </select>
                             </li>

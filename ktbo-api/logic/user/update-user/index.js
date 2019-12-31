@@ -14,6 +14,7 @@ module.exports = function (id, data) {
     
     validate.string(id, 'id')
     validate.object(data, 'data')
+    validate.securePassword(data.password, 'password')
     
     return (async () => {
 
