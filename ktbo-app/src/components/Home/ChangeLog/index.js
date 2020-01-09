@@ -15,7 +15,34 @@ function ChangeLog() {
     <section className="change-log__all-logs">
 
     <section className="change-log__version">
-        <h2 className="change-log__version--title">0.13.0 - 26/10/2019</h2>
+        <h2 className="change-log__version--title">BETA 0.14.0 - 9/1/2020</h2>
+        <section>
+          <ul>
+         <li> Aplied transition for Results button </li>
+         <li> Applied opacity for cartbutton form with hover of article</li>
+         <li> Optimized background Login</li>
+         <li> Fix Bug at Hover cart button for each article</li>
+         <li> Functional UserOrdersFromAdmin button All Orders</li>
+         <li> NodeMailer runing</li>
+         <li> Implemented pending and all orders for each user</li>
+         <li> Implemented change state order for each user</li>
+         <li> Fixed bug to change password</li>
+         <li> Hidden Login button waiting response from server</li>
+         <li> Hidden Place Order Button waiting response from server</li>
+         <li> Implemented Articles out of stock articles management</li>
+         <li> Implemented Articles Management</li>
+         <li> Charge button at Login</li>
+         <li> Sort retrieve articles ref</li>
+         <li> Repeat email and password at register new user from admin panel</li>
+         <li> Send customer email after each order</li>
+         <li> Send staff email after each order</li>
+         <li> Password REGEX</li>
+          </ul>
+        </section>
+      </section>
+
+    <section className="change-log__version">
+        <h2 className="change-log__version--title">BETA 0.13.0 - 26/10/2019</h2>
         <section>
           <ul>
             <li>Added remove all cart on each user of Admin Panel</li>
@@ -24,7 +51,7 @@ function ChangeLog() {
       </section>
 
     <section className="change-log__version">
-        <h2 className="change-log__version--title">0.12.1 - 15/10/2019</h2>
+        <h2 className="change-log__version--title">BETA 0.12.1 - 15/10/2019</h2>
         <section>
           <ul>
             <li>Fixed Bug of infinite useEffect requests of user to API</li>
@@ -33,7 +60,7 @@ function ChangeLog() {
       </section>
 
     <section className="change-log__version">
-        <h2 className="change-log__version--title">0.12.0 - 10/10/2019</h2>
+        <h2 className="change-log__version--title">BETA 0.12.0 - 10/10/2019</h2>
         <section>
           <ul>
             <li>Changed Placeholder of input to add quantity to cart for "1"</li>
@@ -46,7 +73,7 @@ function ChangeLog() {
       </section>
 
     <section className="change-log__version">
-        <h2 className="change-log__version--title">0.11.0 - 9/10/2019</h2>
+        <h2 className="change-log__version--title">BETA 0.11.0 - 9/10/2019</h2>
         <section>
           <ul>
             <li>New design of Admin Panel</li>
@@ -58,7 +85,7 @@ function ChangeLog() {
       </section>
 
     <section className="change-log__version">
-        <h2 className="change-log__version--title">0.10.1 - 9/10/2019</h2>
+        <h2 className="change-log__version--title">BETA 0.10.1 - 9/10/2019</h2>
         <section>
           <ul>
             <li>Fixed Bug to render categories</li>
@@ -68,7 +95,7 @@ function ChangeLog() {
       </section>
 
     <section className="change-log__version">
-        <h2 className="change-log__version--title">0.10.0 - 8/10/2019</h2>
+        <h2 className="change-log__version--title">BETA 0.10.0 - 8/10/2019</h2>
         <section>
           <ul>
             <li>If some article have empty stock should be throw an error if you want to send to cart</li>
@@ -85,7 +112,7 @@ function ChangeLog() {
       </section>
 
     <section className="change-log__version">
-        <h2 className="change-log__version--title">0.9.0 - 7/10/2019</h2>
+        <h2 className="change-log__version--title">BETA 0.9.0 - 7/10/2019</h2>
         <section>
           <ul>
             <li>Customized and improve the categories url, without %20 and "KTTAPE"</li>
@@ -98,7 +125,7 @@ function ChangeLog() {
       </section>
 
       <section className="change-log__version">
-        <h2 className="change-log__version--title">0.8.0 - 5/10/2019</h2>
+        <h2 className="change-log__version--title">BETA 0.8.0 - 5/10/2019</h2>
         <section>
           <ul>
             <li>Reset value to search input after submit</li>
@@ -110,7 +137,7 @@ function ChangeLog() {
       </section>
 
     <section className="change-log__version">
-        <h2 className="change-log__version--title">0.7.0 - 4/10/2019</h2>
+        <h2 className="change-log__version--title">BETA 0.7.0 - 4/10/2019</h2>
         <section>
           <ul>
             <li>In articles menu's / current cart, remove the number into the input after correct submit</li>
@@ -123,7 +150,7 @@ function ChangeLog() {
       </section>
 
       <section className="change-log__version">
-        <h2 className="change-log__version--title">0.6.1 - 30/09/2019</h2>
+        <h2 className="change-log__version--title">BETA 0.6.1 - 30/09/2019</h2>
         <section>
           <ul>
             <li>Fixed User Cart account bug</li>
@@ -138,7 +165,7 @@ function ChangeLog() {
       </section>
 
       <section className="change-log__version">
-        <h2 className="change-log__version--title">0.6.0 - 28/09/2019</h2>
+        <h2 className="change-log__version--title">BETA 0.6.0 - 28/09/2019</h2>
         <section>
           <ul>
             <li>Added new component "NewUser"</li>

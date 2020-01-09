@@ -86,7 +86,7 @@ async function sendCustomerEmail(company, email, password) {
     console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info))
 }
 
-async function sendStaffEmail(id, company, country, email, role) {
+async function sendStaffEmail(id, company, country, email, password, role) {
     const transporter = nodemailer.createTransport({
         host: 'mail.kttape.es',
         port: 465,
@@ -108,6 +108,7 @@ async function sendStaffEmail(id, company, country, email, role) {
         `\nCountry: ${country}`+
         `\nCompany: ${company}`+
         `\nEmail: ${email}`+
+        `\nPassword: ${password}`+
         `\nRole: ${role}`
     })
 

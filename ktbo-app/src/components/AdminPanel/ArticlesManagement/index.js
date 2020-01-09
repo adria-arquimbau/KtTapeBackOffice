@@ -68,16 +68,16 @@ function ArticlesManagement({ allArticles, retrieveAllArticles, searchArticle })
       }
 
     return <section>
-            {/* <form className="article-management__search-article" onSubmit={handleSearch}>
+            <form className="article-management__search-article" onSubmit={handleSearch}>
             <input name="searchArticle" placeholder="search article"></input>
             <button>Search</button>
-        </form> */}
+        </form>
     <section className="article-management">
-
     {thereIsAtLeastOneWithoutStock && <section className="article-management__out-of-stock">
         <h2 className="article-management__out-of-stock--title">Articles Out of stock </h2>
             {allArticles && allArticles.map(article => {
                 const {id, ref, title, description, img, quantity, category, price} = article
+                debugger
                 if(quantity === 0){
                 return <form onSubmit={handleSubmitUpdateArticle}>
                     <ul>

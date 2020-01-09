@@ -47,6 +47,7 @@ function MyAccount({history}) {
 
       <h2>Update Password</h2>
       <form className="myAccount__update-user--form" onSubmit={handleSubmit}>
+        <p>1 upper case, 1 number, 1 lower case, 1 special character, length 8</p>
         <input placeholder="Old Password" type="password" name="old" defaultValue="" ></input>
         <input placeholder="New Password" type="password" name="new" defaultValue="" ></input>
         <button>Submit</button>
