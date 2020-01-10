@@ -1333,12 +1333,20 @@ input {
   border-width: 1px;
 }
 
-.admin-retrieve-users h1 {
-  text-align: center;
+.admin-retrieve-users {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 5px;
 }
 .admin-retrieve-users__each-user {
-  margin-top: 1rem;
-  border-top: 1px solid #f57b1f;
+  margin: 5px;
+  padding: 1rem;
+  width: 22rem;
+  width: 250px;
+  height: 11rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  text-align: center;
 }
 .admin-retrieve-users__each-user input {
   margin-top: 0.5rem;

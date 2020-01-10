@@ -52,7 +52,6 @@ function NewUser() {
     }
 
     return <section className="admin-new-user">
-        <h1>Register new user</h1>
         <form className="admin-new-user__form" onSubmit={handleSubmitNewUser}>  
             <input placeholder="Company" type="text" name="company" value={_company} onChange={event => setCompany(event.target.value) }/>
             <input placeholder="Country" type="text" name="country" value={_country} onChange={event => setCountry(event.target.value) } />

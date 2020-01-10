@@ -59,8 +59,6 @@ function RetrieveUserOrders({ users }) {
     }
 
     return <section className="admin-retrieve-users">
-        <h1>User Orders</h1>
-        <h2>Select User and orders type</h2>
         {users && users.user.map(user => {
             const {company, country, email, role, id, cart} = user
             return <ul className="admin-retrieve-users__each-user" key={id}>

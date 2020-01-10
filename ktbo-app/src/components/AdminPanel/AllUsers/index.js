@@ -53,7 +53,6 @@ function RetrieveAllUsers({ users, retrieveAllUsers }) {
     }
     
     return <section className="admin-retrieve-users">
-        <h1>All users</h1>
         {users && users.user.map(user => {
             const {company, country, email, role, id, cart} = user
             return <ul className="admin-retrieve-users__each-user" key={id}>
