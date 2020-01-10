@@ -1,7 +1,7 @@
 const EMAIL_REGEX = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 const URL_REGEX = /^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/
 const DATE_REGEX = /[0-1]{1}[0-9]{1}[\/][0-9]{2}/
-//const PASSWORD_REGEX = /^(?=.*[az])(?=.*[AZ])(?=.*[0-9])(?=.*[!@.#\$%\^&\*])(?=.{6})/
+const PASSWORD_REGEX = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/
 
 module.exports = {
     string(target, name, empty = true, values) {
@@ -15,23 +15,7 @@ module.exports = {
     },
 
     securePassword(target) {
-        if (target.length < 8) throw new Error(`The password must have 8 characters minimum`)
-        let characterCount = 0
-        let upperCaseCount = 0
-        let lowerCaseCount = 0
-        for (let i = 0; i < target.length; i++) {
-            if(target[i] === "." || "/" || "@" || "!" || "¿" || "?" || "'" || "+" || "-" || "_" || "," || ":" || ";" || "¨" || "[" || "]" || "{" || "}" || "$" || "(" || ")")
-                characterCount ++
-
-            if(target[i] === target[i].toUpperCase()) 
-                upperCaseCount ++
-
-            if(target[i] === target[i].toLowerCase()) 
-                lowerCaseCount ++
-        }
-        if (lowerCaseCount < 1) throw new Error(`The password must have 1 upper case character minimum`)
-        if (upperCaseCount < 1) throw new Error(`The password must have 1 lower case character minimum`)
-        if (characterCount < 1) throw new Error(`The password must have 1 special character minimum`)
+        if (!PASSWORD_REGEX.test(target)) throw new Error(`Password not secure`)
     },
 
     function(target, name) {
