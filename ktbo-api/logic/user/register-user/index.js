@@ -17,8 +17,10 @@ const nodemailer = require('nodemailer')
  * @returns {Promise} - Returns a Promise with the created user.
  */
 
-module.exports = function (id, company, country, email, password, role) {
+module.exports = function (id, name, surname, company, country, email, password, role) {
 
+    validate.string(name, 'name')
+    validate.string(surname, 'surname')
     validate.string(company, 'company')
     validate.string(country, 'country')
     validate.string(email, 'e-mail')
@@ -44,11 +46,11 @@ module.exports = function (id, company, country, email, password, role) {
                 const result = await User.findOne({ email })
                 if (result) throw new Error(`user with e-mail ${email} already exists`)
 
-                const user = await User.create({ company, country, email, password: hash, role })
+                const user = await User.create({ name, surname, company, country, email, password: hash, role })
                 user._id = user.id
                 user.cart = []
-                await sendCustomerEmail(company, email, password)
-                await sendStaffEmail(id, company, country, email, password, role)
+                await sendCustomerEmail(name, surname, company, email, password)
+                await sendStaffEmail(id, name, surname, company, country, email, password, role)
                 return user
 
             } else {
@@ -58,7 +60,7 @@ module.exports = function (id, company, country, email, password, role) {
     })()
 }
 
-async function sendCustomerEmail(company, email, password) {
+async function sendCustomerEmail(name, surname, company, email, password) {
     const transporter = nodemailer.createTransport({
         host: 'mail.kttape.es',
         port: 465,
@@ -75,7 +77,7 @@ async function sendCustomerEmail(company, email, password) {
     const info = await transporter.sendMail({
         from: '"Kt Tape Customers Orders" <orders@kttape.es>',
         to: `${email}`,
-        subject: `We have generated an account for you ${company}`,
+        subject: `We have generated an account for you ${name} ${surname}`,
         text: `To finalize your account registration, please log in at https://backoffice.kttape.es/ with the following credentials and change your password in My Account` + 
         `\nLogin: ${email}` +
         `\nPassword: ${password}`+
@@ -86,7 +88,7 @@ async function sendCustomerEmail(company, email, password) {
     console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info))
 }
 
-async function sendStaffEmail(id, company, country, email, password, role) {
+async function sendStaffEmail(id, name, surname, company, country, email, password, role) {
     const transporter = nodemailer.createTransport({
         host: 'mail.kttape.es',
         port: 465,
@@ -102,9 +104,11 @@ async function sendStaffEmail(id, company, country, email, password, role) {
     
     const info = await transporter.sendMail({
         from: '"Kt Tape Customers Orders" <orders@kttape.es>',
-        to: 'joan@kttape.es, adria.arquimbau@gmail.com',
+        to: 'adria.arquimbau@gmail.com',
         subject: `New User registered`,
         text: `El usuari amb id ${id}, acaba de generar un nou usuari amb les seguents dades:` +
+        `\nName: ${name}`+
+        `\nSurname: ${surname}`+
         `\nCountry: ${country}`+
         `\nCompany: ${company}`+
         `\nEmail: ${email}`+

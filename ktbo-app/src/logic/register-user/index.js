@@ -1,8 +1,10 @@
 const { validate } = require('ktbo-utils')
 const REACT_APP_API_URL = process.env.REACT_APP_API_URL
 
-export default function (company, country, email, password, role) {
+export default function (name, surname, company, country, email, password, role) {
 
+    validate.string(name, 'name')
+    validate.string(surname, 'surname')
     validate.string(company, 'company')
     validate.string(country, 'country')
     validate.string(email, 'email')
@@ -17,7 +19,7 @@ export default function (company, country, email, password, role) {
         const response = await fetch(`${REACT_APP_API_URL}/user`, {
             method: 'POST',
             headers: {'content-type': 'application/json', 'authorization': `bearer ${token}` },
-            body: JSON.stringify({company, country, email, password, role})
+            body: JSON.stringify({name, surname, company, country, email, password, role})
         })
         
         if (response.status !== 201) {

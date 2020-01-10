@@ -9,6 +9,8 @@ function NewUser() {
     const [message, setMessage] = useState()
     const [newUser, setNewUser] = useState()
 
+    const [_name, setName] = useState("")
+    const [_surname, setSurname] = useState("")
     const [_company, setCompany] = useState("")
     const [_country, setCountry] = useState("")
     const [_email, setEmail] = useState("")
@@ -18,9 +20,9 @@ function NewUser() {
 
     function handleSubmitNewUser(event) {
         event.preventDefault()
-        let { target: { company: { value: company }, country: { value: country }, email: { value: email }, repeatEmail: { value: repeatEmail }, password: { value: password}, repeatPassword: { value: repeatPassword}, role: { value: role} }} = event
+        let { target: { name: { value: name }, surname: { value: surname }, company: { value: company }, country: { value: country }, email: { value: email }, repeatEmail: { value: repeatEmail }, password: { value: password}, repeatPassword: { value: repeatPassword}, role: { value: role} }} = event
         if(email === repeatEmail && password === repeatPassword){
-            handleRegisterNewClient(company, country, email, password, role)
+            handleRegisterNewClient(name, surname, company, country, email, password, role)
         }
         if(email != repeatEmail){
             setMessage("Email and Repeat Email aren\'t equals")
@@ -30,11 +32,13 @@ function NewUser() {
         }
     }
     
-    async function handleRegisterNewClient(company, country, email, password, role) {
+    async function handleRegisterNewClient(name, surname, company, country, email, password, role) {
         try{ 
-            const response = await logic.registerUser(company, country, email, password, role)
+            const response = await logic.registerUser(name, surname, company, country, email, password, role)
             setNewUser(response.user)
             setMessage(response.message)
+            setName("")
+            setSurname("")
             setCompany("")
             setCountry("")
             setEmail("")
@@ -53,6 +57,8 @@ function NewUser() {
 
     return <section className="admin-new-user">
         <form className="admin-new-user__form" onSubmit={handleSubmitNewUser}>  
+            <input placeholder="Name" type="text" name="name" value={_name} onChange={event => setName(event.target.value) }/>
+            <input placeholder="Surname" type="text" name="surname" value={_surname} onChange={event => setSurname(event.target.value) }/>
             <input placeholder="Company" type="text" name="company" value={_company} onChange={event => setCompany(event.target.value) }/>
             <input placeholder="Country" type="text" name="country" value={_country} onChange={event => setCountry(event.target.value) } />
             <input placeholder="E-mail" type="text" name="email" value={_email} onChange={event => setEmail(event.target.value) } />
@@ -69,6 +75,8 @@ function NewUser() {
         <section className="admin-new-user__user">
             {newUser && <ul>
                 <h2>New User</h2>
+                <li>Name: {newUser.name}</li>
+                <li>Surname: {newUser.surname}</li>
                 <li>Company: {newUser.company}</li>
                 <li>Country: {newUser.country}</li>
                 <li>Email: {newUser.email}</li>

@@ -41,6 +41,8 @@ function MyAccount({history}) {
   return <section className="myAccount">
     <h1>My Account</h1>
     <div className="myAccount__updateUser">
+      <p>Name: {user.name}</p>
+      <p>Surname: {user.surname}</p>
       <p>Company: {user.company}</p>
       <p>Country: {user.country}</p>
       <p>Email: {user.email}</p>

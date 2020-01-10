@@ -54,8 +54,10 @@ function RetrieveAllUsers({ users, retrieveAllUsers }) {
     
     return <section className="admin-retrieve-users">
         {users && users.user.map(user => {
-            const {company, country, email, role, id, cart} = user
+            const {name, surname, company, country, email, role, id, cart} = user
             return <ul className="admin-retrieve-users__each-user" key={id}>
+                <li>Name: {name}</li>
+                <li>Surname: {surname}</li>
                 <li>Company: {company}</li>
                 <li>Country: {country}</li>
                 <li>Email: {email}</li>
@@ -67,7 +69,7 @@ function RetrieveAllUsers({ users, retrieveAllUsers }) {
                     </form>
                 </li>
                 <form onSubmit={hanldeSubmit}>
-                    <input placeholder="Your Password" type="password" name="password"/>
+                    <input placeholder="Your admin Password" type="password" name="password"/>
                     <input hidden type="text" name="id" value={id} />
                     <button>Delete User</button>
                 </form>
