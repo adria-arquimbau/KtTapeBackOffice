@@ -20,7 +20,7 @@ module.exports = {
         let upperCaseCount = 0
         let lowerCaseCount = 0
         for (let i = 0; i < target.length; i++) {
-            if(target[i] === "." && "/" && "@" && "!" && "¿" && "?" && "'" && "+" && "-" && "_" && "," && ":" && ";" && "¨" && "[" && "]" && "{" && "}" && "$" && "(" && ")")
+            if(target[i] === "." || "/" || "@" || "!" || "¿" || "?" || "'" || "+" || "-" || "_" || "," || ":" || ";" || "¨" || "[" || "]" || "{" || "}" || "$" || "(" || ")")
                 characterCount ++
 
             if(target[i] === target[i].toUpperCase()) 
