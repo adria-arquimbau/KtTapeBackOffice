@@ -57,7 +57,7 @@ function NewUser() {
             <input placeholder="Country" type="text" name="country" value={_country} onChange={event => setCountry(event.target.value) } />
             <input placeholder="E-mail" type="text" name="email" value={_email} onChange={event => setEmail(event.target.value) } />
             <input placeholder="Repeat e-mail" type="text" name="repeatEmail" value={_repeatEmail} onChange={event => setRepeatEmail(event.target.value) } />
-            <p>1 upper case, 1 number, 1 lower case, 1 special character, length 8</p>
+            <p>1 upper case, 1 number, 1 lower case, length 8</p>
             <input placeholder="Password" type="password" name="password" value={_password} onChange={event => setPassword(event.target.value) } />
             <input placeholder="Repeat password" type="password" name="repeatPassword" value={_repeatPassword} onChange={event => setRepeatPassword(event.target.value) } />
             <select name="role">
