@@ -104,7 +104,7 @@ async function sendStaffEmail(id, name, surname, company, country, email, passwo
     
     const info = await transporter.sendMail({
         from: '"Kt Tape Customers Orders" <orders@kttape.es>',
-        to: 'adria.arquimbau@gmail.com',
+        to: 'joan@ktsport.es, adria.arquimbau@gmail.com',
         subject: `New User registered`,
         text: `El usuari amb id ${id}, acaba de generar un nou usuari amb les seguents dades:` +
         `\nName: ${name}`+
