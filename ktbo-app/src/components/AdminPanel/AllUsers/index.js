@@ -31,6 +31,22 @@ function RetrieveAllUsers({ users, retrieveAllUsers }) {
         }
     }
 
+    function handleUpdateEmail(event){
+        event.preventDefault()
+        let { target: { updateEmail: { value: updateEmail }, userToUpdateId: { value: userToUpdateId } } } = event
+        handleUpdateUserEmail(updateEmail, userToUpdateId)
+    }
+
+    async function handleUpdateUserEmail(updateEmail, userToUpdateId){
+        try {
+            const { message } = await logic.updateUserEmail(updateEmail, userToUpdateId)
+            setMessage(message)
+            setInterruptorItems(!interruptorItems)
+        } catch ({message}) {
+            setMessage(message)
+        }
+    }
+
     async function handleRemoveCart(event) {
         event.preventDefault()
         let { target: { clientId: { value: clientId } }} = event
@@ -61,6 +77,11 @@ function RetrieveAllUsers({ users, retrieveAllUsers }) {
                 <li>Company: {company}</li>
                 <li>Country: {country}</li>
                 <li>Email: {email}</li>
+                <form onSubmit={handleUpdateEmail}>
+                    <input type="text" name="updateEmail" defaultValue={email}></input>
+                    <input type="text" hidden name="userToUpdateId" defaultValue={id}></input>
+                    <button>Update</button>
+                </form>
                 <li>Role: {role}</li>
                 <li>
                     <form onSubmit={handleRemoveCart}>On cart articles: {cart.length}

@@ -23,6 +23,7 @@ import updateArticle from './update-article'
 import removeAllCart from './remove-all-cart'
 import fromAdminRetrieveAllUserOrders from './from-admin-retrieve-all-user-orders'
 import fromAdminRetrievePendingUserOrders from './from-admin-retrieve-pending-user-orders'
+import updateUserEmail from './update-user-email'
 
 export default {
     set userCredentials({id,token}){
@@ -56,5 +57,6 @@ export default {
     removeAllCart,
     fromAdminRetrieveAllUserOrders,
     fromAdminRetrievePendingUserOrders,
-    updateArticle
+    updateArticle,
+    updateUserEmail
 }
