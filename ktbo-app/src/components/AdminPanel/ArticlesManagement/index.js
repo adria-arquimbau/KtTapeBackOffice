@@ -1,11 +1,10 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, {useState, useEffect} from 'react'
+import React, { Fragment, useState, useEffect} from 'react'
 import { withRouter } from 'react-router-dom'
 import logic from '../../../logic'
 import Modal from '../../Modal'
 
 function ArticlesManagement({ allArticles, retrieveAllArticles, searchArticle }) {
-
     const [message, setMessage] = useState(null)
     const [title, setTitle] = useState("All articles")
     const [query, setQuery] = useState()
@@ -67,11 +66,15 @@ function ArticlesManagement({ allArticles, retrieveAllArticles, searchArticle })
         setMessage(null) 
       }
 
-    return <section>
+    return (
+        <Fragment>
+    <section>
+    <Fragment>
             <form className="article-management__search-article" onSubmit={handleSearch}>
             <input name="searchArticle" placeholder="search article"></input>
             <button>Search</button>
         </form>
+        </Fragment>
     <section className="article-management">
     {thereIsAtLeastOneWithoutStock && <section className="article-management__out-of-stock">
         <h2 className="article-management__out-of-stock--title">Articles Out of stock </h2>
@@ -86,7 +89,7 @@ function ArticlesManagement({ allArticles, retrieveAllArticles, searchArticle })
                             <li>Title: {title}</li>
                             <li>Quantity: {quantity}</li>
                         </section>
-
+​
                         Update stock quantity: <input type="number" name="quantity" placeholder={quantity}/>
                         <input hidden name="id" defaultValue={id}/>
                         <input hidden defaultValue={description} name="description" placeholder="add new stock quantity"/>
@@ -163,6 +166,8 @@ function ArticlesManagement({ allArticles, retrieveAllArticles, searchArticle })
             {message && <Modal  message={message} showModal={handleModal}/>}
     </section>
     </section>
+    </Fragment>
+    )
 }
 
 export default withRouter(ArticlesManagement)

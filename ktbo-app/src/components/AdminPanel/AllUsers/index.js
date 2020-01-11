@@ -33,8 +33,11 @@ function RetrieveAllUsers({ users, retrieveAllUsers }) {
 
     function handleUpdateEmail(event){
         event.preventDefault()
-        let { target: { updateEmail: { value: updateEmail }, userToUpdateId: { value: userToUpdateId } } } = event
-        handleUpdateUserEmail(updateEmail, userToUpdateId)
+        let { target: { updateEmail: { value: updateEmail }, updateEmailRepeat: { value: updateEmailRepeat }, userToUpdateId: { value: userToUpdateId } } } = event
+        if(updateEmail === updateEmailRepeat)
+            handleUpdateUserEmail(updateEmail, userToUpdateId)
+        if(updateEmailRepeat != updateEmail)
+            setMessage("Repeat Email are not equal")
     }
 
     async function handleUpdateUserEmail(updateEmail, userToUpdateId){
@@ -79,8 +82,9 @@ function RetrieveAllUsers({ users, retrieveAllUsers }) {
                 <li>Email: {email}</li>
                 <form onSubmit={handleUpdateEmail}>
                     <input type="text" name="updateEmail" defaultValue={email}></input>
+                    <input type="text" name="updateEmailRepeat" placeholder="Repeat email"></input>
                     <input type="text" hidden name="userToUpdateId" defaultValue={id}></input>
-                    <button>Update</button>
+                    <button>Update Email</button>
                 </form>
                 <li>Role: {role}</li>
                 <li>

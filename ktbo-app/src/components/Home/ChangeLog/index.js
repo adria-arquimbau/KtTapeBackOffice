@@ -15,6 +15,16 @@ function ChangeLog() {
     <section className="change-log__all-logs">
 
     <section className="change-log__version">
+        <h2 className="change-log__version--title">BETA 0.14.1 - 11/1/2020</h2>
+        <section>
+          <ul>
+         <li> Fix bug of security password requeriments at Admin Panel New User, and My Account change password </li>
+         <li> Changed delete user place holder for Your admin password</li>
+          </ul>
+        </section>
+      </section>
+
+    <section className="change-log__version">
         <h2 className="change-log__version--title">BETA 0.14.0 - 9/1/2020</h2>
         <section>
           <ul>
@@ -37,6 +47,9 @@ function ChangeLog() {
          <li> Send customer email after each order</li>
          <li> Send staff email after each order</li>
          <li> Password REGEX</li>
+         <li>User schema implemented Name and Surname</li>
+         <li>Admin Panel update user email</li>
+         <li>Repeat Update Email of Admin Panel</li>
           </ul>
         </section>
       </section>
