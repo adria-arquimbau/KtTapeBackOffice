@@ -4,6 +4,10 @@ const Item = require('./item')
 const { Schema } = mongoose
 
 module.exports = new Schema({
+    date: {
+        type: Date,
+        required: true
+    },
     company: {
         type: String,
         required: true

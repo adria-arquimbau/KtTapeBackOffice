@@ -37,6 +37,9 @@ module.exports = function (id, name, surname, company, country, email, password,
         const res = await User.findOne({_id: id})
         if (!res) throw new Error(`TODO`)
 
+        let date = new Date()
+        date = date.toString()
+
         const hash = await bcrypt.hash(password, 10)
 
             if(res.role === 'admin'){
@@ -46,11 +49,11 @@ module.exports = function (id, name, surname, company, country, email, password,
                 const result = await User.findOne({ email })
                 if (result) throw new Error(`user with e-mail ${email} already exists`)
 
-                const user = await User.create({ name, surname, company, country, email, password: hash, role })
+                const user = await User.create({ date, name, surname, company, country, email, password: hash, role })
                 user._id = user.id
                 user.cart = []
-                await sendCustomerEmail(name, surname, company, email, password)
-                await sendStaffEmail(id, name, surname, company, country, email, password, role)
+                //await sendCustomerEmail(name, surname, company, email, password)
+                //await sendStaffEmail(id, name, surname, company, country, email, password, role)
                 return user
 
             } else {

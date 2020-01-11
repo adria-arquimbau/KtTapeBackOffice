@@ -1,6 +1,10 @@
 const { Schema } = require('mongoose')
 
 module.exports = new Schema({
+    date: {
+        type: Date,
+        required: true
+    },
     ref: {
         type: Number,
         required: true

@@ -23,6 +23,9 @@ module.exports = function(id, ref, title, description, img, quantity, category, 
 
         const res = await User.findOne({ _id: id })
 
+        let date = new Date()
+        date = date.toString()
+
         if(res.role === 'regular') throw new Error(`User with id ${id} is not an admin`)
 
         if(res.role === 'admin'){
@@ -30,6 +33,7 @@ module.exports = function(id, ref, title, description, img, quantity, category, 
             if (response) throw new Error('Article already exists.')
 
             const article = await new Article({
+                date,
                 ref,
                 title,
                 description,
