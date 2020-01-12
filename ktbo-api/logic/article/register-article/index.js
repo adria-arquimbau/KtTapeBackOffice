@@ -30,7 +30,7 @@ module.exports = function(id, ref, title, description, img, quantity, category, 
 
         if(res.role === 'admin'){
             const response = await Article.findOne({ ref })
-            if (response) throw new Error('Article already exists.')
+            if (response) throw new Error('Article already exists')
 
             const article = await new Article({
                 date,
