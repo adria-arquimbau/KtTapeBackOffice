@@ -8,6 +8,7 @@ import AllUsers from './AllUsers'
 import NewUser from './NewUser'
 import UserOrders from './UserOrders'
 import ArticlesManagement from './ArticlesManagement'
+import RegisterArticle from './RegisterArticle'
 import './index.sass'
 import Modal from '../Modal'
 import Feedback from '../Feedback'
@@ -25,8 +26,7 @@ function AdminPanel({history}) {
   const [newUser, setNewUser] = useState()
   const [userOrders, setUserOrders] = useState()
   const [articlesManagement, setArticlesManagement] = useState()
-
-
+  const [registerArticle, setRegisterArticle] = useState()
 
   useEffect(() => {
     setCat()
@@ -41,6 +41,7 @@ function AdminPanel({history}) {
         setNewUser()
         setUserOrders()
         setArticlesManagement()
+        setRegisterArticle()
         const {orders} = await logic.retrievePendingOrders()
         setOrders(orders)
       } catch ({message}) {
@@ -57,6 +58,7 @@ function AdminPanel({history}) {
         setNewUser()
         setUserOrders()
         setArticlesManagement()
+        setRegisterArticle()
         const orders = await logic.retrieveAllOrders()
         setAllOrders(orders)
       } catch ({message}) {
@@ -71,6 +73,7 @@ function AdminPanel({history}) {
     setAllOrders()
     setUserOrders()
     setArticlesManagement()
+    setRegisterArticle()
     setNewUser("new-user")
   }
 
@@ -82,6 +85,7 @@ function AdminPanel({history}) {
         setNewUser()
         setUserOrders()
         setArticlesManagement()
+        setRegisterArticle()
         const users = await logic.retrieveAllUsers()
         setRetrieveUsers(users)
       } catch ({message}) {
@@ -97,9 +101,25 @@ function AdminPanel({history}) {
       setNewUser()
       setRetrieveUsers()
       setArticlesManagement()
-      const users = await logic.retrieveAllUsers()
-      setUserOrders(users)
+      setRegisterArticle()
+      setRegisterArticle("register-article")
     } catch (error) {
+      setError(message)
+    }
+  }
+
+  async function hanldeRegisterArticle(){
+    try {
+      setError()
+      setAllOrders()
+      setOrders()
+      setNewUser()
+      setRetrieveUsers()
+      setUserOrders()
+      setArticlesManagement()
+      const articles = await logic.retrieveAllArticles()
+      setRegisterArticle(articles.articles)
+    } catch ({message}) {
       setError(message)
     }
   }
@@ -112,6 +132,7 @@ function AdminPanel({history}) {
         setNewUser()
         setRetrieveUsers()
         setUserOrders()
+        setRegisterArticle()
         const articles = await logic.retrieveAllArticles()
         setArticlesManagement(articles.articles)
     } catch ({message}) {
@@ -148,6 +169,7 @@ function AdminPanel({history}) {
         <button onClick={handleRetrieveAllUsers}>Retrieve all users</button>
         <button onClick={handleUserOrders}>User Orders</button>
         <button onClick={handleArticlesManagement}>Articles Management</button>
+        <button onClick={hanldeRegisterArticle}>Register Article</button>
       </div>
     </section>
     <section className="admin-main__content">
@@ -158,6 +180,7 @@ function AdminPanel({history}) {
       {newUser && <NewUser />}
       {userOrders && <UserOrders users={userOrders}/>}
       {articlesManagement && <ArticlesManagement searchArticle={searchArticle} allArticles={articlesManagement} retrieveAllArticles={handleArticlesManagement}/>}
+      {registerArticle && <RegisterArticle />}
     </section> 
     {message && <Modal  message={message} showModal={handleModal}/>}
   </section>

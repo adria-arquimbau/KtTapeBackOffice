@@ -55,7 +55,8 @@ module.exports = function(id, ref, title, description, img, quantity, category, 
     function validateAllParameters() {
         validate.number(ref, 'ref')
         validate.string(title, 'title')
-        validate.string(description, 'description')
+        if(description)
+            validate.string(description, 'description')
         validate.string(img, 'img')
         validate.number(quantity, 'quantity')
         validate.number(price, 'price')
