@@ -24,6 +24,9 @@ module.exports = function (articleId, body) {
 
     return (async () => {
 
+        const articleRef = await Article.findOne({ ref })
+        if(articleRef) throw Error(`article with ref ${ref} already exist`)
+
         const article = await Article.findByIdAndUpdate(articleId, { $set: body })
         if (!article) throw new Error(`article with id ${articleId} does not exist`)
 
