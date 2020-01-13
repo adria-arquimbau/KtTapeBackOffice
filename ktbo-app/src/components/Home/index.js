@@ -19,7 +19,7 @@ import ModalBetaInfo from '../ModalBetaInfo'
 
 function Home({history}) {
 
-  const [message, setMessage] = useState(true)
+  const {betaVersionMessage, setBetaVersionMessage} = useContext(Context)
   const {cat} = useContext(Context)
   const {setItems} = useContext(Context)
   const {interruptorItems} = useContext(Context)
@@ -57,7 +57,7 @@ function Home({history}) {
   }
 
   function handleModal() { 
-    setMessage(null) 
+    setBetaVersionMessage(false) 
  }
   
   return <>
@@ -80,7 +80,7 @@ function Home({history}) {
       </div>
     }
     <main className="home"> 
-      {message && <ModalBetaInfo message={message} showModal={handleModal}/>}
+          {betaVersionMessage && <ModalBetaInfo betaVersionMessage={betaVersionMessage} showModal={handleModal}/>}
           <Route exact path="/home" render={() => !logic.isUserLogged() ? history.push('/') : <ChangeLog /> } /> 
           <Route path="/home/documents" render={() => !logic.isUserLogged() ? history.push('/') : <Documents /> } />
           <Route path="/home/my-orders" render={() => !logic.isUserLogged() ? history.push('/') : <MyOrders /> } />

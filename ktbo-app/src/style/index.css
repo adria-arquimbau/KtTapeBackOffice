@@ -1090,7 +1090,7 @@ input {
   border-width: 1px;
 }
 
-.modal {
+.modalBetaInfo {
   width: 100vw;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.5);
@@ -1104,11 +1104,11 @@ input {
   justify-content: center;
   align-items: center;
 }
-.modal p {
+.modalBetaInfo p {
   margin: 1rem 2rem 0 2rem;
   text-align: center;
 }
-.modal__box {
+.modalBetaInfo__box {
   width: 40%;
   height: 15%;
   border: 0;
@@ -1119,11 +1119,11 @@ input {
   justify-content: center;
   align-items: center;
 }
-.modal__box button {
+.modalBetaInfo__box button {
   width: 40px;
   color: #333333;
 }
-.modal__box button:hover {
+.modalBetaInfo__box button:hover {
   color: white;
 }
 

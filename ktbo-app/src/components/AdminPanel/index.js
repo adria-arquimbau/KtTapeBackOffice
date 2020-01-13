@@ -102,7 +102,8 @@ function AdminPanel({history}) {
       setRetrieveUsers()
       setArticlesManagement()
       setRegisterArticle()
-      setRegisterArticle("register-article")
+      const users = await logic.retrieveAllUsers()
+      setUserOrders(users)
     } catch (error) {
       setError(message)
     }
