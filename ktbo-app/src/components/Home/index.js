@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { withRouter, Route } from 'react-router-dom'
 //import queryString from 'query-string'
 import logic from '../../logic'
@@ -15,9 +15,11 @@ import NewUser from '../AdminPanel/NewUser'
 import ChangeLog from './ChangeLog'
 import Context from '../Context'
 import ResultsCategories from '../Results/ResultsCategories'
+import ModalBetaInfo from '../ModalBetaInfo'
 
 function Home({history}) {
 
+  const [message, setMessage] = useState(true)
   const {cat} = useContext(Context)
   const {setItems} = useContext(Context)
   const {interruptorItems} = useContext(Context)
@@ -53,6 +55,10 @@ function Home({history}) {
       //TODO SetError(error)
     }
   }
+
+  function handleModal() { 
+    setMessage(null) 
+ }
   
   return <>
     {logic.isUserLogged() &&
@@ -74,6 +80,7 @@ function Home({history}) {
       </div>
     }
     <main className="home"> 
+      {message && <ModalBetaInfo message={message} showModal={handleModal}/>}
           <Route exact path="/home" render={() => !logic.isUserLogged() ? history.push('/') : <ChangeLog /> } /> 
           <Route path="/home/documents" render={() => !logic.isUserLogged() ? history.push('/') : <Documents /> } />
           <Route path="/home/my-orders" render={() => !logic.isUserLogged() ? history.push('/') : <MyOrders /> } />
