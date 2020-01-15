@@ -80,6 +80,8 @@ function Home({history}) {
       </div>
     }
     <main className="home"> 
+{   betaVersionMessage === false && <div className="home-beta-container"><p className="home-beta-container__message">This is a pre-release BETA version. This Beta version does not represent the final quality of the back office. Thank you for your understanding and support.</p></div>
+}
           {betaVersionMessage && <ModalBetaInfo betaVersionMessage={betaVersionMessage} showModal={handleModal}/>}
           <Route exact path="/home" render={() => !logic.isUserLogged() ? history.push('/') : <ChangeLog /> } /> 
           <Route path="/home/documents" render={() => !logic.isUserLogged() ? history.push('/') : <Documents /> } />

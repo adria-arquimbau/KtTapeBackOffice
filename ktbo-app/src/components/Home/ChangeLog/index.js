@@ -5,12 +5,18 @@ import Context from '../../Context'
 function ChangeLog() {
 
   const {setCat} = useContext(Context)
+  const {betaVersionMessage} = useContext(Context)
 
   useEffect(() => {
     setCat()
   },[])
     
   return <section className="change-log">
+    <form>
+      <p>We welcome any suggestions regarding the current functionality of the website</p>
+      <textarea name="subject" placeholder="Suggestions..."></textarea>
+      <button>Send</button>
+    </form>
     <h1 className="change-log__title">Change Log</h1>
     <section className="change-log__all-logs">
 

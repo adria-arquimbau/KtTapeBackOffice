@@ -192,6 +192,17 @@ input {
   z-index: 10;
 }
 
+.home-beta-container {
+  display: flex;
+  justify-content: center;
+  background-color: #f57b1f;
+}
+.home-beta-container__message {
+  text-align: center;
+  padding: 5px;
+  color: #96281b;
+}
+
 @media screen and (min-width: 400px) {
   .superior {
     background-color: #333333;
