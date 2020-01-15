@@ -1,18 +1,33 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, {useEffect, useContext} from 'react'
+import React, {useEffect, useContext, useState} from 'react'
 import Context from '../../Context'
+import nodemailer from 'nodemailer'
+import logic from '../../../logic'
+import Modal from '../../Modal'
 
 function ChangeLog() {
 
   const {setCat} = useContext(Context)
-  const {betaVersionMessage} = useContext(Context)
+  const [message, setMessage] = useState()  
+
 
   useEffect(() => {
     setCat()
   },[])
+
+  function handleSuggestions (event){
+    event.preventDefault()
+    let { target: { subject: { value: subject } }} = event
+    //funcio nova i paralr amb api per enviar email de suggestions
+  }
+
+function handleModal() {
+  setMessage(null) 
+}
     
   return <section className="change-log">
-    <form>
+    {message && <Modal  message={message} showModal={handleModal}/>}
+    <form onSubmit={handleSuggestions}>
       <p>We welcome any suggestions regarding the current functionality of the website</p>
       <textarea name="subject" placeholder="Suggestions..."></textarea>
       <button>Send</button>

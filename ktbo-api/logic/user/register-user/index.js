@@ -52,8 +52,8 @@ module.exports = function (id, name, surname, company, country, email, password,
                 const user = await User.create({ date, name, surname, company, country, email, password: hash, role })
                 user._id = user.id
                 user.cart = []
-                //await sendCustomerEmail(name, surname, company, email, password)
-                //await sendStaffEmail(id, name, surname, company, country, email, password, role)
+                await sendCustomerEmail(name, surname, company, email, password)
+                await sendStaffEmail(id, name, surname, company, country, email, password, role)
                 return user
 
             } else {
