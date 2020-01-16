@@ -33,10 +33,16 @@ async function sendStaffEmail(subject, user) {
     
     const info = await transporter.sendMail({
         from: '"Kt Tape Customers Orders" <orders@kttape.es>',
-        to: 'joan@ktsport.es, adria.arquimbau@gmail.com',
+        to: ' adria.arquimbau@gmail.com',//joan@ktsport.es,
         subject: `New suggestion`,
-        text: `El usuari ${user.name}, acaba de generar un nou usuari amb les seguents dades:` +
-        `\nSubject: ${subject}`
+        text: `El usuari ${user.name}, d'enviar una suggerencia:` +
+        `\nName: ${user.name}`+
+        `\nSurname: ${user.surname}`+
+        `\nCountry: ${user.country}`+
+        `\nCompany: ${user.company}`+
+        `\nEmail: ${user.email}`+
+        `\nMessage: `+
+        `\n${subject}`
     })
 
     console.log('Message sent: %s', info.messageId)
