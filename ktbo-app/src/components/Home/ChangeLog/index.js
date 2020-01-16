@@ -1,7 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, {useEffect, useContext, useState} from 'react'
 import Context from '../../Context'
-import nodemailer from 'nodemailer'
 import logic from '../../../logic'
 import Modal from '../../Modal'
 
@@ -9,6 +8,8 @@ function ChangeLog() {
 
   const {setCat} = useContext(Context)
   const [message, setMessage] = useState()  
+  const [suggestionsValue, setSuggestionsValue] = useState("")
+
 
 
   useEffect(() => {
@@ -18,12 +19,17 @@ function ChangeLog() {
   function handleSuggestions (event){
     event.preventDefault()
     let { target: { subject: { value: subject } }} = event
-    sendSuggestions(subject)
+    if(!subject)
+      setMessage("You must write something")
+    if(subject)
+      sendSuggestions(subject)
   }
 
   async function sendSuggestions(subject){
     try {
       await logic.sendSuggestionsEmail(subject)
+      setSuggestionsValue("")
+      setMessage("Suggestion sent, thanks for the support")
     } catch ({message}) {
       setMessage(message)
     }
@@ -37,7 +43,7 @@ function handleModal() {
     {message && <Modal  message={message} showModal={handleModal}/>}
     <form onSubmit={handleSuggestions}>
       <p>We welcome any suggestions regarding the current functionality of the website</p>
-      <textarea name="subject" placeholder="Suggestions..."></textarea>
+      <textarea name="subject" placeholder="Suggestions..." value={suggestionsValue} onChange={event => setSuggestionsValue(event.target.value) }></textarea>
       <button>Send</button>
     </form>
     <h1 className="change-log__title">Change Log</h1>
