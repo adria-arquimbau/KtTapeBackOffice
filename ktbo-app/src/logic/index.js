@@ -25,6 +25,7 @@ import fromAdminRetrieveAllUserOrders from './from-admin-retrieve-all-user-order
 import fromAdminRetrievePendingUserOrders from './from-admin-retrieve-pending-user-orders'
 import updateUserEmail from './update-user-email'
 import registerArticle from './register-article'
+import sendSuggestionsEmail from './send-suggestions-email'
 
 export default {
     set userCredentials({id,token}){
@@ -60,5 +61,6 @@ export default {
     fromAdminRetrievePendingUserOrders,
     updateArticle,
     updateUserEmail, 
-    registerArticle
+    registerArticle,
+    sendSuggestionsEmail
 }

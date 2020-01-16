@@ -18,7 +18,15 @@ function ChangeLog() {
   function handleSuggestions (event){
     event.preventDefault()
     let { target: { subject: { value: subject } }} = event
-    //funcio nova i paralr amb api per enviar email de suggestions
+    sendSuggestions(subject)
+  }
+
+  async function sendSuggestions(subject){
+    try {
+      await logic.sendSuggestionsEmail(subject)
+    } catch ({message}) {
+      setMessage(message)
+    }
   }
 
 function handleModal() {

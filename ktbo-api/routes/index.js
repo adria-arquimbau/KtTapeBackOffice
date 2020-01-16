@@ -1,6 +1,8 @@
 const { Router } = require('express')
 const bodyParser = require('body-parser')
 const tokenMiddleware = require('../helpers/token-middleware')
+const router = Router()
+const jsonBodyParser = bodyParser.json()
 
     ////   USER   ////
     const registerUser = require('./user/register-user')
@@ -40,8 +42,8 @@ const tokenMiddleware = require('../helpers/token-middleware')
     ////   WAKE UP   ////
     const wakeUpApi = require('./wake-up-api')
 
-    const router = Router()
-    const jsonBodyParser = bodyParser.json()
+    ////   SUGGESTIONS   ////
+    const suggestionsEmail = require('./suggestions-email')
 
     ////   USER   //// 6
     router.post('/user', [tokenMiddleware, jsonBodyParser], registerUser)
@@ -82,5 +84,8 @@ const tokenMiddleware = require('../helpers/token-middleware')
 
     ////   WAKE UP   //// 1
     router.get('/wake-up-api', jsonBodyParser, wakeUpApi)
+
+    ////   SUGGESTIONS   //// 1
+    router.post('/user/suggestions-email', [tokenMiddleware, jsonBodyParser], suggestionsEmail)
 
 module.exports = router
