@@ -1,11 +1,11 @@
-const { models: { User } } = require('ktbo-data')
+const { models: { User, Suggestion } } = require('ktbo-data')
 const { validate } = require('ktbo-utils')
 const bcrypt = require('bcryptjs')
 const nodemailer = require('nodemailer')
 
-module.exports = function (subject, userId) {
+module.exports = function (body, userId) {
 
-    validate.string(subject, 'subject')
+    //validate.string(body, 'body')
     validate.string(userId, 'userId')
 
     return (async () => {
@@ -13,7 +13,18 @@ module.exports = function (subject, userId) {
         const user = await User.findOne({_id: userId})
         if (!user) throw new Error(`TODO`)
 
-        await sendStaffEmail(subject, user)
+        let date = new Date()
+        date = date.toString()
+
+        const suggestion = await Suggestion.create({ date, body, userId})
+
+        try {
+            await sendStaffEmail(body, user)            
+        } catch ({message}) {
+            throw Error(message)
+        }
+
+        return suggestion
     })()
 }
 
@@ -33,7 +44,7 @@ async function sendStaffEmail(subject, user) {
     
     const info = await transporter.sendMail({
         from: '"Kt Tape Customers Orders" <orders@kttape.es>',
-        to: ' adria.arquimbau@gmail.com, joan@ktsport.es ',
+        to: 'adria.arquimbau@gmail.com, joan@ktsport.es',
         subject: `New suggestion`,
         text: `El usuari ${user.name}, d'enviar una suggerencia:` +
         `\nName: ${user.name}`+

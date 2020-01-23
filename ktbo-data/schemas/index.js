@@ -2,5 +2,6 @@ module.exports = {
     user: require('./user'),
     article: require('./article'),
     item: require('./item'),
-    order: require('./order')
+    order: require('./order'),
+    suggestion: require('./suggestion')
 }
