@@ -5,7 +5,7 @@ const nodemailer = require('nodemailer')
 
 module.exports = function (body, userId) {
 
-    //validate.string(body, 'body')
+    validate.string(body, 'body')
     validate.string(userId, 'userId')
 
     return (async () => {
@@ -16,7 +16,12 @@ module.exports = function (body, userId) {
         let date = new Date()
         date = date.toString()
 
-        const suggestion = await Suggestion.create({ date, body, userId})
+        const suggestion = await new Suggestion({
+            date, 
+            body, 
+            userId
+        })
+        await suggestion.save()
 
         try {
             await sendStaffEmail(body, user)            

@@ -10,8 +10,6 @@ function ChangeLog() {
   const [message, setMessage] = useState()  
   const [suggestionsValue, setSuggestionsValue] = useState("")
 
-
-
   useEffect(() => {
     setCat()
   },[])
@@ -27,9 +25,9 @@ function ChangeLog() {
 
   async function sendSuggestions(subject){
     try {
-      await logic.sendSuggestionsEmail(subject)
+      const sugestion = await logic.sendSuggestionsEmail(subject)
       setSuggestionsValue("")
-      setMessage("Suggestion sent, thanks for the support")
+      setMessage(sugestion + "Suggestion send, thanks for the support")
     } catch ({message}) {
       setMessage(message)
     }

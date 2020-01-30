@@ -8,7 +8,7 @@ export default function (subject) {
     return (async () => {
 
         const { token } = sessionStorage
-        
+        debugger
         const response = await fetch(`${REACT_APP_API_URL}/user/suggestions-email`, {
             method: 'POST',
             headers: {'content-type': 'application/json', 'authorization': `bearer ${token}` },
