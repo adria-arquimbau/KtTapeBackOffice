@@ -26,6 +26,7 @@ function ChangeLog() {
   async function sendSuggestions(subject){
     try {
       const sugestion = await logic.sendSuggestionsEmail(subject)
+      
       setSuggestionsValue("")
       setMessage(sugestion + "Suggestion send, thanks for the support")
     } catch ({message}) {
@@ -46,6 +47,19 @@ function handleModal() {
     </form>
     <h1 className="change-log__title">Change Log</h1>
     <section className="change-log__all-logs">
+
+      <section className="change-log__version">
+        <h2 className="change-log__version--title">BETA 0.14.1 - 11/1/2020</h2>
+        <section>
+          <ul>
+          <li> Added Register Article to admin panel</li>
+          <li> Can't update an article with an used reference</li>
+          <li> Can't create an article with an used reference</li>
+          <li> Beta Version Modal Added</li>
+          <li> Beta message to nav bar</li>
+          </ul>
+        </section>
+      </section>
 
     <section className="change-log__version">
         <h2 className="change-log__version--title">BETA 0.14.1 - 11/1/2020</h2>
