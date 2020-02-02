@@ -5,7 +5,7 @@ import React, {useState, useEffect} from 'react'
 import { withRouter, Route } from 'react-router-dom'
 import Context from './Context'
 import logic from '../logic'
-import '../style/index.css'
+//import '../style/index.css'
 import Landing from './Landing'
 import Home from './Home'
 

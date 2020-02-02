@@ -4,6 +4,7 @@ import App from './components/App'
 import * as serviceWorker from './serviceWorker'
 //import 'bootstrap/dist/css/bootstrap.css'
 //import 'bootstrap/dist/js/bootstrap.js'
+import '../src/style/index.css'
 
 import { HashRouter } from 'react-router-dom'
 
