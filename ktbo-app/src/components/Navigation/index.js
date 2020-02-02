@@ -52,77 +52,93 @@ function Navigation({ history, onSearch }) {
         }
     }
 
-    return <>
- 
-        <section className="navigation">
-            <ul className="navigation__ul sticky">
-                <li className="navigation__li"><a className="navigation__li--anchor" href="#" onClick={event => { event.preventDefault() 
-                    handleHome() }}>Home</a></li>
-                {/* <li className="navigation__li"><a href="#" onClick={event => { event.preventDefault() 
-                    handleDocuments() }}>Documents</a></li> */}
-                <div className="dropdown">
-                    <button className="dropbtn" >Categories<i className="fa fa-caret-down"></i></button>
-                    <div className="dropdown-content">
-                        <ul>
-                                    <li><a className="dropdown-content__text" href="#" onClick={event => { event.preventDefault() 
-                            const category = "KTTape Pro Precut"
-                            onCategory(category) }}>Pro Precut</a></li>
-                                    <li><a className="dropdown-content__text" href="#" onClick={event => { event.preventDefault() 
-                            const category = "KTTape Pro Uncut" 
-                            onCategory(category) }}>Pro Uncut</a></li>
-                                    <li><a className="dropdown-content__text" href="#" onClick={event => { event.preventDefault() 
-                            const category = "KTTape Pro Limited Edition" 
-                            onCategory(category) }}>Pro Limited Edition</a></li>
-                                    <li><a className="dropdown-content__text" href="#" onClick={event => { event.preventDefault() 
-                            const category = "KTTape Pro Jumbo Precut" 
-                            onCategory(category) }}>Pro Jumbo Precut</a></li>
-                            <li><a className="dropdown-content__text" href="#" onClick={event => { event.preventDefault() 
-                            const category = "KTTape Pro Jumbo Uncut" 
-                            onCategory(category) }}>Pro Jumbo Uncut</a></li>
-                        </ul>
-                        <ul>
-                                    <li><a className="dropdown-content__text" href="#" onClick={event => { event.preventDefault()  
-                        const category = "KTTape Original Precut"  
-                            onCategory(category) }}>Original Precut</a></li>
-                                    <li><a className="dropdown-content__text" href="#" onClick={event => { event.preventDefault() 
-                        const category = "KTTape Original Uncut" 
-                            onCategory(category) }}>Original Uncut</a></li>
-                                    <li><a className="dropdown-content__text" href="#" onClick={event => { event.preventDefault() 
-                        const category = "KTTape Original Jumbo Precut" 
-                            onCategory(category) }}>Original Jumbo Precut</a></li>
-                                    <li><a className="dropdown-content__text" href="#" onClick={event => { event.preventDefault() 
-                        const category = "KTTape Original Jumbo Uncut" 
-                            onCategory(category) }}>Original Jumbo Uncut</a></li>
-                            <li><a className="dropdown-content__text" href="#" onClick={event => { event.preventDefault() 
-                        const category = "KTTape Original Jumbo Edema" 
-                        onCategory(category) }}>Original Jumbo Edema</a></li>
-                        </ul>
-                        <ul> 
-                                    <li><a className="dropdown-content__text" className="categoriesCont__otherProducts" href="#" onClick={event => { event.preventDefault() 
-                        const category = "Other Products" 
-                        onCategory(category) }}>Other Products</a></li>
-                        </ul>
-                    </div>
-                </div>   
-                <li className="navigation__li"><Search onSearch={onSearch} /></li>
+    return <nav className="navbar navbar-expand-lg navbar-light bg-light">
+                <a onClick={event => { event.preventDefault() 
+                                handleHome() }} className="navbar-brand" href="#">KtTape Europe</a>
+                <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span className="navbar-toggler-icon"></span>
+                </button>
+  
+                <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul className="navbar-nav mr-auto">
+                    <li className="nav-item active">
+                    <a className="nav-link" href="#">Home <span className="sr-only">(current)</span></a>
+                    </li>
 
-                <li className="navigation__li"><a className="navigation__li--anchor" href="#" onClick={event => { event.preventDefault() 
-                    handleMyOrders() }}>My Orders</a></li>
-                {user &&<div className="dropdown">
-                    <button className="dropbtn" >Hello, {user.company}<i className="fa fa-caret-down"></i></button>
-                    <div className="dropdown-content">
-                        <a className="dropdown-content__text navigation__li--anchor" href="#" onClick={event => { event.preventDefault() 
-                                handleMyAccount() }}>My Account</a>
-                        {admin && <a className="dropdown-content__text navigation__li--anchor" href="#" onClick={event => { event.preventDefault() 
-                                handleAdminPanel() }}>Admin Panel</a>}
-                        <a className="dropdown-content__text navigation__li--anchor" href="" onClick={handleLogout}>Logout</a>
+                    <li className="nav-item">
+                    <a onClick={event => { event.preventDefault() 
+                    handleMyOrders() }} className="nav-link" href="#">My orders</a>
+                    </li>
+
+                <li className="nav-item dropdown">
+                    <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i className="fa fa-caret-down"></i>
+                        Categories
+                    </a>
+                    <div className="dropdown-menu" aria-labelledby="navbarDropdown">
+                    
+                                    <a className="dropdown-item"  href="#" onClick={event => { event.preventDefault() 
+                            const category = "KTTape Pro Precut"
+                            onCategory(category) }}>Pro Precut</a>
+                                    <a className="dropdown-item"  href="#" onClick={event => { event.preventDefault() 
+                            const category = "KTTape Pro Uncut" 
+                            onCategory(category) }}>Pro Uncut</a>
+                                    <a className="dropdown-item"  href="#" onClick={event => { event.preventDefault() 
+                            const category = "KTTape Pro Limited Edition" 
+                            onCategory(category) }}>Pro Limited Edition</a>
+                                    <a className="dropdown-item"  href="#" onClick={event => { event.preventDefault() 
+                            const category = "KTTape Pro Jumbo Precut" 
+                            onCategory(category) }}>Pro Jumbo Precut</a>
+                            <a className="dropdown-item"  href="#" onClick={event => { event.preventDefault() 
+                            const category = "KTTape Pro Jumbo Uncut" 
+                            onCategory(category) }}>Pro Jumbo Uncut</a>
+                       
+                                    <a className="dropdown-item"  href="#" onClick={event => { event.preventDefault()  
+                        const category = "KTTape Original Precut"  
+                            onCategory(category) }}>Original Precut</a>
+                                    <a className="dropdown-item"  href="#" onClick={event => { event.preventDefault() 
+                        const category = "KTTape Original Uncut" 
+                            onCategory(category) }}>Original Uncut</a>
+                                    <a className="dropdown-item"  href="#" onClick={event => { event.preventDefault() 
+                        const category = "KTTape Original Jumbo Precut" 
+                            onCategory(category) }}>Original Jumbo Precut</a>
+                                    <a className="dropdown-item"  href="#" onClick={event => { event.preventDefault() 
+                        const category = "KTTape Original Jumbo Uncut" 
+                            onCategory(category) }}>Original Jumbo Uncut</a>
+                            <a className="dropdown-item"  href="#" onClick={event => { event.preventDefault() 
+                        const category = "KTTape Original Jumbo Edema" 
+                        onCategory(category) }}>Original Jumbo Edema</a>
+                        
+                        
+                                    <a className="dropdown-item" href="#" onClick={event => { event.preventDefault() 
+                        const category = "Other Products" 
+                        onCategory(category) }}>Other Products</a>
+                        
                     </div>
-                </div>}
-                {items && items.length > 0 && <li className="navigation__li"><a className="navigation__li--anchor" href="#" onClick={event => { event.preventDefault() 
-                    handleCurrentOrder() }}>Your Order {items.length}</a></li>}
-            </ul>  
-        </section>
-    </>
+                </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Hello, {user.company}
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a onClick={event => { event.preventDefault() 
+                                handleMyAccount() }} class="dropdown-item" href="#">My Account</a>
+                    <a onClick={event => { event.preventDefault() 
+                                handleAdminPanel() }} class="dropdown-item" href="#">Admin Panel</a>
+                    <a onClick={handleLogout} class="dropdown-item" href="#">Logout</a>
+                </div>
+            </li>
+      </ul>
+      <Search onSearch={onSearch} />
+      <form className="form-inline my-2 my-lg-0">
+        <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"></input>
+        <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form>
+      {items && items.length > 0 && <li className="nav-item active">
+                    <a onClick={event => { event.preventDefault() 
+                    handleCurrentOrder() }} className="nav-link" href="#">Your order <span className="sr-only">(current)</span></a>
+        </li>}
+    </div>
+  </nav>
 }
 
 export default withRouter(Navigation)

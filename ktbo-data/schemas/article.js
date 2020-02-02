@@ -3,7 +3,7 @@ const { Schema } = require('mongoose')
 module.exports = new Schema({
     date: {
         type: Date,
-        required: true
+        required: false
     },
     ref: {
         type: Number,
