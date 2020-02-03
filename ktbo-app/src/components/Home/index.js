@@ -15,15 +15,17 @@ import NewUser from '../AdminPanel/NewUser'
 import ChangeLog from './ChangeLog'
 import Context from '../Context'
 import ResultsCategories from '../Results/ResultsCategories'
-import ModalBetaInfo from '../ModalBetaInfo'
+import Modal from '../Modal'
 
 function Home({history}) {
 
-  const {betaVersionMessage, setBetaVersionMessage} = useContext(Context)
   const {cat} = useContext(Context)
   const {setItems} = useContext(Context)
   const {interruptorItems} = useContext(Context)
   const {articles, setArticles} = useContext(Context)
+  const {betaMessageCount, setBetaMessageCount} = useContext(Context)
+
+  const betaMessage = 'This is a pre-release BETA version. This Beta version does not represent the final quality of the back office. Thank you for your understanding and support'
 
   useEffect(() => {
     handleCart()
@@ -55,10 +57,6 @@ function Home({history}) {
       //TODO SetError(error)
     }
   }
-
-  function handleModal() { 
-    setBetaVersionMessage(false) 
- }
   
   return <>
     {logic.isUserLogged() &&<div className="header__sticky-nav">
@@ -66,9 +64,8 @@ function Home({history}) {
       </div>
     }
     <main className="home"> 
-{   betaVersionMessage === false && <div className="home-beta-container"><p className="home-beta-container__message">This is a pre-release BETA version. This Beta version does not represent the final quality of the back office. Thank you for your understanding and support.</p></div>
-}
-          {betaVersionMessage && <ModalBetaInfo betaVersionMessage={betaVersionMessage} showModal={handleModal}/>}
+          
+          {/* {!betaMessageCount && <Modal  message={betaMessage}/>} */}
           <Route exact path="/home" render={() => !logic.isUserLogged() ? history.push('/') : <ChangeLog /> } /> 
           <Route path="/home/documents" render={() => !logic.isUserLogged() ? history.push('/') : <Documents /> } />
           <Route path="/home/my-orders" render={() => !logic.isUserLogged() ? history.push('/') : <MyOrders /> } />
