@@ -80,7 +80,7 @@ function ArticlesManagement({ allArticles, retrieveAllArticles, searchArticle })
         <h2 className="article-management__out-of-stock--title">Articles Out of stock </h2>
             {allArticles && allArticles.map(article => {
                 const {id, ref, title, description, img, quantity, category, price} = article
-                debugger
+                
                 if(quantity === 0){
                 return <form onSubmit={handleSubmitUpdateArticle}>
                     <ul>

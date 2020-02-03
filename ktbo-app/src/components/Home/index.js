@@ -61,20 +61,6 @@ function Home({history}) {
  }
   
   return <>
-    {logic.isUserLogged() &&
-      <header className="header">
-        <section className="superior">
-          <div className="superior__container">
-            <img className="superior__image" alt="" src="https://kttape.es/wp-content/uploads/2019/02/Logo-sense-fons-dreta-blanc.png" />
-            <section className="superior__conditions">
-            <a className="superior__conditions--privacy"  href="https://kttape.es/privacy-policy/" >Privacy Policy</a>            
-            <a className="superior__conditions--terms"  href="https://kttape.es/terms-of-use/" >Terms of Use</a>
-            <p className="superior__conditions--terms">v-0.14.0</p>
-            </section>
-          </div>
-        </section>
-      </header>
-    }
     {logic.isUserLogged() &&<div className="header__sticky-nav">
         <Navigation onSearch={handleSearch} />
       </div>
