@@ -129,10 +129,6 @@ function Navigation({ history, onSearch }) {
             </li>
       </ul>
       <Search onSearch={onSearch} />
-      <form className="form-inline my-2 my-lg-0">
-        <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"></input>
-        <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-      </form>
       {items && items.length > 0 && <li className="nav-item active">
                     <a onClick={event => { event.preventDefault() 
                     handleCurrentOrder() }} className="nav-link" href="#">Your order <span className="sr-only">(current)</span></a>
