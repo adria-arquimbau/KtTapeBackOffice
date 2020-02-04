@@ -3,6 +3,8 @@ import React, { useContext, useEffect, useState } from 'react'
 import { withRouter, Route } from 'react-router-dom'
 //import queryString from 'query-string'
 import logic from '../../logic'
+import { Toast, Row, Col, ButtonToolbar, Modal, Button} from 'react-bootstrap'
+
 
 import Navigation from '../Navigation'
 import Documents from '../Documents'
@@ -15,7 +17,7 @@ import NewUser from '../AdminPanel/NewUser'
 import ChangeLog from './ChangeLog'
 import Context from '../Context'
 import ResultsCategories from '../Results/ResultsCategories'
-import Modal from '../Modal'
+import InfoCenterModal from '../Modals/InfoCenterModal'
 
 function Home({history}) {
 
@@ -25,11 +27,14 @@ function Home({history}) {
   const {articles, setArticles} = useContext(Context)
   const {betaMessageCount, setBetaMessageCount} = useContext(Context)
 
+  const [modalShow, setModalShow] = React.useState(true);
+
   const betaMessage = 'This is a pre-release BETA version. This Beta version does not represent the final quality of the back office. Thank you for your understanding and support'
 
   useEffect(() => {
     handleCart()
   },[interruptorItems])
+
   
   async function handleSearch(query) {
     if(query.length > 0){
@@ -66,6 +71,7 @@ function Home({history}) {
     <main className="home"> 
           
           {/* {!betaMessageCount && <Modal  message={betaMessage}/>} */}
+          <InfoCenterModal show={modalShow} onHide={() => setModalShow(false)} />
           <Route exact path="/home" render={() => !logic.isUserLogged() ? history.push('/') : <ChangeLog /> } /> 
           <Route path="/home/documents" render={() => !logic.isUserLogged() ? history.push('/') : <Documents /> } />
           <Route path="/home/my-orders" render={() => !logic.isUserLogged() ? history.push('/') : <MyOrders /> } />
