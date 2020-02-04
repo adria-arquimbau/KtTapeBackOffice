@@ -911,10 +911,6 @@ input {
   border-width: 1px;
 }
 
-.modal {
-  z-index: 999;
-}
-
 button {
   background: #f57b1f;
   border-color: rgba(51, 51, 51, 0.6);

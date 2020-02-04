@@ -18,7 +18,8 @@ function App({ history }) {
   const [cat, setCat] = useState()
   const [articles, setArticles] = useState()
   const [items, setItems] = useState()
-  const [betaMessageCount, setBetaMessageCount] = useState()
+  const [betaMessage, setBetaMessage] = useState(true)
+
 
   useEffect(async () => {
 
@@ -40,7 +41,7 @@ function App({ history }) {
   },[])
 
   return <>
-    <Context.Provider value={{ user, setUser, goHome, setGoHome, cat, setCat, articles, setArticles, items, setItems, interruptorItems, setInterruptorItems, betaMessageCount, setBetaMessageCount }} >
+    <Context.Provider value={{ user, setUser, goHome, setGoHome, cat, setCat, articles, setArticles, items, setItems, interruptorItems, setInterruptorItems, betaMessage, setBetaMessage }} >
       <div className="App">
       <Route exact path="/" render={() => logic.isUserLogged() ? history.push('/home') : <Landing /> }  />
       {user && <Route path="/home" render={() => logic.isUserLogged() ? <Home /> :  history.push('/')  } /> }   

@@ -25,8 +25,8 @@ function Home({history}) {
   const {setItems} = useContext(Context)
   const {interruptorItems} = useContext(Context)
   const {articles, setArticles} = useContext(Context)
-
-  const [betaMessage, setBetaMessage] = useState(true)
+  const {betaMessage, setBetaMessage} = useContext(Context)
+  
   const [modalShow, setModalShow] = useState(true)
 
   const betaMessageString = 'This is a pre-release BETA version. This Beta version does not represent the final quality of the back office. Thank you for your understanding and support'
@@ -62,6 +62,11 @@ function Home({history}) {
       //TODO SetError(error)
     }
   }
+
+  function handleBetaModal(){
+    setModalShow(false)
+    setBetaMessage()
+  }
   
   return <>
     {logic.isUserLogged() &&<div className="header__sticky-nav">
@@ -70,7 +75,7 @@ function Home({history}) {
     }
     <main className="home"> 
           
-          {betaMessage === true && <InfoCenterModal message={betaMessageString} show={modalShow} noMoreMessages={() => setBetaMessage(false)} onHide={() => setModalShow(false)} />}
+          {betaMessage && <InfoCenterModal message={betaMessageString} show={modalShow} onHide={handleBetaModal} />}
           <Route exact path="/home" render={() => !logic.isUserLogged() ? history.push('/') : <ChangeLog /> } /> 
           <Route path="/home/documents" render={() => !logic.isUserLogged() ? history.push('/') : <Documents /> } />
           <Route path="/home/my-orders" render={() => !logic.isUserLogged() ? history.push('/') : <MyOrders /> } />
