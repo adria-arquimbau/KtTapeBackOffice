@@ -25,11 +25,11 @@ function Home({history}) {
   const {setItems} = useContext(Context)
   const {interruptorItems} = useContext(Context)
   const {articles, setArticles} = useContext(Context)
-  const {betaMessageCount, setBetaMessageCount} = useContext(Context)
 
-  const [modalShow, setModalShow] = React.useState(true);
+  const [betaMessage, setBetaMessage] = useState(true)
+  const [modalShow, setModalShow] = useState(true)
 
-  const betaMessage = 'This is a pre-release BETA version. This Beta version does not represent the final quality of the back office. Thank you for your understanding and support'
+  const betaMessageString = 'This is a pre-release BETA version. This Beta version does not represent the final quality of the back office. Thank you for your understanding and support'
 
   useEffect(() => {
     handleCart()
@@ -70,8 +70,7 @@ function Home({history}) {
     }
     <main className="home"> 
           
-          {/* {!betaMessageCount && <Modal  message={betaMessage}/>} */}
-          <InfoCenterModal show={modalShow} onHide={() => setModalShow(false)} />
+          {betaMessage === true && <InfoCenterModal message={betaMessageString} show={modalShow} noMoreMessages={() => setBetaMessage(false)} onHide={() => setModalShow(false)} />}
           <Route exact path="/home" render={() => !logic.isUserLogged() ? history.push('/') : <ChangeLog /> } /> 
           <Route path="/home/documents" render={() => !logic.isUserLogged() ? history.push('/') : <Documents /> } />
           <Route path="/home/my-orders" render={() => !logic.isUserLogged() ? history.push('/') : <MyOrders /> } />

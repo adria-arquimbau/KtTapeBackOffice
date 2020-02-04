@@ -5,6 +5,8 @@ import { Toast, Row, Col, Button, Modal } from 'react-bootstrap'
 
 
 function InfoCenterModal(props) {
+
+
     return (
       <Modal
         {...props}
@@ -14,15 +16,13 @@ function InfoCenterModal(props) {
       >
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">
-            Modal heading
+          <h4>Beta Version</h4>
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <h4>Centered Modal</h4>
+          
           <p>
-            Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
-            dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac
-            consectetur ac, vestibulum at eros.
+            {props.message}
           </p>
         </Modal.Body>
         <Modal.Footer>
