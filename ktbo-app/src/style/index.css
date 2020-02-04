@@ -164,43 +164,6 @@ input {
   color: white;
 }
 
-.change-log {
-  text-align: center;
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-size: 12px;
-}
-.change-log h1 {
-  font-size: 20px;
-}
-.change-log__title {
-  margin: 0.5rem;
-  color: #333333;
-}
-.change-log__all-logs {
-  text-align: center;
-  flex-direction: column;
-  color: #333333;
-}
-.change-log__version {
-  margin-top: 1rem;
-  padding: 1rem 1.5rem 1rem 1.5rem;
-  border-radius: 5px;
-  background-color: rgba(245, 123, 31, 0.5);
-  text-align: left;
-}
-.change-log__version--title {
-  margin: 0 0 1rem 0;
-  color: #333333;
-  font-size: 15px;
-  text-align: center;
-}
-.change-log ul {
-  list-style: circle;
-}
-
 .cartButton__feedback {
   font-size: 10px;
 }
