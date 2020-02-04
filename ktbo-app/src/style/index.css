@@ -126,44 +126,6 @@ input {
     padding: 0;
   }
 }
-.footer {
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  background-color: #f57b1f;
-  color: #333333;
-  position: fixed;
-  padding-bottom: 0.5rem;
-}
-.footer__cont {
-  margin: 0.3rem;
-  width: 100%;
-}
-.footer__cont a {
-  text-decoration: none;
-  color: #333333;
-}
-.footer__cont--privacity, .footer__cont--terms {
-  margin: 0 1rem 0 1rem;
-  font-size: 0.8rem;
-  font-weight: bold;
-}
-.footer__rights {
-  margin-top: 0.1rem;
-}
-.footer__rights--a {
-  margin: 0;
-  text-decoration: none;
-  color: #333333;
-  font-size: 0.8rem;
-}
-.footer__cont--privacity:hover, .footer__cont--terms:hover, .footer__rights--a:hover {
-  color: white;
-}
-
 .cartButton__feedback {
   font-size: 10px;
 }
