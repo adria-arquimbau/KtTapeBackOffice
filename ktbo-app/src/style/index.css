@@ -359,93 +359,6 @@ input {
   border-width: 1px;
 }
 
-.article-management {
-  display: flex;
-  justify-content: space-between;
-  padding: 5px;
-  width: 100%;
-  margin-right: 4px;
-}
-.article-management__out-of-stock {
-  padding: 5px;
-  margin-left: 3rem;
-  width: 400px;
-}
-.article-management__out-of-stock input {
-  margin-top: 1rem;
-  width: 3rem;
-}
-.article-management__out-of-stock section li {
-  padding-top: 1rem;
-}
-.article-management__out-of-stock form {
-  margin-bottom: 0.5rem;
-  padding: 0.5rem;
-  width: 15rem;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  height: 196px;
-}
-.article-management__out-of-stock--title {
-  text-align: center;
-  margin-bottom: 0.6rem;
-  width: 256px;
-}
-.article-management__all-articles {
-  align-content: center;
-}
-.article-management__all-articles--title {
-  text-align: center;
-  margin: 5px;
-}
-.article-management__all-articles--article {
-  margin: 5px;
-  padding: 1rem;
-  width: 22rem;
-  width: 250px;
-  height: 520px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  text-align: center;
-}
-.article-management__all-articles--article li {
-  flex-direction: column;
-  margin-bottom: 5px;
-  align-items: center;
-}
-.article-management__all-articles--article li p {
-  margin: 0.5rem;
-}
-.article-management__all-articles--container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin: 5px;
-}
-.article-management__all-articles--information-url {
-  width: 14rem;
-}
-.article-management__all-articles--information-price, .article-management__all-articles--information-quantity, .article-management__all-articles--information-ref {
-  width: 4rem;
-}
-.article-management__search-article {
-  text-align: center;
-  color: #333333;
-}
-.article-management__search-article input {
-  border: 0;
-  background-color: rgba(51, 51, 51, 0.1);
-  color: #333333;
-  text-align: center;
-}
-.article-management input {
-  border: 0;
-  background-color: rgba(51, 51, 51, 0.1);
-  color: #333333;
-  text-align: center;
-}
-.article-management input::placeholder {
-  color: #333333;
-}
-
 button {
   background: #f57b1f;
   border-color: rgba(51, 51, 51, 0.6);
@@ -929,39 +842,24 @@ input {
   border-width: 1px;
 }
 
-.admin-new-user {
-  flex-direction: column;
-}
-.admin-new-user__form {
-  margin-top: 1rem;
-  display: flex;
-  flex-direction: column;
-}
-.admin-new-user__form input {
-  margin-top: 0.5rem;
+button {
+  background: #f57b1f;
+  border-color: rgba(51, 51, 51, 0.6);
+  border-radius: 2px;
+  padding: 7px;
+  margin: 5px;
   border: 0;
-  background-color: rgba(51, 51, 51, 0.1);
-  color: #333333;
 }
-.admin-new-user__form input::placeholder {
-  color: #333333;
+
+button:hover {
+  background-color: rgba(245, 123, 31, 0.5);
+  color: white;
 }
-.admin-new-user__form select {
-  margin-top: 0.5rem;
-}
-.admin-new-user__form button {
-  margin: 0;
-  margin-top: 0.5rem;
-}
-.admin-new-user__user {
-  margin-top: 1rem;
-}
-.admin-new-user__user ul {
-  border-top: 1px solid #f57b1f;
-}
-.admin-new-user__user h2 {
-  margin: 1rem 0;
-  text-align: center;
+
+input {
+  padding: 7px;
+  border-radius: 2px;
+  border-width: 1px;
 }
 
 button {
@@ -984,37 +882,6 @@ input {
   border-width: 1px;
 }
 
-.admin-retrieve-all-orders {
-  flex-direction: column;
-}
-.admin-retrieve-all-orders h1 {
-  text-align: center;
-}
-.admin-retrieve-all-orders__each-order {
-  border-top: 1px solid #f57b1f;
-  display: flex;
-  margin-top: 1rem;
-}
-.admin-retrieve-all-orders__each-order--company {
-  padding: 0.5rem;
-}
-.admin-retrieve-all-orders__each-order--company li {
-  margin-bottom: 0.2rem;
-}
-.admin-retrieve-all-orders__each-order--articles {
-  padding: 1rem;
-  margin: 1rem;
-}
-.admin-retrieve-all-orders__each-order--article {
-  display: grid;
-  grid-template-columns: minmax(auto, 120px) minmax(auto, 270px) minmax(auto, 110px) minmax(auto, 120px) minmax(auto, 150px);
-  grid-auto-flow: dense;
-  padding: 0.5rem;
-}
-.admin-retrieve-all-orders__each-order--article li {
-  margin-right: 0.2rem;
-}
-
 button {
   background: #f57b1f;
   border-color: rgba(51, 51, 51, 0.6);
@@ -1033,98 +900,6 @@ input {
   padding: 7px;
   border-radius: 2px;
   border-width: 1px;
-}
-
-.admin-retrieve-pending-orders {
-  flex-direction: column;
-}
-.admin-retrieve-pending-orders h1 {
-  text-align: center;
-}
-.admin-retrieve-pending-orders__each-order {
-  border-top: 1px solid #f57b1f;
-  display: flex;
-  margin-top: 1rem;
-}
-.admin-retrieve-pending-orders__each-order--buttons button {
-  margin: 0;
-  width: 100%;
-  margin-top: 0.5rem;
-}
-.admin-retrieve-pending-orders__each-order--button-remove button {
-  background-color: #333333;
-  color: #f57b1f;
-}
-.admin-retrieve-pending-orders__each-order--button-remove button:hover {
-  background-color: rgba(51, 51, 51, 0.5);
-  color: white;
-}
-.admin-retrieve-pending-orders__each-order--company {
-  padding: 0.5rem;
-}
-.admin-retrieve-pending-orders__each-order--company li {
-  margin-bottom: 0.2rem;
-}
-.admin-retrieve-pending-orders__each-order--articles {
-  padding: 1rem;
-  margin: 1rem;
-}
-.admin-retrieve-pending-orders__each-order--article {
-  display: grid;
-  grid-template-columns: minmax(auto, 120px) minmax(auto, 270px) minmax(auto, 110px) minmax(auto, 120px) minmax(auto, 150px);
-  grid-auto-flow: dense;
-  padding: 0.5rem;
-}
-.admin-retrieve-pending-orders__each-order--article li {
-  margin-right: 0.2rem;
-}
-
-button {
-  background: #f57b1f;
-  border-color: rgba(51, 51, 51, 0.6);
-  border-radius: 2px;
-  padding: 7px;
-  margin: 5px;
-  border: 0;
-}
-
-button:hover {
-  background-color: rgba(245, 123, 31, 0.5);
-  color: white;
-}
-
-input {
-  padding: 7px;
-  border-radius: 2px;
-  border-width: 1px;
-}
-
-.admin-retrieve-users {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin: 5px;
-}
-.admin-retrieve-users__each-user {
-  margin: 5px;
-  padding: 1rem;
-  width: 22rem;
-  width: 250px;
-  height: 22rem;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  text-align: center;
-}
-.admin-retrieve-users__each-user input {
-  margin-top: 0.5rem;
-  border: 0;
-  background-color: rgba(51, 51, 51, 0.1);
-  color: #333333;
-}
-.admin-retrieve-users__each-user input::placeholder {
-  color: #333333;
-}
-.admin-retrieve-users__each-user li {
-  margin-top: 0.5rem;
 }
 
 button {

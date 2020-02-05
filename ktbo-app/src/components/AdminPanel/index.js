@@ -173,7 +173,7 @@ function AdminPanel({history}) {
         <button onClick={hanldeRegisterArticle}>Register Article</button>
       </div>
     </section>
-    <section className="admin-main__content">
+    <section >
       {error && <Feedback  message={error} />}
       {orders && <AllPendingOrders orders={orders}   retrievePendingOrders={handlePendingOrders}/>}
       {allOrders  && <AllOrders orders={allOrders} />}
