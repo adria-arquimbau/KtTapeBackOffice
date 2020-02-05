@@ -1,8 +1,8 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, {useEffect, useContext, useState} from 'react'
-import Context from '../../Context'
-import logic from '../../../logic'
-import Modal from '../../Modal'
+import Context from '../Context'
+import logic from '../../logic'
+import Modal from '../Modal'
 
 function ChangeLog() {
 

@@ -18,6 +18,7 @@ function Navigation({ history, onSearch }) {
     
     function handleHome() { history.push('/home') }
     function handleMyOrders() { history.push('/home/my-orders') }
+    function handleChangeLog(){ history.push('/home/change-log') }
     function handleCurrentOrder() { history.push('/home/current-order') }
     function handleMyAccount() { history.push('/home/my-account') }
     function handleAdminPanel() { history.push('/home/admin-panel') }
@@ -70,6 +71,11 @@ function Navigation({ history, onSearch }) {
                     <li className="nav-item">
                     <a onClick={event => { event.preventDefault() 
                     handleMyOrders() }} className="nav-link" href="#">My orders</a>
+                    </li>
+
+                    <li className="nav-item">
+                    <a onClick={event => { event.preventDefault() 
+                    handleChangeLog() }} className="nav-link" href="#">Change log</a>
                     </li>
 
                 <li className="nav-item dropdown">

@@ -14,7 +14,7 @@ import MyAccount from '../MyAccount'
 import Results from '../Results'
 import AdminPanel from '../AdminPanel'
 import NewUser from '../AdminPanel/NewUser'
-import ChangeLog from './ChangeLog'
+import ChangeLog from '../ChangeLog'
 import Context from '../Context'
 import ResultsCategories from '../Results/ResultsCategories'
 import InfoCenterModal from '../Modals/InfoCenterModal'
@@ -77,6 +77,7 @@ function Home({history}) {
           
           {betaMessage && <InfoCenterModal message={betaMessageString} show={modalShow} onHide={handleBetaModal} />}
           <Route exact path="/home" render={() => !logic.isUserLogged() ? history.push('/') : <ChangeLog /> } /> 
+          <Route exact path="/home/change-log" render={() => !logic.isUserLogged() ? history.push('/') : <ChangeLog /> } />
           <Route path="/home/documents" render={() => !logic.isUserLogged() ? history.push('/') : <Documents /> } />
           <Route path="/home/my-orders" render={() => !logic.isUserLogged() ? history.push('/') : <MyOrders /> } />
           <Route path="/home/current-order" render={() => !logic.isUserLogged() ? history.push('/') : <CurrentOrder /> } />
