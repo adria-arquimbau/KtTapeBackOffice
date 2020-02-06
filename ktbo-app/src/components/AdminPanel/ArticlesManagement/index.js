@@ -69,28 +69,27 @@ function ArticlesManagement({ allArticles, retrieveAllArticles, searchArticle })
     return (
         <div class="d-flex flex-column">
             {allArticles && allArticles.map(article => {
-                debugger
-
+                
                 let warningBackground
                 const {title, description, img, quantity, ref, category, price} = article
                 if(quantity != 0) {
                     warningBackground = "p-2"
                 }
-
                 if(quantity == 0) {
                     warningBackground = "p-2 bg-warning"
                 }
-                
+
+                let splitTitle = title.split(" ").join("")
+debugger
                 return <div class="d-flex flex-row">
                 <div class="p-2">{ref}</div>
                 <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
 
-                    <button data-toggle="modal" data-target="#exampleModal" type="button" class="btn btn-secondary">Info</button>
+                    <button data-toggle="modal" data-target={`#${splitTitle}`} type="button" class="btn btn-secondary">Info</button>
                     <button type="button" class="btn btn-secondary">Edit</button>
                     <button type="button" class="btn btn-secondary">Delete</button>
 
-
-                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal fade" id={`${splitTitle}`} tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                         <div class="modal-header">
