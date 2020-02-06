@@ -5,7 +5,6 @@ import { withRouter, Route } from 'react-router-dom'
 import logic from '../../logic'
 import { Toast, Row, Col, ButtonToolbar, Modal, Button} from 'react-bootstrap'
 
-
 import Navigation from '../Navigation'
 import Documents from '../Documents'
 import MyOrders from '../MyOrders'
@@ -52,19 +51,21 @@ function Home({history}) {
   async function handleCart() {
     try {
       const { cart } = await logic.retrieveUser()
+      
         if(cart) {
           let items = await Promise.all(cart.map(item => logic.retrieveArticle(item.article)))
           items = items.map( (item,index) => {
           return { item, quantity: cart[index].quantity}
         })
-   debugger
+   
         setItems(items)
-        let currentPrice = totalPriceCart
+        let currentPrice = 0
         items.forEach(item => {
-          debugger
+          
           let totalItemPrice = item.item.article.price * item.quantity
-          currentPrice =+ totalItemPrice
+          currentPrice = currentPrice + totalItemPrice
         })
+        
         setTotalPriceCart(currentPrice)
         }
     } catch (error) {
