@@ -10,7 +10,10 @@ function Navigation({ history, onSearch }) {
     const {user} = useContext(Context)
     const {items} = useContext(Context)
     const {cat, setCat} = useContext(Context)
+    const {totalPriceCart} = useContext(Context)
     const [admin, setAdmin] = useState()
+
+    let totalPrice
 
     useEffect(() => {
         handleAdmin()
@@ -136,11 +139,12 @@ function Navigation({ history, onSearch }) {
                 </div>
             </li>
       </ul>
-      <Search onSearch={onSearch} />
+      
       {items && items.length > 0 && <li className="nav-item active">
                     <a onClick={event => { event.preventDefault() 
-                    handleCurrentOrder() }} className="nav-link" href="#">Your order <span className="sr-only">(current)</span></a>
+                    handleCurrentOrder() }} className="nav-link" href="#">Your order {items.length} Price: {totalPriceCart}<span className="sr-only">(current)</span></a>
         </li>}
+        <Search onSearch={onSearch} />
     </div>
   </nav>
 }

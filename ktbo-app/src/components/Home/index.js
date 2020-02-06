@@ -26,6 +26,7 @@ function Home({history}) {
   const {interruptorItems} = useContext(Context)
   const {articles, setArticles} = useContext(Context)
   const {betaMessage, setBetaMessage} = useContext(Context)
+  const {totalPriceCart, setTotalPriceCart} = useContext(Context)
   
   const [modalShow, setModalShow] = useState(true)
 
@@ -56,7 +57,15 @@ function Home({history}) {
           items = items.map( (item,index) => {
           return { item, quantity: cart[index].quantity}
         })
+   debugger
         setItems(items)
+        let currentPrice = totalPriceCart
+        items.forEach(item => {
+          debugger
+          let totalItemPrice = item.item.article.price * item.quantity
+          currentPrice =+ totalItemPrice
+        })
+        setTotalPriceCart(currentPrice)
         }
     } catch (error) {
       //TODO SetError(error)
