@@ -27,17 +27,34 @@ function MyOrders({history}) {
     try {
       const { orders } = await logic.retrieveAllUserOrders()  
       setOrders(orders)  
-      
     } catch ({message}) {
+      toast.error(message, {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true
+        })
       setMessage(message)
     }
   }
 
   return <>
-   {message &&  <ToastContainer />}
+   {message &&  <ToastContainer
+                    position="top-center"
+                    autoClose={5000}
+                    hideProgressBar={false}
+                    newestOnTop={false}
+                    closeOnClick
+                    rtl={false}
+                    pauseOnVisibilityChange
+                    draggable
+                    pauseOnHover
+                    />}
   <main className="myOrdersMain">
     <section className="myOrders">
-      <h1 className="myOrders__title">My Orders</h1>
+      
       {orders && orders.map(element => {
         return <ResultOrders key={element.id} element={element} />
       })}
