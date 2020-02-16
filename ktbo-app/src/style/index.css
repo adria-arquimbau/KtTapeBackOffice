@@ -28,6 +28,14 @@ input {
   border-color: #f57b1f;
 }
 
+.badge-nav-orange {
+  background-color: #f57b1f !important;
+}
+
+.navbar-heigh {
+  height: 65px;
+}
+
 button {
   background: #f57b1f;
   border-color: rgba(51, 51, 51, 0.6);

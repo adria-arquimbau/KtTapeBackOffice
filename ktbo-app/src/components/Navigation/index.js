@@ -5,6 +5,7 @@ import { withRouter } from 'react-router-dom'
 import logic from '../../logic'
 import Context from '../Context'
 
+
 function Navigation({ history, onSearch }) {
 
     const {user} = useContext(Context)
@@ -56,7 +57,7 @@ function Navigation({ history, onSearch }) {
         }
     }
 
-    return <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+    return <nav className="navbar navbar-expand-lg navbar-dark bg-dark navbar-heigh">
 
                 <a onClick={event => { event.preventDefault() 
                                 handleHome() }} className="navbar-brand" href="#"> <img className="superior__image" alt="" src="https://kttape.es/wp-content/uploads/2019/02/Logo-sense-fons-dreta-blanc.png" />
@@ -140,11 +141,12 @@ function Navigation({ history, onSearch }) {
             </li>
       </ul>
       
-      {items && items.length > 0 && <li className="nav-item active">
-                    <a onClick={event => { event.preventDefault() 
-                    handleCurrentOrder() }} className="nav-link" href="#">Your order {items.length} Price: {totalPriceCart}<span className="sr-only">(current)</span></a>
-        </li>}
-        <Search onSearch={onSearch} />
+      {items && items.length > 0 && <a onClick={event => { event.preventDefault() 
+                    handleCurrentOrder() }} className="nav-link" href="#">
+                        <button type="button" class="btn btn-light">
+                            Your card <span class="badge badge-light badge-nav-orange">{items.length} / Price: {totalPriceCart} €</span>
+                        </button></a>}
+        <Search onSearch={onSearch}/>
     </div>
   </nav>
 }

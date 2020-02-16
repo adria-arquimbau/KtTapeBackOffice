@@ -4,6 +4,7 @@ import { withRouter } from 'react-router-dom'
 import logic from '../../../logic'
 import Modal from '../../Modal'
 
+
 function ArticlesManagement({ allArticles, retrieveAllArticles, searchArticle }) {
     const [message, setMessage] = useState(null)
     const [title, setTitle] = useState("All articles")
@@ -80,7 +81,7 @@ function ArticlesManagement({ allArticles, retrieveAllArticles, searchArticle })
                 }
 
                 let splitTitle = title.split(" ").join("")
-debugger
+
                 return <div class="d-flex flex-row">
                 <div class="p-2">{ref}</div>
                 <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
@@ -88,7 +89,7 @@ debugger
                     <button data-toggle="modal" data-target={`#${splitTitle}`} type="button" class="btn btn-secondary">Info</button>
                     <button type="button" class="btn btn-secondary">Edit</button>
                     <button type="button" class="btn btn-secondary">Delete</button>
-
+                    
                     <div class="modal fade" id={`${splitTitle}`} tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">

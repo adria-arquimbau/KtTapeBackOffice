@@ -17,6 +17,7 @@ import ChangeLog from '../ChangeLog'
 import Context from '../Context'
 import ResultsCategories from '../Results/ResultsCategories'
 import InfoCenterModal from '../Modals/InfoCenterModal'
+import Inicio from '../Inicio'
 
 function Home({history}) {
 
@@ -86,7 +87,7 @@ function Home({history}) {
     <main className="home"> 
           
           {betaMessage && <InfoCenterModal message={betaMessageString} show={modalShow} onHide={handleBetaModal} />}
-          <Route exact path="/home" render={() => !logic.isUserLogged() ? history.push('/') : <ChangeLog /> } /> 
+          <Route exact path="/home" render={() => !logic.isUserLogged() ? history.push('/') : <Inicio /> } /> 
           <Route exact path="/home/change-log" render={() => !logic.isUserLogged() ? history.push('/') : <ChangeLog /> } />
           <Route path="/home/documents" render={() => !logic.isUserLogged() ? history.push('/') : <Documents /> } />
           <Route path="/home/my-orders" render={() => !logic.isUserLogged() ? history.push('/') : <MyOrders /> } />

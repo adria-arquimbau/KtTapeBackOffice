@@ -2,7 +2,7 @@
 import React, {useState} from 'react'
 import { Toast, Row, Col } from 'react-bootstrap'
 
-function Modal({message}) {
+function Modala({message}) {
 
   const [show, setShow] = useState(true)
     
@@ -25,4 +25,4 @@ function Modal({message}) {
   );
 }
 
-export default Modal
+export default Modala

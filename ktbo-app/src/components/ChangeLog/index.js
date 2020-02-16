@@ -41,11 +41,6 @@ function handleModal() {
   return (
 <section>
     {message && <Modal  message={message} showModal={handleModal}/>}
-    <form onSubmit={handleSuggestions}>
-      <p>We welcome any suggestions regarding the current functionality of the website</p>
-      <textarea name="subject" placeholder="Suggestions..." value={suggestionsValue} onChange={event => setSuggestionsValue(event.target.value) }></textarea>
-      <button>Send</button>
-    </form>
     <div class="card text-center card-body-changelog">
     <div class="card-header">
       Change Log

@@ -3,6 +3,7 @@ import CartButton from '../CartButton'
 import logic from '../../logic'
 import Context from '../Context'
 import Modal from '../Modal'
+import {ToastsContainer, ToastsStore, ToastsContainerPosition, ToastContainer} from 'react-toasts';
 
 function Results({ searchResult }) {
 
@@ -35,6 +36,7 @@ function Results({ searchResult }) {
             await logic.addToCart(articleId, quantity)
             setInterruptorItems(!interruptorItems)
         } catch ({message}) {
+            await ToastsStore.error(message)
             setApiMessage(message)
         }
     }
@@ -67,14 +69,14 @@ function Results({ searchResult }) {
 
                             return element.item.article.id === id && <section className="searchResult__on-cart">
                                 <h3 className="searchResult__on-cart--text">On cart {element.quantity}</h3>
-                                <form onSubmit={handleDeleteOnCart}><button className="searchResult__on-cart--button">Remove from cart<input type="text" hidden name="articleId" defaultValue={id}></input></button>
+                                <form onSubmit={handleDeleteOnCart}><button className="searchResult__on-cart--button">Remove<input type="text" hidden name="articleId" defaultValue={id}></input></button>
                                 </form>
                             </section>})}
 
                     </ul>
                 })}
             </section>
-            {apiMessage && <Modal message={apiMessage} showModal={handleModal}/>}
+            {apiMessage && <ToastsContainer store={ToastsStore} position={ToastsContainerPosition.TOP_CENTER}/> }
         </section>
     </>
 }
