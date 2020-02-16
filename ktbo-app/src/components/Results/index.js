@@ -4,6 +4,7 @@ import logic from '../../logic'
 import Context from '../Context'
 import Modal from '../Modal'
 import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 function Results({ searchResult }) {
 
@@ -24,6 +25,14 @@ function Results({ searchResult }) {
         let { target: { articleId: { value: articleId }  } } = event
         try {
             await logic.removeToCart(articleId)
+            toast.info('Article deleted of your cart', {
+                position: "bottom-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true
+                })
             setInterruptorItems(!interruptorItems)
         } catch (error) {
 
@@ -31,20 +40,27 @@ function Results({ searchResult }) {
     }
 
     async function handleAddToCart(articleId, quantity) {
-        toast.success('🦄 Wow so easy!', {
-            position: "top-center",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true
-            })
-            toast("Wow so easy !")
         try {
             quantity = Number(quantity)
             await logic.addToCart(articleId, quantity)
+            toast.success('Article added in your cart', {
+                position: "bottom-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true
+                })
             setInterruptorItems(!interruptorItems)
         } catch ({message}) {
+            toast.error(message, {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true
+                })
             setApiMessage(message)
         }
     }
@@ -84,7 +100,28 @@ function Results({ searchResult }) {
                     </ul>
                 })}
             </section>
-            {apiMessage && <ToastContainer /> }
+            {apiMessage && <ToastContainer
+                    position="top-center"
+                    autoClose={5000}
+                    hideProgressBar={false}
+                    newestOnTop={false}
+                    closeOnClick
+                    rtl={false}
+                    pauseOnVisibilityChange
+                    draggable
+                    pauseOnHover
+                    /> }
+            {setInterruptorItems && <ToastContainer
+                    position="top-center"
+                    autoClose={5000}
+                    hideProgressBar={false}
+                    newestOnTop={false}
+                    closeOnClick
+                    rtl={false}
+                    pauseOnVisibilityChange
+                    draggable
+                    pauseOnHover
+                    /> }
         </section>
     </>
 }
