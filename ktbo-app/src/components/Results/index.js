@@ -3,7 +3,7 @@ import CartButton from '../CartButton'
 import logic from '../../logic'
 import Context from '../Context'
 import Modal from '../Modal'
-import {ToastsContainer, ToastsStore, ToastsContainerPosition, ToastContainer} from 'react-toasts';
+import { ToastContainer, toast } from 'react-toastify'
 
 function Results({ searchResult }) {
 
@@ -31,12 +31,20 @@ function Results({ searchResult }) {
     }
 
     async function handleAddToCart(articleId, quantity) {
+        toast.success('🦄 Wow so easy!', {
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true
+            })
+            toast("Wow so easy !")
         try {
             quantity = Number(quantity)
             await logic.addToCart(articleId, quantity)
             setInterruptorItems(!interruptorItems)
         } catch ({message}) {
-            await ToastsStore.error(message)
             setApiMessage(message)
         }
     }
@@ -76,7 +84,7 @@ function Results({ searchResult }) {
                     </ul>
                 })}
             </section>
-            {apiMessage && <ToastsContainer store={ToastsStore} position={ToastsContainerPosition.TOP_CENTER}/> }
+            {apiMessage && <ToastContainer /> }
         </section>
     </>
 }
