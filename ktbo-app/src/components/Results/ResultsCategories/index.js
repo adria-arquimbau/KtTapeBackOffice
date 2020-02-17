@@ -3,6 +3,8 @@ import CartButton from '../../CartButton'
 import logic from '../../../logic'
 import Context from '../../Context'
 import Modal from '../../Modal'
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 function ResultsCategories({ searchResult }) {
 
@@ -23,6 +25,14 @@ function ResultsCategories({ searchResult }) {
         let { target: { articleId: { value: articleId }  } } = event
         try {
             await logic.removeToCart(articleId)
+            toast.info('Article deleted of your cart', {
+                position: "bottom-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true
+                })
             setInterruptorItems(!interruptorItems)
         } catch (error) {
             
@@ -33,8 +43,24 @@ function ResultsCategories({ searchResult }) {
         try {
             quantity = Number(quantity)
             await logic.addToCart(articleId, quantity)
+            toast.success('Article added in your cart', {
+                position: "bottom-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true
+                })
             setInterruptorItems(!interruptorItems)
         } catch ({message}) {
+            toast.error(message, {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true
+                })
             setApiMessage(message)
         }
     }
@@ -64,13 +90,34 @@ function ResultsCategories({ searchResult }) {
 
                             return element.item.article.id === id && <section className="searchResult__on-cart">
                                 <h3 className="searchResult__on-cart--text">On cart {element.quantity}</h3>
-                                <form onSubmit={handleDeleteOnCart}><button className="searchResult__on-cart--button">Remove from cart<input type="text" hidden name="articleId" defaultValue={id}></input></button>
+                                <form onSubmit={handleDeleteOnCart}><button className="searchResult__on-cart--button">Remove<input type="text" hidden name="articleId" defaultValue={id}></input></button>
                                 </form>
                             </section>})}                    
                     </ul>
                 })}
             </section>
-            {apiMessage && <Modal message={apiMessage} showModal={handleModal}/>}
+            {apiMessage && <ToastContainer
+                    position="top-center"
+                    autoClose={5000}
+                    hideProgressBar={false}
+                    newestOnTop={false}
+                    closeOnClick
+                    rtl={false}
+                    pauseOnVisibilityChange
+                    draggable
+                    pauseOnHover
+                    /> }
+            {setInterruptorItems && <ToastContainer
+                    position="top-center"
+                    autoClose={5000}
+                    hideProgressBar={false}
+                    newestOnTop={false}
+                    closeOnClick
+                    rtl={false}
+                    pauseOnVisibilityChange
+                    draggable
+                    pauseOnHover
+                    /> }
         </section>
     </>
 }
