@@ -1,7 +1,8 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState, useContext } from 'react'
 import Context from '../Context'
-
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 import logic from '../../logic'
 import { withRouter } from 'react-router-dom'
 
@@ -13,7 +14,7 @@ function Login({ history }) {
     const [waitLogin, setWaitLogin] = useState(false)
 
     
-    const {setUser} = useContext(Context)
+    const {user, setUser} = useContext(Context)
 
     function handleSubmit(event) {
         event.preventDefault()
@@ -37,6 +38,14 @@ function Login({ history }) {
             history.push('/home')
             if(email && password)setWaitLogin(!waitLogin)
         } catch({message}) {
+            toast.error(message, {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true
+                })
             setMessage(message)
             setWaitLogin(!waitLogin)
         }
@@ -52,7 +61,7 @@ function Login({ history }) {
         <>
        <div class="sidenav">
          <div class="login-main-text">
-            <h2>KtTape<br></br> Suppliers Back Office</h2>
+         <img src="https://kttape.es/wp-content/uploads/2019/02/Logo-sense-fons-dreta-blanc.png" alt="KtTape Logo"  />
          </div>
       </div>
       <div class="main">
@@ -68,11 +77,21 @@ function Login({ history }) {
                      <input type="password" name="password" class="form-control" placeholder="Password"/>
                   </div>
                   <button type="submit" class="btn btn-black">Login</button>
-                  <button type="submit" class="btn btn-secondary">Register</button>
                </form>
             </div>
          </div>
       </div>
+      {message && <ToastContainer
+                    position="top-center"
+                    autoClose={5000}
+                    hideProgressBar={false}
+                    newestOnTop={false}
+                    closeOnClick
+                    rtl={false}
+                    pauseOnVisibilityChange
+                    draggable
+                    pauseOnHover
+                    /> }
 </>
         )
 }

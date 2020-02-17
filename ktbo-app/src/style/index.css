@@ -163,119 +163,6 @@ input {
   border-width: 1px;
 }
 
-.login {
-  background-image: url("athlete-landing.jpg");
-  background-size: cover;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  height: 94vh;
-  background-position: center;
-}
-.login__content {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  height: 20%;
-  padding: 1rem;
-  margin-top: 3rem;
-  color: #333333;
-}
-.login__title {
-  display: flex;
-  justify-content: center;
-  color: #333333;
-}
-.login__form {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-.login__form input::placeholder {
-  color: rgba(255, 255, 255, 0.5);
-  font-weight: bold;
-}
-.login__form--button {
-  width: 5rem;
-  background-color: #f57b1f;
-  border: 0;
-  font-weight: bold;
-}
-.login__form--button:hover {
-  background-color: rgba(245, 123, 31, 0.5);
-}
-.login__form--email, .login__form--password {
-  margin: 1rem;
-  outline: none;
-  background-color: rgba(255, 255, 255, 0.1);
-  color: #333333;
-  text-align: center;
-  border: 0;
-  width: 10rem;
-}
-
-.lds-ellipsis {
-  display: inline-block;
-  position: relative;
-  width: 80px;
-  height: 80px;
-}
-
-.lds-ellipsis div {
-  position: absolute;
-  top: 33px;
-  width: 13px;
-  height: 13px;
-  border-radius: 50%;
-  background: #f57b1f;
-  animation-timing-function: cubic-bezier(0, 1, 1, 0);
-}
-
-.lds-ellipsis div:nth-child(1) {
-  left: 8px;
-  animation: lds-ellipsis1 0.6s infinite;
-}
-
-.lds-ellipsis div:nth-child(2) {
-  left: 8px;
-  animation: lds-ellipsis2 0.6s infinite;
-}
-
-.lds-ellipsis div:nth-child(3) {
-  left: 32px;
-  animation: lds-ellipsis2 0.6s infinite;
-}
-
-.lds-ellipsis div:nth-child(4) {
-  left: 56px;
-  animation: lds-ellipsis3 0.6s infinite;
-}
-
-@keyframes lds-ellipsis1 {
-  0% {
-    transform: scale(0);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-@keyframes lds-ellipsis3 {
-  0% {
-    transform: scale(1);
-  }
-  100% {
-    transform: scale(0);
-  }
-}
-@keyframes lds-ellipsis2 {
-  0% {
-    transform: translate(0, 0);
-  }
-  100% {
-    transform: translate(24px, 0);
-  }
-}
 .main-head {
   height: 150px;
   background: #FFF;
@@ -283,7 +170,8 @@ input {
 
 .sidenav {
   height: 100%;
-  background-color: #000;
+  background-image: url("athlete-landing2.jpg");
+  background-size: cover;
   overflow-x: hidden;
   padding-top: 20px;
 }

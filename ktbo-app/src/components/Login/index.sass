@@ -1,109 +1,6 @@
 @import ../../style/config.sass
 
-.login
-    background-image: url("athlete-landing.jpg")
-    background-size: cover
-    display: flex
-    justify-content: center
-    align-items: flex-start
-    height: 94vh
-    background-position: center
-
-    &__content
-        display: flex
-        flex-direction: column
-        justify-content: center
-        height: 20%
-        padding: 1rem
-        margin-top: 3rem
-        color: $secondary-color
-
-    &__title
-        display: flex
-        justify-content: center
-        color: $secondary-color
-
-    &__form
-        display: flex
-        flex-direction: column
-        justify-content: center
-        align-items: center
-
-        input::placeholder
-            color: rgba(255, 255, 255, 0.5)
-            font-weight: bold
-
-    &__form--button
-        width: 5rem
-        background-color: $primary-color
-        border: 0
-        font-weight: bold
-
-    &__form--button:hover
-        background-color: rgba($primary-color,0.5)
-
-    &__form--email, &__form--password
-        margin: 1rem
-        outline: none
-        background-color: rgba(255,255,255,0.1)
-        color: $secondary-color
-        text-align: center
-        border: 0
-        width: 10rem
-
-.lds-ellipsis
-  display: inline-block
-  position: relative
-  width: 80px
-  height: 80px
-
-.lds-ellipsis div
-  position: absolute
-  top: 33px
-  width: 13px
-  height: 13px
-  border-radius: 50%
-  background: $primary-color
-  animation-timing-function: cubic-bezier(0, 1, 1, 0)
-
-.lds-ellipsis div:nth-child(1)
-  left: 8px
-  animation: lds-ellipsis1 0.6s infinite
-
-.lds-ellipsis div:nth-child(2)
-  left: 8px
-  animation: lds-ellipsis2 0.6s infinite
-
-.lds-ellipsis div:nth-child(3)
-  left: 32px
-  animation: lds-ellipsis2 0.6s infinite
-
-.lds-ellipsis div:nth-child(4)
-  left: 56px
-  animation: lds-ellipsis3 0.6s infinite
-
-@keyframes lds-ellipsis1
-  0%
-    transform: scale(0)
-  
-  100%
-    transform: scale(1)
-  
-
-@keyframes lds-ellipsis3
-  0%
-    transform: scale(1)
-  
-  100%
-    transform: scale(0)
-  
-
-@keyframes lds-ellipsis2
-  0%
-    transform: translate(0, 0)
-  
-  100%
-    transform: translate(24px, 0)
+//LOGIN THEMPLATE COMPONENT BACKGROUND
   
 .main-head
   height: 150px
@@ -111,7 +8,8 @@
 
 .sidenav 
   height: 100%
-  background-color: #000
+  background-image: url("athlete-landing2.jpg")
+  background-size: cover
   overflow-x: hidden
   padding-top: 20px
 
