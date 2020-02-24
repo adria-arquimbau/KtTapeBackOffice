@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "bootstrap": "^4.4.1",
+    "bulma": "^0.8.0",
     "jquery": "^3.4.1",
     "ktbo-utils": "file:../ktbo-utils",
     "moment": "^2.24.0",

@@ -5,6 +5,7 @@ import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import logic from '../../logic'
 import { withRouter } from 'react-router-dom'
+import 'bulma/css/bulma.min.css';
 
 import Modal from '../Modal'
 
@@ -59,6 +60,16 @@ function Login({ history }) {
 
     return (
         <>
+<article class="message is-danger">
+  <div class="message-header">
+    <p>Danger</p>
+    <button class="delete" aria-label="delete"></button>
+  </div>
+  <div class="message-body">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. <strong>Pellentesque risus mi</strong>, tempus quis placerat ut, porta nec nulla. Vestibulum rhoncus ac ex sit amet fringilla. Nullam gravida purus diam, et dictum <a>felis venenatis</a> efficitur. Aenean ac <em>eleifend lacus</em>, in mollis lectus. Donec sodales, arcu et sollicitudin porttitor, tortor urna tempor ligula, id porttitor mi magna a neque. Donec dui urna, vehicula et sem eget, facilisis sodales sem.
+  </div>
+</article>
+        
        <div class="sidenav">
          <div class="login-main-text">
          <img src="https://kttape.es/wp-content/uploads/2019/02/Logo-sense-fons-dreta-blanc.png" alt="KtTape Logo"  />
@@ -69,11 +80,9 @@ function Login({ history }) {
             <div class="login-form">
                <form onSubmit={handleSubmit}>
                   <div class="form-group">
-                     <label>User Name</label>
                      <input type="text" class="form-control" name="email" placeholder="Email"/>
                   </div>
                   <div class="form-group">
-                     <label>Password</label>
                      <input type="password" name="password" class="form-control" placeholder="Password"/>
                   </div>
                   <button type="submit" class="btn btn-black">Login</button>
