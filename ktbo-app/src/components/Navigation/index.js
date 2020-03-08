@@ -57,7 +57,8 @@ function Navigation({ history, onSearch }) {
         }
     }
 
-    return <nav className="navbar navbar-expand-lg navbar-dark bg-dark navbar-heigh">
+    return <>
+    <nav className="navbar navbar-expand-lg navbar-dark bg-dark navbar-heigh navbar-color-text">
 
                 <a onClick={event => { event.preventDefault() 
                                 handleHome() }} className="navbar-brand" href="#"> <img className="superior__image" alt="" src="https://kttape.es/wp-content/uploads/2019/02/Logo-sense-fons-dreta-blanc.png" />
@@ -149,6 +150,7 @@ function Navigation({ history, onSearch }) {
         <Search onSearch={onSearch}/>
     </div>
   </nav>
+</>
 }
 
 export default withRouter(Navigation)

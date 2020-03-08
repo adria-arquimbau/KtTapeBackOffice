@@ -1,5 +1,7 @@
 @import ../../style/config.sass
 
+.navbar-dark .navbar-nav .nav-link
+    color: $primary-color
 
 .header
     width: 100vw
@@ -10,46 +12,8 @@
         top: 0
         z-index: 10
 
-.home-beta-container
-    display: flex
-    justify-content: center
-    background-color: $primary-color
-
-    &__message
-        text-align: center
-        padding: 5px
-        color: rgba(150, 40, 27, 1)
-
 @media screen and (min-width: 400px)
     .superior
-        background-color: $secondary-color
-        display: flex
-        align-items: center
-        justify-content: center
-
-        &__container
-            display: flex
-            justify-content: space-between
-            align-items: center
-            width: 65%
-
-        &__conditions
-            display: flex
-            align-items: center
-            flex-direction: column
-            margin-left: 10rem
-
-        &__conditions--privacy, &__conditions--terms
-            color: white
-            text-decoration: none
-            font-size: 0.8rem
-            font-weight: bold
-
-        &__conditions--privacy
-            padding-bottom: 0.3rem
-
-        &__conditions--privacy:hover, &__conditions--terms:hover
-            color: $primary-color
 
         &__image
             max-width: 80px
@@ -58,19 +22,8 @@
 
 @media screen and (min-width: 0px) and (max-width: 400px)
     .superior
-        background-color: $secondary-color
-        display: flex
-        align-items: center
-        justify-content: center
-
-        &__container
-            display: flex
-            align-items: center
-            justify-content: center
-
-        &__conditions--privacy, &__conditions--terms
-            display: none
         
         &__image
+            max-width: 120px
             margin: 0
             padding: 0

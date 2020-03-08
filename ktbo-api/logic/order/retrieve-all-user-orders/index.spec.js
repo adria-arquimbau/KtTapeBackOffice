@@ -99,7 +99,7 @@ describe('logic - retrieve all user orders', () => {
 
     it('should fail when userId is a number', async() => {
         try {
-            retrieveAllUserOrders(123 )            
+            retrieveAllUserOrders(123)            
         } catch (error) {
             expect(error).to.exist
             expect(error.message).to.equal(`userId with value 123 is not a string`) 

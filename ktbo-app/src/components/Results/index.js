@@ -76,7 +76,7 @@ function Results({ searchResult }) {
                 <h4>{message}</h4>
                 {articles && articles.map(item => {
                     const {ref, title, description, img, price, quantity, id} = item
-                    //debugger
+                    
                     return <ul key={id} className="searchResult__article" >
                         <li className="searchResult__article--param">Ref: {ref}</li>
                         <li className="searchResult__article--param">{title}</li>
