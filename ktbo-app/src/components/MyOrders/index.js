@@ -41,6 +41,10 @@ function MyOrders({history}) {
   }
 
   return <>
+   <div class="card text-center card-body-changelog">
+    <div class="card-header">
+      My Orders
+    </div>
    {message &&  <ToastContainer
                     position="top-center"
                     autoClose={5000}
@@ -61,6 +65,7 @@ function MyOrders({history}) {
     </section>
    
   </main>
+  </div>
   </>
 }
 

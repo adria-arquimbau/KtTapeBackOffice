@@ -70,10 +70,12 @@ function ResultsCategories({ searchResult }) {
     }
 
     return <>
+     <div class="card text-center card-body-changelog">
+    <div class="card-header">
+      Search results - {message} {error && <h4>{error}</h4>}
+    </div>
         <section className="searchResultMainContenedor">
             <section className="searchResult">
-            {error && <h4>{error}</h4>}
-                <h4>{message}</h4>
                 {articles && articles.map(item => {
                     const {ref, title, description, img, price, quantity, id} = item
 
@@ -119,6 +121,7 @@ function ResultsCategories({ searchResult }) {
                     pauseOnHover
                     /> }
         </section>
+        </div>
     </>
 }
 
