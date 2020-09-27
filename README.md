@@ -16,7 +16,7 @@ With this application we want to improve and facilitate the realization of onlin
 ## **Documentation**
 ---
 
-https://github.com/Arkimbauer/kttape/tree/develop/ktbo-doc
+https://github.com/adria-arquimbau/KtTapeBackOffice/tree/develop/ktbo-doc
 
 ## **Demo**
 ---
