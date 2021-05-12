@@ -7,7 +7,7 @@
     "ktbo-utils": "file:../ktbo-utils",
     "moment": "^2.24.0",
     "node-sass": "^4.12.0",
-    "nodemailer": "^6.3.0",
+    "nodemailer": "^6.4.16",
     "query-string": "^6.8.3",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
