@@ -26,7 +26,7 @@
     "jsonwebtoken": "^8.5.1",
     "ktbo-data": "file:../ktbo-data",
     "ktbo-utils": "file:../ktbo-utils",
-    "nodemailer": "^6.3.0"
+    "nodemailer": "^6.4.16"
   },
   "devDependencies": {
     "chai": "^4.2.0",
